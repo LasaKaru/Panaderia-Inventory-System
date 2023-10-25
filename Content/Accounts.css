@@ -1,0 +1,119 @@
+﻿body {
+    font-family: math;
+}
+
+
+.navbar-inverse.navbar-nav > li > a:focus, .navbar- inverse.navbar- nav > li > a:hover {
+    color: #090a22;
+    background-color: transparent;
+}
+
+.navbar-inverse {
+    background-color: #ffffff;
+    border-color: #ff0005;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #000000;
+    }
+
+
+
+.table-row1 {
+    display: table-row;
+}
+
+.table-cell1 {
+    display: table-cell;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.header {
+    background-color: #0000;
+}
+
+.input-field1 {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+
+.table-container {
+    display: table;
+    width: 100%;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display: table-cell;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.header {
+    font-family: auto;
+    background-color: #000000;
+}
+
+.input-field {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+
+.navbar-inverse {
+    background-color: #fffbfb;
+    border-color: #fd0d0d;
+}
+
+.navbar-inverse.navbar-nav > li > a:focus, .navbar- inverse.navbar- nav > li > a:hover {
+    color: #090a22;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #000000;
+}
+
+    .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+        color: #0a0459;
+        background-color: #d7cdcd;
+    }
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #101010;
+}
+
+
+.form-group row {
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+col-sm-2 col-form-label {
+}
+
+.auto-style323 {
+    width: 866px;
+}
+
+.auto-style324 {
+    height: 500px;
+    width: 873px;
+}
+
+footer {
+    text-align: center;
+}

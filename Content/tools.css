@@ -1,0 +1,151 @@
+﻿body {
+    font-family: math;
+}
+
+
+.navbar-inverse.navbar-nav > li > a:focus,
+.navbar- inverse.navbar- nav > li > a:hover {
+    color: #090a22;
+    background-color: transparent;
+}
+
+.navbar-inverse {
+    background-color: #ffffff;
+    border-color: #ff0005;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #000000;
+    }
+
+
+.table-row1 {
+    display: table-row;
+}
+
+.table-cell1 {
+    display: table-cell;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.header {
+    background-color: #0000;
+    width: 20px;
+}
+
+.input-field1 {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.auto-style32 {
+    width: 50%;
+    height: 53px;
+}
+
+.table-container {
+    display: table;
+    width: 100%;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display: table-cell;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.header {
+    font-family: auto;
+    background-color: #000000;
+}
+
+.input-field {
+    width: Auto;
+    padding: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #000;
+}
+
+.auto-style32 {
+    display: table;
+    width: 100%;
+}
+
+.auto-style326 {
+    display: block;
+    width: 119%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.auto-style327 {
+    display: block;
+    width: %;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.navbar-inverse {
+    background-color: #fffbfb;
+    border-color: #fd0d0d;
+}
+
+.navbar-inverse.navbar-nav > li > a:focus,
+.navbar- inverse.navbar- nav > li > a:hover {
+    color: #090a22;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #000000;
+}
+
+    .navbar-inverse .navbar-nav > li > a:focus,
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: #0a0459;
+        background-color: #d7cdcd;
+    }
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #101010;
+}
+
+.form-group row {
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+col-sm-2 col-form-label {
+}
+
+.auto-style328 {
+    height: 359px;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+}
+
+

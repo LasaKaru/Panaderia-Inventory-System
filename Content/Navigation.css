@@ -1,0 +1,183 @@
+﻿body {
+    font-family: math;
+}
+
+
+/*--------Navigation / Footer / Fonts / Header --------------*/
+
+/* Navigation*/
+
+.navbar-inverse.navbar-nav > li > a:focus, .navbar- inverse.navbar- nav > li > a:hover {
+    color: #090a22;
+    background-color: transparent;
+}
+
+.navbar-inverse {
+    background-color: #ffffff;
+    border-color: #ff0005;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+        color: #000000;
+}
+
+
+.table-row1 {
+    display: table-row;
+}
+
+.table-cell1 {
+    display: table-cell;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.header {
+    background-color: #0000;
+}
+
+.input-field1 {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+
+.auto-style32 {
+    width: 50%;
+    height: 53px;
+}
+
+
+.table-container {
+    display: table;
+    width: 100%;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display: table-cell;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+.header {
+    font-family: "Poppins", sans-serif;
+    background-color: #000000;
+}
+
+.input-field {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.auto-style32 {
+    display: table;
+    width: 100%;
+}
+
+
+.navbar-inverse {
+    background-color: #fffbfb;
+    border-color: #fd0d0d;
+}
+
+.navbar-inverse.navbar-nav > li > a:focus, .navbar- inverse.navbar- nav > li > a:hover {
+        color: #090a22;
+        background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+        color: #000000;
+}
+
+.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+            color: #0a0459;
+            background-color: #d7cdcd;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+        background-color: #101010;
+}
+
+
+.form-group row {
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+col-sm-2 col-form-label {
+}
+
+.auto-style33 {
+    height: 121px;
+    width: 1093px;
+}
+
+.auto-style34 {
+    width: 65px;
+}
+
+
+/*--------Footer  --------------*/
+
+footer {
+    text-align: center;
+}
+
+
+/*--------Fonts --------------*/
+
+
+
+.bordered {
+    width: auto;
+    height: auto;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+
+
+/*-------- Header --------------*/
+
+
+.table-container {
+    display: table;
+    width: 100%;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display: table-cell;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+
+.input-field {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.auto-style32 {
+    display: table;
+    width: 100%;
+}
+
