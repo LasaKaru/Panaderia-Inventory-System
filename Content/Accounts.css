@@ -116,4 +116,7 @@ col-sm-2 col-form-label {
 
 footer {
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

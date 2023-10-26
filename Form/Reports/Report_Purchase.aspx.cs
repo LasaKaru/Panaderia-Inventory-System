@@ -14,11 +14,23 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using ClosedXML.Excel;
+using iText.Kernel.Events;
+using iText.IO.Image;
+using iText.Kernel.Geom;
+using iText.Layout.Properties;
+using Table = iText.Layout.Element.Table;
+using iText.Kernel.Font;
+using iText.IO.Font;
 
 namespace Panaderia.Form.Reports
 {
     public partial class Report_Purchase : System.Web.UI.Page
     {
+
+        private PdfReader writer;
+        private DateTime startdate;
+        private DateTime enddate;
+        private PdfFont font;
         protected void Page_Load(object sender, EventArgs e)
         {
             // This method is called when the page is loaded
@@ -30,34 +42,7 @@ namespace Panaderia.Form.Reports
 
         protected void btnGenerateReport_Click(object sender, EventArgs e)
         {
-            // Get the selected dates
-            //DateTime startDate = DateTime.Parse(txtStartDate.Text);
-            // DateTime endDate = DateTime.Parse(txtEndDate.Text);
-
-            // Database connection and query to fetch data (commented for now)
-            /*
-            string connectionString = "YourConnectionString";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                // Your SQL query to fetch data based on the date range
-                // ...
-
-                // Process the fetched data and generate the report
-                // ...
-
-                connection.Close();
-            }
-            */
-
-            // Placeholder for report generation logic (commented for now)
-            /*
-            string reportData = GenerateReportData();
-            DisplayReport(reportData);
-            */
-
-
+            
             DataTable dataTable = new DataTable();
             // Implement the logic to generate the report based on the selected criteria
             if (sender == Button1)
@@ -79,6 +64,9 @@ namespace Panaderia.Form.Reports
                 GridView2.DataSource = dataTable;
                 GridView2.DataBind();
 
+                // Call JavaScript function to show the Download button
+                ClientScript.RegisterStartupScript(this.GetType(), "ShowDownloadButton", "showDownloadButton();", true);
+
                 // Generate reports
                 GeneratePDFReport(dataTable);
                 GenerateXLSMReport(dataTable);
@@ -89,6 +77,115 @@ namespace Panaderia.Form.Reports
             }
 
 
+        }
+
+        private void GeneratePDFReport(DataTable dataTable)
+        //private void GeneratePDFReport(DataTable dataTable, DateTime startDate, DateTime endDate) for get date on report
+
+        {
+            using (var stream = new MemoryStream())
+            {
+                using (var writer = new PdfWriter(stream))
+                {
+                    using (var pdf = new PdfDocument(writer))
+                    {
+                        var document = new Document(pdf);
+
+                        // Set the page orientation to landscape
+                        PageSize pageSize = PageSize.A4.Rotate(); // Landscape orientation
+                        pdf.SetDefaultPageSize(pageSize);
+
+                        // Add the image to the first page
+                        iText.Layout.Element.Image image = new iText.Layout.Element.Image(ImageDataFactory.Create("https://github.com/LasaKaru/Utility-Inquiry-System/blob/main/cargills-removebg-preview.png?raw=true"));
+                        image.SetWidth(100); // Set the image width to 100 pixels
+                        image.SetMarginLeft(5); // Set the left margin to 10 pixels
+                        image.SetMarginBottom(5); // Set the bottom margin to 10 pixels
+                        document.Add(image);
+
+                        // Add the title
+                        Paragraph title = new Paragraph("Panaderia Inventory System")
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .SetFontSize(16);
+                        document.Add(title);
+
+
+                        Paragraph title1 = new Paragraph("Purchase Report")
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .SetFontSize(12);
+                        document.Add(title1);
+
+                        // Add Date From and Date To text
+                        //string dateRangeText = $"Date From: {startDate.ToString("dd/MM/yyyy")} To: {endDate.ToString("dd/MM/yyyy")}";
+                        // Paragraph dateRange = new Paragraph(dateRangeText)
+                        //    .SetTextAlignment(TextAlignment.CENTER)
+                        //     .SetFontSize(12);
+                        // document.Add(dateRange);
+
+
+
+                        // Add content to the document based on your dataTable
+                        // Add a table for data from the database
+                        float tableHeaderFontSize = 10;
+                        float tableDataFontSize = 10;
+                        Table table = new Table(dataTable.Columns.Count);
+                        table.SetWidth(UnitValue.CreatePercentValue(100));
+
+                        //specify the font name
+                        string fontName = "Helvetica";
+
+                        PdfFont font = PdfFontFactory.CreateFont(fontName);
+
+                        foreach(DataColumn column in dataTable.Columns)
+                        {
+                            Cell headerCell = new Cell().Add(new Paragraph(column.ColumnName));
+
+                            // Check specific column names and apply a different font size
+                            if (column.ColumnName == "Txn_ID" || column.ColumnName == "Company_ID" || column.ColumnName == "Branch_id")
+                            {
+                                headerCell.SetFontSize(tableHeaderFontSize);
+                            }
+                            else
+                            {
+                                headerCell.SetFontSize(tableDataFontSize);
+                            }
+
+                            table.AddHeaderCell(headerCell);
+                        }
+
+                        //foreach (DataColumn column in dataTable.Columns)
+                        //  {
+                        //     table.AddHeaderCell(column.ColumnName);
+                        // }
+
+                        document.Add(table);
+                        // Example:
+                        // document.Add(new Paragraph("Transaction Report"));
+                        // foreach (DataRow row in dataTable.Rows)
+                        // {
+                        //     document.Add(new Paragraph(row["ColumnName"].ToString()));
+                        // }
+                    }
+                }
+
+                // Save the PDF file to a location or send it as needed
+                File.WriteAllBytes(Server.MapPath("~/Reports/PurchaseReport.pdf"), stream.ToArray());
+            }
+        }
+
+
+        protected void btnDownloadPDF_Click(object sender, EventArgs e)
+        {
+            string filePath = Server.MapPath("~/Reports/PurchaseReport.pdf");
+            FileInfo file = new FileInfo(filePath);
+
+            if (file.Exists)
+            {
+                Response.Clear();
+                Response.ContentType = "application/pdf";
+                Response.AddHeader("content-disposition", "attachment; filename=PurchaseReport.pdf");
+                Response.WriteFile(filePath);
+                Response.End();
+            }
         }
 
         private void GenerateSalesReturnReport(ref DataTable dataTable)
@@ -190,6 +287,68 @@ namespace Panaderia.Form.Reports
                 // Handle exceptions or log errors as needed
                 Response.Write("Error sending email: " + ex.Message);
             }
+
+            // Capture relevant data
+            int userId = GetUserId(); // Replace with code to get the user's ID
+            int productId = GetProductId(); // Replace with code to get the product's ID if applicable
+            string reportType = "Sales Report"; // Update with the appropriate report type
+            DateTime downloadDate = DateTime.Now;
+            bool printed = false; // Initially set to false since it's a download event
+
+            // Insert download event into the database
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True"; // Update with your actual connection string
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = "INSERT INTO Report_DownloadHistory (UserId, ProductId, ReportType, DownloadedDate, Printed) " +
+                        "VALUES (@UserId, @ProductId, @ReportType, @DownloadedDate, @Printed)";
+
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@ProductId", productId);
+                    command.Parameters.AddWithValue("@ReportType", reportType);
+                    command.Parameters.AddWithValue("@DownloadedDate", downloadDate);
+                    command.Parameters.AddWithValue("@Printed", printed);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private int GetProductId()
+        {
+            if (HttpContext.Current.Session["ValidUsername"] != null)
+            {
+                // Parse the user's ID from the session variable (assuming it's an integer)
+                int userId;
+                if (int.TryParse(HttpContext.Current.Session["ValidUsername"].ToString(), out userId))
+                {
+                    return userId;
+                }
+            }
+            // Handle cases where the user's ID cannot be obtained
+            return -1;
+
+        }
+
+        private int GetUserId()
+        {
+            // Replace this logic with code to fetch the product's ID
+            // This is a sample logic; you should adapt it to your database structure.
+            int productId = -1; // Default value in case product ID retrieval fails
+
+            // Assuming the product ID is provided in a query parameter (e.g., ?productId=123)
+            if (Request.QueryString["productId"] != null)
+            {
+                if (int.TryParse(Request.QueryString["productId"], out productId))
+                {
+                    return productId;
+                }
+            }
+
+            return productId;
         }
 
 
@@ -224,12 +383,7 @@ namespace Panaderia.Form.Reports
                     GridView2.DataBind();
                 }
             }
-        }
-
-        private void GeneratePDFReport(DataTable dataTable)
-        {
-
-        }
+        }      
 
         private void GenerateXLSMReport(DataTable dataTable)
         {
@@ -240,7 +394,7 @@ namespace Panaderia.Form.Reports
                 var worksheet = workbook.Worksheets.Add("Sheet1");
                 // Add content to the worksheet based on your dataTable
                 // Example:
-                worksheet.Cell("A1").Value = "Transaction Report";
+                worksheet.Cell("A1").Value = "Purchase Report";
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
                     for (int j = 0; j < dataTable.Columns.Count; j++)
@@ -249,7 +403,7 @@ namespace Panaderia.Form.Reports
                     }
                 }
                 // Save the XLSM file to a location or send it as needed
-                workbook.SaveAs(Server.MapPath("~/Reports/TransactionReport.xlsm"));
+                workbook.SaveAs(Server.MapPath("~/Reports/PurchaseReport.xlsm"));
             }
         }
 

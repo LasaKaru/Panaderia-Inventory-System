@@ -16,6 +16,7 @@ namespace Panaderia.Form.Tools
 
             // Set the value of the TextBox control.
             User.Text = validUsername;
+           
 
         }
     }

@@ -287,9 +287,9 @@
         </div>     
 
         <div>
-                    <asp:Button ID="Button1" runat="server" Text="Transaction" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
-            <asp:Button ID="Button2" runat="server" Text="By Items" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
-            <asp:Button ID="Button6" runat="server" Text="Purchase / Return " OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
+                    <asp:Button ID="Button1" runat="server" Text="Transaction" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
+            <asp:Button ID="Button2" runat="server" Text="By Items" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
+            <asp:Button ID="Button6" runat="server" Text="Purchase / Return " OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
                 </div>
 
 
@@ -301,18 +301,13 @@
 
                  <div class="form-group row">
 
-                   <div id="Panel1" style="background-color: #faeeee; height: 100%; width:100%;">
-                       <br />
-                       <br />
-
+                   <div id="Panel1" style="background-color: #faeeee; height: auto; width:auto;">
+                       <br />                      
                        <asp:GridView ID="GridView2" runat="server">
         </asp:GridView>
 
-                       
-
                        <br />
-
-                       <br />
+                       <asp:Button ID="btnDownloadPDF" runat="server" Text="Download PDF" CssClass="btn btn-primary" OnClick="btnDownloadPDF_Click" style="display: none;" />
                        </div>
 
     <!-- Display the generated report here -->
@@ -321,11 +316,24 @@
     </div>
 </div>
         </div>
-    </form>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showDownloadButton() {
+            // Check if GridView has data
+            var gridView = document.getElementById('<%= GridView2.ClientID %>');
+            if (gridView.rows.length > 1) { // Assuming the header row is always present
+                document.getElementById('<%= btnDownloadPDF.ClientID %>').style.display = 'block';
+        } else {
+                document.getElementById('<%= btnDownloadPDF.ClientID %>').style.display = 'none';
+            }
+            return true;
+        }
+    </script>
 
     <div>        
 
@@ -340,7 +348,7 @@
 
 
     </div>
-
+    </form>
 
 
 
