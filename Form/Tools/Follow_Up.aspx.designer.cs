@@ -30,7 +30,7 @@ namespace Panaderia.Form.Tools
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox User;
+        protected new global::System.Web.UI.WebControls.TextBox User;
 
         /// <summary>
         /// txtStartDate1 control.

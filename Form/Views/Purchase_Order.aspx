@@ -251,8 +251,6 @@
         </div>
     </div>
 
-    </form>
-
 <br />
 <br />
 
@@ -291,7 +289,10 @@
                 </div>
 
 
-    </div>                   
+    </div>
+                </div>
+            </div>
+        
     <hr />
 
 
@@ -299,50 +300,8 @@
 
                    <div id="Panel1" style="background-color: #faeeee; height: 100%; width:100%;">
                        <br />
-                       <br />
-
-                       <br />
-
-                       <br />
-
-                       <br /><br />
-
-                       <br />
-
-                       <br />
-
-                       <br />
-                       <br />
-
-                       <br />
-
-                       <br />
-
-                       <br />
-                       <br />
-
-                       <br />
-
-                       <br />
-
-                       <br />
-
-
-
-    <table class="auto-style44">
-
+    <table class="auto-style44">    
         
-             <br />
-                       <br />
-
-                       <br />
-
-                       <br />
-
-                       <br />
-
-        </tr>
-        <br />
                        
     </table>
 

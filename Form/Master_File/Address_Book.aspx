@@ -262,11 +262,14 @@
      <div class="auto-style32">
   <div class="table-row">
     <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Serial Number</div>
-    <div class="table-cell" style="background-color: #eb1f10"><input name="SerialNumber" type="text" id="SerialNumber" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10">
+        <asp:textbox name="SerialNumber" runat="server" type="text" id="SerialNumber" class="input-field" readonly/></div>
     <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10"><input name="Country" type="text" id="Country" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10">
+        <asp:textbox name="Country" runat="server" type="text" id="Date" class="input-field" readonly/></div>
     <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10"><input name="Code" type="text" id="Code" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10">
+        <asp:textbox name="Code" runat="server" type="text" id="User" class="input-field" readonly/></div>
   </div>
 </div>
 
@@ -281,7 +284,7 @@
                 <div class="form-group row">
     <label for="txtUserGroup" class="col-sm-3 col-form-label">Code</label>
     <div class="col-sm-5">
-        <input type="text" id="txtCode" class="form-control" />
+        <asp:TextBox type="text" runat="server" id="txtCode" class="form-control" />
     </div>
 </div>
     
@@ -291,7 +294,7 @@
                 <div class="form-group row">
     <label for="txtShortName" class="col-sm-3 col-form-label">Short Name</label>
     <div class="col-sm-9">
-        <input type="text" id="txtShortName" class="form-control"/>
+        <asp:TextBox type="text" runat="server" id="txtShortName" class="form-control"/>
     </div>
 </div>
 
@@ -299,7 +302,7 @@
                 <div class="form-group row">
     <label for="txtFullName" class="col-sm-3 col-form-label">Full Name</label>
     <div class="col-sm-9">
-        <input type="text" id="txtFulltName" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtFulltName" class="form-control"/>
     </div>
 </div>
 
@@ -307,7 +310,7 @@
                     <div class="form-group row">
     <label for="txtShortName" class="col-sm-3 col-form-label">Address Line 1 </label>
     <div class="col-sm-9">
-        <input type="text" id="txtAddress1" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtAddress1" class="form-control"/>
     </div>
 </div>
 
@@ -315,7 +318,7 @@
                 <div class="form-group row">
     <label for="txtFullName" class="col-sm-3 col-form-label">Address Line 2</label>
     <div class="col-sm-9">
-        <input type="text" id="txtAddress2" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtAddress2" class="form-control"/>
     </div>
 </div>
 
@@ -323,14 +326,14 @@
                 <div class="form-group row">
     <label for="txtUserName" class="col-sm-3 col-form-label">City / Region</label>
     <div class="col-sm-5">
-        <input type="text" id="txtecity" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtecity" class="form-control"/>
     </div>
 </div>
 
                     <div class="form-group row">
     <label for="txtUserName" class="col-sm-3 col-form-label">Country</label>
     <div class="col-sm-5">
-        <input type="text" id="txteCountry" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txteCountry" class="form-control"/>
     </div>
 </div>
 
@@ -338,42 +341,42 @@
         <div class="form-group row">
     <label for="txtUserName" class="col-sm-3 col-form-label">Telephone</label>
     <div class="col-sm-5">
-        <input type="text" id="txtTelephone" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtTelephone" class="form-control"/>
     </div>
 </div>
 
                     <div class="form-group row">
     <label for="txtUserName" class="col-sm-3 col-form-label">Fax</label>
     <div class="col-sm-5">
-        <input type="text" id="txteFax" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txteFax" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
     <label for="txtUserName" class="col-sm-3 col-form-label">Mobile</label>
     <div class="col-sm-5">
-        <input type="text" id="txteMobile" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txteMobile" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
     <label for="txtUserName" class="col-sm-3 col-form-label">Email</label>
     <div class="col-sm-9">
-        <input type="text" id="txteEmail" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txteEmail" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
     <label for="txtUserName" class="col-sm-3 col-form-label">Contact Person</label>
     <div class="col-sm-9">
-        <input type="text" id="txteContact" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txteContact" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
     <label for="txtUserName" class="col-sm-3 col-form-label">Contact Details</label>
     <div class="col-sm-5">
-        <input type="text" id="txteDetails" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txteDetails" class="form-control"/>
     </div>
 </div>
 
@@ -390,10 +393,10 @@
         <input type="text" id="txtUserStatus" class="form-control" readonly/>
     </div>
     <div class="col-sm-6">
-        <select id="ddlUserStatus" class="form-control" onchange="updateUserStatusText()">
-            <option value="A">Active</option>
-            <option value="D">Deleted</option>
-        </select>
+        <asp:DropDownList id="ddlUserStatus" runat="server" class="form-control" onchange="updateUserStatusText()">
+            <asp:ListItem value="A">Active</asp:ListItem>
+            <asp:ListItem value="D">Deleted</asp:ListItem>
+        </asp:DropDownList>
     </div>
 </div>            
             </div>

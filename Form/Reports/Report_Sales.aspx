@@ -296,7 +296,7 @@
 
                    <div id="Panel1" style="background-color: #faeeee; height: AUTO; width:AUTO;">
                        <br />
-                       <asp:GridView ID="GridView2" runat="server">
+                       <asp:GridView ID="GridView2" runat="server"><HeaderStyle Font-Size="9pt" />
         </asp:GridView>
                        
                        <br />

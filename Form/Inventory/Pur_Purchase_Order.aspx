@@ -252,7 +252,7 @@
         </div>
     </div>
 
-    </form>
+    
 
 <br />
 <br />
@@ -404,7 +404,7 @@
     <div class="form-group row">
                     <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>
                     <div class="col-sm-50">                        
-                        <input type="text" id="txttotal" class="auto-style326" style="width:116px">
+                        <input type="text" id="txttotal" class="auto-style326" style="width:116px"/>
                     </div>
                 </div>
 
@@ -414,11 +414,11 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 
                 
-                <button type="button" id="btnSave" class="btn btn-primary" style="border-style: inset; width: 100px">Save</button>
+                <asp:textbox type="button" runat="server" id="btnSave" class="btn btn-primary" style="border-style: inset; width: 100px">Save</asp:textbox>
                 &nbsp;&nbsp;
-                <button type="button" id="btnBrowse" class="btn btn-secondary" style="border-style: inset; width: 100px">Print</button>
+                <Asp:textbox type="button" runat="server" id="btnBrowse" class="btn btn-secondary" style="border-style: inset; width: 100px">Print</Asp:textbox>
                 &nbsp;&nbsp;
-                <button type="button" id="btnExit" class="btn btn-danger" style="border-style: inset; width: 100px">Exit</button>
+                <asp:textbox type="button" runat="server" id="btnExit" class="btn btn-danger" style="border-style: inset; width: 100px">Exit</asp:textbox>
             
 
                 
@@ -507,6 +507,68 @@
         // Set the value of the "Country" input field to the current date and time
         document.getElementById('Country').value = getCurrentDateTime();
     </script>
+
+        <input type="hidden" id="selectedData" runat="server" />
+
+        <!-- Create a hidden modal div -->
+<div id="customModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 100px; border-radius: 5px;">
+        <!-- Modal content goes here -->
+        <h2>Data Display</h2>
+        <div id="modalContent"></div>
+        <button id="closeModal">Close</button>
+    </div>
+</div>
+
+        <script>
+            // JavaScript function to open the custom modal and load data
+            function openDataPopup() {
+                // Make an AJAX request to fetch data from the server
+                $.ajax({
+                    type: "POST",
+                    url: "Pur_Purchase_Order.aspx/GetData", // Replace with your server method URL
+                    data: '{}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        // Handle the data received from the server
+                        var data = response.d;
+
+                        // Set the data in the hidden field
+                        document.getElementById('selectedData').value = data;
+
+                        // Open the custom modal
+                        var modal = document.getElementById('customModal');
+                        modal.style.display = 'block';
+
+                        // Display the data inside the modal
+                        var modalContent = document.getElementById('modalContent');
+                        modalContent.innerHTML = data;
+                    },
+                    error: function (error) {
+                        // Handle any errors
+                        console.log(error);
+                    }
+                });
+
+                // Attach a click event handler to the "Close" button in the custom modal
+                document.getElementById('closeModal').addEventListener('click', closeDataPopup);
+            }
+
+            // JavaScript function to close the custom modal
+            function closeDataPopup() {
+                var modal = document.getElementById('customModal');
+                modal.style.display = 'none';
+            }
+
+            // Attach the click event handler to the "Print" button
+            document.getElementById('<%= btnBrowse.ClientID %>').addEventListener('click', openDataPopup);
+</script>
+
+
+        </form>
+
+       
 
         <br />
                 <hr class="auto-style330" style="border-style: solid; background-color: #000000";width: 1125px; />
