@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
@@ -478,6 +481,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\BrowseModal.css" />
     <Content Include="Content\Common.css" />
     <Content Include="Content\Daybooks\Daybooks.css" />
     <Content Include="Content\Daybooks\Journalentry.css" />
@@ -549,6 +553,7 @@
     <Content Include="Form\Reports\Report_Purchase.aspx" />
     <Content Include="Form\Reports\Report_Sales.aspx" />
     <Content Include="Form\Tools\Follow_Up.aspx" />
+    <Content Include="Form\Tools\ModalPopup.aspx" />
     <Content Include="Form\Tools\Reminders.aspx" />
     <Content Include="Form\Views\Inventory.aspx" />
     <Content Include="Form\Views\Purchase_Goods_Receiving.aspx" />
@@ -598,6 +603,8 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="test\customercopy.aspx" />
+    <Content Include="test\Supplier.aspx" />
     <Content Include="UserControls\Navigation.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -1100,6 +1107,13 @@
     <Compile Include="Form\Tools\Follow_Up.aspx.designer.cs">
       <DependentUpon>Follow_Up.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Form\Tools\ModalPopup.aspx.cs">
+      <DependentUpon>ModalPopup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Form\Tools\ModalPopup.aspx.designer.cs">
+      <DependentUpon>ModalPopup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Form\Tools\Reminders.aspx.cs">
       <DependentUpon>Reminders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1177,6 +1191,21 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="System\Web\UI\DataVisualization\Charting\ModalPopupExtender.cs" />
+    <Compile Include="test\customercopy.aspx.cs">
+      <DependentUpon>customercopy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\customercopy.aspx.designer.cs">
+      <DependentUpon>customercopy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\Supplier.aspx.cs">
+      <DependentUpon>Supplier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\Supplier.aspx.designer.cs">
+      <DependentUpon>Supplier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

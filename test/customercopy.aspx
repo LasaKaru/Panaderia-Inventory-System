@@ -1,15 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="User_Profile.aspx.cs" Inherits="Panaderia.Form.Master_File.User_Profile" %>
-
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="customercopy.aspx.cs" Inherits="Panaderia.test.customercopy" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    
-    <meta charset="UTF-8"/>
+
+     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>User Profiles</title>
+    <title>Masterfiles - Customer</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -18,10 +16,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    
     <!--Common CSS File -->
-    <link rel="stylesheet" href="../../Content/Navigation.css" media="screen" />
+    <link href="../../Content/Masterfiles/Master.css" rel="stylesheet" media="screen"/>
 
     <style>
         /* Styles for the modal popup */
@@ -58,23 +56,10 @@
             background-color: yellow;
         }
     </style>
-
-    <style type="text/css">
-        .auto-style35 {
-            position: relative;
-            min-height: 1px;
-            float: left;
-            width: 41.66666667%;
-            left: 0px;
-            top: 0px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-    </style>
-
+ 
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server"> 
         
         <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -301,8 +286,7 @@
         </div>
     </div>
 
-    
-
+        
 <br />
 <br />
 
@@ -310,107 +294,169 @@
 
      <div class="auto-style32">
   <div class="table-row">
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Serial Number</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="SerialNumber" runat="server" type="text" id="SerialNumber" class="input-field" readonly/>
-    </div>
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="Country" runat="server" type="text" id="Date" class="input-field" readonly/>
-    </div>
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="User" runat="server" type="text" id="User" class="input-field" readonly/>
-    </div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Serial Number</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="SerialNumber" type="text" id="SerialNumber" class="input-field" /></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Country" type="text" id="Country" class="input-field" /></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Code" type="text" id="Code" class="input-field" /></div>
   </div>
 </div>
-        
 
     <br />
 
-    
-
-    <div class="container mt-5">
-        <div class="bordere">
+    <div class="container mt-5" >
         <div class="row">
-            <div class="col-md-8">                             
-
+            <div class="col-md-8">
+           
                 <div class="form-group row">
-    <label for="txtUserID" class="col-sm-3 col-form-label">User ID</label>
-    <div class="col-sm-9">
-        <asp:TextBox id="txtUserID" runat="server" class="form-control"></asp:TextBox>
+    <label for="txtUserName" class="col-sm-4 col-form-label">Code</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserID" class="form-control">
+    </div>
+</div>
+                <div class="form-group row">
+    <label for="txtUserName" class="col-sm-4 col-form-label">Customer Name</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserName" class="form-control">
+    </div>
+</div>
+                <div class="form-group row">
+    <label for="txtUserName" class="col-sm-4 col-form-label">Address Line 1</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserName" class="form-control">
+    </div>
+</div>
+                 <div class="form-group row">
+    <label for="txtUserName" class="col-sm-4 col-form-label">Address Line 2</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserName" class="form-control">
+    </div>
+</div>
+                  <div class="form-group row">
+    <label for="txtUserName" class="col-sm-4 col-form-label">Address Line 3</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserName" class="form-control"> 
     </div>
 </div>
 
                 <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">User Name</label>
-    <div class="col-sm-9">
-        <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control"></asp:TextBox>
+    <label for="txtcountry" class="col-sm-4 col-form-label">Country</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtcountry" class="form-control"> 
+    </div>
+</div>
+<br />
+ 
+                  
+            <div class="form-group row">
+    <label for="txtUserName" class="col-sm-4 col-form-label">Telephone</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserName" class="form-control">
     </div>
 </div>
 
                 <div class="form-group row">
-    <label for="txtDefaultStore" class="col-sm-3 col-form-label">Default Store</label>
-    <div class="col-sm-3">
-        <input type="text" id="txtDefaultStore" class="form-control" readonly/>
+    <label for="txtfax" class="col-sm-4 col-form-label">Fax</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtfax" class="form-control">
+    </div>
+</div>
+
+                <div class="form-group row">
+    <label for="txtUserName" class="col-sm-4 col-form-label">Mobile</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserName" class="form-control">
+    </div>
+</div>
+                 <div class="form-group row">
+    <label for="txtemail" class="col-sm-4 col-form-label">Email</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtemail" class="form-control">
+    </div>
+</div>
+<br />
+                <div class="form-group row">
+    <label for="txtcontactp1" class="col-sm-4 col-form-label">Contact Person</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtcontactp1" class="form-control">
+    </div>
+</div>
+                <div class="form-group row">
+    <label for="txtcontactdetail" class="col-sm-4 col-form-label">Contact Details</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtcontactdetail" class="form-control">
+    </div>
+</div>
+<br />
+
+                <div class="form-group row">
+    <label for="txtUserName" class="col-sm-4 col-form-label">Notes</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserName" class="form-control">
+    </div>
+</div>
+                <div class="form-group row">
+    <label for="txtcreditlimit" class="col-sm-4 col-form-label">Credit Limit</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtcreditlimit" class="form-control">
+    </div>
+</div>
+
+                 <div class="form-group row">
+    <label for="txtcredperiod" class="col-sm-4 col-form-label">Credit Period</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtcreditperiod" class="form-control">
+    </div>
+</div>
+                <div class="form-group row">
+    <label for="txtUserGroup" class="col-sm-4 col-form-label">Customer type</label>
+    <div class="col-sm-2">
+        <input type="text" id="txtUserGroup" class="auto-style326" readonly>
     </div>
     <div class="col-sm-6">
-        <asp:DropDownList id="ddlDefaultStore" runat="server" class="form-control" onchange="updateDefaultStoreText()">
-            <asp:ListItem Value="1">0001 Co-Oparate</asp:ListItem>
-            <asp:ListItem Value="2">0002</asp:ListItem>
-            <asp:ListItem Value="3">0003</asp:ListItem>
-        </asp:DropDownList>
+        <select id="ddlUserGroup" class="auto-style327" onchange="updateUserGroupText()">
+            <option value="1">Cash</option>
+            <option value="2">Credit</option>
+        </select>
     </div>
 </div>
 
+<br />
                 <div class="form-group row">
-    <label for="txtUserGroup" class="col-sm-3 col-form-label">User Group</label>
-    <div class="col-sm-3">
-        <input type="text" id="txtUserGroup" class="form-control"  readonly/>
+    <label for="txtUserName" class="col-sm-4 col-form-label">Customer Vat No</label>
+    <div class="col-sm-8">
+        <input type="text" id="txtUserPassword" class="form-control">
+    </div>
+</div>
+                <div class="form-group row">
+    <label for="txtUserStatus" class="col-sm-4 col-form-label">Active Status</label>
+    <div class="col-sm-2">
+        <input type="text" id="txtUserStatus" class="auto-style326" readonly>
     </div>
     <div class="col-sm-6">
-        <asp:DropDownList id="ddlUserGroup" runat="server" class="form-control" onchange="updateUserGroupText()">
-            <asp:ListItem value="1">Administration Staff</asp:ListItem>
-            <asp:ListItem value="2">Clarical Staff</asp:ListItem>
-            <asp:ListItem value="3">Executive Officers</asp:ListItem>
-            <asp:ListItem value="4">User Level 01</asp:ListItem>
-            <asp:ListItem value="5">System Admin</asp:ListItem>
-            <asp:ListItem value="6">User Group</asp:ListItem>
-        </asp:DropDownList>
+        <select id="ddlUserStatus" class="auto-style327" onchange="updateUserStatusText()">
+            <option value="A">Active</option>
+            <option value="D">Deleted</option>
+        </select>
     </div>
-</div>
-
-                <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">User Password</label>
-    <div class="col-sm-9">
-        <asp:TextBox type="text" id="txtUserPassword" runat="server" class="form-control"/>
-    </div>
-</div>
-
-                <div class="form-group row">
-    <label for="txtUserStatus" class="col-sm-3 col-form-label">User Status</label>
-    <div class="col-sm-3">
-        <input type="text" id="txtUserStatus" class="form-control" readonly />
-    </div>
-    <div class="col-sm-6">
-        <asp:DropDownList id="ddlUserStatus" runat="server" class="form-control" onchange="updateUserStatusText()">
-            <asp:ListItem value="A">Active</asp:ListItem>
-            <asp:ListItem value="D">Deleted</asp:ListItem>
-        </asp:DropDownList>
-    </div>
-</div>            
+</div>                    
+        </div>
+                
+          <div class="col-md-6">          
+            <div class="form-group row">
+                <input type="file" id="myFile" name="filename">
+                </div>
+            </div>
             </div>
         </div>
-            <br />
-            <br />
-            <br />
-
+        <br />
+        <br />
         <div class="row">
-            <div class="auto-style35">
+            <div class="col-md-10">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                <button type="button" id="BtnSave" class="btn btn-primary" style="width: 100px;">Save</button>
+                <button type="button" id="btnSave" class="btn btn-primary" style="width: 100px;">Save</button>
                 <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;">Browse</button>
 
                 <div id="myModal" class="modal">
@@ -420,7 +466,7 @@
                             <div class="modal-header">
                                 <br />
                                 <br />
-                                <h2>Current User List ;)< </h2>
+                                <h2>Modal Popup Rename It ;)< </h2>
                                 <button id="closeModal">Clear Selection</button>
                             </div>
                             <!-- GridView -->
@@ -435,126 +481,29 @@
                     </div>
                 </div>
 
-                <button type="button" id="btnExit" class="btn btn-danger"style="width: 100px;">Exit</button>
+                <button type="button" id="btnExit" class="btn btn-danger" style="width: 100px; onclick="window.location.href = '~/Dashboard.aspx';"">Exit</button>
+
             </div>
         </div>
-    </div>
-        </div>
-    
-
+      
+        
         </form>
-
-    <hr />
-
-    <footer>
-                    <p>
-                        &copy; <%: DateTime.Now.Year %> - Panaderia Inventory
-                        Management system Powered By Cargills IT
-                    </p>
-                </footer>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <div>
 
-    <script>
-        document.getElementById("btnExit").addEventListener("click", function () {
-            window.location.href = "../../Dashboard.aspx";
-        });
-    </script>
-
-    <script>
-        // JavaScript code to display data in the modal
-        var browseButton = document.getElementById('browseButton');
-        var modal = document.getElementById('myModal');
-        var closeModalButton = document.getElementById('closeModal');
-        var dataBody = document.getElementById('<%= GridView1.ClientID %>');
-        var selectedRow = null;
-
-        // Input fields
-        var transactionIDInput = document.getElementById('transactionID');
-        var companyIDInput = document.getElementById('companyID');
-        var branchIDInput = document.getElementById('branchID');
-        var transactionTypeInput = document.getElementById('transactionType');
-
-        // Function to handle row selection and highlight
-        function selectRow(row, rowData) {
-            if (selectedRow) {
-                selectedRow.classList.remove('selected-row');
-            }
-            row.classList.add('selected-row');
-            selectedRow = row;
-
-            //closeModelButton.click();
-            // Populate the input fields with the selected row's data
-            var cells = row.cells;
-            transactionIDInput.value = cells[0].textContent;
-            companyIDInput.value = cells[1].textContent;
-            branchIDInput.value = cells[2].textContent;
-            transactionTypeInput.value = cells[3].textContent;
-        }
-
-        browseButton.addEventListener('click', function () {
-            // Display the modal when the button is clicked
-            modal.style.display = 'block';
-
-            // Load data when the modal is opened
-            loadModalData();
-        });
-
-        closeModalButton.addEventListener('click', function () {
-            // Close the modal when the "Close" button is clicked
-            //dataBody.innerHTML = ''; // Clear the table content
-            modal.style.display = 'none';
-        });
-
-        window.addEventListener('click', function (event) {
-            if (event.target == modal) {
-                // Close the modal if the user clicks outside the modal content
-                //dataBody.innerHTML = '';
-                modal.style.display = 'none';
-            }
-        });
-
-        dataBody.addEventListener('click', function (event) {
-            var target = event.target;
-            if (target.tagName === 'TD') {
-                var row = target.parentElement;
-                selectRow(row);
-            }
-        });
-
-        function loadModalData() {
-            // Add code here to load data into the modal (e.g., from the GridView)
-            // Make an AJAX request to fetch data and populate the modal
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    // Parse the response and populate the modal
-                    var data = JSON.parse(xmlhttp.responseText);
-                    // Implement code to populate the modal with data
-                }
-            };
-
-            // Replace 'GetDataUrl' with the URL to fetch data from the server
-            xmlhttp.open('GET', 'GetDataUrl', true);
-            xmlhttp.send();
-        }
-
-        $(document).ready(function () {
-            $("#closeModal").click(function () {
-                $("#myModal").modal("hide");
+        <script>
+            document.getElementById("btnExit").addEventListener("click", function () {
+                window.location.href = "../Dashboard.aspx";
             });
-        });
+        </script>
 
-    </script>
-
-    <script>
+        <script>
         // Function to format a number to have two digits (e.g., 1 => "01")
         function formatNumber(number) {
             return number < 10 ? '0' + number : number;
         }
-
         // Function to get the current local date and time with AM/PM
         function getCurrentDateTime() {
             const now = new Date();
@@ -566,21 +515,169 @@
             const twelveHour = hours > 12 ? hours - 12 : hours; // Convert to 12-hour format
             const minutes = formatNumber(now.getMinutes());
             const seconds = formatNumber(now.getSeconds());
-
             // Format the date and time as YYYY-MM-DD hh:mm:ss AM/PM
             return `${year}-${month}-${day} ${twelveHour}:${minutes}:${seconds} ${ampm}`;
         }
-
         // Function to set the date input field with the current date and time
         function setDateTimeField() {
             const dateTime = getCurrentDateTime();
             const dateField = document.getElementById('txtDate');
             dateField.value = dateTime;
         }
-
         // Call the function to set the date input field when the page loads
         window.onload = setDateTimeField;
     </script>
+    <script>
+        function updateUserGroupText() {
+            var dropdown = document.getElementById("ddlUserGroup");
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+            document.getElementById("txtUserGroup").value = selectedText;
+        }
+
+        function updateUserStatusText() {
+            var dropdown = document.getElementById("ddlUserStatus");
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+            document.getElementById("txtUserStatus").value = selectedText;
+        }
+
+        function updateDefaultStoreText() {
+            var dropdown = document.getElementById("ddlDefaultStore");
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+            document.getElementById("txtDefaultStore").value = selectedText;
+        }
+    </script>
+    <script>
+        // Function to get the current date and time in a formatted string
+        function getCurrentDateTime() {
+            var currentDate = new Date();
+            var dateOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            var timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            var formattedDate = currentDate.toLocaleDateString(undefined, dateOptions);
+            var formattedTime = currentDate.toLocaleTimeString(undefined, timeOptions);
+            return formattedDate + ' ' + formattedTime;
+        }
+        // Set the value of the "Country" input field to the current date and time
+        document.getElementById('Country').value = getCurrentDateTime();
+    </script>
+        <script>
+            // JavaScript code to display data in the modal
+            var browseButton = document.getElementById('browseButton');
+            var modal = document.getElementById('myModal');
+            var closeModalButton = document.getElementById('closeModal');
+            var dataBody = document.getElementById('<%= GridView1.ClientID %>');
+            var selectedRow = null;
+
+            // Input fields
+            var transactionIDInput = document.getElementById('transactionID');
+            var companyIDInput = document.getElementById('companyID');
+            var branchIDInput = document.getElementById('branchID');
+            var transactionTypeInput = document.getElementById('transactionType');
+
+            // Function to handle row selection and highlight
+            function selectRow(row, rowData) {
+                if (selectedRow) {
+                    selectedRow.classList.remove('selected-row');
+                }
+                row.classList.add('selected-row');
+                selectedRow = row;
+
+                //closeModelButton.click();
+                // Populate the input fields with the selected row's data
+                var cells = row.cells;
+                transactionIDInput.value = cells[0].textContent;
+                companyIDInput.value = cells[1].textContent;
+                branchIDInput.value = cells[2].textContent;
+                transactionTypeInput.value = cells[3].textContent;
+            }
+
+            browseButton.addEventListener('click', function () {
+                // Display the modal when the button is clicked
+                modal.style.display = 'block';
+
+                // Load data when the modal is opened
+                loadModalData();
+            });
+
+            closeModalButton.addEventListener('click', function () {
+                // Close the modal when the "Close" button is clicked
+                //dataBody.innerHTML = ''; // Clear the table content
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    // Close the modal if the user clicks outside the modal content
+                    //dataBody.innerHTML = '';
+                    modal.style.display = 'none';
+                }
+            });
+
+            dataBody.addEventListener('click', function (event) {
+                var target = event.target;
+                if (target.tagName === 'TD') {
+                    var row = target.parentElement;
+                    selectRow(row);
+                }
+            });
+
+            function loadModalData() {
+                // Add code here to load data into the modal (e.g., from the GridView)
+                // Make an AJAX request to fetch data and populate the modal
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        // Parse the response and populate the modal
+                        var data = JSON.parse(xmlhttp.responseText);
+                        // Implement code to populate the modal with data
+                    }
+                };
+
+                // Replace 'GetDataUrl' with the URL to fetch data from the server
+                xmlhttp.open('GET', 'GetDataUrl', true);
+                xmlhttp.send();
+            }
+
+            $(document).ready(function () {
+                $("#closeModal").click(function () {
+                    $("#myModal").modal("hide");
+                });
+            });
+
+        </script>
+
+        <script>
+            // Function to format a number to have two digits (e.g., 1 => "01")
+            function formatNumber(number) {
+                return number < 10 ? '0' + number : number;
+            }
+
+            // Function to get the current local date and time with AM/PM
+            function getCurrentDateTime() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = formatNumber(now.getMonth() + 1); // Months are 0-based
+                const day = formatNumber(now.getDate());
+                const hours = formatNumber(now.getHours());
+                const ampm = hours >= 12 ? 'PM' : 'AM'; // Determine AM or PM
+                const twelveHour = hours > 12 ? hours - 12 : hours; // Convert to 12-hour format
+                const minutes = formatNumber(now.getMinutes());
+                const seconds = formatNumber(now.getSeconds());
+
+                // Format the date and time as YYYY-MM-DD hh:mm:ss AM/PM
+                return `${year}-${month}-${day} ${twelveHour}:${minutes}:${seconds} ${ampm}`;
+            }
+
+            // Function to set the date input field with the current date and time
+            function setDateTimeField() {
+                const dateTime = getCurrentDateTime();
+                const dateField = document.getElementById('txtDate');
+                dateField.value = dateTime;
+            }
+
+            // Call the function to set the date input field when the page loads
+            window.onload = setDateTimeField;
+        </script>
+
 
     <script>
         function updateUserGroupText() {
@@ -602,6 +699,7 @@
         }
     </script>
 
+
     <script>
         // Function to get the current date and time in a formatted string
         function getCurrentDateTime() {
@@ -618,7 +716,15 @@
         // Set the value of the "Country" input field to the current date and time
         document.getElementById('Country').value = getCurrentDateTime();
     </script>
+
+        <br />
+        <br />
+             <footer>
+                    <p>
+                        &copy; <%: DateTime.Now.Year %> - Panaderia Inventory
+                        Management system Powered By Cargills IT
+                    </p>
+                </footer>
+    </div>    
 </body>
 </html>
-
-

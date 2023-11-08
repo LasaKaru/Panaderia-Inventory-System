@@ -20,10 +20,10 @@
 
        <!--Common CSS File -->
     <link href="../../Content/Masterfiles/Master.css" rel="stylesheet" media="screen"/>
+    <link href="../../Content/BrowseModal.css" rel="stylesheet" media="screen"/>
 
 </head>
-<body>
-    <form id="form1" runat="server">
+<body> 
      
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -262,15 +262,21 @@
 
 <br />
 
+    <form id="form1" runat="server">
+
      <div class="auto-style32">
+
   <div class="table-row">
+
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Serial Number</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="SerialNumber" type="text" id="SerialNumber" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="SerialNumber" runat="server" CssClass="input-field"></asp:TextBox></div>
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Country" type="text" id="Country" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Date" runat="server" CssClass="input-field" ForeColor="#000000"></asp:TextBox></div>
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Code" type="text" id="Code" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="User" runat="server" CssClass="input-field"></asp:TextBox></div>
+
   </div>
+
 </div>
 
     <br />
@@ -282,230 +288,485 @@
 <!--Ganeesha Put Your Code Here-->
 
 
+    <div class="row">
+
+            <div class="col-md-10 alignSuccessMessage">
+
+            <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
+
+                <asp:Label ID="lblShowMessage" runat="server" Visible="true"></asp:Label>
+
+            </div>
+
+                </div>
+
+        </div>
+
+ 
+
     <div class="container mt-5">
+
         <div class="row">
-            <div class="col-md-8">
 
+            <div class="col-md-8">      
 
-
-
+ 
 
                 <div class="form-group row">
-                    <label for="txtUserName" class="col-sm-4 col-form-label">Code</label>
+
+                    <label for="txtCode" class="col-sm-4 col-form-label">Code</label>
+
                     <div class="col-sm-8">
-                        <input type="text" id="txtUserID" class="form-control">
-                    </div>
+
+                    <asp:TextBox ID="txtCode" runat="server" CssClass="form-control"></asp:TextBox>
+
+                    </div>                    
+
                 </div>
 
-
+ 
 
                 <div class="form-group row">
-                    <label for="txttype" class="col-sm-4 col-form-label">Type</label>
+
+                    <label for="txtType" class="col-sm-4 col-form-label">Type</label>
+
                     <div class="col-sm-2">
-                        <input type="text" id="txttype" class="auto-style326" readonly>
-                    </div>
-                    <div class="col-sm-6">
-                        <select id="ddltype" class="auto-style327" onchange="updatetypeText()">
-                            <option value="F">Finished Good</option>
-                            <option value="R">Raw Meterial</option>
-                            <option value="S">Services</option>
 
-                        </select>
+                        <asp:TextBox ID="txtType" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
                     </div>
+
+                    <div class="col-sm-6">                      
+
+                         <asp:DropDownList ID="ddltype" runat="server" onchange="updatetypeText()" Width="100px" CssClass="form-control">
+
+                             <asp:ListItem Text="Finished Good" Value="F"></asp:ListItem>
+
+                             <asp:ListItem Text="Raw Meterial" Value="R"></asp:ListItem>
+
+                             <asp:ListItem Text="Services" Value="S"></asp:ListItem>
+
+                         </asp:DropDownList>
+
+                    </div>
+
                 </div>
 
+ 
 
                 <div class="form-group row">
-                    <label for="txtdiscription" class="col-sm-4 col-form-label">Description</label>
+
+                    <label for="txtdescription" class="col-sm-4 col-form-label">Description</label>
+
                     <div class="col-sm-8">
-                        <input type="text" id="txtdiscription" class="form-control">
+
+                        <asp:TextBox ID="txtdescription" runat="server" CssClass="form-control"></asp:TextBox>
+
                     </div>
+
                 </div>
 
+ 
+
                 <div class="form-group row">
+
                     <label for="txtunitsize" class="col-sm-4 col-form-label">Unit Size</label>
+
                     <div class="col-sm-8">
-                        <input type="text" id="txtunitSize" class="form-control">
+
+                        <asp:TextBox ID="txtUnitSize" runat="server" CssClass="form-control"></asp:TextBox>
+
                     </div>
+
                 </div>
 
+ 
+
+ 
 
                 <div class="form-group row">
+
                     <label for="txtUnitInCase" class="col-sm-4 col-form-label">Unit In Case</label>
+
                     <div class="col-sm-8">
-                        <input type="text" id="txtUnitInCase" class="form-control">
+
+                        <asp:TextBox ID="txtUnitInCase" runat="server" CssClass="form-control"></asp:TextBox>
+
                     </div>
+
                 </div>
 
+ 
+
                 <div class="form-group row">
+
                     <label for="txtUOM" class="col-sm-4 col-form-label">UOM</label>
+
                     <div class="col-sm-2">
-                        <input type="text" id="txtUOM" class="auto-style326" readonly>
+
+                        <asp:TextBox ID="txtUOM" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
+                    </div>                  
+
+                     <div class="col-sm-6">                      
+
+                         <asp:DropDownList ID="ddlUOM" runat="server" onchange="updateUOMText()" Width="100px" CssClass="form-control">
+
+                             <asp:ListItem Text="EA" Value="1"></asp:ListItem>
+
+                             <asp:ListItem Text="KG" Value="2"></asp:ListItem>
+
+                             <asp:ListItem Text="LT" Value="3"></asp:ListItem>
+
+                         </asp:DropDownList>
+
                     </div>
-                    <div class="col-sm-6">
-                        <select id="ddlUOM" class="auto-style327" onchange="updateUOMText()">
-                            <option value="1">EA</option>
-                            <option value="2">KG</option>
-                            <option value="3">LT</option>
-                        </select>
-                    </div>
+
                 </div>
+
                 <br />
 
+ 
 
                 <div class="form-group row">
-                    <label for="txtcate1" class="col-sm-4 col-form-label">Category 1</label>
+
+                    <label for="txtCate1" class="col-sm-4 col-form-label">Category 1</label>
+
                     <div class="col-sm-2">
-                        <input type="text" id="txtcate1" class="auto-style326" readonly>
+
+                        <asp:TextBox ID="txtCate1" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
                     </div>
-                    <div class="col-sm-6">
-                        <select id="ddlcate1" class="auto-style327" onchange="updatecate1Text()">
-                            <option value="1">Breverage</option>
-                            <option value="2">Meal</option>
-                            <option value="3">Other</option>
-                        </select>
+
+                    <div class="col-sm-6">                      
+
+                         <asp:DropDownList ID="ddlcate1" runat="server" onchange="updatecate1Text()" Width="100px" CssClass="form-control">
+
+                             <asp:ListItem Text="Breverage" Value="1"></asp:ListItem>
+
+                             <asp:ListItem Text="Meal" Value="2"></asp:ListItem>
+
+                             <asp:ListItem Text="Other" Value="3"></asp:ListItem>
+
+                         </asp:DropDownList>
+
                     </div>
+
                 </div>
 
+ 
+
                 <div class="form-group row">
-                    <label for="txtcate2" class="col-sm-4 col-form-label">Category 2</label>
+
+                    <label for="txtCate2" class="col-sm-4 col-form-label">Category 2</label>
+
                     <div class="col-sm-2">
-                        <input type="text" id="txtcate2" class="auto-style326" readonly>
+
+                        <asp:TextBox ID="txtCate2" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
                     </div>
-                    <div class="col-sm-6">
-                        <select id="ddlcate2" class="auto-style327" onchange="updatecate2Text()">
-                            <option value="1">Breverage</option>
-                            <option value="2">Meal</option>
-                            <option value="3">Other</option>
-                        </select>
+
+                   
+
+                     <div class="col-sm-6">                      
+
+                         <asp:DropDownList ID="ddlcate2" runat="server" onchange="updatecate2Text()" Width="100px" CssClass="form-control">
+
+                             <asp:ListItem Text="Breverage" Value="1"></asp:ListItem>
+
+                             <asp:ListItem Text="Meal" Value="2"></asp:ListItem>
+
+                             <asp:ListItem Text="Other" Value="3"></asp:ListItem>
+
+                         </asp:DropDownList>
+
                     </div>
+
                 </div>
 
+ 
+
+ 
 
                 <div class="form-group row">
-                    <label for="txtcate3" class="col-sm-4 col-form-label">Category 3</label>
+
+                    <label for="txtCate3" class="col-sm-4 col-form-label">Category 3</label>
+
                     <div class="col-sm-2">
-                        <input type="text" id="txtcate3" class="auto-style326" readonly>
+
+                        <asp:TextBox ID="txtCate3" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
                     </div>
-                    <div class="col-sm-6">
-                        <select id="ddlcate3" class="auto-style327" onchange="updatecate3Text()">
-                            <option value="1">Breverage</option>
-                            <option value="2">Meal</option>
-                            <option value="3">Other</option>
-                        </select>
+
+                     <div class="col-sm-6">                      
+
+                         <asp:DropDownList ID="ddlcate3" runat="server" onchange="updatecate3Text()" Width="100px" CssClass="form-control">
+
+                             <asp:ListItem Text="Breverage" Value="1"></asp:ListItem>
+
+                             <asp:ListItem Text="Meal" Value="2"></asp:ListItem>
+
+                             <asp:ListItem Text="Other" Value="3"></asp:ListItem>
+
+                         </asp:DropDownList>
+
                     </div>
+
                 </div>
 
+ 
+
+ 
 
                 <div class="form-group row">
-                    <label for="txtcate4" class="col-sm-4 col-form-label">Category 4</label>
+
+                    <label for="txtCate4" class="col-sm-4 col-form-label">Category 4</label>
+
                     <div class="col-sm-2">
-                        <input type="text" id="txtcate4" class="auto-style326" readonly>
+
+                        <asp:TextBox ID="txtCate4" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
                     </div>
-                    <div class="col-sm-6">
-                        <select id="ddlcate4" class="auto-style327" onchange="updatecate4Text()">
-                            <option value="1">Breverage</option>
-                            <option value="2">Meal</option>
-                            <option value="3">Other</option>
-                        </select>
+
+ 
+
+                     <div class="col-sm-6">                      
+
+                         <asp:DropDownList ID="ddlcate4" runat="server" onchange="updatecate4Text()" Width="100px" CssClass="form-control">
+
+                             <asp:ListItem Text="Breverage" Value="1"></asp:ListItem>
+
+                             <asp:ListItem Text="Meal" Value="2"></asp:ListItem>
+
+                             <asp:ListItem Text="Other" Value="3"></asp:ListItem>
+
+                         </asp:DropDownList>
+
                     </div>
+
                 </div>
 
+ 
+
                 <div class="form-group row">
+
                     <label for="txtSTDCostPrice" class="col-sm-4 col-form-label">STD Cost Price </label>
+
                     <div class="col-sm-8">
-                        <input type="text" id="txtSTDCostPrice" class="form-control">
+
+                        <asp:TextBox ID="txtSTDCostPrice" runat="server" CssClass="form-control"></asp:TextBox>
+
                     </div>
+
                 </div>
+
                 <br />
 
-
+ 
 
                 <div class="form-group row">
+
                     <label for="txtSTDSellingPrice" class="col-sm-4 col-form-label">STD Selling Price</label>
+
                     <div class="col-sm-8">
-                        <input type="text" id="txtSTDSellingPrice" class="form-control">
+
+                        <asp:TextBox ID="txtSTDSellingPrice" runat="server" CssClass="form-control"></asp:TextBox>
+
                     </div>
-                </div>
+
+                </div>     
+
+ 
 
                 <div class="form-group row">
-                    <label for="txtfax" class="col-sm-4 col-form-label">Fax</label>
-                    <div class="col-sm-8">
-                        <input type="text" id="txtfax" class="form-control">
-                    </div>
-                </div>
 
-                <div class="form-group row">
                     <label for="txtMaximumMarkup" class="col-sm-4 col-form-label">Maximum Markup%</label>
+
                     <div class="col-sm-8">
-                        <input type="text" id="txtMaximumMarkup" class="form-control">
+
+                        <asp:TextBox ID="txtMaximumMarkup" runat="server" CssClass="form-control"></asp:TextBox>
+
                     </div>
+
                 </div>
 
+ 
+
+ 
 
                 <div class="form-group row">
+
                     <label for="txtNBT" class="col-sm-4 col-form-label">NBT %</label>
+
                     <div class="col-sm-8">
-                        <input type="text" id="txtNBT" class="form-control">
+
+                        <asp:TextBox ID="txtNBT" runat="server" CssClass="form-control" OnTextChanged="txtNBT_TextChanged"></asp:TextBox>
+
                     </div>
+
                 </div>
+
                 <br />
 
+ 
+
+ 
 
                 <div class="form-group row">
+
                     <label for="txtVAT" class="col-sm-4 col-form-label">VAT %</label>
-                    <div class="col-sm-8">
-                        <input type="text" id="txtVAT" class="form-control">
-                    </div>
-                </div>
 
+                    <div class="col-sm-8">
+
+                        <asp:TextBox ID="txtVAT" runat="server" CssClass="form-control"></asp:TextBox>
+
+                    </div>
+
+                </div>
 
                 <br />
 
+ 
 
-                <div class="form-group row">
-                    <label for="txtUserStatus" class="col-sm-4 col-form-label">Status</label>
+                 <div class="form-group row">
+
+                    <label for="txtTaxCode" class="col-sm-4 col-form-label">Tax Code</label>
+
                     <div class="col-sm-2">
-                        <input type="text" id="txtUserStatus" class="auto-style326" readonly/>
+
+                        <asp:TextBox ID="txtTaxCode" runat="server" CssClass="auto-style326" ReadOnly="true" OnTextChanged="txtTaxCode_TextChanged"></asp:TextBox>
+
                     </div>
-                    <div class="col-sm-6">
-                        <select id="ddlUserStatus" class="auto-style327" onchange="updateUserStatusText()">
-                            <option value="A">Active</option>
-                            <option value="D">Deleted</option>
-                        </select>
+
+                    <div class="col-sm-6">                      
+
+                         <asp:DropDownList ID="ddlTaxCode" runat="server" onchange="taxcodeText()" Width="100px" CssClass="form-control">
+
+                             <asp:ListItem Text="EA" Value="1"></asp:ListItem>
+
+                             <asp:ListItem Text="KG" Value="2"></asp:ListItem>
+
+                             <asp:ListItem Text="LT" Value="3"></asp:ListItem>
+
+                        </asp:DropDownList>
+
                     </div>
+
                 </div>
 
+ 
 
+                <div class="form-group row">
+
+                    <label for="txtUserStatus" class="col-sm-4 col-form-label">Status</label>
+
+                    <div class="col-sm-2">
+
+                        <asp:TextBox ID="txtactiveStatus" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
+                    </div>                  
+
+                    <div class="col-sm-6">                       
+
+                         <asp:DropDownList ID="ddlactiveStatus" runat="server" onchange="updateUserStatusText()" Width="100px" CssClass="form-control">
+
+                             <asp:ListItem Text="Active" Value="A"></asp:ListItem>
+
+                             <asp:ListItem Text="Deleted" Value="D"></asp:ListItem>                           
+
+                         </asp:DropDownList>
+
+                    </div>
+
+                </div>
 
             </div>
+
+ 
 
             <div class="col-md-6">
 
-
                 <div class="form-group row">
 
-                    <input type="file" id="myFile" name="filename">
+                    <asp:FileUpload ID="myFile" runat="server" />
+
                 </div>
+
             </div>
 
+ 
 
+ 
 
         </div>
+
     </div>
+
         <br />
+
         <br />
+
+ 
 
         <div class="row">
+
             <div class="col-md-6">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" id="btnSave" class="btn btn-primary" style="width: 100px;">Save</button>
-                <button type="button" id="btnBrowse" class="btn btn-secondary" style="width: 100px;">Browse</button>
-                <button type="button" id="btnExit" class="btn btn-danger" style="width: 100px;">Exit</button>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <asp:Button ID="btn_save" runat="server" CssClass="btn btn-primary"   Text="Save"  OnClick="btn_save_Click" Style="border-style: inset; width: 100px"/>
+
+          &nbsp;<button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;">Browse</button>
+
+                <div id="myModal" class="modal">
+
+                    <div class="modal-content">
+
+                        <div class="modal-content-container" style="overflow: auto">
+
+                            <!-- Modal header with a close button -->
+
+                            <div class="modal-header">
+
+                                <h2>Customer Details </h2>
+
+                                <button id="closeModal">Clear Selection</button>
+
+                            </div>
+
+                            <!-- GridView -->
+
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
+
+ 
+
+                            <!-- Placeholder for the GridView -->
+
+                            <div id="gridViewPlaceholder"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+          &nbsp;
+                
+                
+                <asp:Button
+            ID="btnexit"
+            Text="Exit"
+            CssClass="btn btn-danger"
+            OnClick="btnExit_Click"
+            runat="server"
+            Style="border-style: inset; width: 100px"
+        />
+
             </div>
-        </div>
-    </div>  
+
+        </div>  
 
         </form>
     
@@ -516,6 +777,206 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    
     <div>
+
+        <script>
+
+            // JavaScript code to display data in the modal
+
+            var browseButton = document.getElementById('browseButton');
+
+            var modal = document.getElementById('myModal');
+
+            var closeModalButton = document.getElementById('closeModal');
+
+            var dataBody = document.getElementById('<%= GridView1.ClientID %>');
+
+            var selectedRow = null;
+
+
+
+            // Input fields
+
+            var txtCodeInput = document.getElementById('txtCode');
+
+            var txtTypeInput = document.getElementById('txtType');
+
+            var txtdescriptionInput = document.getElementById('txtdescription');
+
+            var txtUnitsizeInput = document.getElementById('txtUnitSize');
+
+            var txtUnitInCaseInput = document.getElementById('txtUnitInCase');
+
+            var txtUOMInput = document.getElementById('txtUOM');
+
+            var txtSTDCostPriceInput = document.getElementById('txtSTDCostPrice');
+
+            var txtSTDSellingPriceInput = document.getElementById('txtSTDSellingPrice');
+
+            var txtMaximumMarkupInput = document.getElementById('txtMaximumMarkup');
+
+            var txtNBTInput = document.getElementById('txtNBT');
+
+            var txtVATInput = document.getElementById('txtVAT');
+
+
+
+            // Function to handle row selection and highlight
+
+            function selectRow(row, rowData) {
+
+                debugger;
+
+                if (selectedRow) {
+
+                    selectedRow.classList.remove('selected-row');
+
+                }
+
+                row.classList.add('selected-row');
+
+                selectedRow = row;
+
+
+
+                //closeModelButton.click();
+
+                // Populate the input fields with the selected row's data
+
+                var cells = row.cells;
+
+                txtCodeInput.value = cells[0].textContent;
+
+                txtTypeInput.value = cells[1].textContent;
+
+                txtdescriptionInput.value = cells[2].textContent;
+
+                txtUnitsizeInput.value = cells[3].textContent;
+
+                txtUnitInCaseInput.value = cells[4].textContent;
+
+                txtUOMInput.value = cells[5].textContent;
+
+                txtSTDCostPriceInput.value = cells[6].textContent;
+
+                txtSTDSellingPriceInput.value = cells[7].textContent;
+
+                txtMaximumMarkupInput.value = cells[8].textContent;
+
+                txtNBTInput.value = cells[9].textContent;
+
+                txtVATInput.value = cells[10].textContent;
+
+            }
+
+
+
+            browseButton.addEventListener('click', function () {
+
+                // Display the modal when the button is clicked
+
+                modal.style.display = 'block';
+
+
+
+                // Load data when the modal is opened
+
+                loadModalData();
+
+            });
+
+
+
+            closeModalButton.addEventListener('click', function () {
+
+                // Close the modal when the "Close" button is clicked
+
+                //dataBody.innerHTML = ''; // Clear the table content
+
+                modal.style.display = 'none';
+
+            });
+
+
+
+            window.addEventListener('click', function (event) {
+
+                if (event.target == modal) {
+
+                    // Close the modal if the user clicks outside the modal content
+
+                    //dataBody.innerHTML = '';
+
+                    modal.style.display = 'none';
+
+                }
+
+            });
+
+
+
+            dataBody.addEventListener('click', function (event) {
+
+                var target = event.target;
+
+                if (target.tagName === 'TD') {
+
+                    var row = target.parentElement;
+
+                    selectRow(row);
+
+                }
+
+            });
+
+
+
+            function loadModalData() {
+
+                // Add code here to load data into the modal (e.g., from the GridView)
+
+                // Make an AJAX request to fetch data and populate the modal
+
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function () {
+
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+                        // Parse the response and populate the modal
+
+                        var data = JSON.parse(xmlhttp.responseText);
+
+                        // Implement code to populate the modal with data
+
+                    }
+
+                };
+
+
+
+                // Replace 'GetDataUrl' with the URL to fetch data from the server
+
+                xmlhttp.open('GET', 'GetDataUrl', true);
+
+                xmlhttp.send();
+
+            }
+
+
+
+            $(document).ready(function () {
+
+                $("#closeModal").click(function () {
+
+                    $("#myModal").modal("hide");
+
+                });
+
+            });
+
+
+
+        </script>
 
         <script>
             // Function to format a number to have two digits (e.g., 1 => "01")
@@ -552,23 +1013,87 @@
 
 
     <script>
-        function updatecate1Text() {
-            var dropdown = document.getElementById("ddlcate1");
+
+        function updatetypeText() {
+
+            var dropdown = document.getElementById("ddltype");
+
             var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.getElementById("txtcate1").value = selectedText;
+
+            document.getElementById("txtType").value = selectedText;
+
+        }
+
+        function updateUOMText() {
+
+            var dropdown = document.getElementById("ddlUOM");
+
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+            document.getElementById("txtUOM").value = selectedText;
+
+        }
+
+        function updatecate1Text() {
+
+            var dropdown = document.getElementById("ddlcate1");
+
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+            document.getElementById("txtCate1").value = selectedText;
+
+        }
+
+        function updatecate2Text() {
+
+            var dropdown = document.getElementById("ddlcate2");
+
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+            document.getElementById("txtCate2").value = selectedText;
+
+        }
+
+        function updatecate3Text() {
+
+            var dropdown = document.getElementById("ddlcate3");
+
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+            document.getElementById("txtCate3").value = selectedText;
+
+        }
+
+        function updatecate4Text() {
+
+            var dropdown = document.getElementById("ddlcate4");
+
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+            document.getElementById("txtCate4").value = selectedText;
+
+        }
+
+        function taxcodeText() {
+
+            var dropdown = document.getElementById("ddlTaxCode");
+
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+            document.getElementById("txtTaxCode").value = selectedText;
+
         }
 
         function updateUserStatusText() {
-            var dropdown = document.getElementById("ddlUserStatus");
+
+            var dropdown = document.getElementById("ddlactiveStatus");
+
             var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.getElementById("txtUserStatus").value = selectedText;
+
+            document.getElementById("txtactiveStatus").value = selectedText;
+
         }
 
-        function updatetypeText() {
-            var dropdown = document.getElementById("ddltype");
-            var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.getElementById("txttype").value = selectedText;
-        }
     </script>
 
 

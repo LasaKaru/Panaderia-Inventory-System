@@ -34,12 +34,56 @@ namespace Panaderia.Form.Reports
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                // You can call this method after binding data to GridView2
+                CustomizeGridViewColumns(GridView2, columnDisplayNames);
+            }
 
         }
+
+        private void CustomizeGridViewColumns(GridView gridView, Dictionary<string, string> columnDisplayNames)
+        {
+            foreach (DataControlField field in gridView.Columns)
+            {
+                if (field is BoundField boundField)
+                {
+                    if (columnDisplayNames.ContainsKey(boundField.DataField))
+                    {
+                        boundField.HeaderText = columnDisplayNames[boundField.DataField];
+                    }
+                }
+            }
+        }
+
+        private Dictionary<string, string> columnDisplayNames = new Dictionary<string, string>
+        {
+            { "Txn_Id", "Transaction ID" },
+            { "Company_ID", "Company ID" },
+            {"Branch_Id", "Branch ID" },
+            {"Txn_Type", "Transaction Type" },
+            { "Txn_Number", "Transaction Number" },
+            {"Txn_Date", "Transaction Date" },
+            { "Item_No", "Item Number" },
+            {"Batch_No", "Batch Number" },
+           
+
+
+
+
+
+
+          // Add more mappings as needed for other columns
+        };
+
         protected void btnGenerateReport_Click(object sender, EventArgs e)
         {
             DataTable dataTable = new DataTable();
             // Implement the logic to generate the report based on the selected criteria
+
+            DateTime startDate = DateTime.Now;
+            DateTime endDate = DateTime.Now;
+
             if (sender == Button1)
             {
                 GenerateTransactionReport(ref dataTable);
@@ -62,25 +106,31 @@ namespace Panaderia.Form.Reports
                 // Call JavaScript function to show the Download button
                 ClientScript.RegisterStartupScript(this.GetType(), "ShowDownloadButton", "showDownloadButton();", true);
 
-                // Generate reports
-                // Obtain the selected startDate and endDate based on your criteria
-                //DateTime startDate =  startdate;
-                //DateTime endDate =  enddate;
+                if (DateTime.TryParse(txtStartDate1.Text, out startDate) && DateTime.TryParse(txtEndDate2.Text, out endDate))
+                {
 
-                // Generate reports and pass startDate and endDate
-                //GeneratePDFReport(dataTable, startDate, endDate);
+                    GeneratePDFReport(dataTable, startDate, endDate);
+                    GenerateXLSMReport(dataTable);
+                    // Generate reports
+                    // Obtain the selected startDate and endDate based on your criteria
+                    //DateTime startDate =  DateTime.Now;
+                    //DateTime endDate = DateTime.Now;
 
-                // GeneratePDFReport(dataTable );
-                GeneratePDFReport(dataTable);
-                GenerateXLSMReport(dataTable);
+                    // Generate reports and pass startDate and endDate
+                    GeneratePDFReport(dataTable, startDate, endDate);
+
+                    // GeneratePDFReport(dataTable );
+                    //GeneratePDFReport(dataTable);
+                    GenerateXLSMReport(dataTable);
 
 
-                // Email the reports
-                SendEmailWithAttachments();
+                    // Email the reports
+                    SendEmailWithAttachments();
+                }
             }
         }
 
-        private void GeneratePDFReport(DataTable dataTable)
+        private void GeneratePDFReport(DataTable dataTable, DateTime startDate, DateTime endDate)
         //private void GeneratePDFReport(DataTable dataTable, DateTime startDate, DateTime endDate)
 
         {
@@ -98,35 +148,36 @@ namespace Panaderia.Form.Reports
 
                         // Add the image to the first page
                         iText.Layout.Element.Image image = new iText.Layout.Element.Image(ImageDataFactory.Create("https://github.com/LasaKaru/Utility-Inquiry-System/blob/main/cargills-removebg-preview.png?raw=true"));
-                        image.SetWidth(100); // Set the image width to 100 pixels
-                        image.SetMarginLeft(5); // Set the left margin to 10 pixels
-                        image.SetMarginBottom(5); // Set the bottom margin to 10 pixels
+                        image.SetWidth(50); // Set the image width to 100 pixels
+                        image.SetMarginLeft(1); // Set the left margin to 10 pixels
+                        image.SetMarginBottom(1); // Set the bottom margin to 10 pixels
                         document.Add(image);
 
                         // Add the title
                         Paragraph title = new Paragraph("Panaderia Inventory System")
                             .SetTextAlignment(TextAlignment.CENTER)
-                            .SetFontSize(16);
+                            .SetFontSize(13);
                         document.Add(title);
 
 
                         Paragraph title1 = new Paragraph("Sales Report")
                             .SetTextAlignment(TextAlignment.CENTER)
-                            .SetFontSize(12);
+                            .SetFontSize(9);
                         document.Add(title1);
 
                         // Add Date From and Date To text
-                        //string dateRangeText = $"Date From: {startDate.ToString("dd/MM/yyyy")} To: {endDate.ToString("dd/MM/yyyy")}";
-                        // Paragraph dateRange = new Paragraph(dateRangeText)
-                        //    .SetTextAlignment(TextAlignment.CENTER)
-                        //     .SetFontSize(12);
-                        // document.Add(dateRange);
+                        string dateRangeText = $"Date From: {startDate:dd/MM/yyyy} To: {endDate:dd/MM/yyyy}";
+                        Paragraph dateRange = new Paragraph(dateRangeText)
+                           .SetTextAlignment(TextAlignment.CENTER)
+                            .SetFontSize(9);
+                        document.Add(dateRange);
 
 
 
                         // Add content to the document based on your dataTable
                         // Add a table for data from the database
                         float tableHeaderFontSize = 10;
+                        float coloumDisplayNamesFontSize = 10;
                         float tableDataFontSize = 10;
                         Table table = new Table(dataTable.Columns.Count);
                         table.SetWidth(UnitValue.CreatePercentValue(100));
@@ -138,25 +189,26 @@ namespace Panaderia.Form.Reports
 
                         foreach (DataColumn column in dataTable.Columns)
                         {
-                            Cell headerCell = new Cell().Add(new Paragraph(column.ColumnName));
-
-                            // Check specific column names and apply a different font size
-                            if (column.ColumnName == "Txn_ID" || column.ColumnName == "Company_ID" || column.ColumnName == "Branch_id")
+                            string columnDisplayName;
+                            if (columnDisplayNames.ContainsKey(column.ColumnName))
                             {
-                                headerCell.SetFontSize(tableHeaderFontSize);
+                                columnDisplayName = columnDisplayNames[column.ColumnName];
                             }
                             else
                             {
-                                headerCell.SetFontSize(tableDataFontSize);
+                                // If there's no mapping, use the column name as the display name
+                                columnDisplayName = column.ColumnName;
                             }
 
+                            Cell headerCell = new Cell().Add(new Paragraph(columnDisplayName));
+                            headerCell.SetFontSize(12); // Set the font size for headers
                             table.AddHeaderCell(headerCell);
-                        }
 
+                        }
                         //foreach (DataColumn column in dataTable.Columns)
-                        //  {
-                        //     table.AddHeaderCell(column.ColumnName);
-                        // }
+                       // {
+                         //   table.AddHeaderCell(column.ColumnName);
+                       // }
 
                         foreach (DataRow row in dataTable.Rows)
                         {
@@ -484,6 +536,47 @@ namespace Panaderia.Form.Reports
                 // Handle exceptions or log errors as needed
                 Response.Write("Error sending email: " + ex.Message);
             }
+        }
+
+
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            // Handle the button click event for Button1
+            // Dynamically change the column headers and add columns to GridView2
+            GridView2.Columns.Clear(); // Clear existing columns
+
+            // Add columns to GridView2 for Button1
+            BoundField Txn_IdColumn = new BoundField();
+            Txn_IdColumn.HeaderText = "Transactions Id";
+            Txn_IdColumn.DataField = "Txn_Id";
+            GridView2.Columns.Add(Txn_IdColumn);
+
+            //BoundField txnTypeColumn = new BoundField();
+            //txnTypeColumn.HeaderText = "Transaction Type";
+            // txnTypeColumn.DataField = "txn_type";
+            // GridView2.Columns.Add(txnTypeColumn);
+
+            // Perform data binding for GridView2 based on the new columns
+            GridView2.DataSource = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
+            GridView2.DataBind();
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            // Handle the button click event for Button2
+            // Dynamically change the column headers and add columns to GridView2
+            GridView2.Columns.Clear(); // Clear existing columns
+
+            // Add columns to GridView2 for Button2
+            BoundField customColumn = new BoundField();
+            customColumn.HeaderText = "Custom Header";
+            customColumn.DataField = "custom_field";
+            GridView2.Columns.Add(customColumn);
+
+            // Perform data binding for GridView2 based on the new columns
+            GridView2.DataSource = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
+            GridView2.DataBind();
         }
 
     }  

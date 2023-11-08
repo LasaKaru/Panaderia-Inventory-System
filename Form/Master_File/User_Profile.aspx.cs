@@ -41,6 +41,9 @@ namespace Panaderia.Form.Master_File
             {
                 LoadUserData();
             }
+            {
+                LoadData();
+            }
         }
 
         // Replace "LoggedInUserId" with the actual way you get the logged-in user's user_id.
@@ -55,6 +58,35 @@ namespace Panaderia.Form.Master_File
                     return Convert.ToInt32(Session["LoggedInUserId"]);
                 }
                 return 0; // You should handle this case based on your application's authentication.
+            }
+        }
+
+        protected void LoadData()
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string query = "SELECT Txn_Id, Company_ID, Branch_Id, Txn_Type FROM[MyBooks].[dbo].[TX_Inventory]";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        GridView1.DataSource = reader;
+                        GridView1.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions here
+                        string errorMessage = "An error occurred while fetching data. Please try again later.";
+
+                        // Display the error message to the user
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "errorAlert", $"alert('{errorMessage}');", true);
+                    }
+                }
             }
         }
 

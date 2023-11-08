@@ -22,6 +22,42 @@
     <!--Common CSS File -->
     <link rel="stylesheet" href="../../Content/Navigation.css" media="screen" />
 
+    <style>
+        /* Styles for the modal popup */
+        .modal {
+            display:;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content-container {
+            max-height: 600px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+    </style>
+
+    <style>
+        /* Style for selected row */
+        .selected-row {
+            background-color: yellow;
+        }
+    </style>
+
 
 </head>
 <body>
@@ -252,7 +288,7 @@
         </div>
     </div>
 
-    </form>
+    
 
 <br />
 <br />
@@ -411,7 +447,30 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                 <button type="button" id="btnSave" class="btn btn-primary" style="width: 100px;">Save</button>
-                <button type="button" id="btnBrowse" class="btn btn-secondary" style="width: 100px;">Browse</button>
+                <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;">Browse</button>
+
+                 <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-content-container" style="overflow: auto">
+                            <!-- Modal header with a close button -->
+                            <div class="modal-header">
+                                <br />
+                                <br />
+                                <h2>AddressBook List ;)< </h2>
+                                <button id="closeModal">Clear Selection</button>
+                            </div>
+                            <!-- GridView -->
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
+
+
+
+
+                            <!-- Placeholder for the GridView -->
+                            <div id="gridViewPlaceholder"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <button type="button" id="btnExit" class="btn btn-danger" style="width: 100px;">Exit</button>
             </div>
         </div>
@@ -419,7 +478,7 @@
 
     <br />
     <hr />
-
+        </form>
     <footer>
                     <p>
                         &copy; <%: DateTime.Now.Year %> - Panaderia Inventory
@@ -432,6 +491,99 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById("btnExit").addEventListener("click", function () {
+            window.location.href = "../../Dashboard.aspx";
+        });
+    </script>
+
+        <script>
+            // JavaScript code to display data in the modal
+            var browseButton = document.getElementById('browseButton');
+            var modal = document.getElementById('myModal');
+            var closeModalButton = document.getElementById('closeModal');
+            var dataBody = document.getElementById('<%= GridView1.ClientID %>');
+            var selectedRow = null;
+
+            // Input fields
+            var transactionIDInput = document.getElementById('transactionID');
+            var companyIDInput = document.getElementById('companyID');
+            var branchIDInput = document.getElementById('branchID');
+            var transactionTypeInput = document.getElementById('transactionType');
+
+            // Function to handle row selection and highlight
+            function selectRow(row, rowData) {
+                if (selectedRow) {
+                    selectedRow.classList.remove('selected-row');
+                }
+                row.classList.add('selected-row');
+                selectedRow = row;
+
+                //closeModelButton.click();
+                // Populate the input fields with the selected row's data
+                var cells = row.cells;
+                transactionIDInput.value = cells[0].textContent;
+                companyIDInput.value = cells[1].textContent;
+                branchIDInput.value = cells[2].textContent;
+                transactionTypeInput.value = cells[3].textContent;
+            }
+
+            browseButton.addEventListener('click', function () {
+                // Display the modal when the button is clicked
+                modal.style.display = 'block';
+
+                // Load data when the modal is opened
+                loadModalData();
+            });
+
+            closeModalButton.addEventListener('click', function () {
+                // Close the modal when the "Close" button is clicked
+                //dataBody.innerHTML = ''; // Clear the table content
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    // Close the modal if the user clicks outside the modal content
+                    //dataBody.innerHTML = '';
+                    modal.style.display = 'none';
+                }
+            });
+
+            dataBody.addEventListener('click', function (event) {
+                var target = event.target;
+                if (target.tagName === 'TD') {
+                    var row = target.parentElement;
+                    selectRow(row);
+                }
+            });
+
+            function loadModalData() {
+                // Add code here to load data into the modal (e.g., from the GridView)
+                // Make an AJAX request to fetch data and populate the modal
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        // Parse the response and populate the modal
+                        var data = JSON.parse(xmlhttp.responseText);
+                        // Implement code to populate the modal with data
+                    }
+                };
+
+                // Replace 'GetDataUrl' with the URL to fetch data from the server
+                xmlhttp.open('GET', 'GetDataUrl', true);
+                xmlhttp.send();
+            }
+
+            $(document).ready(function () {
+                $("#closeModal").click(function () {
+                    $("#myModal").modal("hide");
+                });
+            });
+
+        </script>
+
 
     <script>
         // Function to format a number to have two digits (e.g., 1 => "01")

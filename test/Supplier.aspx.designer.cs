@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Panaderia.Form.Master_File
+namespace Panaderia.test
 {
 
 
-    public partial class Products
+    public partial class Supplier
     {
 
         /// <summary>
@@ -33,22 +33,22 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox SerialNumber;
 
         /// <summary>
-        /// Date control.
+        /// date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Date;
+        protected global::System.Web.UI.WebControls.TextBox date;
 
         /// <summary>
-        /// User control.
+        /// user control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox User;
+        protected global::System.Web.UI.WebControls.TextBox user;
 
         /// <summary>
         /// divMsg control.
@@ -69,211 +69,256 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.Label lblShowMessage;
 
         /// <summary>
-        /// txtCode control.
+        /// txtcode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCode;
+        protected global::System.Web.UI.WebControls.TextBox txtcode;
 
         /// <summary>
-        /// txtType control.
+        /// rfvCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtType;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCode;
 
         /// <summary>
-        /// ddltype control.
+        /// txtname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddltype;
+        protected global::System.Web.UI.WebControls.TextBox txtname;
 
         /// <summary>
-        /// txtdescription control.
+        /// txtadd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtdescription;
+        protected global::System.Web.UI.WebControls.TextBox txtadd1;
 
         /// <summary>
-        /// txtUnitSize control.
+        /// txtadd2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUnitSize;
+        protected global::System.Web.UI.WebControls.TextBox txtadd2;
 
         /// <summary>
-        /// txtUnitInCase control.
+        /// txtadd3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUnitInCase;
+        protected global::System.Web.UI.WebControls.TextBox txtadd3;
 
         /// <summary>
-        /// txtUOM control.
+        /// txtcountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUOM;
+        protected global::System.Web.UI.WebControls.TextBox txtcountry;
 
         /// <summary>
-        /// ddlUOM control.
+        /// txttele control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUOM;
+        protected global::System.Web.UI.WebControls.TextBox txttele;
 
         /// <summary>
-        /// txtCate1 control.
+        /// revTelephone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCate1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revTelephone;
 
         /// <summary>
-        /// ddlcate1 control.
+        /// txtfax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcate1;
+        protected global::System.Web.UI.WebControls.TextBox txtfax;
 
         /// <summary>
-        /// txtCate2 control.
+        /// txtmobile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCate2;
+        protected global::System.Web.UI.WebControls.TextBox txtmobile;
 
         /// <summary>
-        /// ddlcate2 control.
+        /// RegularExpressionValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcate2;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
 
         /// <summary>
-        /// txtCate3 control.
+        /// txtemail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCate3;
+        protected global::System.Web.UI.WebControls.TextBox txtemail;
 
         /// <summary>
-        /// ddlcate3 control.
+        /// txtcontactp1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcate3;
+        protected global::System.Web.UI.WebControls.TextBox txtcontactp1;
 
         /// <summary>
-        /// txtCate4 control.
+        /// txtcontactdetail1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCate4;
+        protected global::System.Web.UI.WebControls.TextBox txtcontactdetail1;
 
         /// <summary>
-        /// ddlcate4 control.
+        /// txtcontactp2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlcate4;
+        protected global::System.Web.UI.WebControls.TextBox txtcontactp2;
 
         /// <summary>
-        /// txtSTDCostPrice control.
+        /// txtcontactdetail2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSTDCostPrice;
+        protected global::System.Web.UI.WebControls.TextBox txtcontactdetail2;
 
         /// <summary>
-        /// txtSTDSellingPrice control.
+        /// txtcontactp3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSTDSellingPrice;
+        protected global::System.Web.UI.WebControls.TextBox txtcontactp3;
 
         /// <summary>
-        /// txtMaximumMarkup control.
+        /// txtcontactdetail3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMaximumMarkup;
+        protected global::System.Web.UI.WebControls.TextBox txtcontactdetail3;
 
         /// <summary>
-        /// txtNBT control.
+        /// txtnote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNBT;
+        protected global::System.Web.UI.WebControls.TextBox txtnote;
 
         /// <summary>
-        /// txtVAT control.
+        /// txtcreditlimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVAT;
+        protected global::System.Web.UI.WebControls.TextBox txtcreditlimit;
 
         /// <summary>
-        /// txtTaxCode control.
+        /// txtcreditperiod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTaxCode;
+        protected global::System.Web.UI.WebControls.TextBox txtcreditperiod;
 
         /// <summary>
-        /// ddlTaxCode control.
+        /// txtLtime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTaxCode;
+        protected global::System.Web.UI.WebControls.TextBox txtLtime;
+
+        /// <summary>
+        /// txtsupType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtsupType;
+
+        /// <summary>
+        /// ddlsupType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlsupType;
+
+        /// <summary>
+        /// txtbankBranch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbankBranch;
+
+        /// <summary>
+        /// txtaccNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtaccNo;
+
+        /// <summary>
+        /// txtaccName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtaccName;
 
         /// <summary>
         /// txtactiveStatus control.
@@ -285,31 +330,40 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtactiveStatus;
 
         /// <summary>
-        /// ddlactiveStatus control.
+        /// ddlActiveStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlactiveStatus;
+        protected global::System.Web.UI.WebControls.DropDownList ddlActiveStatus;
 
         /// <summary>
-        /// myFile control.
+        /// txtledgeraccount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload myFile;
+        protected global::System.Web.UI.WebControls.TextBox txtledgeraccount;
 
         /// <summary>
-        /// btn_save control.
+        /// ddlledgeraccount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_save;
+        protected global::System.Web.UI.WebControls.DropDownList ddlledgeraccount;
+
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
 
         /// <summary>
         /// GridView1 control.
@@ -321,12 +375,12 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// btnexit control.
+        /// btnExit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnexit;
+        protected global::System.Web.UI.WebControls.Button btnExit;
     }
 }
