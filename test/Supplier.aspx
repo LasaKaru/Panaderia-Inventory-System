@@ -1417,15 +1417,11 @@
 
                     modal.style.display = 'block';
 
-
-
                     // Load data when the modal is opened
 
                     loadModalData();
 
                 });
-
-
 
                 closeModalButton.addEventListener('click', function () {
 
@@ -1436,8 +1432,6 @@
                     modal.style.display = 'none';
 
                 });
-
-
 
                 window.addEventListener('click', function (event) {
 
@@ -1453,8 +1447,6 @@
 
                 });
 
-
-
                 dataBody.addEventListener('click', function (event) {
 
                     var target = event.target;
@@ -1464,12 +1456,9 @@
                         var row = target.parentElement;
 
                         selectRow(row);
-
                     }
 
                 });
-
-
 
                 function loadModalData() {
 
@@ -1493,8 +1482,6 @@
 
                     };
 
-
-
                     // Replace 'GetDataUrl' with the URL to fetch data from the server
 
                     xmlhttp.open('GET', 'GetDataUrl', true);
@@ -1502,8 +1489,6 @@
                     xmlhttp.send();
 
                 }
-
-
 
                 $(document).ready(function () {
 
@@ -1518,16 +1503,6 @@
 
 
             </script>
-
-
-
-
-
-
-
-
-
-
 
             <script>
 

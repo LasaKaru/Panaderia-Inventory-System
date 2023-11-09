@@ -68,6 +68,9 @@ namespace Panaderia.Form.Views
             {"Txn_Date", "Transaction Date" },
             { "Item_No", "Item Number" },
             {"Batch_No", "Batch Number" },
+            {"Exp_Date", "Expire Date" },
+            {"Txn_Price", "Transaction Price " },
+            
            
 
 
@@ -87,12 +90,20 @@ namespace Panaderia.Form.Views
             DateTime endDate = DateTime.Now;
 
 
-            if (sender == Button1)
+            //if (sender == Button1)
+
+            DateTime selectedDate = default;
+            if (selectedDate ==DateTime.Today)
             {
-                GenerateTransactionReport(ref dataTable);
+                GenerateTransactionReport(DateTime.Today, ref dataTable);
+
             }
-            else if (sender == Button2)
+             else
             {
+                GenerateTransactionReport(selectedDate, ref dataTable);
+
+            }
+            { 
                 GenerateItemsReport(ref dataTable);
             }
             //else if (sender == Button6)
@@ -135,17 +146,47 @@ namespace Panaderia.Form.Views
 
         }
 
-        private void GenerateTransactionReport(ref DataTable dataTable)
+
+        private void GenerateTransactionReport(DateTime selectedDate, ref DataTable dataTable)
+        {
+            // Validate the selectedDate variable
+            if (selectedDate < DateTime.Parse("1753-01-01") || selectedDate > DateTime.Parse("9999-12-31"))
+            {
+                // Handle invalid date scenario
+                // ...
+                return;
+            }
+
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
+            string query = "SELECT * FROM dbo.TX_Inventory WHERE Txn_Date <= @SelectedDate";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                // Add the @SelectedDate parameter
+                command.Parameters.AddWithValue("@SelectedDate", selectedDate);
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(dataTable);
+
+                GridView2.DataSource = dataTable;
+                GridView2.DataBind();
+
+                // Use the dataTable to bind data to your report or display it as needed
+            }
+        }
+        /*
+        private void GenerateTransactionReport(DateTime selectedDate, ref DataTable dataTable)
         {
             // Implement the logic to generate the transaction report
             // use txtStartDate1.Text and txtEndDate2.Text to get the selected date range
             // Example:
-            DateTime startDate = DateTime.Parse(txtStartDate1.Text);
-            //DateTime endDate = DateTime.Parse(txtEndDate2.Text);
+            //  DateTime startDate = DateTime.Parse(txtStartDate1.Text);
+            //DateTime endDate = DateTime.Today;
 
             // Use the connection string and SQL query based on your actual database structure
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
-            string query = "SELECT * FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
+            string query = "SELECT * FROM dbo.TX_Inventory WHERE Txn_Date <= @SelectedDate";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -153,7 +194,7 @@ namespace Panaderia.Form.Views
                 {
                     // Add parameters and set their values based on the date range
                     // Example:
-                    command.Parameters.AddWithValue("@StartDate", startDate);
+                    command.Parameters.AddWithValue("@SelectedDate", selectedDate);
                     //command.Parameters.AddWithValue("@EndDate", endDate);
 
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
@@ -170,6 +211,7 @@ namespace Panaderia.Form.Views
                 }
             }
         }
+        */
 
         private void GeneratePDFReport(DataTable dataTable, DateTime startDate, DateTime endDate) //for get date on report
 
@@ -200,7 +242,7 @@ namespace Panaderia.Form.Views
                         document.Add(title);
 
 
-                        Paragraph title1 = new Paragraph("Purchase Return Report")
+                        Paragraph title1 = new Paragraph("Inventory Report")
                             .SetTextAlignment(TextAlignment.CENTER)
                             .SetFontSize(9);
                         document.Add(title1);
@@ -275,20 +317,20 @@ namespace Panaderia.Form.Views
                 }
 
                 // Save the PDF file to a location or send it as needed
-                File.WriteAllBytes(Server.MapPath("~/Reports/Purchase_Return_Report.pdf"), stream.ToArray());
+                File.WriteAllBytes(Server.MapPath("~/Reports/Inventory Report.pdf"), stream.ToArray());
             }
         }
 
         protected void btnDownloadPDF_Click(object sender, EventArgs e)
         {
-            string filePath = Server.MapPath("~/Reports/Purchase_Return_Report.pdf");
+            string filePath = Server.MapPath("~/Reports/Inventory Report.pdf");
             FileInfo file = new FileInfo(filePath);
 
             if (file.Exists)
             {
                 Response.Clear();
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment; filename=Purchase_Return_Report.pdf");
+                Response.AddHeader("content-disposition", "attachment; filename=Inventory Report.pdf");
                 Response.WriteFile(filePath);
                 Response.End();
             }
@@ -389,13 +431,14 @@ namespace Panaderia.Form.Views
             return productId;
         }
 
+        
         private void GenerateItemsReport(ref DataTable dataTable)
         {
             // Implement the logic to generate the items report
             // use txtStartDate1.Text and txtEndDate2.Text to get the selected date range
             // Example:
             DateTime startDate = DateTime.Parse(txtStartDate1.Text);
-            //DateTime endDate = DateTime.Parse(txtEndDate2.Text);
+            DateTime endDate = DateTime.Today;
 
             // Use the connection string and SQL query based on your actual database structure
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
@@ -408,7 +451,7 @@ namespace Panaderia.Form.Views
                     // Add parameters and set their values based on the date range
                     // Example:
                     command.Parameters.AddWithValue("@StartDate", startDate);
-                    //command.Parameters.AddWithValue("@EndDate", endDate);
+                    command.Parameters.AddWithValue("@EndDate", endDate);
 
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                     // DataTable dataTable = new DataTable();
@@ -429,7 +472,7 @@ namespace Panaderia.Form.Views
             // use txtStartDate1.Text and txtEndDate2.Text to get the selected date range
             // Example:
             DateTime startDate = DateTime.Parse(txtStartDate1.Text);
-            //DateTime endDate = DateTime.Parse(txtEndDate2.Text);
+            DateTime endDate = DateTime.Today;
 
             // Use the connection string and SQL query based on your actual database structure
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
@@ -442,7 +485,7 @@ namespace Panaderia.Form.Views
                     // Add parameters and set their values based on the date range
                     // Example:
                     command.Parameters.AddWithValue("@StartDate", startDate);
-                    //command.Parameters.AddWithValue("@EndDate", endDate);
+                    command.Parameters.AddWithValue("@EndDate", endDate);
 
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                     //DataTable dataTable = new DataTable();

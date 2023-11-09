@@ -272,7 +272,7 @@
              
                 <div class="form-group row">
         <label for="txtStartDate" class="col-sm-2 col-form-label" style="font-family: math;">Inventory Balance as at :</label>
-        <div class="col-sm-3">
+        <div class="col-sm-5">
             <asp:TextBox ID="txtStartDate1" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
             <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
         </div>
@@ -280,7 +280,7 @@
 
         <div>
                     <asp:Button ID="Button1" runat="server" Text="Load Balance" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
-            <asp:Button ID="Button2" runat="server" Text="Print" OnClick="btnGenerateReport1_Click" CssClass="btn btn-primary" />
+
             
                 </div>
 
