@@ -605,6 +605,7 @@
     <Content Include="Site.Master" />
     <Content Include="test\customercopy.aspx" />
     <Content Include="test\Supplier.aspx" />
+    <Content Include="test\userprofileupdate.aspx" />
     <Content Include="UserControls\Navigation.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -1205,6 +1206,13 @@
     </Compile>
     <Compile Include="test\Supplier.aspx.designer.cs">
       <DependentUpon>Supplier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\userprofileupdate.aspx.cs">
+      <DependentUpon>userprofileupdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\userprofileupdate.aspx.designer.cs">
+      <DependentUpon>userprofileupdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

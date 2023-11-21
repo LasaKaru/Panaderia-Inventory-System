@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="Panaderia.Form.Master_File.Customer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="userprofileupdate.aspx.cs" Inherits="Panaderia.test.userprofileupdate" %>
+
 
 <!DOCTYPE html>
 
@@ -7,7 +8,7 @@
     
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Masterfiles - Customer</title>
+    <title>User Profiles</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -16,17 +17,64 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Bootstrap JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-    
-    <!--Common CSS File -->
-    <link href="../../Content/Masterfiles/Master.css" rel="stylesheet" media="screen"/>
-    <link href="../../Content/BrowseModal.css" rel="stylesheet" media="screen"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!--Common CSS File -->
+    <link rel="stylesheet" href="../../Content/Navigation.css" media="screen" />
+
+    <style>
+        /* Styles for the modal popup */
+        .modal {
+            display:;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content-container {
+            max-height: 600px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+    </style>
+
+    <style>
+        /* Style for selected row */
+        .selected-row {
+            background-color: yellow;
+        }
+    </style>
+
+    <style type="text/css">
+        .auto-style35 {
+            position: relative;
+            min-height: 1px;
+            float: left;
+            width: 41.66666667%;
+            left: 0px;
+            top: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
 
 </head>
 <body>
-    
-       
+    <form id="form1" runat="server">
+        
         <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -259,8 +307,6 @@
 
 <br />
 
-     <form id="form2" runat="server"> 
-
      <div class="auto-style32">
   <div class="table-row">
     <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Serial Number</div>
@@ -277,209 +323,241 @@
     </div>
   </div>
 </div>
+        
 
     <br />
 
-
-
-
-
-<!--Ganeesha Put Your Code Here-->
-
-
-   
-         <div class="row">
-            <div class="col-md-4 alignSuccessMessage">
-            <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
-                <asp:Label ID="lblShowMessage" runat="server" Visible="true"></asp:Label>
-            </div>
-                </div>
-        </div>
-
-
-    <div class="container mt-5" >
-        <div class="row">
-            <div class="col-md-8">
-                              
-                <div class="form-group row">
-                    <label for="txtCode" class="col-sm-4 col-form-label">Code</label>
-                    <div class="col-sm-8">
-                        <asp:TextBox ID="txtCode" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvCode" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtcode" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
-                    </div>
-                </div>
-
-
-
-                <div class="form-group row">
-    <label for="txtName" class="col-sm-4 col-form-label">Customer Name</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtAddress1" class="col-sm-4 col-form-label">Address Line 1</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtAddress1" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtAddress2" class="col-sm-4 col-form-label">Address Line 2</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtAddress2" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtAddress3" class="col-sm-4 col-form-label">Address Line 3</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtAddress3" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtcountry" class="col-sm-4 col-form-label">Country</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtcountry" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<br />
-<div class="form-group row">
-    <label for="txtTele" class="col-sm-4 col-form-label">Telephone</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtTele" runat="server" CssClass="form-control"></asp:TextBox>
-        <asp:RegularExpressionValidator ID="revTelephone" runat="server" ControlToValidate="txtTele" ValidationExpression="^\d{10}$" ErrorMessage="Please enter a 10-digit telephone number." Display="Dynamic" ForeColor="Red" ValidationGroup="valGrpCreate" />
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtfax" class="col-sm-4 col-form-label">Fax</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtfax" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtmobile" class="col-sm-4 col-form-label">Mobile</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtmobile" runat="server" CssClass="form-control"></asp:TextBox>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtmobile" ValidationExpression="^\d{10}$" ErrorMessage="Please enter a 10-digit telephone number." Display="Dynamic" ForeColor="Red" ValidationGroup="valGrpCreate" />
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtemail" class="col-sm-4 col-form-label">Email</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtemail" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<br />
-<div class="form-group row">
-    <label for="txtcontactp1" class="col-sm-4 col-form-label">Contact Person</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtcontactp1" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtcontactdetail" class="col-sm-4 col-form-label">Contact Details</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtcontactdetail" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<br />
-<div class="form-group row">
-    <label for="txtNote" class="col-sm-4 col-form-label">Notes</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtNote" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtcreditlimit" class="col-sm-4 col-form-label">Credit Limit</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtcreditlimit" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtcredperiod" class="col-sm-4 col-form-label">Credit Period</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtcreditperiod" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtCusType" class="col-sm-4 col-form-label">Customer type</label>
-    <div class="col-sm-2">
-        <asp:TextBox ID="txtCusType" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
-    </div>
-    <div class="col-sm-6">
-        <asp:DropDownList ID="dd1custype" runat="server" onchange="updateUserStatusText()" Width="114px" CssClass="form-control">
-            <asp:ListItem Text="Cash" Value="1"></asp:ListItem>
-            <asp:ListItem Text="Credit" Value="2"></asp:ListItem>
-        </asp:DropDownList>
-    </div>
-</div>
-<br />
-<div class="form-group row">
-    <label for="txtvat" class="col-sm-4 col-form-label">Customer Vat No</label>
-    <div class="col-sm-8">
-        <asp:TextBox ID="txtVatNo" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="txtUserStatus" class="col-sm-4 col-form-label">Active Status</label>
-    <div class="col-sm-2">
-        <asp:TextBox ID="txtUserStatus" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
-    </div>
-    <div class="col-sm-6">
-        <asp:DropDownList ID="ddlActiveStatus" runat="server" onchange="updateUserStatusText()" Width="114px" CssClass="form-control">
-            <asp:ListItem Text="Active" Value="A"></asp:ListItem>
-            <asp:ListItem Text="Deleted" Value="D"></asp:ListItem>
-        </asp:DropDownList>
-    </div>
-</div>
-</div>
-<div class="col-md-6">
-    
-</div>
-</div>
-</div>
-<br />
-<br />
-<div class="row">
-    <div class="col-md-10"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       
         
-        <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" Style="width: 100px" ValidationGroup="valGrpCreate" OnClick="btnSave_Click" />
-        <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;">Browse</button>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-content-container" style="overflow: auto">
-                    <!-- Modal header with a close button -->
-                    <div class="modal-header">
-                        
-                        <h2>Customer Details </h2>
-                        <button id="closeModal">Clear Selection</button>
-                    </div>
-                    <!-- GridView -->
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
-                    <!-- Placeholder for the GridView -->
-                    <div id="gridViewPlaceholder"></div>
-                </div>
-            </div>
-        </div>
-        <asp:Button ID="btnExit" runat="server" Text="Exit" CssClass="btn btn-danger" Style="width: 100px" OnClick="btnExit_Click" />
+    
+
+    <div class="container mt-5">
+        <div class="bordere">
+        <div class="row">
+            <div class="col-md-8">                             
+
+                <div class="form-group row">
+    <label for="txtUserID" class="col-sm-3 col-form-label">User ID</label>
+    <div class="col-sm-9">
+        <asp:TextBox id="txtUserID" runat="server" class="form-control"></asp:TextBox>
     </div>
 </div>
 
+                <div class="form-group row">
+    <label for="txtUserName" class="col-sm-3 col-form-label">User Name</label>
+    <div class="col-sm-9">
+        <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control"></asp:TextBox>
+    </div>
+</div>
+
+                <div class="form-group row">
+    <label for="txtDefaultStore" class="col-sm-3 col-form-label">Default Store</label>
+    <div class="col-sm-3">
+        <input type="text" id="txtDefaultStore" class="form-control" readonly/>
+    </div>
+    <div class="col-sm-6">
+        <asp:DropDownList id="ddlDefaultStore" runat="server" class="form-control" onchange="updateDefaultStoreText()">
+            <asp:ListItem Value="1">0001 Co-Oparate</asp:ListItem>
+            <asp:ListItem Value="2">0002</asp:ListItem>
+            <asp:ListItem Value="3">0003</asp:ListItem>
+        </asp:DropDownList>
+    </div>
+</div>
+
+                <div class="form-group row">
+    <label for="txtUserGroup" class="col-sm-3 col-form-label">User Group</label>
+    <div class="col-sm-3">
+        <input type="text" id="txtUserGroup" class="form-control"  readonly/>
+    </div>
+    <div class="col-sm-6">
+        <asp:DropDownList id="ddlUserGroup" runat="server" class="form-control" onchange="updateUserGroupText()">
+            <asp:ListItem value="1">Administration Staff</asp:ListItem>
+            <asp:ListItem value="2">Clarical Staff</asp:ListItem>
+            <asp:ListItem value="3">Executive Officers</asp:ListItem>
+            <asp:ListItem value="4">User Level 01</asp:ListItem>
+            <asp:ListItem value="5">System Admin</asp:ListItem>
+            <asp:ListItem value="6">User Group</asp:ListItem>
+        </asp:DropDownList>
+    </div>
+</div>
+
+                <div class="form-group row">
+    <label for="txtUserPassword" class="col-sm-3 col-form-label">User Password</label>
+    <div class="col-sm-9">
+        <asp:TextBox type="text" id="txtUserPassword" runat="server" class="form-control"/>
+    </div>
+</div>
+
+                <div class="form-group row">
+    <label for="txtUserStatus" class="col-sm-3 col-form-label">User Status</label>
+    <div class="col-sm-3">
+        <input type="text" id="txtUserStatus" class="form-control" readonly />
+    </div>
+    <div class="col-sm-6">
+        <asp:DropDownList id="ddlUserStatus" runat="server" class="form-control" onchange="updateUserStatusText()">
+            <asp:ListItem value="A">Active</asp:ListItem>
+            <asp:ListItem value="D">Deleted</asp:ListItem>
+        </asp:DropDownList>
+    </div>
+</div>            
+            </div>
+        </div>
+            <br />
+            <br />
+            <br />
+
+        <div class="row">
+            <div class="auto-style35">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HiddenField ID="hdnDataSaved" runat="server" />
+                <button type="button" id="BtnSave" class="btn btn-primary" style="width: 100px;" onclick="saveOrUpdate()">Save</button>      
+                <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;" onclick="saveOrUpdate()">Browse</button>
+
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-content-container" style="overflow: auto">
+                            <!-- Modal header with a close button -->
+                            <div class="modal-header">                         
+                                <h2> System User List </h2>
+                                <button id="closeModal">Clear Selection</button>
+                            </div>
+                            <!-- GridView -->
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
+
+
+
+
+                            <!-- Placeholder for the GridView -->
+                            <div id="gridViewPlaceholder"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="btnExit" class="btn btn-danger"style="width: 100px;">Exit</button>
+            </div>
+        </div>
+    </div>
+        </div>
+    
+
+        </form>
+
+    <hr />
+
+    <footer>
+                    <p>
+                        &copy; <%: DateTime.Now.Year %> - Panaderia Inventory
+                        Management system Powered By Cargills IT
+                    </p>
+                </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   
-    <div>
 
-        <script>
-            document.getElementById("btnExit").addEventListener("click", function () {
-                window.location.href = "../../Dashboard.aspx";
+    <script>
+        document.getElementById("btnExit").addEventListener("click", function () {
+            window.location.href = "../../Dashboard.aspx";
+        });
+    </script>
+
+    <script>
+        // JavaScript code to display data in the modal
+        var browseButton = document.getElementById('browseButton');
+        var modal = document.getElementById('myModal');
+        var closeModalButton = document.getElementById('closeModal');
+        var dataBody = document.getElementById('<%= GridView1.ClientID %>');
+        var selectedRow = null;
+
+
+
+
+        // Input fields
+        var txtUserIDInput = document.getElementById('txtUserID');
+        var txtUserNameInput = document.getElementById('txtUserName');
+        var txtDefaultStoreInput = document.getElementById('txtDefaultStore');
+        //var ddlDefaultStoreInput = document.getElementById('ddlDefaultStore');
+        var txtUserGroupInput = document.getElementById('txtUserGroup');
+        var txtUserPasswordInput = document.getElementById('txtUserPassword');
+        var txtUserStatusInput = document.getElementById('txtUserStatus');
+
+        // Function to handle row selection and highlight
+        function selectRow(row, rowData) {
+            if (selectedRow) {
+                selectedRow.classList.remove('selected-row');
+            }
+            row.classList.add('selected-row');
+            selectedRow = row;
+
+            //closeModelButton.click();
+            // Populate the input fields with the selected row's data
+            var cells = row.cells;
+            txtUserIDInput.value = cells[0].textContent;
+            txtUserNameInput.value = cells[1].textContent;
+            txtDefaultStoreInput.value = cells[2].textContent;
+            //ddlDefaultStoreInput.value = cells[3].textContent;
+            txtUserGroupInput.value = cells[3].textContent;
+            txtUserPasswordInput.value = cells[4].textContent;
+            txtUserStatusInput.value = cells[5].textContent;
+
+        }
+
+        browseButton.addEventListener('click', function () {
+            // Display the modal when the button is clicked
+            modal.style.display = 'block';
+
+            // Load data when the modal is opened
+            loadModalData();
+        });
+
+        closeModalButton.addEventListener('click', function () {
+            // Close the modal when the "Close" button is clicked
+            //dataBody.innerHTML = ''; // Clear the table content
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+                // Close the modal if the user clicks outside the modal content
+                //dataBody.innerHTML = '';
+                modal.style.display = 'none';
+            }
+        });
+
+        dataBody.addEventListener('click', function (event) {
+            var target = event.target;
+            if (target.tagName === 'TD') {
+                var row = target.parentElement;
+                selectRow(row);
+            }
+        });
+
+        function loadModalData() {
+            // Add code here to load data into the modal (e.g., from the GridView)
+            // Make an AJAX request to fetch data and populate the modal
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    // Parse the response and populate the modal
+                    var data = JSON.parse(xmlhttp.responseText);
+                    // Implement code to populate the modal with data
+                }
+            };
+
+            // Replace 'GetDataUrl' with the URL to fetch data from the server
+            xmlhttp.open('GET', 'GetDataUrl', true);
+            xmlhttp.send();
+        }
+
+        $(document).ready(function () {
+            $("#closeModal").click(function () {
+                $("#myModal").modal("hide");
             });
-        </script>
+        });
 
-        <script>
+    </script>
+
+    <script>
         // Function to format a number to have two digits (e.g., 1 => "01")
         function formatNumber(number) {
             return number < 10 ? '0' + number : number;
@@ -512,7 +590,6 @@
         window.onload = setDateTimeField;
     </script>
 
-
     <script>
         function updateUserGroupText() {
             var dropdown = document.getElementById("ddlUserGroup");
@@ -533,7 +610,6 @@
         }
     </script>
 
-
     <script>
         // Function to get the current date and time in a formatted string
         function getCurrentDateTime() {
@@ -551,185 +627,155 @@
         document.getElementById('Country').value = getCurrentDateTime();
     </script>
 
-        <script>
-            // JavaScript code to display data in the modal
-            var browseButton = document.getElementById('browseButton');
-            var modal = document.getElementById('myModal');
-            var closeModalButton = document.getElementById('closeModal');
-            var dataBody = document.getElementById('<%= GridView1.ClientID %>');
-            var selectedRow = null;
 
-            // Input fields
-            var txtCodeInput = document.getElementById('txtCode');
-            var txtTeleInput = document.getElementById('txtTele');
-            var txtmobileInput = document.getElementById('txtmobile');
-            var txtaddress1Input = document.getElementById('txtAddress1');
-            var txtaddress2Input = document.getElementById('txtAddress2');
-            var txtaddress3Input = document.getElementById('txtAddress3');
-            var txtcontryInput = document.getElementById('txtcountry');
-            var txtemailInput = document.getElementById('txtemail');
-            var txtcreditlimitInput = document.getElementById('txtcreditlimit');
-            var txtuserStatusInput = document.getElementById('txtUserStatus');
-            // Function to handle row selection and highlight
-            function selectRow(row, rowData) {
-                debugger;
-                if (selectedRow) {
-                    selectedRow.classList.remove('selected-row');
-                }
-                row.classList.add('selected-row');
-                selectedRow = row;
-                //closeModelButton.click();
-                // Populate the input fields with the selected row's data
-                var cells = row.cells;
-                txtCodeInput.value = cells[0].textContent;
-                txtTeleInput.value = cells[1].textContent;
-                txtmobileInput.value = cells[2].textContent;
-                txtaddress1Input.value = cells[3].textContent;
-                txtaddress2Input.value = cells[4].textContent;
-                txtaddress3Input.value = cells[5].textContent;
-                txtcontryInput.value = cells[6].textContent;
-                txtemailInput.value = cells[7].textContent;
-                txtcreditlimitInput.value = cells[8].textContent;
-                txtuserStatusInput.value = cells[9].textContent;
-            }
 
-            browseButton.addEventListener('click', function () {
-                // Display the modal when the button is clicked
-                modal.style.display = 'block';
-                // Load data when the modal is opened
-                loadModalData();
-            });
+    
+    <!--
 
-            closeModalButton.addEventListener('click', function () {
-                // Close the modal when the "Close" button is clicked
-                //dataBody.innerHTML = ''; // Clear the table content
-                modal.style.display = 'none';
-            });
+    <script>
+        function saveOrUpdate() {
+            // Check the hidden field to determine if data has been saved
+            var dataSaved = document.getElementById('<%= hdnDataSaved.ClientID %>').value === 'true';
 
-            window.addEventListener('click', function (event) {
-                if (event.target == modal) {
-                    // Close the modal if the user clicks outside the modal content
-                    //dataBody.innerHTML = '';
-                    modal.style.display = 'none';
-                }
-            });
-
-            dataBody.addEventListener('click', function (event) {
-                var target = event.target;
-                if (target.tagName === 'TD') {
-                    var row = target.parentElement;
-                    selectRow(row);
-                }
-            });
-
-            function loadModalData() {
-                // Add code here to load data into the modal (e.g., from the GridView)
-                // Make an AJAX request to fetch data and populate the modal
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        // Parse the response and populate the modal
-                        var data = JSON.parse(xmlhttp.responseText);
-                       // Implement code to populate the modal with data
-                    }
+            if (dataSaved) {
+                // Data has been saved, change button to "Update"
+                document.getElementById('btnSave').innerText = 'Update';
+                document.getElementById('btnSave').onclick = function () {
+                    // Call a JavaScript function to handle the "Update" behavior
+                    updateData();
                 };
-
-                // Replace 'GetDataUrl' with the URL to fetch data from the server
-                xmlhttp.open('GET', 'GetDataUrl', true);
-                xmlhttp.send();
+            } else {
+                // Data has not been saved, change button to "Save"
+                document.getElementById('btnSave').innerText = 'Save';
+                document.getElementById('btnSave').onclick = function () {
+                    // Call a JavaScript function to handle the "Save" behavior
+                    saveData();
+                };
             }
+        }
 
-            $(document).ready(function () {
-                $("#closeModal").click(function () {
-                    $("#myModal").modal("hide");
-                });
-            });
+        function saveData() {
+            // Implement the logic to save data using AJAX or other means
+            // ...
 
-        </script>
+            // After saving, update the UI
+            document.getElementById('btnSave').innerText = 'Update';
+            document.getElementById('<%= hdnDataSaved.ClientID %>').value = 'true';
 
-        <script>
+        // Display a message or handle UI changes
+        // ...
+    }
 
-            // Function to format a number to have two digits (e.g., 1 => "01")
+    function updateData() {
+        // Assume you have an ID for the selected record, replace 'SelectedRecordId' with the actual ID
+        var selectedRecordId = /* logic to get the selected record ID */;
 
-            function formatNumber(number) {
+        // Implement the logic to update data using AJAX or other means
+        // ...
+        $.ajax({
+            type: "POST",
+            url: "UpdateDataUrl", // Replace with the actual URL to update data
+            data: { recordId: selectedRecordId }, // Include the ID of the selected record
+            success: function (response) {
+                // Display a message or handle UI changes
+                // ...
 
-                return number < 10 ? '0' + number : number;
-
+                // If update is successful, you might want to reset the modal and UI
+                document.getElementById('btnSave').innerText = 'Save';
+                document.getElementById('<%= hdnDataSaved.ClientID %>').value = 'false';
+                // Clear input fields, reset the modal, etc.
+            },
+            error: function (error) {
+                // Handle errors
+                console.log(error);
             }
+        });
+        }
+    </script>
 
 
+    -->
 
-            // Function to get the current local date and time with AM/PM
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            checkSavedData(); // Check data status on page load
+        });
 
-            function getCurrentDateTime() {
+        function checkSavedData() {
+            // Check the hidden field to determine if data has been saved
+            var dataSaved = document.getElementById('<%= hdnDataSaved.ClientID %>').value === 'true';
 
-                const now = new Date();
-
-                const year = now.getFullYear();
-
-                const month = formatNumber(now.getMonth() + 1); // Months are 0-based
-
-                const day = formatNumber(now.getDate());
-
-                const hours = formatNumber(now.getHours());
-
-                const ampm = hours >= 12 ? 'PM' : 'AM'; // Determine AM or PM
-
-                const twelveHour = hours > 12 ? hours - 12 : hours; // Convert to 12-hour format
-
-                const minutes = formatNumber(now.getMinutes());
-
-                const seconds = formatNumber(now.getSeconds());
-
-
-
-                // Format the date and time as YYYY-MM-DD hh:mm:ss AM/PM
-
-                return `${year}-${month}-${day} ${twelveHour}:${minutes}:${seconds} ${ampm}`;
-
+            if (dataSaved) {
+                // Data has been saved, change button to "Update"
+                document.getElementById('btnSave').innerText = 'Update';
+                document.getElementById('btnSave').onclick = function () {
+                    // Call a JavaScript function to handle the "Update" behavior
+                    updateData();
+                };
+            } else {
+                // Data has not been saved, change button to "Save"
+                document.getElementById('btnSave').innerText = 'Save';
+                document.getElementById('btnSave').onclick = function () {
+                    // Call a JavaScript function to handle the "Save" behavior
+                    saveData();
+                };
             }
+        }
 
+        function saveData() {
+            // Implement the logic to save data using AJAX or other means
+            // ...
 
+            // After saving, update the UI
+            document.getElementById('btnSave').innerText = 'Update';
+            document.getElementById('<%= hdnDataSaved.ClientID %>').value = 'true';
 
-            // Function to set the date input field with the current date and time
+        // Display a message or handle UI changes
+        // ...
+    }
 
-            function setDateTimeField() {
+    function updateData() {
+        // Assume you have an ID for the selected record, replace 'SelectedRecordId' with the actual ID
+        var selectedRecordId = /* logic to get the selected record ID */;
 
-                const dateTime = getCurrentDateTime();
+        // Implement the logic to update data using AJAX or other means
+        // ...
+        $.ajax({
+            type: "POST",
+            url: "UpdateDataUrl", // Replace with the actual URL to update data
+            data: { recordId: selectedRecordId }, // Include the ID of the selected record
+            success: function (response) {
+                // Display a message or handle UI changes
+                // ...
 
-                const dateField = document.getElementById('txtDate');
-
-                dateField.value = dateTime;
-
+                // If update is successful, you might want to reset the modal and UI
+                document.getElementById('btnSave').innerText = 'Save';
+                document.getElementById('<%= hdnDataSaved.ClientID %>').value = 'false';
+                // Clear input fields, reset the modal, etc.
+            },
+            error: function (error) {
+                // Handle errors
+                console.log(error);
             }
+        });
+        }
+
+    // ... Rest of your existing script ...
+    </script>
 
 
 
-            // Call the function to set the date input field when the page loads
-
-            window.onload = setDateTimeField;
-
-        </script>
-
-        </div>
-         
-
-        <br />
-        <br />
-       
-        </form>
-
-        <footer>
-                    <p>
-                        &copy; <%: DateTime.Now.Year %> - Panaderia Inventory
-                        Management system Powered By Cargills IT
-                    </p>
-                </footer>
 
 
-    </div>
 
-     
+
+
 
 </body>
 </html>
+
+
+
+
+

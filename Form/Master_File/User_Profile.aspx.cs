@@ -64,7 +64,7 @@ namespace Panaderia.Form.Master_File
         protected void LoadData()
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT Txn_Id, Company_ID, Branch_Id, Txn_Type FROM[MyBooks].[dbo].[TX_Inventory]";
+            string query = "SELECT txtUserID, txtUserName, txtDefaultStore, ddlDefaultStore, txtUserGroup, txtUserPassword, txtUserStatus FROM [Panaderia].[dbo].[MF_User_Profile]";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

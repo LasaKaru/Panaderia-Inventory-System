@@ -1,8 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sales_Order_Data_Load.aspx.cs" Inherits="Panaderia.Form.Inventory.Sales_Order_Data_Load" %>
 
-
-
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,7 +30,7 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    
        
         <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -267,58 +264,119 @@
 
 <br />
 
-     <div class="auto-style32">
-  <div class="table-row">
-      <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Company" type="text" id="company" class="input-field" /></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Country" type="text" id="Country" class="input-field" /></div>
-       <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Branch</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Branch" type="text" id="Branch" class="input-field" /></div>
-      <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Txn Typer</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="TxnType" type="text" id="TxnType" class="input-field" /></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Number</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Number" type="text" id="Number" class="input-field" /></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Code" type="text" id="Code" class="input-field" /></div>
 
+
+    <div class="auto-style32">
+        <div class="table-row">
+            <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;" >Company</div>
+            <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+                <input name="Company" type="text" id="company" class="input-field" value="1000" disabled></></div>
+            <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+            <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+                <input name="Country" type="text" id="Country" class="input-field" /></div>
+            <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Branch</div>
+            <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+                <input name="Branch" type="text" id="Branch" class="input-field" value="0001" disabled></></div>
+            <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Type</div>
+            <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+                <input name="TxnType" type="text" id="TxnType" class="input-field" value="SOCR" disabled></></div>
+            <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Number</div>
+            <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+                <input name="Number" type="text" id="Number" class="input-field" value="0" disabled></></div>
+            <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">User</div>
+            <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+                <input name="Code" type="text" id="Code" class="input-field" /></div>
+
+        </div>
     </div>
-</div>
 
     <br />
- <div class="row">
-  <div class="col-md-11">
-    <button type="button" id="btnSave" class="btn btn-primary pull-right" style="border-style: solid; width: 200px; background-color: #9999FF; color: #000000;">Load</button>
-    <br />
-                <br />
-          </div>
-     </div>
-    
-      
-    <div id="Panel1" style="margin: auto; height: 345px; background-color: #faeeee; width: 1055px;">
+ 
+
+
+
+
+    <form id="form2" runat="server">
+
+
+        <div>
+
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="txtStartDate" class="col-sm-2 col-form-label">Date From:</label>
+                    <div class="col-sm-3">
+                        <asp:TextBox ID="txtStartDate1" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <label for="txtEndDate" class="col-sm-1 col-form-label">Date To:</label>
+                    <div class="col-sm-2">
+                        <asp:TextBox ID="txtEndDate2" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div>
+                        <asp:Button ID="Button1" runat="server" Text="Load Sales Data" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();" />
+                        <asp:Button ID="Button2" runat="server" Text="Print" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();" />
+                        
+                        <button type="button" id="btnExit" class="btn btn-primary" style="width: 100px; onclick="window.location.href = '~/Dashboard.aspx';"">Exit</button>
+                    </div>
+                </div>
+                <tb>
+                </tb>
+                <div class="form-group row">
+                    <div id="Panel1" style="background-color: #faeeee; height: AUTO; width: AUTO;">
+                        <br />
+                        <asp:GridView ID="GridView2" runat="server">
+                            <HeaderStyle Font-Size="9pt" />
+                        </asp:GridView>
+
+                        <br />
+                        <asp:Button ID="btnDownloadPDF" runat="server" Text="Download PDF" CssClass="btn btn-primary" OnClick="btnDownloadPDF_Click" Style="display: none;" />
+                    </div>
+
+                    <!-- Display the generated report here -->
+                    <div id="reportContainer" runat="server" class="mt-3">
+                        <!-- The report content will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
         
-    <table id="GridView1" style="font-size: small; color: #666666;" class="auto-style326">
-        <thead>
-            <tr>
-                <th>CompanyCode</th>
-                <th>Location</th>
-                <th>Cus_No</th>
-                <th>Cus_Name</th>
-                <th>ReqDate</th>
-                <th>ReqNumber</th>
-                <th class="auto-style34">TAX</th>
-                <th>Amount</th>
-                <th>CustomerInfo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Add your data rows here using <tr> and <td> elements -->
-        </tbody>
-    </table>
-</div>
+
+
+
+
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+            document.getElementById("Button6").addEventListener("click", function () {
+                window.location.href = "../Dashboard.aspx";
+            });
+        </script>
+
+        <script>
+            document.getElementById("btnExit").addEventListener("click", function () {
+                window.location.href = "../../Dashboard.aspx";
+            });
+        </script>
+
+    <script>
+        function showDownloadButton() {
+            // Check if GridView has data
+            var gridView = document.getElementById('<%= GridView2.ClientID %>');
+                    if (gridView.rows.length > 1) { // Assuming the header row is always present
+                        document.getElementById('<%= btnDownloadPDF.ClientID %>').style.display = 'block';
+                    } else {
+                        document.getElementById('<%= btnDownloadPDF.ClientID %>').style.display = 'none';
+            }
+            return true;
+        }
+    </script>
    
     <div>
 
@@ -405,5 +463,6 @@
                     </p>
                 </footer>
     </div>
+    </form>
 </body>
 </html>

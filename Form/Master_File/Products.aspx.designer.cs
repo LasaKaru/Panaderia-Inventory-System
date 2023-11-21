@@ -276,22 +276,22 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.DropDownList ddlTaxCode;
 
         /// <summary>
-        /// txtactiveStatus control.
+        /// txtUserStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtactiveStatus;
+        protected global::System.Web.UI.WebControls.TextBox txtUserStatus;
 
         /// <summary>
-        /// ddlactiveStatus control.
+        /// ddlUserStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlactiveStatus;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUserStatus;
 
         /// <summary>
         /// myFile control.

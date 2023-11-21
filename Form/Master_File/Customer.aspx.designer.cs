@@ -276,15 +276,6 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.DropDownList ddlActiveStatus;
 
         /// <summary>
-        /// myFile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload myFile;
-
-        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

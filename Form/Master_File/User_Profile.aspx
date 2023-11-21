@@ -328,6 +328,7 @@
 
     <br />
 
+        
     
 
     <div class="container mt-5">
@@ -381,7 +382,7 @@
 </div>
 
                 <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">User Password</label>
+    <label for="txtUserPassword" class="col-sm-3 col-form-label">User Password</label>
     <div class="col-sm-9">
         <asp:TextBox type="text" id="txtUserPassword" runat="server" class="form-control"/>
     </div>
@@ -417,10 +418,8 @@
                     <div class="modal-content">
                         <div class="modal-content-container" style="overflow: auto">
                             <!-- Modal header with a close button -->
-                            <div class="modal-header">
-                                <br />
-                                <br />
-                                <h2>Current User List ;)< </h2>
+                            <div class="modal-header">                         
+                                <h2> System User List </h2>
                                 <button id="closeModal">Clear Selection</button>
                             </div>
                             <!-- GridView -->
@@ -471,11 +470,17 @@
         var dataBody = document.getElementById('<%= GridView1.ClientID %>');
         var selectedRow = null;
 
+
+      
+
         // Input fields
-        var transactionIDInput = document.getElementById('transactionID');
-        var companyIDInput = document.getElementById('companyID');
-        var branchIDInput = document.getElementById('branchID');
-        var transactionTypeInput = document.getElementById('transactionType');
+        var txtUserIDInput = document.getElementById('txtUserID');
+        var txtUserNameInput = document.getElementById('txtUserName');
+        var txtDefaultStoreInput = document.getElementById('txtDefaultStore');
+        //var ddlDefaultStoreInput = document.getElementById('ddlDefaultStore');
+        var txtUserGroupInput = document.getElementById('txtUserGroup');
+        var txtUserPasswordInput = document.getElementById('txtUserPassword');
+        var txtUserStatusInput = document.getElementById('txtUserStatus');
 
         // Function to handle row selection and highlight
         function selectRow(row, rowData) {
@@ -488,10 +493,14 @@
             //closeModelButton.click();
             // Populate the input fields with the selected row's data
             var cells = row.cells;
-            transactionIDInput.value = cells[0].textContent;
-            companyIDInput.value = cells[1].textContent;
-            branchIDInput.value = cells[2].textContent;
-            transactionTypeInput.value = cells[3].textContent;
+            txtUserIDInput.value = cells[0].textContent;
+            txtUserNameInput.value = cells[1].textContent;
+            txtDefaultStoreInput.value = cells[2].textContent;
+            //ddlDefaultStoreInput.value = cells[3].textContent;
+            txtUserGroupInput.value = cells[4].textContent;
+            txtUserPasswordInput.value = cells[5].textContent;
+            txtUserStatusInput.value = cells[6].textContent;
+
         }
 
         browseButton.addEventListener('click', function () {

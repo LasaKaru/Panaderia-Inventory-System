@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Address_Book.aspx.cs" Inherits="Panaderia.Form.Master_File.Address_Book" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Address_Book.aspx.cs" Inherits="Panaderia.Form.Master_File.Address_Book" %>
 
 
 <!DOCTYPE html>
@@ -311,6 +311,14 @@
 
     <br />
 
+        <div class="row">
+            <div class="col-md-4 alignSuccessMessage">
+            <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
+                <asp:Label ID="lblShowMessage" runat="server" Visible="true"></asp:Label>
+            </div>
+                </div>
+        </div>
+
     <div class="container mt-5">
         <div class="bordere">
         <div class="row">
@@ -318,7 +326,7 @@
                 
 
                 <div class="form-group row">
-    <label for="txtUserGroup" class="col-sm-3 col-form-label">Code</label>
+    <label for="txtCode" class="col-sm-3 col-form-label">Code</label>
     <div class="col-sm-5">
         <asp:TextBox type="text" runat="server" id="txtCode" class="form-control" />
     </div>
@@ -338,13 +346,13 @@
                 <div class="form-group row">
     <label for="txtFullName" class="col-sm-3 col-form-label">Full Name</label>
     <div class="col-sm-9">
-        <asp:textbox type="text" runat="server" id="txtFulltName" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtFullName" class="form-control"/>
     </div>
 </div>
 
 
                     <div class="form-group row">
-    <label for="txtShortName" class="col-sm-3 col-form-label">Address Line 1 </label>
+    <label for="txtAddress1" class="col-sm-3 col-form-label">Address Line 1 </label>
     <div class="col-sm-9">
         <asp:textbox type="text" runat="server" id="txtAddress1" class="form-control"/>
     </div>
@@ -352,7 +360,7 @@
 
 
                 <div class="form-group row">
-    <label for="txtFullName" class="col-sm-3 col-form-label">Address Line 2</label>
+    <label for="txtAddress2" class="col-sm-3 col-form-label">Address Line 2</label>
     <div class="col-sm-9">
         <asp:textbox type="text" runat="server" id="txtAddress2" class="form-control"/>
     </div>
@@ -360,66 +368,66 @@
 
 
                 <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">City / Region</label>
+    <label for="txtcity" class="col-sm-3 col-form-label">City / Region</label>
     <div class="col-sm-5">
-        <asp:textbox type="text" runat="server" id="txtecity" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtcity" class="form-control"/>
     </div>
 </div>
 
                     <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">Country</label>
+    <label for="txtCountry" class="col-sm-3 col-form-label">Country</label>
     <div class="col-sm-5">
-        <asp:textbox type="text" runat="server" id="txteCountry" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtCountry" class="form-control"/>
     </div>
 </div>
 
 
         <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">Telephone</label>
+    <label for="txtTelephone" class="col-sm-3 col-form-label">Telephone</label>
     <div class="col-sm-5">
         <asp:textbox type="text" runat="server" id="txtTelephone" class="form-control"/>
     </div>
 </div>
 
                     <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">Fax</label>
+    <label for="txtFax" class="col-sm-3 col-form-label">Fax</label>
     <div class="col-sm-5">
-        <asp:textbox type="text" runat="server" id="txteFax" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtFax" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">Mobile</label>
+    <label for="txtMobile" class="col-sm-3 col-form-label">Mobile</label>
     <div class="col-sm-5">
-        <asp:textbox type="text" runat="server" id="txteMobile" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtMobile" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">Email</label>
+    <label for="txtEmail" class="col-sm-3 col-form-label">Email</label>
     <div class="col-sm-9">
-        <asp:textbox type="text" runat="server" id="txteEmail" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtEmail" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">Contact Person</label>
+    <label for="txtContact" class="col-sm-3 col-form-label">Contact Person</label>
     <div class="col-sm-9">
-        <asp:textbox type="text" runat="server" id="txteContact" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtContact" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">Contact Details</label>
+    <label for="txtDetails" class="col-sm-3 col-form-label">Contact Details</label>
     <div class="col-sm-5">
-        <asp:textbox type="text" runat="server" id="txteDetails" class="form-control"/>
+        <asp:textbox type="text" runat="server" id="txtDetails" class="form-control"/>
     </div>
 </div>
 
                 <div class="form-group row">
-    <label for="txtUserName" class="col-sm-3 col-form-label">Notes</label>
+    <label for="txtNotes" class="col-sm-3 col-form-label">Notes</label>
     <div class="col-sm-9">
-        <input type="text" id="txteNotes" class="form-control"/>
+        <input type="text" id="txtNotes" class="form-control"/>
     </div>
 </div>   
 
@@ -445,17 +453,15 @@
             <div class="col-md-6">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                <button type="button" id="btnSave" class="btn btn-primary" style="width: 100px;">Save</button>
-                <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;">Browse</button>
+                <asp:HiddenField ID="hdnDataSaved" runat="server" />
+                <button type="button" id="btnSave" class="btn btn-primary" style="width: 100px;" onclick="saveOrUpdate()">Save</button>
+                <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;" onclick="saveOrUpdate()">Browse</button>
 
                  <div id="myModal" class="modal">
                     <div class="modal-content">
                         <div class="modal-content-container" style="overflow: auto">
                             <!-- Modal header with a close button -->
                             <div class="modal-header">
-                                <br />
-                                <br />
                                 <h2>AddressBook List ;)< </h2>
                                 <button id="closeModal">Clear Selection</button>
                             </div>
@@ -507,10 +513,21 @@
             var selectedRow = null;
 
             // Input fields
-            var transactionIDInput = document.getElementById('transactionID');
-            var companyIDInput = document.getElementById('companyID');
-            var branchIDInput = document.getElementById('branchID');
-            var transactionTypeInput = document.getElementById('transactionType');
+            var txtCodeInput = document.getElementById('txtCode');
+            var txtShortNameInput = document.getElementById('txtShortName');
+            var txtFullNameInput = document.getElementById('txtFullName');
+            var txtAddress1Input = document.getElementById('txtAddress1');
+            var txtAddress2Input = document.getElementById('txtAddress2');
+            var txtcityInput = document.getElementById('txtcity');
+            var txtCountryInput = document.getElementById('txtCountry');
+            var txtTelephoneInput = document.getElementById('txtTelephone');
+            var txtFaxInput = document.getElementById('txtFax');
+            var txtMobileInput = document.getElementById('txtMobile');
+            var txtEmailInput = document.getElementById('txtEmail');
+            var txtContactInput = document.getElementById('txtContact');
+            var txtDetailsInput = document.getElementById('txtDetails');
+            var txtNotesInput = document.getElementById('txtNotes');
+            var txtUserStatusInput = document.getElementById('txtUserStatus');
 
             // Function to handle row selection and highlight
             function selectRow(row, rowData) {
@@ -523,10 +540,21 @@
                 //closeModelButton.click();
                 // Populate the input fields with the selected row's data
                 var cells = row.cells;
-                transactionIDInput.value = cells[0].textContent;
-                companyIDInput.value = cells[1].textContent;
-                branchIDInput.value = cells[2].textContent;
-                transactionTypeInput.value = cells[3].textContent;
+                txtCodeInput.value = cells[0].textContent;
+                txtShortNameInput.value = cells[1].textContent;
+                txtFullNameInput.value = cells[2].textContent;
+                txtAddress1Input.value = cells[3].textContent;
+                txtAddress2Input.value = cells[4].textContent;
+                txtcityInput.value = cells[5].textContent;
+                txtCountryInput.value = cells[6].textContent;
+                txtTelephoneInput.value = cells[7].textContent;
+                txtFaxInput.value = cells[8].textContent;
+                txtMobileInput.value = cells[9].textContent;
+                txtEmailInput.value = cells[10].textContent;
+                txtContactInput.value = cells[11].textContent;
+                txtDetailsInput.value = cells[12].textContent;
+                txtNotesInput.value = cells[13].textContent;
+                txtUserStatusInput.value = cells[13].textContent;
             }
 
             browseButton.addEventListener('click', function () {
@@ -656,5 +684,3 @@
     </script>
 </body>
 </html>
-
-

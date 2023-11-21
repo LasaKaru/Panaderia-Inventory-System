@@ -891,12 +891,13 @@
             var selectedRow = null;
 
             // Input fields
-            var txtCodeInput = document.getElementById('txtCode');
-            var txtnameInput = document.getElementById(' txtname');
-            var txtadd1Input = document.getElementById(' txtadd1');
-            var txtadd2Input = document.getElementById(' txtadd2');
-            var txtadd3Input = document.getElementById(' txtadd3');
-            var txttelenput = document.getElementById(' txttele');
+            var txtcodeInput = document.getElementById('txtcode');
+            var txtnameInput = document.getElementById('txtname');
+            var txtadd1Input = document.getElementById('txtadd1');
+            var txtadd2Input = document.getElementById('txtadd2');
+            var txtadd3Input = document.getElementById('txtadd3');
+            var txttelenput = document.getElementById('txttele');
+
 
             // Function to handle row selection and highlight
             function selectRow(row, rowData) {
@@ -910,7 +911,7 @@
                 //closeModelButton.click();
                 // Populate the input fields with the selected row's data
                 var cells = row.cells;
-                txtCodeInput.value = cells[0].textContent;
+                txtcodeInput.value = cells[0].textContent;
                 txtnameInput.value = cells[1].textContent;
                 txtadd1Input.value = cells[2].textContent;
                 txtadd2Input.value = cells[3].textContent;

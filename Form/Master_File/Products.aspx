@@ -627,7 +627,7 @@
                 <br />
 
  
-
+                <!--
                  <div class="form-group row">
 
                     <label for="txtTaxCode" class="col-sm-4 col-form-label">Tax Code</label>
@@ -653,7 +653,7 @@
                     </div>
 
                 </div>
-
+                -->
  
 
                 <div class="form-group row">
@@ -662,13 +662,13 @@
 
                     <div class="col-sm-2">
 
-                        <asp:TextBox ID="txtactiveStatus" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+                        <asp:TextBox ID="txtUserStatus" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
 
                     </div>                  
 
                     <div class="col-sm-6">                       
 
-                         <asp:DropDownList ID="ddlactiveStatus" runat="server" onchange="updateUserStatusText()" Width="100px" CssClass="form-control">
+                         <asp:DropDownList ID="ddlUserStatus" runat="server" onchange="updateUserStatusText()" Width="100px" CssClass="form-control">
 
                              <asp:ListItem Text="Active" Value="A"></asp:ListItem>
 
@@ -730,9 +730,9 @@
 
                             <div class="modal-header">
 
-                                <h2>Customer Details </h2>
+                                <h2>Product Details </h2>
 
-                                <button id="closeModal">Clear Selection</button>
+                                <button id="closeModal">* Click outside to Close</button>
 
                             </div>
 
@@ -808,6 +808,11 @@
 
             var txtUOMInput = document.getElementById('txtUOM');
 
+            var txtCate1Input = document.getElementById('txtCate1');
+            var txtCate2Input = document.getElementById('txtCate2');
+            var txtCate3Input = document.getElementById('txtCate3');
+            var txtCate4Input = document.getElementById('txtCate4');
+
             var txtSTDCostPriceInput = document.getElementById('txtSTDCostPrice');
 
             var txtSTDSellingPriceInput = document.getElementById('txtSTDSellingPrice');
@@ -817,7 +822,8 @@
             var txtNBTInput = document.getElementById('txtNBT');
 
             var txtVATInput = document.getElementById('txtVAT');
-
+            
+            var txtUserStatus = document.getElementById('txtUserStatus');
 
 
             // Function to handle row selection and highlight
@@ -856,15 +862,22 @@
 
                 txtUOMInput.value = cells[5].textContent;
 
-                txtSTDCostPriceInput.value = cells[6].textContent;
+                txtCate1Input.value = cells[6].textContent;
+                txtCate2Input.value = cells[7].textContent;
+                txtCate3Input.value = cells[8].textContent;
+                txtCate4Input.value = cells[9].textContent;
 
-                txtSTDSellingPriceInput.value = cells[7].textContent;
+                txtSTDCostPriceInput.value = cells[10].textContent;
 
-                txtMaximumMarkupInput.value = cells[8].textContent;
+                txtSTDSellingPriceInput.value = cells[11].textContent;
 
-                txtNBTInput.value = cells[9].textContent;
+                txtMaximumMarkupInput.value = cells[12].textContent;
 
-                txtVATInput.value = cells[10].textContent;
+                txtNBTInput.value = cells[13].textContent;
+
+                txtVATInput.value = cells[14].textContent;
+                
+                txtUserStatus.value = cells[15].textContent;
 
             }
 
@@ -1086,11 +1099,11 @@
 
         function updateUserStatusText() {
 
-            var dropdown = document.getElementById("ddlactiveStatus");
+            var dropdown = document.getElementById("ddlUserStatus");
 
             var selectedText = dropdown.options[dropdown.selectedIndex].text;
 
-            document.getElementById("txtactiveStatus").value = selectedText;
+            document.getElementById("txtUserStatus").value = selectedText;
 
         }
 

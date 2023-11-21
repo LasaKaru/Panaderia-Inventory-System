@@ -136,7 +136,7 @@ namespace Panaderia.Form.Master_File
         protected void LoadData()
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT Code, SupplierName, AddressLine1,AddressLine2,AddressLine3,Country,Telephone FROM [Panaderia].[dbo].[MF_Supplier_Testing]";
+            string query = "SELECT Code, SupplierName, AddressLine1,AddressLine2,AddressLine3,Country,Telephone, Fax, Mobile, ContactPerson1 , ContactDetails1, ActiveStatus FROM [Panaderia].[dbo].[MF_Supplier_Testing]";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

@@ -474,193 +474,91 @@
 
 <br />
 
-    <form id="form1" runat="server">
+   <form id="form1" runat="server">
 
-        <div class="container mt-5">
+        <div>
+        
+            <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            
+                                            
+        </div>
+    </div>
+             
+                <div class="form-group row">
+        <label for="txtStartDate" class="col-sm-2 col-form-label">Date From:</label>
+        <div class="col-sm-3">
+            <asp:TextBox ID="txtStartDate1" runat="server" TextMode="Date" CssClass="form-control" ></asp:TextBox>
+        </div>
+        <label for="txtEndDate" class="col-sm-1 col-form-label">Date To:</label>
+        <div class="col-sm-2">
+            <asp:TextBox ID="txtEndDate2" runat="server" TextMode="Date" CssClass="form-control" ></asp:TextBox>
+        </div>     
 
-            <div class="row">
-
-                <div class="col-md-6">
-
+        <div>
+                    <asp:Button ID="Button1" runat="server" Text="Load" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
+            <asp:Button ID="Button2" runat="server" Text="Print" OnClick="btn_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
+            <asp:Button ID="Button6" runat="server" Text="Exit " OnClick="btnExit_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
                 </div>
 
-            </div>
 
- 
+    </div>                   
+    <hr />
+                <tb>
 
-            <div class="form-group row">
+                </tb>
+                 <div class="form-group row">
 
-                <label for="txtStartDate" class="col-sm-2 col-form-label">Date From:</label>
+                   <div id="Panel1" style="background-color: #faeeee; height: AUTO; width:AUTO;">
+                       <br />
+                       <asp:GridView ID="GridView2" runat="server"><HeaderStyle Font-Size="9pt" />
+        </asp:GridView>
+                       
+                       <br />
+                       <asp:Button ID="btnDownloadPDF" runat="server" Text="Download PDF" CssClass="btn btn-primary" OnClick="btnDownloadPDF_Click" style="display: none;" />        
+                       </div>
 
-                <div class="col-sm-3">
+    <!-- Display the generated report here -->
+    <div id="reportContainer" runat="server" class="mt-3">
+        <!-- The report content will be dynamically inserted here -->
+    </div>
+</div>
+        </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div> 
+        
 
-                    <asp:TextBox ID="txtStartDate1" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
-
-                </div>
-
-                <label for="txtEndDate" class="col-sm-1 col-form-label">Date To:</label>
-
-                <div class="col-sm-3">
-
-                    <asp:TextBox ID="txtEndDate2" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
-
-                </div>
-
-                <div>
-
-                    <asp:Button ID="Button1" runat="server" Text="Load" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
-
-                </div>
-
-            </div>
-
-            <hr />
-
-           <br />
-
-            <div class="form-group row">
-
-                    <div id="Panel1" style="background-color: #faeeee;" class="auto-style325">
-
-                        <table id="GridView1" class="auto-style323">
-
-                            <thead>
-
-                                <tr>
-
-                                    <th class="auto-style324">Branch</th>
-
-                                    <th class="auto-style324">Date</th>
-
-                                    <th class="auto-style324">Type</th>
-
-                                    <th class="auto-style324">Num</th>
-
-                                    <th class="auto-style324">Line</th>
-
-                                    <th class="auto-style324">Acc_No1</th>
-
-                                    <th class="auto-style324">Side 1</th>
-
-                                    <th class="auto-style324">Acc_No 2</th>
-
-                                    <th class="auto-style324">Side 2</th>
-
-                                    <th class="auto-style324">Sub_Acc</th>
-
-                                    <th class="auto-style324">Amount</th>
-
-                                    <th class="auto-style324">Adjustment</th>
-
-                                    <th class="auto-style324">Net_Amount</th>
-
-                                    <th class="auto-style324">Referance 1</th>
-
-                                    <th class="auto-style324">Referance 2</th>
-
-                                    <th class="auto-style324">Referance 3</th>
-
-                                    <th class="auto-style324">Posted</th>
-
-                                </tr>
-
-                            </thead>
-
-                            <tbody>
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-
-                </div>
-
-                <!-- Display the generated report here -->
-
-                <div id="reportContainer" runat="server" class="mt-3">
-
-                    <!-- The report content will be dynamically inserted here -->
-
-                </div>
-
-            </div>
+        <script>
+                function showDownloadButton() {
+                    // Check if GridView has data
+                    var gridView = document.getElementById('<%= GridView2.ClientID %>');
+                    if (gridView.rows.length > 1) { // Assuming the header row is always present
+                        document.getElementById('<%= btnDownloadPDF.ClientID %>').style.display = 'block';
+                    } else {
+                        document.getElementById('<%= btnDownloadPDF.ClientID %>').style.display = 'none';
+                    }
+                    return true;
+                }
+        </script>
 
     
-
-        <div class="form-group row">
-
- 
-
-                    <label for="txttotal" class="col-sm-3 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:16px></label>
-
-                    <div class="col-sm-50">                      
-
-                        <input type="text" id="country" name="country" value="Total" readonly style="width:130px"  >  
-
-                     <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:16px></label>
-
-                        <input type="text" id="country" name="country" value="0.00" readonly style="width:130px"  >
-
-                    </div>
-
-                </div>       
-
-    <div class="form-group row">
-
-     <div class="row">
-
-            <div class="col-md-6">
-
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                <button type="button" id="btnBrowse" class="btn btn-secondary" style="border-color: #000000; border-style: inset; width: 108px; background-color: #337ab7;">Print</button>
-
-                &nbsp;&nbsp;
-
-                <button type="button" id="btnExit" class="btn btn-danger" style="border-color: #000000; border-style: inset; width: 108px; color: #000000; background-color: #337ab7;">Exit</button>                       
-
-            </div>
-
-        </div>
-
-    </div>
-
-    </form>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <div>       
-
-    </div>
-
-     <hr />
-
      
 
     <footer>
-
         <p>
-
             <center>
-
             &copy; <%: DateTime.Now.Year %> - Panaderia Inventory
 
                         Management system Powered By Cargills IT
-
                 </center>
-
         </p>
-
-    </footer>
-
-      
+    </footer>   
+    </div>
+    </form>
 
 </body>
 

@@ -18,6 +18,12 @@
         <!--Common CSS File -->
     <link rel="stylesheet" href="../../Content/Navigation.css" media="screen" />
     <link rel="stylesheet" href="../../Content/Common.css" media="screen" />
+        <style type="text/css">
+            .auto-style327 {
+                height: AUTO;
+                width: 1120px;
+            }
+        </style>
     </head>
 
     <body>
@@ -595,221 +601,130 @@
         <br />
 
         <form id="form1" runat="server">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-6"></div>
+
+            <div>
+
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="txtStartDate" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date From:</label>
+                        <div class="col-sm-2">
+                            <asp:TextBox ID="txtStartDate1" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <label for="txtEndDate" class="col-sm-1 col-form-label">Date To:</label>
+                        <div class="col-sm-2">
+                            <asp:TextBox ID="txtEndDate2" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                        </div>     
+
+                        <div>
+                            <asp:Button ID="Button1" runat="server" Text="  Load    " OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton(); " />
+                            <asp:Button ID="Button2" runat="server" Text="Print" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();" />
+                            <asp:Button ID="Button6" runat="server" Text="Exit" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();" />
+                        </div>
+
+
+                    </div>
+                    <hr />
+
+
+                    <tb>
+                    </tb>
+            <div class="form-group row">
+
+              <div id="Panel1" style="background-color: #faeeee; " height: AUTO; width:AUTO;">
+                  <br />
+                   <asp:GridView ID="GridView2" runat="server"><HeaderStyle Font-Size="9pt" />
+                   </asp:GridView>  
+                  </div>
+                    <br />
+                    <asp:Button ID="btnDownloadPDF" runat="server" Text="Download PDF" CssClass="btn btn-primary" OnClick="btnDownloadPDF_Click" Style="display: none;" />
                 </div>
 
-                <div class="form-group row">
-                    <label for="txtStartDate" class="col-sm-2 col-form-label"
-                        >Date From:</label
-                    >
 
-                    <div class="col-sm-3">
-                        <asp:TextBox
-                            ID="txtStartDate1"
-                            runat="server"
-                            TextMode="Date"
-                            CssClass="form-control"
-                        ></asp:TextBox>
-                    </div>
 
-                    <label for="txtEndDate" class="col-sm-1 col-form-label"
-                        >Date To:</label
-                    >
 
-                    <div class="col-sm-3">
-                        <asp:TextBox
-                            ID="txtEndDate2"
-                            runat="server"
-                            TextMode="Date"
-                            CssClass="form-control"
-                        ></asp:TextBox>
-                    </div>
-
-                    <div>
-                        <asp:Button
-                            ID="Button1"
-                            runat="server"
-                            Text="Load"
-                            OnClick="btnGenerateReport_Click"
-                            CssClass="btn btn-primary"
-                        />
-                    </div>
+            <div id="divColSm50" runat="server" class="col-sm-50">
+                  <div class="form-group row">
+                <div class="col-sm-50">
+                    <input type="text" id="cf" name="country" value="BALANCE C/F" readonly style="width: 130px"/>
+                    <input type="text" id="value1" name="country" value="0.00" readonly style="width: 130px" />
+                    <label for="txttotal" class="col-sm-6 col-form-label"style="border-width: thin; background-color: #FFFFFF": width:16px ></label>
+                    <input type="text"id="value2" name="country"value="0.00"readonly style="width: 130px" />
                 </div>
-
-                <hr />
-
-                <br />
-
-                <div class="form-group row">
-                    <div
-                        id="Panel1"
-                        style="background-color: #faeeee"
-                        class="auto-style325"
-                    >
-                        <table id="GridView1" class="auto-style323">
-                            <thead>
-                                <tr>
-                                    <th class="auto-style324">Date</th>
-
-                                    <th class="auto-style324">Branch</th>
-
-                                    <th class="auto-style324">Type</th>
-
-                                    <th class="auto-style324">Document</th>
-
-                                    <th class="auto-style324">Detail</th>
-
-                                    <th class="auto-style324">Doc No</th>
-
-                                    <th class="auto-style324">Line</th>
-
-                                    <th class="auto-style324">Side</th>
-
-                                    <th class="auto-style324">DR</th>
-
-                                    <th class="auto-style324">CR</th>
-                                </tr>
-                            </thead>
-
-                            <tbody></tbody>
-                        </table>
-                    </div>
+                <div class="col-sm-50">
+                    <input
+                        type="text" id="cf2" name="country" value="     " readonly style="width: 130px" />
+                    <input
+                        type="text" id="value3" name="country" value="0.00" readonly style="width: 130px" />
+                    <label
+                        for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:16px></label>
+                    <input
+                        type="text" id="value4" name="country" value="0.00" readonly style="width: 130px"/>
                 </div>
+            </div>
+                      </div>
+
+
+
+
 
                 <!-- Display the generated report here -->
-
                 <div id="reportContainer" runat="server" class="mt-3">
                     <!-- The report content will be dynamically inserted here -->
                 </div>
             </div>
-
-            <div class="form-group row">
-                <div class="col-sm-50">
-                    <input
-                        type="text"
-                        id="country"
-                        name="country"
-                        value="BALANCE C/F"
-                        readonly
-                        style="width: 130px"
-                    />
-
-                    <input
-                        type="text"
-                        id="country"
-                        name="country"
-                        value="0.00"
-                        readonly
-                        style="width: 130px"
-                    />
-
-                    <label
-                        for="txttotal"
-                        class="col-sm-6 col-form-label"
-                        style="border-width: thin; background-color: #FFFFFF"
-                        :
-                        width:16px
-                    ></label>
-
-                    <input
-                        type="text"
-                        id="country"
-                        name="country"
-                        value="0.00"
-                        readonly
-                        style="width: 130px"
-                    />
-                </div>
-                <div class="col-sm-50">
-                    <input
-                        type="text"
-                        id="country"
-                        name="country"
-                        value="     "
-                        readonly
-                        style="width: 130px"
-                    />
-
-                    <input
-                        type="text"
-                        id="country"
-                        name="country"
-                        value="0.00"
-                        readonly
-                        style="width: 130px"
-                    />
-
-                    <label
-                        for="txttotal"
-                        class="col-sm-6 col-form-label"
-                        style="border-width: thin; background-color: #FFFFFF"
-                        :
-                        width:16px
-                    ></label>
-
-                    <input
-                        type="text"
-                        id="country"
-                        name="country"
-                        value="0.00"
-                        readonly
-                        style="width: 130px"
-                    />
-                </div>
             </div>
+            
+            
 
-            <div class="form-group row">
-                <div class="row">
-                    <div class="col-md-6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                        <button
-                            type="button"
-                            id="btnBrowse"
-                            class="btn btn-secondary"
-                            style="
-                                border-color: #000000;
-                                border-style: inset;
-                                width: 108px;
-                                background-color: #337ab7;
-                            "
-                        >
-                            Print
-                        </button>
-
-                        &nbsp;&nbsp;
-
-                        <button
-                            type="button"
-                            id="btnExit"
-                            class="btn btn-danger"
-                            style="
-                                border-color: #000000;
-                                border-style: inset;
-                                width: 108px;
-                                color: #000000;
-                                background-color: #337ab7;
-                            "
-                        >
-                            Exit
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
+        
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
 
-        <div></div>
+        <script>
+                function showDownloadButton() {
+                    // Check if GridView has data
+                    var gridView = document.getElementById('<%= GridView2.ClientID %>');
+                    if (gridView.rows.length > 1) { // Assuming the header row is always present
+                        document.getElementById('<%= btnDownloadPDF.ClientID %>').style.display = 'block';
+                    } else {
+                        document.getElementById('<%= btnDownloadPDF.ClientID %>').style.display = 'none';
+                    }
+                    return true;
+                }
+        </script>
 
-        <hr />
+           <script>
+               function showColSm50() {
+                   // Assume you have a variable or condition to check
+                   var showColSm50Condition = /* your condition to check */;
+
+                   // Get the server-side divColSm50 control
+                   var divColSm50 = document.getElementById('<%= divColSm50.ClientID %>');
+
+                   if (showColSm50Condition) {
+                       // If the condition is met, show the col-sm-50 class
+                       divColSm50.classList.add('col-sm-50');
+                   } else {
+                       // If not, hide or set another class
+                       divColSm50.classList.remove('col-sm-50');
+                   }
+
+                   // Return true or false based on your logic
+                   return showColSm50Condition;
+               }
+           </script>
+
+    <div>
+
+        
 
         <footer>
             <p>
@@ -819,5 +734,7 @@
                 </center>
             </p>
         </footer>
+        </div>
+            </form>
     </body>
 </html>

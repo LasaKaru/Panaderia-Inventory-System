@@ -31,6 +31,8 @@ namespace Panaderia.Form.Master_File
 
 
             {
+                // Initialize the hidden field value (data not saved)
+                hdnDataSaved.Value = "false";
                 // Call a method to retrieve the next available serial number
                 string nextSerialNumber = GetNextSerialNumberForUser(LoggedInUserId);
 
@@ -45,6 +47,61 @@ namespace Panaderia.Form.Master_File
                 LoadData();
             }
 
+            {
+                SaveOrUpdateUserData();
+            }
+
+            
+
+        }
+
+
+        private void SaveOrUpdateUserData()
+        {
+          // Check if the data needs to be saved or updated based on the hidden field value
+          bool dataSaved = hdnDataSaved.Value.ToLower() == "true";
+
+          // Replace the connection string and SQL query with your actual values
+             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string query;
+
+                if (dataSaved)
+               {
+                  // Update query
+                query = "UPDATE MF_Address_Book SET Date = @Date, User_Name = @User_Name, " +
+                "User_BranchCode = @User_BranchCode, User_Group = @User_Group, " +
+                "User_Password = @User_Password, User_Status = @User_Status " +
+                "WHERE SerialNumber = @SerialNumber";
+                 }
+                 else
+                 {
+                    // Insert query
+                query = "INSERT INTO MF_Address_Book (SerialNumber, Date, User, User_Name, " +
+                "User_BranchCode, User_Group, User_Password, User_Status) " +
+                "VALUES (@SerialNumber, @Date, @User, @User_Name, " +
+                "@User_BranchCode, @User_Group, @User_Password, @User_Status)";
+                  }
+
+                  using (SqlConnection connection = new SqlConnection(connectionString))
+                  {
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                              // Add parameters and set their values based on the data from your controls
+                              //command.Parameters.AddWithValue("@SerialNumber", SerialNumber.Text);
+                              //command.Parameters.AddWithValue("@Date", Date.Text);
+                              //command.Parameters.AddWithValue("@User", User.Text);
+                              //command.Parameters.AddWithValue("@User_Name", txtShortName.Text);
+                              
+
+                              //command.Parameters.AddWithValue("@User_Status", ddlUserStatus.SelectedValue);
+
+                              connection.Open();
+                              command.ExecuteNonQuery();
+                            }
+                  }
+
+           // Display a message or handle UI changes after saving or updating
+            Response.Write("Data saved or updated successfully!");
         }
 
         // Replace "LoggedInUserId" with the actual way you get the logged-in user's user_id.
@@ -65,7 +122,7 @@ namespace Panaderia.Form.Master_File
         protected void LoadData()
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT Txn_Id, Company_ID, Branch_Id, Txn_Type FROM[MyBooks].[dbo].[TX_Inventory]";
+            string query = "SELECT Code, ShortName, FullName, AddressLine1, AddressLine2, CityRegion, Country, Telephone, Fax, Mobile, Email, ContactPerson, ContactDetails, Notes, UserStatus FROM[Panaderia].[dbo].[MF_Address_Book]";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

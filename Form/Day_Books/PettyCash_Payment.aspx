@@ -267,11 +267,14 @@
 
        <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Branch</div>
 
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Branch" type="text" id="Branch" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <input name="Branch" type="text" id="Branch" class="input-field" /></div>
       <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Txn Type</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="TxnType" type="text" id="TxnType" class="input-field" placeholder="PCPayment"></></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <input name="TxnType" type="text" id="TxnType" class="input-field" placeholder="PCPayment"></></div>
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Number</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Number" type="text" id="Number" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <input name="Number" type="text" id="Number" class="input-field" /></div>
 
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
 
