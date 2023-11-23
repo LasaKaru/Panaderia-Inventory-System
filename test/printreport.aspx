@@ -1,38 +1,32 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Balance_Sheet.aspx.cs" Inherits="Panaderia.Form.Accounts.Balance_Sheet" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="printreport.aspx.cs" Inherits="Panaderia.test.printreport" %>
+
+
 
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Balance Sheet </title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Report </title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!--Common CSS File -->
-    <link rel="stylesheet" href="../../Content/Accounts.css" media="screen" />
-        
-    <style type="text/css">
-        .auto-style325 {
-            position: relative;
-            min-height: 1px;
-            float: left;
-            width: 50%;
-            left: 132px;
-            top: 5px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-    </style>
-        
+     <!--Common CSS File -->
+    <link rel="stylesheet" href="../../Content/Navigation.css" media="screen" />
+    <link rel="stylesheet" href="../../Content/Common.css" media="screen" />
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+        
+        <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,7 +37,7 @@
                 <img src="../../cargillstransparent.png" width="105" height="53" onclick="window.location.href = '../../Dashboard.aspx'"/>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">                    
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master Files</a>
                         <ul class="dropdown-menu">
@@ -55,7 +49,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventory</a>
+                        <a href="#"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">Inventory</a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Purchase</a></li>
                             <div id="sub-categories">
@@ -98,7 +94,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Views</a>
+                        <a href="#"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">Views</a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Purchase</a></li>
                             <div id="sub-categories">
@@ -126,14 +124,15 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports</a>
                         <ul class="dropdown-menu">
-                            <li><a href="../Reports/Report_Purchase.aspx">Purchase</>
-                            </li>
+                            <li><a href="../Reports/Report_Purchase.aspx">Purchase</></li>
                             <li><a href="../Reports/Report_Sales.aspx">Sales</a></li>
                             <li><a href="../Reports/Report_Analytics.aspx">Analytics</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Day Books</a>
+                        <a href="#"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">Day Books</a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Cash Book</a></li>
                             <div id="sub-categories">
@@ -194,9 +193,12 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts</a>
+                        <a href="#"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown">Accounts</a>
                         <ul class="dropdown-menu">
                             <li><a href="../Accounts/Cash_Book.aspx">Cash Book</a></li>
+
                             <li><a href="#">Journal</a></li>
                             <div id="sub-categories">
                                 <ul>
@@ -248,10 +250,14 @@
             </div>
         </div>
     </div>
+
     
-    <br />
-    <br />
-    <br />
+
+<br />
+<br />
+
+<br />
+
     </>
 
     <form id="form1" runat="server">
@@ -285,9 +291,6 @@
 
     </div>                   
     <hr />
-
-
-
                 <tb>
 
                 </tb>
@@ -303,62 +306,17 @@
                        </div>
 
     <!-- Display the generated report here -->
-    <div id="Div1" runat="server" class="mt-3">
+    <div id="reportContainer" runat="server" class="mt-3">
         <!-- The report content will be dynamically inserted here -->
     </div>
 </div>
         </div>
 
-
-                <div class="container mt-5">
-                    <div class="row">
-                </div>
-                <div class="form-group row">
-                    <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF" : width:15px></label>
-                    <input type="text" id="txttotal" class="auto-style326" style="width:100px" placeholder="Net Profit / Loss" readonly>
-                    <input type="text" id="txttotal" class="auto-style326" style="width:100px" readonly>
-                        <div class="auto-style325">
-                            <div class="form-group row">
-                                <div id="Panel1" style="background-color: #faeeee; " class="auto-style324">
-                                    <table id="GridView1" class="auto-style323">
-                                        <thead>
-                                            <tr>
-                                                <th>Class</th>
-                                                <th>Type</th>
-                                                <th>Sub Type</th>
-                                                <th>GL Code</th>
-                                                <th>Description</th>
-                                                <th>Side</th>
-                                                <th>a10</th>
-                                                <th>a11</th>
-                                                <th>a12</th>
-                                                <th>a13</th>
-                                            </tr>
-                                        </thead>
-                                </div>
-                                <tbody>
-                                </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" <div class="col-md-6"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <button type="button" id="btnExit" class="btn btn-danger" style="border-style: inset; width: 100px">Exit</button>
-            </div>
-        </div>
-        <!-- Display the generated report here -->
-        <div id="reportContainer" runat="server" class="mt-3">
-            <!-- The report content will be dynamically inserted here -->
-        </div>
-        </div>
-        
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script>
+ 
+            <script>
                 function showDownloadButton() {
                     // Check if GridView has data
                     var gridView = document.getElementById('<%= GridView2.ClientID %>');
@@ -369,22 +327,24 @@
                     }
                     return true;
                 }
-    </script>
+            </script>
+
+    <div>
+       
+        
+
+        <footer>
+            <p>
+                &copy; <%: DateTime.Now.Year %> - Panaderia Inventory
+    Management system Powered By Cargills IT
+            </p>
+        </footer>
+    </div>
+    </form>
 
     
 
-    <div>
-    </div>
-    <footer>
-        <p> &copy; <%: DateTime.Now.Year %> - Panaderia Inventory Management system Powered By Cargills IT </p>
-    </footer>
-    </form>
 
 </body>
-
 </html>
-
-
-
-
 

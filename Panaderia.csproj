@@ -604,6 +604,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="test\customercopy.aspx" />
+    <Content Include="test\printreport.aspx" />
     <Content Include="test\Supplier.aspx" />
     <Content Include="test\userprofileupdate.aspx" />
     <Content Include="UserControls\Navigation.ascx" />
@@ -982,6 +983,8 @@
     <Compile Include="Form\Inventory\Adjustment_Shortage.aspx.designer.cs">
       <DependentUpon>Adjustment_Shortage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Form\Inventory\clsCOMMON.cs" />
+    <Compile Include="Form\Inventory\DataHelper.cs" />
     <Compile Include="Form\Inventory\Pur_Goods_Receive.aspx.cs">
       <DependentUpon>Pur_Goods_Receive.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1175,6 +1178,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="iText\Kernel\Colors\ColorConstants.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -1199,6 +1203,13 @@
     </Compile>
     <Compile Include="test\customercopy.aspx.designer.cs">
       <DependentUpon>customercopy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\printreport.aspx.cs">
+      <DependentUpon>printreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\printreport.aspx.designer.cs">
+      <DependentUpon>printreport.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\Supplier.aspx.cs">
       <DependentUpon>Supplier.aspx</DependentUpon>

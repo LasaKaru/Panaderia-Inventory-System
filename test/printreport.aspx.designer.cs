@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Panaderia.Form.Accounts
+namespace Panaderia.test
 {
 
 
-    public partial class Balance_Sheet
+    public partial class printreport
     {
 
         /// <summary>
@@ -85,15 +85,6 @@ namespace Panaderia.Form.Accounts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDownloadPDF;
-
-        /// <summary>
-        /// Div1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
 
         /// <summary>
         /// reportContainer control.

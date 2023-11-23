@@ -21,10 +21,13 @@ using Table = iText.Layout.Element.Table;
 using iText.Kernel.Geom;
 using iText.Kernel.Font;
 using iText.IO.Font;
+using iText.Layout.Borders;
+using iText.Kernel.Colors;
 
-namespace Panaderia.Form.Accounts
+
+namespace Panaderia.test
 {
-    public partial class Balance_Sheet : System.Web.UI.Page
+    public partial class printreport : System.Web.UI.Page
     {
         private PdfReader writer;
         private DateTime startdate;
@@ -73,7 +76,6 @@ namespace Panaderia.Form.Accounts
 
           // Add more mappings as needed for other columns
         };
-
 
         protected void btnGenerateReport_Click(object sender, EventArgs e)
         {
@@ -131,8 +133,8 @@ namespace Panaderia.Form.Accounts
             }
         }
 
-        private void GeneratePDFReport(DataTable dataTable, DateTime startDate, DateTime endDate) //for get date on report
 
+        private void GeneratePDFReport(DataTable dataTable, DateTime startDate, DateTime endDate)
         {
             using (var stream = new MemoryStream())
             {
@@ -143,7 +145,7 @@ namespace Panaderia.Form.Accounts
                         var document = new Document(pdf);
 
                         // Set the page orientation to landscape
-                        PageSize pageSize = PageSize.A4.Rotate(); // Landscape orientation
+                        PageSize pageSize = PageSize.A4; // Landscape orientation
                         pdf.SetDefaultPageSize(pageSize);
 
                         // Add the image to the first page
@@ -159,8 +161,7 @@ namespace Panaderia.Form.Accounts
                             .SetFontSize(13);
                         document.Add(title);
 
-
-                        Paragraph title1 = new Paragraph("Sales Report")
+                        Paragraph title1 = new Paragraph("Purchase Order Report")
                             .SetTextAlignment(TextAlignment.CENTER)
                             .SetFontSize(9);
                         document.Add(title1);
@@ -168,14 +169,22 @@ namespace Panaderia.Form.Accounts
                         // Add Date From and Date To text
                         string dateRangeText = $"Date From: {startDate:dd/MM/yyyy} To: {endDate:dd/MM/yyyy}";
                         Paragraph dateRange = new Paragraph(dateRangeText)
-                           .SetTextAlignment(TextAlignment.CENTER)
+                            .SetTextAlignment(TextAlignment.CENTER)
                             .SetFontSize(9);
                         document.Add(dateRange);
 
+                        // Add company information
+                        Paragraph companyInfo = new Paragraph("Company Name: Your Company Name\nAddress: Your Company Address\nTelephone: Your Company Telephone")
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(9);
+                        document.Add(companyInfo);
 
-                        // Define the font size
-                        // Change this value to your desired font size
-                        // Add content to the document based on your dataTable
+                        // Add purchase order information
+                        Paragraph poInfo = new Paragraph("Bill Date: [Your Bill Date]\nSupplier Name: [Supplier Name]")
+                            .SetTextAlignment(TextAlignment.LEFT)
+                            .SetFontSize(9);
+                        document.Add(poInfo);
+
                         // Add a table for data from the database
                         float tableHeaderFontSize = 10;
                         float coloumDisplayNamesFontSize = 10;
@@ -183,7 +192,7 @@ namespace Panaderia.Form.Accounts
                         Table table = new Table(dataTable.Columns.Count);
                         table.SetWidth(UnitValue.CreatePercentValue(100));
 
-                        //specify the font name
+                        // Specify the font name
                         string fontName = "Helvetica";
 
                         PdfFont font = PdfFontFactory.CreateFont(fontName);
@@ -204,12 +213,7 @@ namespace Panaderia.Form.Accounts
                             Cell headerCell = new Cell().Add(new Paragraph(columnDisplayName));
                             headerCell.SetFontSize(12); // Set the font size for headers
                             table.AddHeaderCell(headerCell);
-
                         }
-                        //foreach (DataColumn column in dataTable.Columns)
-                        //  {
-                        //     table.AddHeaderCell(column.ColumnName);
-                        // }
 
                         foreach (DataRow row in dataTable.Rows)
                         {
@@ -225,12 +229,14 @@ namespace Panaderia.Form.Accounts
                         }
 
                         document.Add(table);
-                        // Example:
-                        // document.Add(new Paragraph("Transaction Report"));
-                        // foreach (DataRow row in dataTable.Rows)
-                        // {
-                        //     document.Add(new Paragraph(row["ColumnName"].ToString()));
-                        // }
+
+                        // Add total value with double underline
+                        Paragraph totalValue = new Paragraph("Total Value: [Your Total Value]")
+                            .SetTextAlignment(TextAlignment.RIGHT)
+                            .SetFontSize(13)
+                            .SetBorderBottom(new SolidBorder(ColorConstants.BLACK) );
+
+                        document.Add(totalValue);
                     }
                 }
 
@@ -238,6 +244,22 @@ namespace Panaderia.Form.Accounts
                 File.WriteAllBytes(Server.MapPath("~/Reports/SalesReport.pdf"), stream.ToArray());
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         protected void btnDownloadPDF_Click(object sender, EventArgs e)
         {
@@ -359,7 +381,8 @@ namespace Panaderia.Form.Accounts
 
             // Use the connection string and SQL query based on your actual database structure
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
-            string query = "SELECT * FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
+            //string query = "SELECT * FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
+            string query = "SELECT Txn_Type, Txn_Date, Item_No, Txn_Price, Txn_Qty_In FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -418,7 +441,7 @@ namespace Panaderia.Form.Accounts
 
             // Use the connection string and SQL query based on your actual database structure
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
-            string query = "SELECT * FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
+            string query = "SELECT Txn_Type, Txn_Date, Item_No, Txn_Price, Txn_Qty_In FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -461,7 +484,8 @@ namespace Panaderia.Form.Accounts
 
             // Use the connection string and SQL query based on your actual database structure
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
-            string query = "SELECT * FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
+            //string query = "SELECT * FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
+            string query = "SELECT Txn_Type, Txn_Date, Item_No, Txn_Price, Txn_Qty_In FROM dbo.TX_Inventory WHERE Txn_Date BETWEEN @StartDate AND @EndDate";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -555,9 +579,18 @@ namespace Panaderia.Form.Accounts
             GridView2.DataBind();
         }
 
-        protected void btnLoadReport_Click(object sender, EventArgs e)
-        {
 
-        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
