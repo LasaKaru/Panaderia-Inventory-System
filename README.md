@@ -24,9 +24,9 @@
 
 3.Run the project 
 
-- Dev Lasantha Karunarathne ;)
+<br/>
 
-<h3 align="left">Connect with me:</h3>
+<h3 align="left">Connect with me: Dev Lasantha Karunarathne ;) </h3>
 <p align="left">
 </p>
 
