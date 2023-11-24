@@ -12,7 +12,6 @@
 
 - 🔭 I’m currently working on [Panaderia inventory system](https://github.com/LasaKaru/Panaderia-Inventory-System)
 
-- 👯 I’m looking to collaborate on [Panaderia inventory system](https://github.com/LasaKaru/Panaderia-Inventory-System)
 
 - 📫 How to reach me **Lasa.Karu@yandex.com**
 
@@ -26,7 +25,7 @@
 
 <br/>
 
-<h3 align="left">Connect with me: Dev Lasantha Karunarathne ;) </h3>
+<h3 align="left"> Dev Lasantha Karunarathne ;) </h3>
 <p align="left">
 </p>
 
