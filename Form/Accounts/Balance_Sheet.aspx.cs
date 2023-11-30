@@ -90,11 +90,12 @@ namespace Panaderia.Form.Accounts
             }
             else if (sender == Button2)
             {
-                GenerateItemsReport(ref dataTable);
+               // GenerateItemsReport(ref dataTable);
             }
             else if (sender == Button6)
             {
-                GenerateSalesReturnReport(ref dataTable);
+                //GenerateSalesReturnReport(ref dataTable);
+                //Button6_click();
             }
 
             if (dataTable != null)
@@ -559,5 +560,13 @@ namespace Panaderia.Form.Accounts
         {
 
         }
-    }
+        
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Dashboard.aspx");
+
+        }
+
+    }  
 }

@@ -26,7 +26,7 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    
        
         <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -253,31 +253,37 @@
         </div>
     </div>
 
-    </form>
+   
 
 <br />
 <br />
 
 <br />
 
+     <form id="form2" runat="server">
      <div class="auto-style32">
-  <div class="table-row">
+   <div class="table-row">
       <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Company" type="text" id="company" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <asp:TextBox ID="company" runat="server" CssClass="input-field" OnTextChanged="company_TextChanged"></asp:TextBox></div>
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Country" type="text" id="Country" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <asp:TextBox ID="date" runat="server" CssClass="input-field"></asp:TextBox></div>
        <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Branch</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Branch" type="text" id="Branch" class="input-field" /></div>
-      <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Txn Typer</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="TxnType" type="text" id="TxnType" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <asp:TextBox ID="Branch" runat="server" CssClass="input-field" value="0001" ReadOnly="True" ></asp:TextBox></div>
+      <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Txn Type</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <asp:TextBox ID="TxnType" runat="server" CssClass="input-field"></asp:TextBox></div>
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Number</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Number" type="text" id="Number" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <asp:TextBox ID="Number" runat="server" CssClass="input-field"></asp:TextBox></div>
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Code" type="text" id="Code" class="input-field" /></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
+        <asp:TextBox ID="user" runat="server" CssClass="input-field"></asp:TextBox></div>
 
     </div>
 </div>
-
     <br />
 
 
@@ -287,157 +293,137 @@
 <!--Ganeesha Put Your Code Here-->
 
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-8">
-
-              
-
-                 <div class="form-group row">
-
-                    <label for="txtureferanceNo" class="col-sm-4 col-form-label">Referance No</label>
-
-                    <div class="col-sm-8">
-
-                        <input type="text" id="txtReferanceNo" class="form-control">
-
-                    </div>
-
-                </div>
-
- 
-
-                <div class="form-group row">
-
-                    <label for="txtComments" class="col-sm-4 col-form-label">Comments</label>
-
-                    <div class="col-sm-8">
-
-                        <input type="text" id="txtComments" class="form-control">
-
-                    </div>
-
-                </div>
-
-               
-
- 
-
-                <hr class="auto-style329" style="border-style: solid; color: #999999; background-color: #C0C0C0;" />
-
- 
-
-                <div class="form-group row">
-
-                    <table class="auto-style44">
-
-                            <tr>
-
-                                <td class="auto-style35">
-
-                                    <input type="text" id="TextBox1" style="width: 35px;">
-
-                                </td>
-
-                                <td class="auto-style36">
-
-                                    <input type="text" id="TextBox2" style="width: 16px;">
-
-                                </td>
-
-                                <td class="auto-style37">
-
-                                    <input type="text" id="TextBox3" style="width: 81px;">
-
-                                </td>
-
-                                <td class="auto-style38">
-
-                                    <input type="text" id="TextBox4" style="width: 211px;">
-
-                                </td>
-
-                                <td class="auto-style39">
-
-                                    <input type="text" id="TextBox5" style="width: 65px;">
-
-                                </td>                               
-
-                                <td class="auto-style39">
-
-                                    <input type="text" id="TextBox7" style="width: 65px;">
-
-                                </td>
-
-                                <td class="auto-style41">
-
-                                    <input type="text" id="TextBox8" style="width: 65px;">
-
-                                </td>
-
-                                <td class="auto-style42">
-
-                                    <input type="text" id="TextBox9" style="width: 65px;">
-
-                                </td>
-
-                                <td class="auto-style43">
-
-                                    <input type="text" id="TextBox10" style="width: 75px;">
-
-                                </td>
-
-                                <td>
-
-                                    <button id="Button1" style="width: 46px;">+</button>
-
-                                </td>
-
-                            </tr>
-
-                        </table>
-
-                    <br />
-
-                    <div id="Panel1" style="background-color: #faeeee; height: 358px; width: 728px;">                       
-
-                    </div>
-
-                </div>
-
+    <div class="row">
+            <div class="col-md-10 alignSuccessMessage">
+            <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
+                <asp:Label ID="lblShowMessage" runat="server" Visible="false"></asp:Label>
             </div>
-
                 </div>
-
         </div>
+         <div class="container mt-5">
+             <div class="row">
+                 <div class="col-md-8">
 
-        <br />
 
-        
-        
-    <div class="form-group row">
+
+                     <div class="form-group row">
+
+                         <label for="txtureferanceNo" class="col-sm-4 col-form-label">Referance No</label>
+
+                         <div class="col-sm-8">
+                             <asp:TextBox ID="txtReferanceNo" runat="server" CssClass="form-control"></asp:TextBox>
+                         </div>
+                     </div>
+
+                     <div class="form-group row">
+
+                         <label for="txtComments" class="col-sm-4 col-form-label">Comments</label>
+
+                         <div class="col-sm-8">
+                             <asp:TextBox ID="txtComments" runat="server" CssClass="form-control"></asp:TextBox>
+                         </div>
+                     </div>
+
+
+
+                     <hr class="auto-style329" style="border-style: solid; color: #999999; background-color: #C0C0C0;" />
+
+
+
+                     <div class="form-group row">
+
+                         <table class="auto-style44">
+
+                             <tr>
+
+                                 <td class="auto-style35">
+
+                                     <input type="text" id="TextBox1" style="width: 35px;">
+                                 </td>
+
+                                 <td class="auto-style36">
+
+                                     <input type="text" id="TextBox2" style="width: 16px;">
+                                 </td>
+
+                                 <td class="auto-style37">
+
+                                     <input type="text" id="TextBox3" style="width: 81px;">
+                                 </td>
+
+                                 <td class="auto-style38">
+
+                                     <input type="text" id="TextBox4" style="width: 211px;">
+                                 </td>
+
+                                 <td class="auto-style39">
+
+                                     <input type="text" id="TextBox5" style="width: 65px;">
+                                 </td>
+
+                                 <td class="auto-style39">
+
+                                     <input type="text" id="TextBox7" style="width: 65px;">
+                                 </td>
+
+                                 <td class="auto-style41">
+
+                                     <input type="text" id="TextBox8" style="width: 65px;">
+                                 </td>
+
+                                 <td class="auto-style42">
+
+                                     <input type="text" id="TextBox9" style="width: 65px;">
+                                 </td>
+
+                                 <td class="auto-style43">
+
+                                     <input type="text" id="TextBox10" style="width: 75px;">
+                                 </td>
+
+                                 <td>
+
+                                     <button id="Button1" style="width: 46px;">+</button>
+
+                                 </td>
+
+                             </tr>
+
+                         </table>
+
+                         <br />
+
+                         <div id="Panel1" style="background-color: #99ccff30; height: 358px; width: 728px;">
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             </div>
+
+         </div>
+
+         <br />
+
+         <div class="form-group row">
                     <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>
                     <div class="col-sm-50">                        
                         <input type="text" id="txttotal" class="auto-style326" style="width:116px">
                     </div>
                 </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" id="btnSave" class="btn btn-primary" style="border-style: inset; width: 100px">Save</button>
-                &nbsp;&nbsp;
-                <button type="button" id="btnBrowse" class="btn btn-secondary" style="border-style: inset; width: 100px">Print</button>
-                &nbsp;&nbsp;
-                <button type="button" id="btnExit" class="btn btn-danger" style="border-style: inset; width: 100px">Exit</button>
-            
-
-                
-        
-            </div>
-        </div>
-    </div>    
-
+         <div class="row">
+             <div class="col-md-6">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" Style="border-style: inset; width: 100px" OnClientClick="return btnSave_Click();" OnClick="btnSave_Click1" />
+                 &nbsp;&nbsp;
+    <asp:Button ID="btnPrint" runat="server" Text="Print" CssClass="btn btn-secondary" Style="border-style: inset; width: 100px" OnClientClick="return btnPrint_Click();" />
+                 &nbsp;&nbsp;
+    <asp:Button ID="btnExit" runat="server" Text="Exit" CssClass="btn btn-danger" Style="border-style: inset; width: 100px" OnClientClick="return btnExit_Click();" />
+             </div>
+         </div>    
+         </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

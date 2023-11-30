@@ -101,11 +101,11 @@ namespace Panaderia.Form.Accounts
             }
             else if (sender == Button2)
             {
-                GenerateItemsReport(ref dataTable);
+                //GenerateItemsReport(ref dataTable);
             }
             else if (sender == Button6)
             {
-                GenerateSalesReturnReport(ref dataTable);
+                //GenerateSalesReturnReport(ref dataTable);
             }
 
             if (dataTable != null)
@@ -218,7 +218,7 @@ namespace Panaderia.Form.Accounts
                         float tableHeaderFontSize = 10;
                         float coloumDisplayNamesFontSize = 10;
                         float tableDataFontSize = 10;
-                        Table table = new Table(dataTable.Columns.Count);
+                        Table table = new Table(dataTable.Columns.Count) ;
                         table.SetWidth(UnitValue.CreatePercentValue(100));
 
                         //specify the font name
@@ -553,6 +553,7 @@ namespace Panaderia.Form.Accounts
             GridView2.DataBind();
         }
 
+        /**
         protected void Button2_Click(object sender, EventArgs e)
         {
             // Handle the button click event for Button2
@@ -570,7 +571,8 @@ namespace Panaderia.Form.Accounts
             GridView2.DataBind();
         }
 
-
+        
+        
         protected void Button1_click(object sender, EventArgs e)
         {
             // Handle the button click event for Button1
@@ -610,7 +612,7 @@ namespace Panaderia.Form.Accounts
             GridView2.DataBind();
         }
 
-        
+        **/
 
     }
 }

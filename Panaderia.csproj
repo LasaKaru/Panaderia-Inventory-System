@@ -604,6 +604,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="test\customercopy.aspx" />
+    <Content Include="test\dataplus.aspx" />
     <Content Include="test\printreport.aspx" />
     <Content Include="test\Supplier.aspx" />
     <Content Include="test\userprofileupdate.aspx" />
@@ -737,6 +738,8 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\clsCOMMON.cs" />
+    <Compile Include="DataAccessLayer\DataHelper.cs" />
     <Compile Include="Dataset\PanaderiaItem.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1178,7 +1181,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="iText\Kernel\Colors\ColorConstants.cs" />
+    <Compile Include="iText\Kernel\Colors\ColorConstant.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -1203,6 +1206,13 @@
     </Compile>
     <Compile Include="test\customercopy.aspx.designer.cs">
       <DependentUpon>customercopy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\dataplus.aspx.cs">
+      <DependentUpon>dataplus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\dataplus.aspx.designer.cs">
+      <DependentUpon>dataplus.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\printreport.aspx.cs">
       <DependentUpon>printreport.aspx</DependentUpon>

@@ -277,9 +277,9 @@
         </div>     
 
         <div>
-                    <asp:Button ID="Button1" runat="server" Text="Transaction" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
-            <asp:Button ID="Button2" runat="server" Text="By Items" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
-            <asp:Button ID="Button6" runat="server" Text="Sales / Return " OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
+                    <asp:Button ID="Button1" runat="server" Text="Load" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
+            <asp:Button ID="Button2" runat="server" Text="Print" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
+            <asp:Button ID="Button6" runat="server" Text="Exit" OnClick="Button6_Click" CssClass="btn btn-primary" OnClientClick="return showDownloadButton();"/>
                 </div>
 
 
@@ -309,7 +309,7 @@
 </div>
         </div>
 
-
+            <!--
                 <div class="container mt-5">
                     <div class="row">
                 </div>
@@ -347,6 +347,9 @@
             <div class="row" <div class="col-md-6"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <button type="button" id="btnExit" class="btn btn-danger" style="border-style: inset; width: 100px">Exit</button>
             </div>
         </div>
+
+
+        -->
         <!-- Display the generated report here -->
         <div id="reportContainer" runat="server" class="mt-3">
             <!-- The report content will be dynamically inserted here -->
@@ -357,6 +360,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+            document.getElementById("Button6").addEventListener("click", function () {
+                window.location.href = "~/Dashboard.aspx";
+            });
+        </script>
 
     <script>
                 function showDownloadButton() {

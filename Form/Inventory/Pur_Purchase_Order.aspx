@@ -23,6 +23,86 @@
     <link rel="stylesheet" href="../../Content/Navigation.css" media="screen" />
     <link rel="stylesheet" href="../../Content/Common.css" media="screen" />
 
+     <style>
+        /* Styles for the modal popup */
+        .modal {
+            display:;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content-container {
+            max-height: 600px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+    </style>
+
+    <style>
+        /* Style for selected row */
+        .selected-row {
+            background-color: yellow;
+        }
+        </style> 
+     <style>
+        /* Styles for the modal popup */
+        .modal1 {
+            display:;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .modal-content2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content-container2 {
+            max-height: 600px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+    </style>
+
+    <style>
+        /* Style for selected row */
+        .selected-row2 {
+            background-color: yellow;
+        }
+        .auto-style331 {
+            width: 59px;
+        }
+        .auto-style332 {
+            width: 39px;
+        }
+        .auto-style333 {
+            height: 28px;
+        }
+    </style>
+
 </head>
 <body>
     
@@ -263,31 +343,24 @@
         <div class="auto-style32">
             <div class="table-row">
                 <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
-                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="company" runat="server" CssClass="input-field"></asp:TextBox></div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="company" runat="server" CssClass="input-field" ReadOnly="True">1000</asp:TextBox></div>
                 <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field"></asp:TextBox></div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
                 <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Branch</div>
-                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Branch" runat="server" CssClass="input-field"></asp:TextBox></div>
-                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Typer</div>
-                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="TxnType" runat="server" CssClass="input-field"></asp:TextBox></div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Branch" runat="server" CssClass="input-field" ReadOnly="True">0001</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Type</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="TxnType" runat="server" CssClass="input-field" ReadOnly="True">PORD</asp:TextBox></div>
                 <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Number</div>
-                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Number" runat="server" CssClass="input-field"></asp:TextBox></div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Number" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
                 <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">User</div>
-                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CSSclass="input-field" /></asp:TextBox></div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CSSclass="input-field" ></asp:TextBox></div>
 
             </div>
         </div>
     <br />
-
-
-
-
-
 <!--Ganeesha Put Your Code Here-->
 
-    
-
-    <div class="row">
+           <div class="row">
             <div class="col-md-10 alignSuccessMessage">
             <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
                 <asp:Label ID="lblShowMessage" runat="server" Visible="false"></asp:Label>
@@ -368,10 +441,14 @@
                 </div>      
                 <br />
                 <div class="form-group row">
-                    <div id="Panel1" style="background-color: #ffa19926; height: 358px; width: 840px;">
+                    <div id="Panel1" style="background-color: #ffa19926; height: 358px; width: 900px;">
                         <div class="col-sm-4">
-                            <div class="col-sm-4">
-                                 <button type="button" id="btnclick" class="btn btn-secondary"   style="border-color: #333333; background-color: #8689cf4d; width: 62px; font-size: 9px;">Click Here </button>
+                            
+                            </div>
+                        <table class="auto-style44"> 
+                            <tr>
+                                <td class="auto-style333">
+                                    <button type="button" id="btnclick" class="btn btn-secondary"   style="border-color: #333333; background-color: #8689cf4d; width: 62px; font-size: 9px;">...</button>
                                     <div id="myModal2" class="modal">
                                         <div class="modal-content2">
                                             <div class="modal-content-container2" style="overflow: auto">
@@ -381,17 +458,14 @@
                                                     <button id="closeModal2">Clear Selection</button>
                                                 </div>
                                                 <!-- GridView -->
-                                                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="True"></asp:GridView>
+                                                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="True"></asp:GridView>
 
                                                 <!-- Placeholder for the GridView -->
                                                 <div id="gridViewPlaceholder2"></div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        <table class="auto-style44"> 
-                            <tr>
+                                </td>
                                 <td class="auto-style333">
                                     <input type="text" id="txtitem_nu" class="auto-style331">
                                 </td>
@@ -423,10 +497,14 @@
                                     <input type="text" id="txtAmount" style="width: 75px;">
                                 </td>
                                 <td class="auto-style333">
-                                    <button id="Button1" style="width: 46px;">+</button>
+                                    
+                                    
+                                    <button id="Button1" style="width: 46px;" onclick="addRowToGridView()">+</button>
                                 </td>
                             </tr>
                         </table>
+
+                        <asp:GridView ID="AddedGridView" runat="server" AutoGenerateColumns="True"></asp:GridView>
 
 
                     </div>
@@ -447,7 +525,7 @@
             <div class="col-md-6">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" Style="border-style: inset; width: 100px" />
+    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" Style="border-style: inset; width: 100px" / >
                 &nbsp;&nbsp;
     <asp:Button ID="btnBrowse" runat="server" Text="Print" CssClass="btn btn-secondary" OnClick="btnBrowse_Click" Style="border-style: inset; width: 100px" />
                 &nbsp;&nbsp;
@@ -471,97 +549,134 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
+         <!--add data to the datagrid-->
 
-        <script>
-            // JavaScript code to display data in the modal
-            var btnsup = document.getElementById('btnsup');
-            var modal = document.getElementById('myModal');
-            var closeModalButton = document.getElementById('closeModal');
-            var dataBody = document.getElementById('<%= GridView1.ClientID %>');
-            var selectedRow = null;
+         <script>
 
-            // Input fields          
+             function addRowToGridView() {
+                 // Get a reference to the GridView
+                 var addedGridView = document.getElementById('<%= AddedGridView.ClientID %>');
 
-            var txtsupplierInput = document.getElementById('txtsupplier');
-            var txtsupidInput = document.getElementById('txtsupid');
-            var txtsupInput = document.getElementById('txtsup');
-            //var txtnetamountInput = document.getElementById('txtnetamount');
-            //var txtcommentsInput = document.getElementById('txtcomments');
+                 // Create a new row
+                 var newRow = addedGridView.insertRow(addedGridView.rows.length);
 
-            // Function to handle row selection and highlight
-            function selectRow(row, rowData) {
-                debugger;
-                if (selectedRow) {
-                    selectedRow.classList.remove('selected-row');
-                }
-                row.classList.add('selected-row');
-                selectedRow = row;
+                 // Create cells and populate them with input values
+                 var cell1 = newRow.insertCell(0);
+                 var cell2 = newRow.insertCell(1);
+                 // ... (repeat for other cells)
 
-                //closeModelButton.click();
-                // Populate the input fields with the selected row's data
-                var cells = row.cells;
-                txtsupplierInput.value = cells[0].textContent;
-                txtsupidInput.value = cells[1].textContent;
-                txtsupInput.value = cells[2].textContent;
-                //txtnetamountInput.value = cells[3].textContent;
-                //txtcommentsInput.value = cells[4].textContent;
+                 cell1.innerHTML = document.getElementById('txtitem_nu').value;
+                 cell2.innerHTML = document.getElementById('TextBox2').value;
+                 // ... (repeat for other cells)
 
-            }
+                 // Clear input fields after adding to the GridView
+                 document.getElementById('txtitem_nu').value = '';
+                 document.getElementById('TextBox2').value = '';
+                 // ... (repeat for other input fields)
+             }
 
-            btnsup.addEventListener('click', function () {
-                // Display the modal when the button is clicked
-                modal.style.display = 'block';
 
-                // Load data when the modal is opened
-                loadModalData();
-            });
 
-            closeModalButton.addEventListener('click', function () {
-                // Close the modal when the "Close" button is clicked
-                //dataBody.innerHTML = ''; // Clear the table content
-                modal.style.display = 'none';
-            });
+         </script>
 
-            window.addEventListener('click', function (event) {
-                if (event.target == modal) {
-                    // Close the modal if the user clicks outside the modal content
-                    //dataBody.innerHTML = '';
-                    modal.style.display = 'none';
-                }
-            });
 
-            dataBody.addEventListener('click', function (event) {
-                var target = event.target;
-                if (target.tagName === 'TD') {
-                    var row = target.parentElement;
-                    selectRow(row);
-                }
-            });
+      
 
-            function loadModalData() {
-                // Add code here to load data into the modal (e.g., from the GridView)
-                // Make an AJAX request to fetch data and populate the modal
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        // Parse the response and populate the modal
-                        var data = JSON.parse(xmlhttp.responseText);
-                        // Implement code to populate the modal with data
-                    }
-                };
 
-                // Replace 'GetDataUrl' with the URL to fetch data from the server
-                xmlhttp.open('GET', 'GetDataUrl', true);
-                xmlhttp.send();
-            }
 
-            $(document).ready(function () {
-                $("#closeModal").click(function () {
-                    $("#myModal").modal("hide");
-                });
-            });
 
-        </script>
+
+
+         <script>
+             // JavaScript code to display data in the modal
+             var btnsup = document.getElementById('btnsup');
+             var modal = document.getElementById('myModal');
+             var closeModalButton = document.getElementById('closeModal');
+             var dataBody = document.getElementById('<%= GridView1.ClientID %>');
+             var selectedRow = null;
+
+             // Input fields          
+
+             var txtsupplierInput = document.getElementById('txtsupplier');
+             var txtsupidInput = document.getElementById('txtsupid');
+             var txtsupInput = document.getElementById('txtsup');
+             //var txtnetamountInput = document.getElementById('txtnetamount');
+             //var txtcommentsInput = document.getElementById('txtcomments');
+
+             // Function to handle row selection and highlight
+             function selectRow(row, rowData) {
+                 debugger;
+                 if (selectedRow) {
+                     selectedRow.classList.remove('selected-row');
+                 }
+                 row.classList.add('selected-row');
+                 selectedRow = row;
+
+                 //closeModelButton.click();
+                 // Populate the input fields with the selected row's data
+                 var cells = row.cells;
+                 txtsupplierInput.value = cells[0].textContent;
+                 txtsupidInput.value = cells[1].textContent;
+                 txtsupInput.value = cells[2].textContent;
+                 //txtnetamountInput.value = cells[3].textContent;
+                 //txtcommentsInput.value = cells[4].textContent;
+
+             }
+
+             btnsup.addEventListener('click', function () {
+                 // Display the modal when the button is clicked
+                 modal.style.display = 'block';
+
+                 // Load data when the modal is opened
+                 loadModalData();
+             });
+
+             closeModalButton.addEventListener('click', function () {
+                 // Close the modal when the "Close" button is clicked
+                 //dataBody.innerHTML = ''; // Clear the table content
+                 modal.style.display = 'none';
+             });
+
+             window.addEventListener('click', function (event) {
+                 if (event.target == modal) {
+                     // Close the modal if the user clicks outside the modal content
+                     //dataBody.innerHTML = '';
+                     modal.style.display = 'none';
+                 }
+             });
+
+             dataBody.addEventListener('click', function (event) {
+                 var target = event.target;
+                 if (target.tagName === 'TD') {
+                     var row = target.parentElement;
+                     selectRow(row);
+                 }
+             });
+
+             function loadModalData() {
+                 // Add code here to load data into the modal (e.g., from the GridView)
+                 // Make an AJAX request to fetch data and populate the modal
+                 var xmlhttp = new XMLHttpRequest();
+                 xmlhttp.onreadystatechange = function () {
+                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                         // Parse the response and populate the modal
+                         var data = JSON.parse(xmlhttp.responseText);
+                         // Implement code to populate the modal with data
+                     }
+                 };
+
+                 // Replace 'GetDataUrl' with the URL to fetch data from the server
+                 xmlhttp.open('GET', 'GetDataUrl', true);
+                 xmlhttp.send();
+             }
+
+             $(document).ready(function () {
+                 $("#closeModal").click(function () {
+                     $("#myModal").modal("hide");
+                 });
+             });
+
+         </script>
 
        <!--modal2-->
 
@@ -570,7 +685,7 @@
             var btnclick = document.getElementById('btnclick');
             var modal2 = document.getElementById('myModal2');
             var closeModalButton2 = document.getElementById('closeModal2');
-            var dataBody = document.getElementById('<%= GridView2.ClientID %>');
+            var dataBody = document.getElementById('<%= GridView3.ClientID %>');
             var selectedRow2 = null;
 
             // Input fields   
@@ -738,158 +853,17 @@
         // Set the value of the "Country" input field to the current date and time
         document.getElementById('Country').value = getCurrentDateTime();
     </script>
-   
-    <div>
-
-        <script>
-            // Function to format a number to have two digits (e.g., 1 => "01")
-            function formatNumber(number) {
-                return number < 10 ? '0' + number : number;
-            }
-
-            // Function to get the current local date and time with AM/PM
-            function getCurrentDateTime() {
-                const now = new Date();
-                const year = now.getFullYear();
-                const month = formatNumber(now.getMonth() + 1); // Months are 0-based
-                const day = formatNumber(now.getDate());
-                const hours = formatNumber(now.getHours());
-                const ampm = hours >= 12 ? 'PM' : 'AM'; // Determine AM or PM
-                const twelveHour = hours > 12 ? hours - 12 : hours; // Convert to 12-hour format
-                const minutes = formatNumber(now.getMinutes());
-                const seconds = formatNumber(now.getSeconds());
-
-                // Format the date and time as YYYY-MM-DD hh:mm:ss AM/PM
-                return `${year}-${month}-${day} ${twelveHour}:${minutes}:${seconds} ${ampm}`;
-            }
-
-            // Function to set the date input field with the current date and time
-            function setDateTimeField() {
-                const dateTime = getCurrentDateTime();
-                const dateField = document.getElementById('txtDate');
-                dateField.value = dateTime;
-            }
-
-            // Call the function to set the date input field when the page loads
-            window.onload = setDateTimeField;
-        </script>
-
-
-    <script>
-        function updatecate1Text() {
-            var dropdown = document.getElementById("ddlcate1");
-            var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.getElementById("txtcate1").value = selectedText;
-        }
-
-        function updateUserStatusText() {
-            var dropdown = document.getElementById("ddlUserStatus");
-            var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.getElementById("txtUserStatus").value = selectedText;
-        }
-
-        function updatetypeText() {
-            var dropdown = document.getElementById("ddltype");
-            var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.getElementById("txttype").value = selectedText;
-        }
-    </script>
-
-
-    <script>
-        // Function to get the current date and time in a formatted string
-        function getCurrentDateTime() {
-            var currentDate = new Date();
-            var dateOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
-            var timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-
-            var formattedDate = currentDate.toLocaleDateString(undefined, dateOptions);
-            var formattedTime = currentDate.toLocaleTimeString(undefined, timeOptions);
-
-            return formattedDate + ' ' + formattedTime;
-        }
-
-        // Set the value of the "Country" input field to the current date and time
-        document.getElementById('Country').value = getCurrentDateTime();
-    </script>
-
-        <input type="hidden" id="selectedData" runat="server" />
-
-        <!-- Create a hidden modal div -->
-<div id="customModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 100px; border-radius: 5px;">
-        <!-- Modal content goes here -->
-        <h2>Data Display</h2>
-        <div id="modalContent"></div>
-        <button id="closeModal">Close</button>
-    </div>
-</div>
-
-        <script>
-            // JavaScript function to open the custom modal and load data
-            function openDataPopup() {
-                // Make an AJAX request to fetch data from the server
-                $.ajax({
-                    type: "POST",
-                    url: "Pur_Purchase_Order.aspx/GetData", // Replace with your server method URL
-                    data: '{}',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        // Handle the data received from the server
-                        var data = response.d;
-
-                        // Set the data in the hidden field
-                        document.getElementById('selectedData').value = data;
-
-                        // Open the custom modal
-                        var modal = document.getElementById('customModal');
-                        modal.style.display = 'block';
-
-                        // Display the data inside the modal
-                        var modalContent = document.getElementById('modalContent');
-                        modalContent.innerHTML = data;
-                    },
-                    error: function (error) {
-                        // Handle any errors
-                        console.log(error);
-                    }
-                });
-
-                // Attach a click event handler to the "Close" button in the custom modal
-                document.getElementById('closeModal').addEventListener('click', closeDataPopup);
-            }
-
-            // JavaScript function to close the custom modal
-            function closeDataPopup() {
-                var modal = document.getElementById('customModal');
-                modal.style.display = 'none';
-            }
-
-            // Attach the click event handler to the "Print" button
-            document.getElementById('<%= btnBrowse.ClientID %>').addEventListener('click', openDataPopup);
-</script>
-
-
-        
-
-       
 
         <br />
                 <hr class="auto-style330" style="border-style: solid; background-color: #000000";width: 1125px; />
-        </form>
+         </form>
         <footer>
             <p>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &copy; <%: DateTime.Now.Year %> - Panaderia Inventory
+                        &copy;  Panaderia Inventory
                         Management system Powered By Cargills IT
             </p>
-        </footer>
-
-
-    </div>
-
-     
+        </footer> 
 
 </body>
 </html>

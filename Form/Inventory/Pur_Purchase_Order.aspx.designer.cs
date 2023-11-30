@@ -168,22 +168,22 @@ namespace Panaderia.Form.Inventory
         protected global::System.Web.UI.WebControls.TextBox txtcomments;
 
         /// <summary>
-        /// GridView2 control.
+        /// GridView3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.GridView GridView3;
 
         /// <summary>
-        /// btnSave control.
+        /// AddedGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
+        protected global::System.Web.UI.WebControls.GridView AddedGridView;
 
         /// <summary>
         /// btnBrowse control.
@@ -202,14 +202,5 @@ namespace Panaderia.Form.Inventory
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnExit;
-
-        /// <summary>
-        /// selectedData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden selectedData;
     }
 }

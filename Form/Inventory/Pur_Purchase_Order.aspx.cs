@@ -10,6 +10,8 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using System.IO;
+using Panaderia.DataAccessLayer;
+
 
 namespace Panaderia.Form.Inventory
 {
@@ -24,7 +26,7 @@ namespace Panaderia.Form.Inventory
 
         public static string GetData()
         {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=MyBooks;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
             string data = "SELECT * FROM dbo.TX_Inventory"; // Fetch all data
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -156,8 +158,8 @@ namespace Panaderia.Form.Inventory
                         connection.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
 
-                        GridView2.DataSource = reader;
-                        GridView2.DataBind();
+                        GridView3.DataSource = reader;
+                        GridView3.DataBind();
                     }
                     catch (Exception ex)
                     {
@@ -313,6 +315,22 @@ namespace Panaderia.Form.Inventory
         {
 
         }
+
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+            // Iterate through GridView rows and save data to the database
+            foreach (GridViewRow row in GridView3.Rows)
+            {
+                // Access each cell value and save to the database
+                string itemNu = row.Cells[0].Text;
+                string textBox2Value = row.Cells[1].Text;
+                // ... (repeat for other cells)
+
+                // Perform database insertion logic here
+                // ...
+            }
+        }
+
 
 
 
