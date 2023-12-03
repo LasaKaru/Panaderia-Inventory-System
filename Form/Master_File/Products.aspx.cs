@@ -175,11 +175,11 @@ namespace Panaderia.Form.Master_File
             // Get values from form controls
             //string SerialNumber = txtUserID.Text;
             //string type = ddltype.SelectedValue;
-           // string description = txtdiscription.Text;
+            //string description = txtdiscription.Text;
            // string userID = txtUserID.Text;
-          //  string type = ddltype.SelectedValue;
+           // string type = ddltype.SelectedValue;
            // string description = txtdiscription.Text;
-            // Add more fields as needed
+           //  Add more fields as needed
 
             // Establish a database connection
             using (SqlConnection connection = new SqlConnection(connectionString))

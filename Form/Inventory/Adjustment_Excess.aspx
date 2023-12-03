@@ -24,6 +24,42 @@
     <link rel="stylesheet" href="../../Content/Common.css" media="screen" />
 
 
+    <style>
+        /* Styles for the modal popup */
+        .modal {
+            display:;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content-container {
+            max-height: 600px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+    </style>
+
+    <style>
+        /* Style for selected row */
+        .selected-row {
+            background-color: yellow;
+        }
+    </style> 
+
 </head>
 <body>
     
@@ -262,38 +298,27 @@
 
      <form id="form2" runat="server">
      <div class="auto-style32">
-   <div class="table-row">
-      <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
-        <asp:TextBox ID="company" runat="server" CssClass="input-field" OnTextChanged="company_TextChanged"></asp:TextBox></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
-        <asp:TextBox ID="date" runat="server" CssClass="input-field"></asp:TextBox></div>
-       <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Branch</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
-        <asp:TextBox ID="Branch" runat="server" CssClass="input-field" value="0001" ReadOnly="True" ></asp:TextBox></div>
-      <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Txn Type</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
-        <asp:TextBox ID="TxnType" runat="server" CssClass="input-field"></asp:TextBox></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Number</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
-        <asp:TextBox ID="Number" runat="server" CssClass="input-field"></asp:TextBox></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;">
-        <asp:TextBox ID="user" runat="server" CssClass="input-field"></asp:TextBox></div>
+    <div class="table-row">
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="company" runat="server" CssClass="input-field" ReadOnly="True">1000</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Branch</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Branch" runat="server" CssClass="input-field" ReadOnly="True">0001</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Type</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="TxnType" runat="server" CssClass="input-field" ReadOnly="True">SRCR</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Number</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Number" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">User</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CSSclass="input-field" ></asp:TextBox></div>
 
-    </div>
+            </div>
 </div>
     <br />
 
-
-
-
-
 <!--Ganeesha Put Your Code Here-->
-
-
-    <div class="row">
+         
+           <div class="row">
             <div class="col-md-10 alignSuccessMessage">
             <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
                 <asp:Label ID="lblShowMessage" runat="server" Visible="false"></asp:Label>
@@ -335,57 +360,59 @@
                          <table class="auto-style44">
 
                              <tr>
+                                 <td class="auto-style333">
+                                     <button type="button" id="btnclick" class="btn btn-secondary" style="border-color: #333333; background-color: #8689cf4d; width: 62px; font-size: 9px;">...</button>
+                                     <div id="myModal" class="modal">
+                                         <div class="modal-content">
+                                             <div class="modal-content-container" style="overflow: auto">
+                                                 <!-- Modal header with a close button -->
+                                                 <div class="modal-header">
+                                                     <h2>Item Master List</h2>
+                                                     <button id="closeModal">Clear Selection</button>
+                                                 </div>
+                                                 <!-- GridView -->
+                                                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
 
-                                 <td class="auto-style35">
+                                                 <!-- Placeholder for the GridView -->
+                                                 <div id="gridViewPlaceholder"></div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </td>
 
-                                     <input type="text" id="TextBox1" style="width: 35px;">
-                                 </td>
-
-                                 <td class="auto-style36">
-
-                                     <input type="text" id="TextBox2" style="width: 16px;">
-                                 </td>
-
-                                 <td class="auto-style37">
-
-                                     <input type="text" id="TextBox3" style="width: 81px;">
-                                 </td>
-
-                                 <td class="auto-style38">
-
-                                     <input type="text" id="TextBox4" style="width: 211px;">
-                                 </td>
-
-                                 <td class="auto-style39">
-
-                                     <input type="text" id="TextBox5" style="width: 65px;">
-                                 </td>
-
-                                 <td class="auto-style39">
-
-                                     <input type="text" id="TextBox7" style="width: 65px;">
-                                 </td>
-
-                                 <td class="auto-style41">
-
-                                     <input type="text" id="TextBox8" style="width: 65px;">
-                                 </td>
-
-                                 <td class="auto-style42">
-
-                                     <input type="text" id="TextBox9" style="width: 65px;">
-                                 </td>
-
-                                 <td class="auto-style43">
-
-                                     <input type="text" id="TextBox10" style="width: 75px;">
-                                 </td>
-
-                                 <td>
-
-                                     <button id="Button1" style="width: 46px;">+</button>
-
-                                 </td>
+                                 <td class="auto-style333">
+                                    <input type="text" id="txtitem_nu" class="auto-style331">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="TextBox2" class="auto-style332">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtcode" style="width: 81px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtDescription" style="width: 211px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtPrice" style="width: 86px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtPSize" style="width: 47px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtPascks" style="width: 65px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtNos" style="width: 65px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtDis" style="width: 65px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtAmount" style="width: 75px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <button id="Button1" style="width: 46px;">+</button>
+                                </td>
 
                              </tr>
 
@@ -393,7 +420,7 @@
 
                          <br />
 
-                         <div id="Panel1" style="background-color: #99ccff30; height: 358px; width: 728px;">
+                         <div id="Panel1" style="background-color: #99ccff30; height: 358px; width: 1160px;">
                          </div>
 
                      </div>
@@ -430,6 +457,109 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    
     <div>
+
+
+        <script>
+            // JavaScript code to display data in the modal
+            var btnclick = document.getElementById('btnclick');
+            var modal = document.getElementById('myModal');
+            var closeModalButton = document.getElementById('closeModal');
+            var dataBody = document.getElementById('<%= GridView1.ClientID %>');
+            var selectedRow = null;
+
+            // Input fields          
+
+            var txtitem_nuInput = document.getElementById('txtitem_nu');
+            var TextBox2Input = document.getElementById('TextBox2');
+            var txtcodeInput = document.getElementById('txtcode');
+            var txtDescriptionInput = document.getElementById('txtDescription');
+            var txtPriceInput = document.getElementById('txtPrice');
+            var txtPSizeInput = document.getElementById('txtPSize');
+            var txtPascksInput = document.getElementById('txtPascks');
+            var txtNosInput = document.getElementById('txtNos');
+            var txtDisInput = document.getElementById('txtDis');
+            var txtAmountInput = document.getElementById('txtAmount');
+
+
+            // Function to handle row selection and highlight
+            function selectRow(row, rowData) {
+                debugger;
+                if (selectedRow) {
+                    selectedRow.classList.remove('selected-row');
+                }
+                row.classList.add('selected-row');
+                selectedRow = row;
+
+                //closeModelButton.click();
+                // Populate the input fields with the selected row's data
+                var cells = row.cells;
+                txtitem_nuInput.value = cells[0].textContent;
+                TextBox2Input.value = cells[1].textContent;
+                txtcodeInput.value = cells[2].textContent;
+                txtDescriptionInput.value = cells[3].textContent;
+                txtPriceInput.value = cells[4].textContent;
+                txtPSizeInput.value = cells[5].textContent;
+                txtPascksInput.value = cells[6].textContent;
+                txtNosInput.value = cells[7].textContent;
+                txtDisInput.value = cells[8].textContent;
+                txtAmountInput.value = cells[9].textContent;
+
+            }
+
+            btnclick.addEventListener('click', function () {
+                // Display the modal when the button is clicked
+                modal.style.display = 'block';
+
+                // Load data when the modal is opened
+                loadModalData();
+            });
+
+            closeModalButton.addEventListener('click', function () {
+                // Close the modal when the "Close" button is clicked
+                //dataBody.innerHTML = ''; // Clear the table content
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    // Close the modal if the user clicks outside the modal content
+                    //dataBody.innerHTML = '';
+                    modal.style.display = 'none';
+                }
+            });
+
+            dataBody.addEventListener('click', function (event) {
+                var target = event.target;
+                if (target.tagName === 'TD') {
+                    var row = target.parentElement;
+                    selectRow(row);
+                }
+            });
+
+            function loadModalData() {
+                // Add code here to load data into the modal (e.g., from the GridView)
+                // Make an AJAX request to fetch data and populate the modal
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        // Parse the response and populate the modal
+                        var data = JSON.parse(xmlhttp.responseText);
+                        // Implement code to populate the modal with data
+                    }
+                };
+
+                // Replace 'GetDataUrl' with the URL to fetch data from the server
+                xmlhttp.open('GET', 'GetDataUrl', true);
+                xmlhttp.send();
+            }
+
+            $(document).ready(function () {
+                $("#closeModal").click(function () {
+                    $("#myModal").modal("hide");
+                });
+            });
+
+        </script>
 
         <script>
             // Function to format a number to have two digits (e.g., 1 => "01")
@@ -502,10 +632,8 @@
         // Set the value of the "Country" input field to the current date and time
         document.getElementById('Country').value = getCurrentDateTime();
     </script>
-
         <br />
-                <hr class="auto-style330" style="border-style: solid; background-color: #000000";width: 1125px; />
-        
+                <hr class="auto-style330" style="border-style: solid; background-color: #000000";width: 1125px; />        
         <footer>
                     <p>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -513,11 +641,6 @@
                         Management system Powered By Cargills IT
                     </p>
                 </footer>
-
-
     </div>
-
-     
-
 </body>
 </html>

@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
-//using Panaderia.DataAccessLayer;
+using Panaderia.DataAccessLayer;
 
 namespace Panaderia.Form.Inventory
 {
@@ -34,43 +34,42 @@ namespace Panaderia.Form.Inventory
                 LoadUserData();
             }
             {
-              //  LoadData();
+                LoadItemData();
             }
         }
 
+        private void LoadItemData()
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string query = "SELECT item_nu,code,Description,Price,PSize,Pascks,Nos,Dis,Amount,Usize FROM [Panaderia].[dbo].[MF_item]";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        GridView1.DataSource = reader;
+                        GridView1.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions here
+                        string errorMessage = "An error occurred while fetching data. Please try again later.";
+
+                        // Display the error message to the user
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "errorAlert", $"alert('{errorMessage}');", true);
+                    }
+                }
+            }
+
+        }
         private void LoadUserData() { }
 
-        /*
-        private void LoadData()
-        {
-            try
-            {
-                clsCOMMON obj_ = new clsCOMMON();
 
-                obj_.EMPID = "";
-
-                DataTable dt = obj_.GetreturncreditData(obj_).Tables[0];
-
-
-                String companyID = dt.Rows[0][0].ToString();
-                String strbranch = dt.Rows[0][1].ToString();
-                String txn = dt.Rows[0][2].ToString();
-                //String num = dt.Rows[0][3].ToString();
-
-                company.Text = companyID;
-                Branch.Text = strbranch;
-                TxnType.Text = txn;
-                // Number.Text = num;
-            }
-            catch (Exception excLSK)
-            {
-
-                throw;
-            }
-
-        }
-
-        */
 
         protected void company_TextChanged(object sender, EventArgs e)
         {
@@ -79,7 +78,7 @@ namespace Panaderia.Form.Inventory
 
         protected void btnSave_Click1(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {

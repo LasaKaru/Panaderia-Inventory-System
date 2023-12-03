@@ -22,9 +22,116 @@
     <link rel="stylesheet" href="../../Content/Navigation.css" media="screen" />
     <link rel="stylesheet" href="../../Content/Common.css" media="screen" />
 
+   <style>
+        /* Styles for the modal popup */
+        .modal {
+            display:;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content-container {
+            max-height: 600px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+    </style>
+
+    <style>
+        /* Style for selected row */
+        .selected-row {
+            background-color: yellow;
+        }
+    </style> 
+
+     <style>
+        /* Styles for the modal popup */
+        .modal1 {
+            display:;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .modal-content2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content-container2 {
+            max-height: 600px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+    </style>
+
+    <style>
+        /* Style for selected row */
+        .selected-row2 {
+            background-color: yellow;
+        }
+    </style>
+    <style>
+        /* Styles for the modal popup */
+        .modal2 {
+            display:;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .modal-content3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .modal-content-container3 {
+            max-height: 600px; /* Adjust the maximum height as needed */
+            overflow-y: auto;
+        }
+    </style>
+
+    <style>
+        /* Style for selected row */
+        .selected-row3 {
+            background-color: yellow;
+        }
+    </style>
+
 </head>
 <body>
-    <form id="form1" runat="server">
+    
        
         <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -253,46 +360,73 @@
 
     </form>
 
+     
 <br />
 <br />
 
 <br />
+
+    <form id="form1" runat="server">
 
      <div class="auto-style32">
   <div class="table-row">
-      <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Company" type="text" id="company" class="input-field" /></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Country" type="text" id="Country" class="input-field" /></div>
-       <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Branch</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Branch" type="text" id="Branch" class="input-field" /></div>
-      <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Txn Typer</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="TxnType" type="text" id="TxnType" class="input-field" /></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">Number</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Number" type="text" id="Number" class="input-field" /></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><input name="Code" type="text" id="Code" class="input-field" /></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="company" runat="server" CssClass="input-field" ReadOnly="True">1000</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Branch</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Branch" runat="server" CssClass="input-field" ReadOnly="True">0001</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Type</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="TxnType" runat="server" CssClass="input-field" ReadOnly="True">IPRN</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Number</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Number" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">User</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CSSclass="input-field" ></asp:TextBox></div>
 
-    </div>
+            </div>
 </div>
 
     <br />
-
-    <div class="container mt-5">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10 alignSuccessMessage">
+                <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
+                    <asp:Label ID="lblShowMessage" runat="server" Visible="false"></asp:Label>
+                </div>
+            </div>
+        </div>
 
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6">
 
                 <div class="form-group row">
                     <label for="txtSupplierVendor" class="col-sm-4 col-form-label">Supplier/Vendor</label>
                     <div class="col-sm-2">
-                        <button for="txtsupplierVendor" class="auto-style328" style="background-color: #C0C0C0">...</button>
+                        <!--<button for="btnsup" class="auto-style328" style="background-color: #C0C0C0">...</button>-->
+                        <button type="button" id="btnsup" class="btn btn-secondary" class="auto-style328" style="border-color: #333333; background-color: #80808091">...</button>
+
+                        <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-content-container" style="overflow: auto">
+                            <!-- Modal header with a close button -->
+                            <div class="modal-header">
+                                <h2>Supplier List</h2>
+                                <button id="closeModal">Clear Selection</button>
+                            </div>
+                            <!-- GridView -->
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
+
+                            <!-- Placeholder for the GridView -->
+                            <div id="gridViewPlaceholder"></div>
+                        </div>
+                    </div>
+                </div>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" id="txtsupplier" class="auto-style327">
+                        <asp:TextBox ID="txtsupplier" runat="server" CssClass="auto-style327"></asp:TextBox>
                     </div>
-                    <div class="col-sm-2">
-                        <label for="txtsupplier" class="auto-style400" style="background-color: #C0C0C0" width="120%"></label>
+                     <div class="col-sm-2">
+                        <asp:TextBox ID="txtsupid" runat="server" CssClass="auto-style327"></asp:TextBox>
                     </div>
 
 
@@ -301,35 +435,35 @@
                 <div class="form-group row">
                     <label for="txtsup" class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-8">
-                        <input type="text" id="txtsup" class="form-control">
+                        <asp:TextBox ID="txtsup" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="txtamount" class="col-sm-4 col-form-label">Amount</label>
                     <div class="col-sm-8">
-                        <input type="text" id="txtamount" class="form-control">
+                        <asp:TextBox ID="txtamount" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="txtadjustment" class="col-sm-4 col-form-label">Adjustment</label>
                     <div class="col-sm-8">
-                        <input type="text" id="txtadjustment" class="form-control">
+                        <asp:TextBox ID="txtadjustment" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="txtnetamount" class="col-sm-4 col-form-label">Net Amount</label>
                     <div class="col-sm-8">
-                        <input type="text" id="txtnetamount" class="form-control">
+                        <asp:TextBox ID="txtnetamount" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="txtcomments" class="col-sm-4 col-form-label">Comments</label>
                     <div class="col-sm-8">
-                        <input type="text" id="txtcomments" class="form-control">
+                        <asp:TextBox ID="txtcomments" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
             </div>
@@ -339,15 +473,31 @@
 
 
                 <div class="form-group row">
-                    <label for="txtPONumber" class="col-sm-4 col-form-label">GRN NO</label>
+                    <label for="txtGRNno" class="col-sm-4 col-form-label">GRN NO</label>
                     <div class="col-sm-2">
-                        <button for="txtPONumber" class="auto-style328" style="background-color: #C0C0C0">...</button>
+                      <button type="button" id="btnGRN" class="btn btn-secondary" class="auto-style328" style="border-color: #333333; background-color: #80808091">...</button>
+                        <div id="myModal2" class="modal">
+                    <div class="modal-content2">
+                        <div class="modal-content-container2" style="overflow: auto">
+                            <!-- Modal header with a close button -->
+                            <div class="modal-header2">
+                                <h2>Goods Receive Note List</h2>
+                                <button id="closeModal2">Clear Selection</button>
+                            </div>
+                            <!-- GridView -->
+                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="True"></asp:GridView>
+
+                            <!-- Placeholder for the GridView -->
+                            <div id="gridViewPlaceholder2"></div>
+                        </div>
+                    </div>
+                </div>                    
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" id="txtPONumber" class="auto-style327">
+                        <asp:TextBox ID="txtGRNno" runat="server" CssClass="auto-style327"></asp:TextBox>
                     </div>
                      <div class="col-sm-2">
-                        <label for="txtsupplier" class="auto-style400" style="background-color: #C0C0C0" width="120%"></label>
+                        <label for="txtGRNno" class="auto-style400" style="background-color: #C0C0C0" width="120%">RGRN</label>
                     </div>
                 </div>
 
@@ -355,21 +505,21 @@
                 <div class="form-group row">
                     <label for="txtInvoiceNo" class="col-sm-4 col-form-label">Invoice No</label>
                     <div class="col-sm-8">
-                        <input type="text" id="txtInvoiceNo" class="form-control">
+                        <asp:TextBox ID="txtInvoiceNo" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="txtInvoiceAmount" class="col-sm-4 col-form-label">GRN Amount</label>
+                    <label for="txtGRNamount" class="col-sm-4 col-form-label">GRN Amount</label>
                     <div class="col-sm-8">
-                        <input type="text" id="txtInvoiceAmount" class="form-control">
+                        <asp:TextBox ID="txtGRNamount" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="txtInvoiceDate" class="col-sm-4 col-form-label">GRN Date</label>
+                    <label for="txtGRNdate" class="col-sm-4 col-form-label">GRN Date</label>
                     <div class="col-sm-8">
-                        <input type="text" id="txtInvoiceDate" class="form-control">
+                        <asp:TextBox ID="txtGRNdate" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
 
@@ -385,65 +535,59 @@
 
                 <tr>
 
-                    <td class="auto-style35">
+                     <td class="auto-style35">
+                        <button type="button" id="btnclick" class="btn btn-secondary" style="border-color: #333333; background-color: #8689cf4d; width: 62px; font-size: 9px;">...</button>
+                        <div id="myModal3" class="modal">
+                    <div class="modal-content3">
+                        <div class="modal-content-container3" style="overflow: auto">
+                            <!-- Modal header with a close button -->
+                            <div class="modal-header3">
+                                <h2>Item Master List</h2>
+                                <button id="closeModal3">Clear Selection</button>
+                            </div>
+                            <!-- GridView -->
+                            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="True"></asp:GridView>
 
-                        <input type="text" id="TextBox1" style="width: 35px;">
+                            <!-- Placeholder for the GridView -->
+                            <div id="gridViewPlaceholder3"></div>
+                        </div>
+                    </div>
+                </div> 
 
-                    </td>
-
-                    <td class="auto-style36">
-
-                        <input type="text" id="TextBox2" style="width: 16px;">
-
-                    </td>
-
-                    <td class="auto-style37">
-
-                        <input type="text" id="TextBox3" style="width: 81px;">
-
-                    </td>
-
-                    <td class="auto-style38">
-
-                        <input type="text" id="TextBox4" style="width: 211px;">
-
-                    </td>
-
-                    <td class="auto-style39">
-
-                        <input type="text" id="TextBox5" style="width: 65px;">
-
-                    </td>
-
-                    <td class="auto-style39">
-
-                        <input type="text" id="TextBox7" style="width: 65px;">
-
-                    </td>
-
-                    <td class="auto-style41">
-
-                        <input type="text" id="TextBox8" style="width: 65px;">
-
-                    </td>
-
-                    <td class="auto-style42">
-
-                        <input type="text" id="TextBox9" style="width: 65px;">
-
-                    </td>
-
-                    <td class="auto-style43">
-
-                        <input type="text" id="TextBox10" style="width: 75px;">
-
-                    </td>
-
-                    <td>
-
-                        <button id="Button1" style="width: 46px;">+</button>
-
-                    </td>
+                        </td>
+                         <td class="auto-style333">
+                                    <input type="text" id="txtitem_nu" class="auto-style331">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="TextBox2" class="auto-style332">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtcode" style="width: 81px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtDescription" style="width: 211px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtPrice" style="width: 86px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtPSize" style="width: 47px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtPascks" style="width: 65px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtNos" style="width: 65px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtDis" style="width: 65px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <input type="text" id="txtAmount" style="width: 75px;">
+                                </td>
+                                <td class="auto-style333">
+                                    <button id="Button1" style="width: 46px;">+</button>
+                                </td>
 
                 </tr>
 
@@ -451,7 +595,7 @@
 
             <br />
 
-            <div id="Panel1" style="background-color: #faeeee; height: 358px; width: 727px;">
+            <div id="Panel1" style="background-color: #99ccff30; height: 358px; width: 1167px;">
 
             </div>
 
@@ -467,25 +611,19 @@
 
     <div class="row">
 
-            <div class="col-md-6">
-
+                    <div class="col-md-6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" Width="100px" />
+                        &nbsp;&nbsp;
+                <asp:Button ID="btnBrowse" runat="server" Text="Print" CssClass="btn btn-secondary" OnClick="btnBrowse_Click" Width="100px" />
+                        &nbsp;&nbsp;
+                <asp:Button ID="btnExit" runat="server" Text="Exit" CssClass="btn btn-danger" OnClick="btnExit_Click" Width="100px" />
+                    </div>
+        </div>
+        
 
-                <button type="button" id="btnSave" class="btn btn-primary" style="border-style: inset; width: 100px">Save</button>
-
-                &nbsp;&nbsp;
-
-                <button type="button" id="btnBrowse" class="btn btn-secondary" style="border-style: inset; width: 100px">Print</button>
-
-                &nbsp;&nbsp;
-
-                <button type="button" id="btnExit" class="btn btn-danger" style="border-style: inset; width: 100px">Exit</button>
-
-            </div>
-
-        </div>    
-
+        </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -493,6 +631,294 @@
    
     <div>
 
+        <script>
+            // JavaScript code to display data in the modal
+            var btnsup = document.getElementById('btnsup');
+            var modal = document.getElementById('myModal');
+            var closeModalButton = document.getElementById('closeModal');
+            var dataBody = document.getElementById('<%= GridView1.ClientID %>');
+            var selectedRow = null;
+
+            // Input fields          
+
+            var txtsupplierrInput = document.getElementById('txtsupplier');
+            var txtsupidInput = document.getElementById('txtsupid');
+            var txtsupInput = document.getElementById('txtsup');
+            //var txtnetamountInput = document.getElementById('txtnetamount');
+            //var txtcommentsInput = document.getElementById('txtcomments');
+
+            // Function to handle row selection and highlight
+            function selectRow(row, rowData) {
+                debugger;
+                if (selectedRow) {
+                    selectedRow.classList.remove('selected-row');
+                }
+                row.classList.add('selected-row');
+                selectedRow = row;
+
+                //closeModelButton.click();
+                // Populate the input fields with the selected row's data
+                var cells = row.cells;
+                txtsupplierrInput.value = cells[0].textContent;
+                txtsupidInput.value = cells[1].textContent;
+                txtsupInput.value = cells[2].textContent;
+                // txtnetamountInput.value = cells[3].textContent;
+                // txtcommentsInput.value = cells[4].textContent;
+
+            }
+
+            btnsup.addEventListener('click', function () {
+                // Display the modal when the button is clicked
+                modal.style.display = 'block';
+
+                // Load data when the modal is opened
+                loadModalData();
+            });
+
+            closeModalButton.addEventListener('click', function () {
+                // Close the modal when the "Close" button is clicked
+                //dataBody.innerHTML = ''; // Clear the table content
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    // Close the modal if the user clicks outside the modal content
+                    //dataBody.innerHTML = '';
+                    modal.style.display = 'none';
+                }
+            });
+
+            dataBody.addEventListener('click', function (event) {
+                var target = event.target;
+                if (target.tagName === 'TD') {
+                    var row = target.parentElement;
+                    selectRow(row);
+                }
+            });
+
+            function loadModalData() {
+                // Add code here to load data into the modal (e.g., from the GridView)
+                // Make an AJAX request to fetch data and populate the modal
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        // Parse the response and populate the modal
+                        var data = JSON.parse(xmlhttp.responseText);
+                        // Implement code to populate the modal with data
+                    }
+                };
+
+                // Replace 'GetDataUrl' with the URL to fetch data from the server
+                xmlhttp.open('GET', 'GetDataUrl', true);
+                xmlhttp.send();
+            }
+
+            $(document).ready(function () {
+                $("#closeModal").click(function () {
+                    $("#myModal").modal("hide");
+                });
+            });
+
+        </script>
+
+
+       <!--modal2-->
+
+        <script>
+            // JavaScript code to display data in the modal
+            var btnPO = document.getElementById('btnPO');
+            var modal2 = document.getElementById('myModal2');
+            var closeModalButton2 = document.getElementById('closeModal2');
+            var dataBody = document.getElementById('<%= GridView2.ClientID %>');
+            var selectedRow2 = null;
+
+            // Input fields
+            var txtGRNnoInput = document.getElementById('txtGRNno');
+            var txtsupplierInput = document.getElementById('txtsupplier');
+            var txtsupidInput = document.getElementById('txtsupid');
+            var txtsupInput = document.getElementById('txtsup');
+            var txtInvoiceNoInput = document.getElementById('txtInvoiceNo');
+            var txtGRNamountInput = document.getElementById('txtGRNamount');
+            var txtGRNdateInput = document.getElementById('txtGRNdate');
+
+            // Function to handle row selection and highlight
+            function selectRow2(row, rowData) {
+                debugger;
+                if (selectedRow2) {
+                    selectedRow2.classList.remove('selected-row2');
+                }
+                row.classList.add('selected-row2');
+                selectedRow2 = row;
+
+                //closeModelButton.click();
+                // Populate the input fields with the selected row's data
+                var cells = row.cells;
+                txtGRNnoInput.value = cells[0].textContent;
+                txtsupplierInput.value = cells[1].textContent;
+                txtsupidInput.value = cells[2].textContent;
+                txtsupInput.value = cells[3].textContent;
+                txtInvoiceNoInput.value = cells[4].textContent;
+                txtGRNamountInput.value = cells[5].textContent;
+                txtGRNdateInput.value = cells[6].textContent;
+
+            }
+
+            btnGRN.addEventListener('click', function () {
+                // Display the modal when the button is clicked
+                modal2.style.display = 'block';
+
+                // Load data when the modal is opened
+                loadModal2Data();
+            });
+
+            closeModalButton2.addEventListener('click', function () {
+                // Close the modal when the "Close" button is clicked
+                //dataBody.innerHTML = ''; // Clear the table content
+                modal2.style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal2) {
+                    // Close the modal if the user clicks outside the modal content
+                    //dataBody.innerHTML = '';
+                    modal2.style.display = 'none';
+                }
+            });
+
+            dataBody.addEventListener('click', function (event) {
+                var target = event.target;
+                if (target.tagName === 'TD') {
+                    var row = target.parentElement;
+                    selectRow2(row);
+                }
+            });
+
+            function loadModal2Data() {
+                // Add code here to load data into the modal (e.g., from the GridView)
+                // Make an AJAX request to fetch data and populate the modal
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        // Parse the response and populate the modal
+                        var data = JSON.parse(xmlhttp.responseText);
+                        // Implement code to populate the modal with data
+                    }
+                };
+
+                // Replace 'GetDataUrl' with the URL to fetch data from the server
+                xmlhttp.open('GET', 'GetDataUrl', true);
+                xmlhttp.send();
+            }
+
+            $(document).ready(function () {
+                $("#closeModal2").click(function () {
+                    $("#myModal2").modal2("hide");
+                });
+            });
+
+        </script> 
+        <script>
+            // JavaScript code to display data in the modal
+            var btnclick = document.getElementById('btnclick');
+            var modal3 = document.getElementById('myModal3');
+            var closeModalButton3 = document.getElementById('closeModal3');
+            var dataBody = document.getElementById('<%= GridView3.ClientID %>');
+            var selectedRow3 = null;
+
+            // Input fields   
+            var txtitem_nuInput = document.getElementById('txtitem_nu');
+            var TextBox2Input = document.getElementById('TextBox2');
+            var txtcodeInput = document.getElementById('txtcode');
+            var txtDescriptionInput = document.getElementById('txtDescription');
+            var txtPriceInput = document.getElementById('txtPrice');
+            var txtPSizeInput = document.getElementById('txtPSize');
+            var txtPascksInput = document.getElementById('txtPascks');
+            var txtNosInput = document.getElementById('txtNos');
+            var txtDisInput = document.getElementById('txtDis');
+            var txtAmountInput = document.getElementById('txtAmount');
+
+            // Function to handle row selection and highlight
+            function selectRow3(row, rowData) {
+                debugger;
+                if (selectedRow3) {
+                    selectedRow3.classList.remove('selected-row2');
+                }
+                row.classList.add('selected-row2');
+                selectedRow3 = row;
+
+                //closeModelButton.click();
+                // Populate the input fields with the selected row's data
+                var cells = row.cells;
+                txtitem_nuInput.value = cells[0].textContent;
+                TextBox2Input.value = cells[1].textContent;
+                txtcodeInput.value = cells[2].textContent;
+                txtDescriptionInput.value = cells[3].textContent;
+                txtPriceInput.value = cells[4].textContent;
+                txtPSizeInput.value = cells[5].textContent;
+                txtPascksInput.value = cells[6].textContent;
+                txtNosInput.value = cells[7].textContent;
+                txtDisInput.value = cells[8].textContent;
+                txtAmountInput.value = cells[9].textContent;
+
+            }
+
+            btnclick.addEventListener('click', function () {
+                // Display the modal when the button is clicked
+                modal3.style.display = 'block';
+
+                // Load data when the modal is opened
+                loadModal3Data();
+            });
+
+            closeModalButton3.addEventListener('click', function () {
+                // Close the modal when the "Close" button is clicked
+                //data.Body.innerHTML = ''; // Clear the table content
+                modal3style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal3) {
+                    // Close the modal if the user clicks outside the modal content
+                    //dataBody.innerHTML = '';
+                    modal3.style.display = 'none';
+                }
+            });
+
+            dataBody.addEventListener('click', function (event) {
+                var target = event.target;
+                if (target.tagName === 'TD') {
+                    var row = target.parentElement;
+                    selectRow3(row);
+                }
+            });
+
+            function loadModal3Data() {
+                // Add code here to load data into the modal (e.g., from the GridView)
+                // Make an AJAX request to fetch data and populate the modal
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        // Parse the response and populate the modal
+                        var data = JSON.parse(xmlhttp.responseText);
+                        // Implement code to populate the modal with data
+                    }
+                };
+
+                // Replace 'GetDataUrl' with the URL to fetch data from the server
+                xmlhttp.open('GET', 'GetDataUrl', true);
+                xmlhttp.send();
+            }
+
+            $(document).ready(function () {
+                $("#closeModal3").click(function () {
+                    $("#myModal3").modal3("hide");
+                });
+            });
+
+        </script>  
+
+         
         <script>
             // Function to format a number to have two digits (e.g., 1 => "01")
             function formatNumber(number) {

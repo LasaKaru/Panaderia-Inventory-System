@@ -99,7 +99,7 @@ namespace Panaderia.Form.Inventory
 
 
             {
-             //   LoadUserData();
+                LoadUserData();
             }
             {
               //  LoadData();
@@ -174,9 +174,10 @@ namespace Panaderia.Form.Inventory
 
         }
 
-        /*
+        
         private void LoadUserData() { }
 
+        /*
         private void LoadData()
         {
             try
@@ -316,7 +317,8 @@ namespace Panaderia.Form.Inventory
 
         }
 
-        protected void BtnSave_Click(object sender, EventArgs e)
+        
+        /*protected void BtnSave_Click(object sender, EventArgs e)
         {
             // Iterate through GridView rows and save data to the database
             foreach (GridViewRow row in GridView3.Rows)
@@ -330,6 +332,7 @@ namespace Panaderia.Form.Inventory
                 // ...
             }
         }
+        */
 
 
 

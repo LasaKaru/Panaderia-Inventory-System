@@ -698,11 +698,13 @@
 
                         <div>
 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                     <asp:Button ID="Button3" runat="server" Text="Refresh" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
 
-            <asp:Button ID="Button4" runat="server" Text="Print" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
+            &nbsp;<asp:Button ID="Button4" runat="server" Text="Print" OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
 
-            <asp:Button ID="Button5" runat="server" Text="Print List " OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
+            &nbsp;<asp:Button ID="Button5" runat="server" Text="Print List " OnClick="btnGenerateReport_Click" CssClass="btn btn-primary" />
 
                 </div>
 

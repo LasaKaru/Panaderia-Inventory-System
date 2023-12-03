@@ -68,7 +68,7 @@ namespace Panaderia.Form.Master_File
                 if (dataSaved)
                {
                   // Update query
-                query = "UPDATE MF_Address_Book SET Date = @Date, User_Name = @User_Name, " +
+                query = "UPDATE MF_Address_Book SET Date = @Date,@User, @User_Name = @User_Name, " +
                 "User_BranchCode = @User_BranchCode, User_Group = @User_Group, " +
                 "User_Password = @User_Password, User_Status = @User_Status " +
                 "WHERE SerialNumber = @SerialNumber";
@@ -87,10 +87,10 @@ namespace Panaderia.Form.Master_File
                             using (SqlCommand command = new SqlCommand(query, connection))
                             {
                               // Add parameters and set their values based on the data from your controls
-                              //command.Parameters.AddWithValue("@SerialNumber", SerialNumber.Text);
-                              //command.Parameters.AddWithValue("@Date", Date.Text);
+                              command.Parameters.AddWithValue("@SerialNumber", SerialNumber.Text);
+                              command.Parameters.AddWithValue("@Date", Date.Text);
                               //command.Parameters.AddWithValue("@User", User.Text);
-                              //command.Parameters.AddWithValue("@User_Name", txtShortName.Text);
+                              command.Parameters.AddWithValue("@User_Name", txtShortName.Text);
                               
 
                               //command.Parameters.AddWithValue("@User_Status", ddlUserStatus.SelectedValue);

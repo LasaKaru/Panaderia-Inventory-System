@@ -525,13 +525,14 @@
             <div class="col-md-6">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" Style="border-style: inset; width: 100px" / >
+    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" Style="border-style: inset; width: 100px" />
                 &nbsp;&nbsp;
     <asp:Button ID="btnBrowse" runat="server" Text="Print" CssClass="btn btn-secondary" OnClick="btnBrowse_Click" Style="border-style: inset; width: 100px" />
                 &nbsp;&nbsp;
     <asp:Button ID="btnExit" runat="server" Text="Exit" CssClass="btn btn-danger" OnClick="btnExit_Click" Style="border-style: inset; width: 100px" />
             </div>
         </div>
+        <br />
         <br />
  <%--       <div class="row">
             <div class="col-md-10 alignSuccessMessage">
