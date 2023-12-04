@@ -827,51 +827,28 @@
  
 
      <div class="row">
-
          <div class="col-md-6">
-
-             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              <asp:Button ID="btnSave" Text="Save" CssClass="btn btn-primary" ValidationGroup="valGrpCreate" OnClick="btnSave_Click" runat="server" Style="border-style: inset; width: 100px" />
-
              <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;">Browse</button>
-
                 <div id="myModal" class="modal">
-
                     <div class="modal-content">
-
                         <div class="modal-content-container" style="overflow: auto">
-
                             <!-- Modal header with a close button -->
-
                             <div class="modal-header">
-
                                 <h2>Supplier Details </h2>
-
                                 <button id="closeModal">Clear Selection</button>
-
                             </div>
-
                             <!-- GridView -->
-
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
 
- 
-
                             <!-- Placeholder for the GridView -->
-
                             <div id="gridViewPlaceholder"></div>
-
                         </div>
-
                     </div>
-
                 </div>
-
              <asp:Button ID="btnExit" Text="Exit" CssClass="btn btn-danger" OnClick="btnExit_Click" runat="server" Style="border-style: inset; width: 100px" />
-
          </div>
-
      </div>
     
 

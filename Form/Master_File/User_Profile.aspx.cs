@@ -17,13 +17,13 @@ namespace Panaderia.Form.Master_File
             DateTime dt = DateTime.Now;
 
             // Set the value of the TextBox control.
-            Date.Text = dt.ToString("yyyy-MM-dd HH:mm:ss");
+            date.Text = dt.ToString("yyyy-MM-dd HH:mm:ss");
 
             // Get the valid login user name from the default.aspx.cs code btnLogin_Click() function.
             string validUsername = (string)System.Web.HttpContext.Current.Session["ValidUsername"];
 
             // Set the value of the TextBox control.
-            User.Text = validUsername;
+            user.Text = validUsername;
 
 
             // Load the user data from the database when the page is loaded
@@ -64,7 +64,7 @@ namespace Panaderia.Form.Master_File
         protected void LoadData()
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT txtUserID, txtUserName, txtDefaultStore, ddlDefaultStore, txtUserGroup, txtUserPassword, txtUserStatus FROM [Panaderia].[dbo].[MF_User_Profile]";
+            string query = "  SELECT UserID, UserName, DefaultStore, UserGroup, UserPassword, UserStatus FROM [Panaderia].[dbo].[MF_User_Profile_NEW]";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -164,7 +164,7 @@ namespace Panaderia.Form.Master_File
 
         } **/
 
-        protected void BtnSave_Click(object sender, EventArgs e)
+        /*protected void btnSave_Click(object sender, EventArgs e)
         {
             // Save button click event handling
             // Implement the logic to save data to the database
@@ -211,8 +211,108 @@ namespace Panaderia.Form.Master_File
 
             // redirect the user to another page after saving
             //Response.Redirect("user_Profile.aspx");
+        }*/
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                // Check if the record with the specified SerialNumber already exists
+                string checkIfExistsQuery = "SELECT COUNT(*) FROM [dbo].[MF_User_Profile_NEW] WHERE [UserID] = @UserID";
+
+                using (SqlCommand checkCmd = new SqlCommand(checkIfExistsQuery, con))
+                {
+                    checkCmd.Parameters.AddWithValue("@UserID", txtUserID.Text);
+
+                    int existingRecordCount = (int)checkCmd.ExecuteScalar();
+
+                    if (existingRecordCount > 0)
+                    {
+                        // If the record exists, perform an update
+                        UpdateRecord(con);
+                    }
+                    else
+                    {
+                        // If the record does not exist, perform an insert
+                        InsertRecord(con);
+                    }
+                }
+            }
         }
 
+        private void InsertRecord(SqlConnection con)
+        {
+            string insertQuery = @"
+        INSERT INTO [dbo].[MF_User_Profile_NEW]
+           ([SerialNumber],[Date],[User],[UserID],[UserName],[DefaultStore],[UserGroup],[UserPassword],[UserStatus])
+     VALUES  
+                (@SerialNumber,@Date,@User,@UserID,@UserName,@DefaultStore,@UserGroup,@UserPassword,@UserStatus)";
+
+            
+          
+
+
+            using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
+            {
+                SetParameters(insertCmd);
+
+                insertCmd.ExecuteNonQuery();
+
+                Response.Write("Saved Successfully");
+
+                divMsg.Visible = true;
+                lblShowMessage.Visible = true;
+                lblShowMessage.Text = "Successfully inserted!";
+            }
+        }
+
+        private void UpdateRecord(SqlConnection con)
+        {
+            string updateQuery = @"
+        UPDATE [dbo].[MF_User_Profile_NEW]
+                       SET
+                           [Date] = @Date,
+                           [User] = @User,
+                           [UserID] = @UserID,                           
+                           [UserName] = @UserName,
+                           [DefaultStore] = @DefaultStore,                           
+                           [UserGroup] = @UserGroup,                         
+                           [UserPassword] = @UserPassword,
+                           [UserStatus] = @UserStatus                                                      
+                      WHERE [UserID] = @UserID";
+
+            using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
+            {
+                SetParameters(updateCmd);
+
+                updateCmd.ExecuteNonQuery();
+
+                Response.Write("Updated Successfully");
+
+                divMsg.Visible = true;
+                lblShowMessage.Visible = true;
+                lblShowMessage.Text = "Successfully updated!";
+            }
+        }
+
+        private void SetParameters(SqlCommand cmd)
+        {
+
+            cmd.Parameters.AddWithValue("@SerialNumber", SerialNumber.Text);
+            cmd.Parameters.AddWithValue("@Date", date.Text);
+            cmd.Parameters.AddWithValue("@User", user.Text);
+            cmd.Parameters.AddWithValue("@UserID", txtUserID.Text);            
+            cmd.Parameters.AddWithValue("@UserName", txtUserName.Text);
+            cmd.Parameters.AddWithValue("@DefaultStore", ddlDefaultStore.SelectedItem.Text.ToString());
+            cmd.Parameters.AddWithValue("@UserGroup", ddlUserGroup.SelectedItem.Text.ToString());           
+            cmd.Parameters.AddWithValue("@UserPassword", txtUserPassword.Text);
+            cmd.Parameters.AddWithValue("@UserStatus", ddlUserStatus.SelectedItem.Text.ToString());
+
+        }
 
 
         protected void BtnBrowse_Click(object sender, EventArgs e)

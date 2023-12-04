@@ -3,6 +3,8 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
+<br />
     <link href="Content/Navigation.css" rel="stylesheet" />
     <div class="jumbotron">
         <style>

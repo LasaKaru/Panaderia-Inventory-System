@@ -61,7 +61,7 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    
         
         <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -294,19 +294,18 @@
 <br />
 
 <br />
-
+        <form id="form1" runat="server">
      <div class="auto-style32">
+  <div class="auto-style32">
   <div class="table-row">
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Serial Number</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:textbox name="SerialNumber" runat="server" type="text" id="SerialNumber" class="input-field" readonly/></div>
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:textbox name="Country" runat="server" type="text" id="Date" class="input-field" readonly/></div>
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:textbox name="Code" runat="server" type="text" id="User" class="input-field" readonly/></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Serial Number</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="SerialNumber" runat="server" CssClass="input-field"></asp:TextBox></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field"></asp:TextBox></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CssClass="input-field"></asp:TextBox></div>
   </div>
+</div>
 </div>
 
     <br />
@@ -427,8 +426,9 @@
                 <div class="form-group row">
     <label for="txtNotes" class="col-sm-3 col-form-label">Notes</label>
     <div class="col-sm-9">
-        <input type="text" id="txtNotes" class="form-control"/>
-    </div>
+    <asp:TextBox runat="server" ID="txtNotes" CssClass="form-control"></asp:TextBox>
+</div>
+
 </div>   
 
                 <div class="form-group row">
@@ -454,7 +454,8 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:HiddenField ID="hdnDataSaved" runat="server" />
-                <button type="button" id="btnSave" class="btn btn-primary" style="width: 100px;" onclick="saveOrUpdate()">Save</button>
+               <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" style="width: 100px;" OnClientClick="saveOrUpdate()" OnClick="btnSave_Click" />
+
                 <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;" onclick="saveOrUpdate()">Browse</button>
 
                  <div id="myModal" class="modal">
@@ -462,22 +463,18 @@
                         <div class="modal-content-container" style="overflow: auto">
                             <!-- Modal header with a close button -->
                             <div class="modal-header">
-                                <h2>AddressBook List ;)< </h2>
+                                <h2>AddressBook List </h2>
                                 <button id="closeModal">Clear Selection</button>
                             </div>
                             <!-- GridView -->
                             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
-
-
-
 
                             <!-- Placeholder for the GridView -->
                             <div id="gridViewPlaceholder"></div>
                         </div>
                     </div>
                 </div>
-
-                <button type="button" id="btnExit" class="btn btn-danger" style="width: 100px;">Exit</button>
+<asp:Button ID="btnExit" runat="server" Text="Exit" CssClass="btn btn-danger" Style="width: 100px" OnClick="btnExit_Click" />
             </div>
         </div>
     </div>

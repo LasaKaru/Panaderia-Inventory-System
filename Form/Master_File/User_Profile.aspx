@@ -74,7 +74,7 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    
         
         <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -307,28 +307,29 @@
 <br />
 
 <br />
+        <form id="form2" runat="server">
 
      <div class="auto-style32">
   <div class="table-row">
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Serial Number</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="SerialNumber" runat="server" type="text" id="SerialNumber" class="input-field" readonly/>
-    </div>
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="Country" runat="server" type="text" id="Date" class="input-field" readonly/>
-    </div>
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="User" runat="server" type="text" id="User" class="input-field" readonly/>
-    </div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Serial Number</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="SerialNumber" runat="server" CssClass="input-field"></asp:TextBox></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px; color:#000;"><asp:TextBox ID="date" runat="server" CssClass="input-field"></asp:TextBox></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CssClass="input-field"></asp:TextBox></div>
   </div>
 </div>
         
 
     <br />
 
-        
+     <div class="row">
+            <div class="col-md-4 alignSuccessMessage">
+            <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
+                <asp:Label ID="lblShowMessage" runat="server" Visible="true"></asp:Label>
+            </div>
+                </div>
+        </div>
     
 
     <div class="container mt-5">
@@ -411,7 +412,11 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <button type="button" id="BtnSave" class="btn btn-primary" style="width: 100px;">Save</button>
+
+                <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn btn-primary" Style="width: 100px" ValidationGroup="valGrpCreate" OnClick="btnSave_Click" />
+                <!-- Save button 
+                <button type="button" id="BtnSave" class="btn btn-primary" style="width: 100px;">Save</:button>
+                -->
                 <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;">Browse</button>
 
                 <div id="myModal" class="modal">

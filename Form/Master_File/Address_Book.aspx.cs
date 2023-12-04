@@ -17,13 +17,13 @@ namespace Panaderia.Form.Master_File
             DateTime dt = DateTime.Now;
 
             // Set the value of the TextBox control.
-            Date.Text = dt.ToString("yyyy-MM-dd HH:mm:ss");
+            date.Text = dt.ToString("yyyy-MM-dd HH:mm:ss");
 
             // Get the valid login user name from the default.aspx.cs code btnLogin_Click() function.
             string validUsername = (string)System.Web.HttpContext.Current.Session["ValidUsername"];
 
             // Set the value of the TextBox control.
-            User.Text = validUsername;
+            user.Text = validUsername;
 
 
             // Load the user data from the database when the page is loaded
@@ -31,8 +31,6 @@ namespace Panaderia.Form.Master_File
 
 
             {
-                // Initialize the hidden field value (data not saved)
-                hdnDataSaved.Value = "false";
                 // Call a method to retrieve the next available serial number
                 string nextSerialNumber = GetNextSerialNumberForUser(LoggedInUserId);
 
@@ -41,69 +39,9 @@ namespace Panaderia.Form.Master_File
             }
 
             {
-                LoadUserData();
-            }
-            {
                 LoadData();
             }
-
-            {
-                SaveOrUpdateUserData();
-            }
-
-            
-
         }
-
-
-        private void SaveOrUpdateUserData()
-        {
-          // Check if the data needs to be saved or updated based on the hidden field value
-          bool dataSaved = hdnDataSaved.Value.ToLower() == "true";
-
-          // Replace the connection string and SQL query with your actual values
-             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query;
-
-                if (dataSaved)
-               {
-                  // Update query
-                query = "UPDATE MF_Address_Book SET Date = @Date,@User, @User_Name = @User_Name, " +
-                "User_BranchCode = @User_BranchCode, User_Group = @User_Group, " +
-                "User_Password = @User_Password, User_Status = @User_Status " +
-                "WHERE SerialNumber = @SerialNumber";
-                 }
-                 else
-                 {
-                    // Insert query
-                query = "INSERT INTO MF_Address_Book (SerialNumber, Date, User, User_Name, " +
-                "User_BranchCode, User_Group, User_Password, User_Status) " +
-                "VALUES (@SerialNumber, @Date, @User, @User_Name, " +
-                "@User_BranchCode, @User_Group, @User_Password, @User_Status)";
-                  }
-
-                  using (SqlConnection connection = new SqlConnection(connectionString))
-                  {
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                              // Add parameters and set their values based on the data from your controls
-                              command.Parameters.AddWithValue("@SerialNumber", SerialNumber.Text);
-                              command.Parameters.AddWithValue("@Date", Date.Text);
-                              //command.Parameters.AddWithValue("@User", User.Text);
-                              command.Parameters.AddWithValue("@User_Name", txtShortName.Text);
-                              
-
-                              //command.Parameters.AddWithValue("@User_Status", ddlUserStatus.SelectedValue);
-
-                              connection.Open();
-                              command.ExecuteNonQuery();
-                            }
-                  }
-
-           // Display a message or handle UI changes after saving or updating
-            Response.Write("Data saved or updated successfully!");
-        }
-
         // Replace "LoggedInUserId" with the actual way you get the logged-in user's user_id.
         private int LoggedInUserId
         {
@@ -118,38 +56,6 @@ namespace Panaderia.Form.Master_File
                 return 0; // You should handle this case based on your application's authentication.
             }
         }
-
-        protected void LoadData()
-        {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT Code, ShortName, FullName, AddressLine1, AddressLine2, CityRegion, Country, Telephone, Fax, Mobile, Email, ContactPerson, ContactDetails, Notes, UserStatus FROM[Panaderia].[dbo].[MF_Address_Book]";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
-                    try
-                    {
-                        connection.Open();
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        GridView1.DataSource = reader;
-                        GridView1.DataBind();
-                    }
-                    catch (Exception ex)
-                    {
-                        // Handle any exceptions here
-                        string errorMessage = "An error occurred while fetching data. Please try again later.";
-
-                        // Display the error message to the user
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "errorAlert", $"alert('{errorMessage}');", true);
-                    }
-                }
-            }
-        }
-        
-
-
         private string GetNextSerialNumberForUser(int userId)
         {
             // Implement your database query logic here to fetch the next serial number for the given user from the database.
@@ -182,105 +88,161 @@ namespace Panaderia.Form.Master_File
             }
 
         }
-        private void LoadUserData() 
-        { 
-        
-        }
-
-        protected void BtnBrowse_Click(object sender, EventArgs e)
-        {
-            // Implement the logic to retrieve and display user data from the database
-            BrowseUserData();
-        }
-
-        private void BrowseUserData()
+        private void LoadData()
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT * FROM MF_User"; // Modify the query to select the columns you need
-            //string query = "SELECT SerialNumber, Date, User, UserID, UserName, DefaultStore, UserGroup, UserPassword, UserStatus FROM MF_Users";
+            string query = "  SELECT ADD_CODE, SHORT_NAME, FULL_NAME,ADD1,ADD2,TEL1,FAX1,MOB1,EMAIL1 FROM [Panaderia].[dbo].[MF_Address]";
+            ;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    try
                     {
-                        // Process the data using the reader
-                        while (reader.Read())
-                        {
-                            // Access columns like this:
-                            int userId = reader.GetInt32(reader.GetOrdinal("User_Id"));
-                            string userCode = reader.GetString(reader.GetOrdinal("User_Code"));
-                            string userName = reader.GetString(reader.GetOrdinal("User_Name"));
-                            // ... and so on for other columns
-                        }
+                        connection.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        GridView1.DataSource = reader;
+                        GridView1.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions here
+                        string errorMessage = "An error occurred while fetching data. Please try again later.";
+
+                        // Display the error message to the user
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "errorAlert", $"alert('{errorMessage}');", true);
                     }
                 }
             }
         }
 
-        protected void BtnExit_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
-            // Exit button click event handling
-
-            // Implement the logic to redirect to the dashboard.aspx
-            //Response.Redirect("~/Dashboard.aspx");
-
-            // Implement the logic to show a confirmation prompt using JavaScript
-            string script = "if (confirm('Are you sure you want to exit?')) { window.location.href = 'Dashboard.aspx'; }";
-            ClientScript.RegisterStartupScript(this.GetType(), "ConfirmExit", script, true);
-
-        }
-
-        protected void BtnSave_Click(object sender, EventArgs e)
-        {
-            // Save button click event handling
-            SaveUserData();
-
-        }
-
-        private void SaveUserData()
-        {
-            // Implement the logic to save data to the database
-            // need to replace the connection string and SQL query with your actual values
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            //string query = "INSERT INTO MF_Users (SerialNumber, Date, User, UserID, UserName, DefaultStore, UserGroup, UserPassword, UserStatus) " +
-            //               "VALUES (@SerialNumber, @Date, @User, @UserID, @UserName, @DefaultStore, @User_Group, @User_Cur_Password, @User_Status)";
 
-            string query = "INSERT INTO MF_Address_Book (SerialNumber, Date, User, User_Name, User_BranchCode, User_Group, User_Password, User_Status) " +
-                           "VALUES (@SerialNumber, @Date, @User, @User_Name, @User_BranchCode,, @User_Group, @User_Password, @User_Status)";
-
-
-            // Assume have a user ID stored in a session variable or some other source
-            //string userId = "123"; // Replace this with the actual user ID
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    // Add parameters and set their values based on the data from your controls
-                    command.Parameters.AddWithValue("(@SerialNumber", SerialNumber.Text);
-                    command.Parameters.AddWithValue("@Date", Date.Text);
-                    command.Parameters.AddWithValue("@User", User.Text);
-                   // command.Parameters.AddWithValue("@User_ID", txtUserID.Text);
-                    command.Parameters.AddWithValue("@User_Name", txtShortName.Text);
-                   // command.Parameters.AddWithValue("@User_Name", txtFullName.Text);
-                   // command.Parameters.AddWithValue("@User_BranchCode,", ddlDefaultStore.SelectedValue);
-                   // command.Parameters.AddWithValue("@User_Group", ddlUserGroup.SelectedValue);
-                  //  command.Parameters.AddWithValue("@User_Password", txtUserPassword.Text);
-                    command.Parameters.AddWithValue("@User_Status", ddlUserStatus.SelectedValue);
+                con.Open();
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                // Check if the record with the specified SerialNumber already exists
+                string checkIfExistsQuery = "SELECT COUNT(*) FROM [dbo].[MF_Address] WHERE [ADD_CODE] = @ADD_CODE";
+
+                using (SqlCommand checkCmd = new SqlCommand(checkIfExistsQuery, con))
+                {
+                    checkCmd.Parameters.AddWithValue("@ADD_CODE", txtCode.Text);
+
+                    int existingRecordCount = (int)checkCmd.ExecuteScalar();
+
+                    if (existingRecordCount > 0)
+                    {
+                        // If the record exists, perform an update
+                        UpdateRecord(con);
+                    }
+                    else
+                    {
+                        // If the record does not exist, perform an insert
+                        InsertRecord(con);
+                    }
                 }
             }
-
-            // add a message or redirect the user to another page after saving
-            Response.Write("Data saved successfully!");
-
-            // redirect the user to another page after saving
-            //Response.Redirect("user_Profile.aspx");
         }
+
+        private void InsertRecord(SqlConnection con)
+        {
+            string insertQuery = @"
+        INSERT INTO [dbo].[MF_Address]
+           ([SerialNumber],[Date],[User],[ADD_CODE],[SHORT_NAME],[FULL_NAME],[ADD1],[ADD2],[city],[Country],[TEL1],[FAX1]
+           ,[MOB1],[EMAIL1],[CON_PERSON1],[contact_detail],[note],[ACTIVE_STATUS])
+     VALUES      
+                (@SerialNumber,@Date,@User, @ADD_CODE,@SHORT_NAME,@FULL_NAME, @ADD1, @ADD2,@city,@Country,
+                 @TEL1,@FAX1,@MOB1,@EMAIL1,@CON_PERSON1,@contact_detail,@note,@ACTIVE_STATUS)";
+
+
+
+
+
+
+            using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
+            {
+                SetParameters(insertCmd);
+
+                insertCmd.ExecuteNonQuery();
+
+                Response.Write("Saved Successfully");
+
+                divMsg.Visible = true;
+                lblShowMessage.Visible = true;
+                lblShowMessage.Text = "Successfully inserted!";
+            }
+        }
+
+        private void UpdateRecord(SqlConnection con)
+        {
+            string updateQuery = @"
+            UPDATE [dbo].[MF_Address]
+            SET
+                [Date] = @Date,
+                [User] = @User,
+                [ADD_CODE] = @ADD_CODE,
+                [SHORT_NAME] = @SHORT_NAME,
+                [FULL_NAME] = @FULL_NAME,
+                [ADD1] = @ADD1,
+                [ADD2] = @ADD2,
+                [city] = @city,
+                [Country] = @Country,
+                [TEL1] = @TEL1,
+                [FAX1] = @FAX1,
+                [MOB1] = @MOB1,
+                [EMAIL1] = @EMAIL1,
+                [CON_PERSON1] = @CON_PERSON1,
+                [contact_detail] = @contact_detail,
+                [note] = @note,
+                [ACTIVE_STATUS] = @ACTIVE_STATUS            
+            WHERE [ADD_CODE] = @ADD_CODE";
+
+
+            using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
+            {
+                SetParameters(updateCmd);
+
+                updateCmd.ExecuteNonQuery();
+
+                Response.Write("Updated Successfully");
+
+                divMsg.Visible = true;
+                lblShowMessage.Visible = true;
+                lblShowMessage.Text = "Successfully updated!";
+            }
+        }
+
+        private void SetParameters(SqlCommand cmd)
+        {
+            cmd.Parameters.AddWithValue("@SerialNumber", SerialNumber.Text);
+            cmd.Parameters.AddWithValue("@Date", date.Text);
+            cmd.Parameters.AddWithValue("@User", user.Text);
+            cmd.Parameters.AddWithValue("@ADD_CODE", txtCode.Text);
+            cmd.Parameters.AddWithValue("@SHORT_NAME", txtShortName.Text);
+            cmd.Parameters.AddWithValue("@FULL_NAME", txtFullName.Text);
+            cmd.Parameters.AddWithValue("@ADD1", txtAddress1.Text);
+            cmd.Parameters.AddWithValue("@ADD2", txtAddress2.Text);
+            cmd.Parameters.AddWithValue("@city", txtcity.Text);
+            cmd.Parameters.AddWithValue("@Country", txtCountry.Text);
+            cmd.Parameters.AddWithValue("@TEL1", txtTelephone.Text);
+            cmd.Parameters.AddWithValue("@FAX1", txtFax.Text);
+            cmd.Parameters.AddWithValue("@MOB1", txtMobile.Text);
+            cmd.Parameters.AddWithValue("@EMAIL1", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@CON_PERSON1", txtContact.Text);
+            cmd.Parameters.AddWithValue("@contact_detail", txtDetails.Text);
+            cmd.Parameters.AddWithValue("@note", txtNotes.Text);
+            cmd.Parameters.AddWithValue("@ACTIVE_STATUS", ddlUserStatus.SelectedItem.Text.ToString());
+        }
+
+        protected void btnExit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Dashboard.aspx");
+        }
+
     }
 }

@@ -33,22 +33,22 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox SerialNumber;
 
         /// <summary>
-        /// Date control.
+        /// date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Date;
+        protected global::System.Web.UI.WebControls.TextBox date;
 
         /// <summary>
-        /// User control.
+        /// user control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox User;
+        protected global::System.Web.UI.WebControls.TextBox user;
 
         /// <summary>
         /// divMsg control.

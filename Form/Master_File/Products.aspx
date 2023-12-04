@@ -265,19 +265,15 @@
     <form id="form1" runat="server">
 
      <div class="auto-style32">
-
   <div class="table-row">
-
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Serial Number</div>
     <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="SerialNumber" runat="server" CssClass="input-field"></asp:TextBox></div>
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Date" runat="server" CssClass="input-field" ForeColor="#000000"></asp:TextBox></div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field" ForeColor="#000000"></asp:TextBox></div>
     <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="User" runat="server" CssClass="input-field"></asp:TextBox></div>
-
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CssClass="input-field"></asp:TextBox></div>
   </div>
-
-</div>
+</div>>
 
     <br />
 
@@ -657,23 +653,14 @@
  
 
                 <div class="form-group row">
-
                     <label for="txtUserStatus" class="col-sm-4 col-form-label">Status</label>
-
                     <div class="col-sm-2">
-
-                        <asp:TextBox ID="txtUserStatus" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
-
-                    </div>                  
-
+                        <asp:TextBox ID="txtactiveStatus" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+                    </div>                   
                     <div class="col-sm-6">                       
-
-                         <asp:DropDownList ID="ddlUserStatus" runat="server" onchange="updateUserStatusText()" Width="100px" CssClass="form-control">
-
+                         <asp:DropDownList ID="ddlactiveStatus" runat="server" onchange="updateUserStatusText()" Width="100px" CssClass="form-control">
                              <asp:ListItem Text="Active" Value="A"></asp:ListItem>
-
-                             <asp:ListItem Text="Deleted" Value="D"></asp:ListItem>                           
-
+                             <asp:ListItem Text="Deleted" Value="D"></asp:ListItem>                            
                          </asp:DropDownList>
 
                     </div>
@@ -714,7 +701,7 @@
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                 <asp:Button ID="btn_save" runat="server" CssClass="btn btn-primary"   Text="Save"  OnClick="btn_save_Click" Style="border-style: inset; width: 100px"/>
 

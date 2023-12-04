@@ -19,13 +19,13 @@ namespace Panaderia.Form.Master_File
             DateTime dt = DateTime.Now;
 
             // Set the value of the TextBox control.
-            Date.Text = dt.ToString("yyyy-MM-dd HH:mm:ss");
+            date.Text = dt.ToString("yyyy-MM-dd HH:mm:ss");
 
             // Get the valid login user name from the default.aspx.cs code btnLogin_Click() function.
             string validUsername = (string)System.Web.HttpContext.Current.Session["ValidUsername"];
 
             // Set the value of the TextBox control.
-            User.Text = validUsername;
+            user.Text = validUsername;
 
             if (!IsPostBack)
 
@@ -137,7 +137,7 @@ namespace Panaderia.Form.Master_File
         protected void LoadData()
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT Code, Telephone, Mobile,AddressLine1,AddressLine2,AddressLine3,Country,Email,CreditLimit,ActiveStatus FROM [Panaderia].[dbo].[MF_Customer_testing]";
+            string query = "SELECT Code, Telephone, Mobile,AddressLine1,AddressLine2,AddressLine3,Country,Email,CreditLimit,ActiveStatus FROM [Panaderia].[dbo].[MF_Customer_new]";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -163,7 +163,7 @@ namespace Panaderia.Form.Master_File
             }
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)
+        /*protected void btnSave_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
 
@@ -262,6 +262,134 @@ namespace Panaderia.Form.Master_File
 
 
             }
+
+        }*/       
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                // Check if the record with the specified SerialNumber already exists
+                string checkIfExistsQuery = "SELECT COUNT(*) FROM [dbo].[MF_Customer_new] WHERE [Code] = @Code";
+
+                using (SqlCommand checkCmd = new SqlCommand(checkIfExistsQuery, con))
+                {
+                    checkCmd.Parameters.AddWithValue("@Code", txtCode.Text);
+
+                    int existingRecordCount = (int)checkCmd.ExecuteScalar();
+
+                    if (existingRecordCount > 0)
+                    {
+                        // If the record exists, perform an update
+                        UpdateRecord(con);
+                    }
+                    else
+                    {
+                        // If the record does not exist, perform an insert
+                        InsertRecord(con);
+                    }
+                }
+            }
+        }
+
+        private void InsertRecord(SqlConnection con)
+        {
+            string insertQuery = @"
+        INSERT INTO [dbo].[MF_Customer_new]
+               ([SerialNumber],[Date],[User],[Code],[CustomerName],[AddressLine1],[AddressLine2],[AddressLine3],[Country]
+               ,[Telephone],[Fax],[Mobile],[Email],[ContactPerson],[ContactDetails],[Notes],[CreditLimit],[CreditPeriod],[CustomerType],[CustomerVatNo],[ActiveStatus])
+
+              VALUES            
+                (@SerialNumber,@Date,@User, @Code,@CustomerName,@AddressLine1, @AddressLine2, @AddressLine3,@Country,@Telephone,
+                 @Fax,@Mobile,@Email,@ContactPerson,@ContactDetails,@Notes,@CreditLimit,@CreditPeriod,@CustomerType,@CustomerVatNo,@ActiveStatus)";
+
+
+            using (SqlCommand insertCmd = new SqlCommand(insertQuery, con))
+            {
+                SetParameters(insertCmd);
+
+                insertCmd.ExecuteNonQuery();
+
+                Response.Write("Saved Successfully");
+
+                divMsg.Visible = true;
+                lblShowMessage.Visible = true;
+                lblShowMessage.Text = "Successfully inserted!";
+            }
+        }
+
+        private void UpdateRecord(SqlConnection con)
+        {
+            string updateQuery = @"
+        UPDATE [dbo].[MF_Customer_new]
+                       SET [Date] = @Date,
+                           [User] = @User,
+                           [Code] = @Code,
+                           [CustomerName] = @CustomerName,
+                           [AddressLine1] = @AddressLine1,
+                           [AddressLine2] = @AddressLine2,
+                           [AddressLine3] = @AddressLine3,
+                           [Country] = @Country,
+                           [Telephone] = @Telephone,
+                           [Fax] = @Fax,
+                           [Mobile] = @Mobile,
+                           [Email] = @Email,
+                           [ContactPerson] = @ContactPerson,
+                           [ContactDetails] = @ContactDetails,
+                           [Notes] = @Notes,
+                           [CreditLimit] = @CreditLimit,
+                           [CreditPeriod] = @CreditPeriod,
+                           [CustomerType] = @CustomerType,
+                           [CustomerVatNo] = @CustomerVatNo,
+                           [ActiveStatus] = @ActiveStatus
+                       WHERE [Code] = @Code";
+
+            using (SqlCommand updateCmd = new SqlCommand(updateQuery, con))
+            {
+                SetParameters(updateCmd);
+
+                updateCmd.ExecuteNonQuery();
+
+                Response.Write("Updated Successfully");
+
+                divMsg.Visible = true;
+                lblShowMessage.Visible = true;
+                lblShowMessage.Text = "Successfully updated!";
+            }
+        }
+
+        private void SetParameters(SqlCommand cmd)
+        {
+            cmd.Parameters.AddWithValue("@SerialNumber", SerialNumber.Text);
+            cmd.Parameters.AddWithValue("@Date", date.Text);
+            cmd.Parameters.AddWithValue("@User", user.Text);
+            cmd.Parameters.AddWithValue("@Code", txtCode.Text);
+            cmd.Parameters.AddWithValue("@CustomerName", txtName.Text);
+            cmd.Parameters.AddWithValue("@AddressLine1", txtAddress1.Text);
+            cmd.Parameters.AddWithValue("@AddressLine2", txtAddress2.Text);
+            cmd.Parameters.AddWithValue("@AddressLine3", txtAddress3.Text);
+            cmd.Parameters.AddWithValue("@Country", txtcountry.Text);
+            cmd.Parameters.AddWithValue("@Telephone", txtTele.Text);
+            cmd.Parameters.AddWithValue("@Fax", txtfax.Text);
+            cmd.Parameters.AddWithValue("@Mobile", txtmobile.Text);
+            cmd.Parameters.AddWithValue("@Email", txtemail.Text);
+            cmd.Parameters.AddWithValue("@ContactPerson", txtcontactp1.Text);
+            cmd.Parameters.AddWithValue("@ContactDetails", txtcontactdetail.Text);
+            cmd.Parameters.AddWithValue("@Notes", txtNote.Text);
+            cmd.Parameters.AddWithValue("@CreditLimit", txtcreditlimit.Text);
+            cmd.Parameters.AddWithValue("@CreditPeriod", txtcreditperiod.Text);
+            cmd.Parameters.AddWithValue("@CustomerType", dd1custype.SelectedItem.Text.ToString());
+            cmd.Parameters.AddWithValue("@CustomerVatNo", txtVatNo.Text);
+            cmd.Parameters.AddWithValue("@ActiveStatus", ddlActiveStatus.SelectedItem.Text.ToString());
+        }
+
+        protected void btnBrowse_Click(object sender, EventArgs e)
+        {
+
 
         }
 

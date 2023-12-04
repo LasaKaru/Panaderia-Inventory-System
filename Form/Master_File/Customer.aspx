@@ -263,18 +263,12 @@
 
      <div class="auto-style32">
   <div class="table-row">
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Serial Number</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="SerialNumber" runat="server" type="text" id="SerialNumber" class="input-field" readonly/>
-    </div>
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="Country" runat="server" type="text" id="Date" class="input-field" readonly/>
-    </div>
-    <div class="table-cell header" style="background-color: #eb1f10; font-weight: bold; ">User</div>
-    <div class="table-cell" style="background-color: #eb1f10">
-        <asp:TextBox name="User" runat="server" type="text" id="User" class="input-field" readonly/>
-    </div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Serial Number</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="SerialNumber" runat="server" CssClass="input-field"></asp:TextBox></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px; color:#000;"><asp:TextBox ID="date" runat="server" CssClass="input-field"></asp:TextBox></div>
+    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold; ">User</div>
+    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CssClass="input-field"></asp:TextBox></div>
   </div>
 </div>
 
@@ -406,7 +400,7 @@
         <asp:TextBox ID="txtCusType" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
     </div>
     <div class="col-sm-6">
-        <asp:DropDownList ID="dd1custype" runat="server" onchange="updateUserStatusText()" Width="114px" CssClass="form-control">
+        <asp:DropDownList ID="dd1custype" runat="server" onchange="updateUsertypeText()" Width="114px" CssClass="form-control">
             <asp:ListItem Text="Cash" Value="1"></asp:ListItem>
             <asp:ListItem Text="Credit" Value="2"></asp:ListItem>
         </asp:DropDownList>
@@ -517,19 +511,19 @@
         function updateUserGroupText() {
             var dropdown = document.getElementById("ddlUserGroup");
             var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.getElementById("txtUserGroup").value = selectedText;
+            document.getElementById("txtCusType").value = selectedText;
+        }
+
+        function updateUsertypeText() {
+            var dropdown = document.getElementById("dd1custype");
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+            document.getElementById("txtCusType").value = selectedText;
         }
 
         function updateUserStatusText() {
-            var dropdown = document.getElementById("ddlUserStatus");
+            var dropdown = document.getElementById("ddlActiveStatus");
             var selectedText = dropdown.options[dropdown.selectedIndex].text;
             document.getElementById("txtUserStatus").value = selectedText;
-        }
-
-        function updateDefaultStoreText() {
-            var dropdown = document.getElementById("ddlDefaultStore");
-            var selectedText = dropdown.options[dropdown.selectedIndex].text;
-            document.getElementById("txtDefaultStore").value = selectedText;
         }
     </script>
 
