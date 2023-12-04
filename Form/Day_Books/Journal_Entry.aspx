@@ -235,7 +235,6 @@
                            data-toggle="dropdown">Accounts</a>
                         <ul class="dropdown-menu">
                             <li><a href="../Accounts/Cash_Book.aspx">Cash Book</a></li>
-
                             <li><a href="#">Journal</a></li>
                             <div id="sub-categories">
                                 <ul>
@@ -286,12 +285,10 @@
                 </ul>
             </div>
         </div>
-    </div>
-    
+    </div>    
     <br />
     <br />
     <br />
-
      <form id="form1" runat="server">
     <div class="auto-style32">
         <div class="table-row">
@@ -315,9 +312,7 @@
         <div class="row">
             <div class="col-md-6">
                  <div class="form-group row">
-
                      <table class="auto-style44">
-
                          <tr>
                              <td class="auto-style35">
                                  <button type="button" id="btnclick" class="btn btn-secondary" style="border-color: #333333; background-color: #8689cf4d; width: 62px; font-size: 9px;">...</button>
@@ -370,98 +365,45 @@
                                 </td>
                             </tr>
                         </table>
-
-
                     </div>
-
             <br />
 
-                        <div id="Panel1" style="background-color: #99ccff30; " class="auto-style401">
-
-               
-
+                        <div id="Panel1" style="background-color: #99ccff30; " class="auto-style401">             
             <table id="GridView1" class="auto-style402">
-
                 <thead>
-
                 <tr>
-
                     <th>Line</th>
-
                     <th>Account</th>
-
                     <th>AccCode</th>
-
                     <th>AccSide</th>
-
                     <th>Description</th>
-
                     <th>Amount</th>
-
                     <th>DR</th>
-
                     <th>CR</th>
-
                     <th>Reference</th>
-
                 </tr>
-
                </thead>
-
                </div>
-
             <br />           
-
            <tbody>
-
- 
-
            </tbody>
-
            </table>
-
- 
-
         </div>
-
-                <br />
-               
-
+                <br />            
                  <div class="form-group row">
-
                     <label for="txttotal" class="col-sm-2 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>
-
                     <div class="col-sm-50">                       
+                        <input type="text" id="txttotal" class="auto-style326" style="width:116px">                 
 
+                     <label for="txttotal" class="col-sm-4 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>                                          
                         <input type="text" id="txttotal" class="auto-style326" style="width:116px">
-
-                   
-
-                     <label for="txttotal" class="col-sm-4 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>
-
-                                           
-
-                        <input type="text" id="txttotal" class="auto-style326" style="width:116px">
-
                     </div>
-
                 </div>
-
- 
-
     </div>
-
     </div>
-
         </div>
-
     </div>
-
- 
-
-    <br />
-
-    
+    <br />   
     <div class="row">
         <div class="col-md-6"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
