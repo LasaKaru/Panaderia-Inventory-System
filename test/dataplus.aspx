@@ -262,10 +262,13 @@
     </tr>
 </table>
         
+        
  </div>
 
 
     <form id="form2" runat="server" >
+
+
     <div style="visibility: visible; overflow: auto; cursor: auto; display: table-column; clip: rect(auto, auto, auto, auto)">
             <asp:GridView ID="yourGridView" runat="server" AutoGenerateColumns="false" BorderColor="#333333" BorderStyle="Solid" BorderWidth="3px" ForeColor="Black" ShowHeaderWhenEmpty="True">
                 <Columns>
@@ -283,26 +286,29 @@
                 </Columns>
             </asp:GridView>
     </div>
-
-    <br />
-    <br />
-
-    <div class="row">
-        <div class="col-md-6">
-
-            <button id="btnSave" text="Save" cssclass="btn btn-primary" style="border-style: inset; width: 100px" onclick="saveDataToServer()">Save</button>
-
-
-            <div class="form-group row">
-                <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>
-                <div class="col-sm-50">
-                    &nbsp; <input type="text" id="txttotal" class="auto-style326" style="width: 116px"></div>
-            </div>
-
-
-
         </div>
-    </div>
+        
+
+    <br />
+    <br />
+
+    <div class="form-group row">
+                    <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>
+                    <div class="col-sm-50">                        
+                        <input type="text" id="txttotal" class="auto-style326" style="width:116px">
+                    </div>
+                </div>
+        <div class="row">
+            <div class="col-md-6">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" Style="border-style: inset; width: 100px" />
+                &nbsp;&nbsp;
+    <asp:Button ID="btnBrowse" runat="server" Text="Print" CssClass="btn btn-secondary" OnClick="btnBrowse_Click" Style="border-style: inset; width: 100px" />
+                &nbsp;&nbsp;
+    <asp:Button ID="btnExit" runat="server" Text="Exit" CssClass="btn btn-danger" OnClick="btnExit_Click" Style="border-style: inset; width: 100px" />
+            </div>
+        </div>
 
     </form>
 </body>

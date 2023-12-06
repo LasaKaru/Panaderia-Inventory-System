@@ -352,6 +352,24 @@
     </Reference>
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -603,8 +621,11 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="test\addtogrid.aspx" />
     <Content Include="test\customercopy.aspx" />
     <Content Include="test\dataplus.aspx" />
+    <Content Include="test\inv_pur_purchase_order.aspx" />
+    <Content Include="test\plustest.aspx" />
     <Content Include="test\printreport.aspx" />
     <Content Include="test\Supplier.aspx" />
     <Content Include="test\userprofileupdate.aspx" />
@@ -1200,6 +1221,13 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="System\Web\UI\DataVisualization\Charting\ModalPopupExtender.cs" />
+    <Compile Include="test\addtogrid.aspx.cs">
+      <DependentUpon>addtogrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\addtogrid.aspx.designer.cs">
+      <DependentUpon>addtogrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\customercopy.aspx.cs">
       <DependentUpon>customercopy.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1213,6 +1241,20 @@
     </Compile>
     <Compile Include="test\dataplus.aspx.designer.cs">
       <DependentUpon>dataplus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\inv_pur_purchase_order.aspx.cs">
+      <DependentUpon>inv_pur_purchase_order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\inv_pur_purchase_order.aspx.designer.cs">
+      <DependentUpon>inv_pur_purchase_order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\plustest.aspx.cs">
+      <DependentUpon>plustest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\plustest.aspx.designer.cs">
+      <DependentUpon>plustest.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\printreport.aspx.cs">
       <DependentUpon>printreport.aspx</DependentUpon>
