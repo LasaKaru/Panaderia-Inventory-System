@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addtogrid.aspx.cs" Inherits="Panaderia.test.addtogrid" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addtogridto.aspx.cs" Inherits="Panaderia.test.addtogridto" %>
+
 
 
 <!DOCTYPE html>
@@ -300,6 +301,9 @@
         }
         .auto-style371 {
             width: 1100px;
+        }
+        .auto-style372 {
+            width: 100px;
         }
     </style> 
 
@@ -808,8 +812,12 @@
     <div class="row">
         <div class="col-md-6">
 
-            <button id="btnSave" text="Save" cssclass="btn btn-primary" style="border-style: inset; width: 100px" onclick="saveDataToServer()">Save</button>
+            <!--<button id="btnSave" text="Save" cssclass="btn btn-primary" style="border-style: inset; " onclick="saveDataToServer()" class="auto-style372">Save</button>-->
+            &nbsp;
 
+
+        <asp:Button ID="SaveAndPrintButton" runat="server" Text="Save and Print" CssClass="btn btn-primary" OnClick="SaveAndPrintButton_Click" style="border-style: inset; width: 100px" />
+        <br/>
 
             <div class="form-group row">
                 <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>

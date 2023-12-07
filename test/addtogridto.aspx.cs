@@ -7,10 +7,16 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Web.Services;
 using System.Data;
+using System.Data.Entity;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using System.IO;
+using Panaderia.DataAccessLayer;
 
 namespace Panaderia.test
 {
-    public partial class addtogrid : System.Web.UI.Page
+    public partial class addtogridto : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -160,8 +166,106 @@ namespace Panaderia.test
             return html.ToString();
         }
 
+        /*public class WaybillEntry
+        {
+            public int LineNumber { get; set; }
+            public string ItemCode { get; set; }
+            public string Description { get; set; }
+            public decimal Price { get; set; }
+            public string PSize { get; set; }
+            public int Packs { get; set; }
+            public int Nos { get; set; }
+            public decimal Discount { get; set; }
+            public decimal Amount { get; set; }
+        }*/
 
-        protected void btnSave_Click(object sender, EventArgs e)
+        public class WaybillEntry
+        {
+            public int LineNumber { get; set; }
+            public string ItemCode { get; set; }
+            public string Description { get; set; }
+            public decimal Price { get; set; }
+            public string PSize { get; set; }
+            public int Packs { get; set; }
+            public int Nos { get; set; }
+            public decimal Discount { get; set; }
+            public decimal Amount { get; set; }
+        }
+
+        protected void SaveAndPrintButton_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            List<WaybillEntry> waybillEntries = new List<WaybillEntry>();
+
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                WaybillEntry entry = new WaybillEntry();
+                entry.LineNumber = Convert.ToInt32(row.Cells[0].Text);
+                entry.ItemCode = row.Cells[1].Text;
+                entry.Description = row.Cells[2].Text;
+                entry.Price = Convert.ToDecimal(row.Cells[3].Text);
+                entry.PSize = row.Cells[4].Text;
+                entry.Packs = Convert.ToInt32(row.Cells[5].Text);
+                entry.Nos = Convert.ToInt32(row.Cells[6].Text);
+                entry.Discount = Convert.ToDecimal(row.Cells[7].Text);
+                entry.Amount = Convert.ToDecimal(row.Cells[8].Text);
+
+                waybillEntries.Add(entry);
+            }
+
+            try
+            {
+                connection.Open();
+
+                // Save data to database
+                foreach (WaybillEntry entry in waybillEntries)
+                {
+                    string sql = "INSERT INTO WaybillEntries (LineNumber, ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount, PrintDate) VALUES (@LineNumber, @ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount, GETUTCDATE())";
+                    SqlCommand command = new SqlCommand(sql, connection);
+
+                    command.Parameters.AddWithValue("@LineNumber", entry.LineNumber);
+                    command.Parameters.AddWithValue("@ItemCode", entry.ItemCode);
+                    command.Parameters.AddWithValue("@Description", entry.Description);
+                    command.Parameters.AddWithValue("@Price", entry.Price);
+                    command.Parameters.AddWithValue("@PSize", entry.PSize);
+                    command.Parameters.AddWithValue("@Packs", entry.Packs);
+                    command.Parameters.AddWithValue("@Nos", entry.Nos);
+                    command.Parameters.AddWithValue("@Discount", entry.Discount);
+                    command.Parameters.AddWithValue("@Amount", entry.Amount);
+
+                    command.ExecuteNonQuery();
+                }
+
+                // Print the waybill
+                // Implement your printing logic here using the waybillEntries list
+
+                // Clear GridView and data object
+                GridView1.DataSource = null; // Correctly clears GridView rows
+                GridView1.DataBind(); // Rebinds the grid view
+                waybillEntries.Clear();
+
+                // Optionally delete data from database
+                string deleteSql = "DELETE FROM WaybillEntries WHERE PrintDate = GETUTCDATE()";
+                SqlCommand deleteCommand = new SqlCommand(deleteSql, connection);
+                deleteCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Handle exception
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+    
+
+        
+
+
+    protected void btnSave_Click(object sender, EventArgs e)
         {
 
         }

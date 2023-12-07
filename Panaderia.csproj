@@ -622,6 +622,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="test\addtogrid.aspx" />
+    <Content Include="test\addtogridto.aspx" />
     <Content Include="test\customercopy.aspx" />
     <Content Include="test\dataplus.aspx" />
     <Content Include="test\inv_pur_purchase_order.aspx" />
@@ -1227,6 +1228,13 @@
     </Compile>
     <Compile Include="test\addtogrid.aspx.designer.cs">
       <DependentUpon>addtogrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\addtogridto.aspx.cs">
+      <DependentUpon>addtogridto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\addtogridto.aspx.designer.cs">
+      <DependentUpon>addtogridto.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\customercopy.aspx.cs">
       <DependentUpon>customercopy.aspx</DependentUpon>
