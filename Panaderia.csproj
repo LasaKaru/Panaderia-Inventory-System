@@ -626,8 +626,11 @@
     <Content Include="test\customercopy.aspx" />
     <Content Include="test\dataplus.aspx" />
     <Content Include="test\inv_pur_purchase_order.aspx" />
+    <Content Include="test\last.aspx" />
+    <Content Include="test\newwwwww.aspx" />
     <Content Include="test\plustest.aspx" />
     <Content Include="test\printreport.aspx" />
+    <Content Include="test\puror.aspx" />
     <Content Include="test\Supplier.aspx" />
     <Content Include="test\userprofileupdate.aspx" />
     <Content Include="UserControls\Navigation.ascx" />
@@ -1257,6 +1260,20 @@
     <Compile Include="test\inv_pur_purchase_order.aspx.designer.cs">
       <DependentUpon>inv_pur_purchase_order.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\last.aspx.cs">
+      <DependentUpon>last.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\last.aspx.designer.cs">
+      <DependentUpon>last.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\newwwwww.aspx.cs">
+      <DependentUpon>newwwwww.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\newwwwww.aspx.designer.cs">
+      <DependentUpon>newwwwww.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\plustest.aspx.cs">
       <DependentUpon>plustest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1270,6 +1287,13 @@
     </Compile>
     <Compile Include="test\printreport.aspx.designer.cs">
       <DependentUpon>printreport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\puror.aspx.cs">
+      <DependentUpon>puror.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\puror.aspx.designer.cs">
+      <DependentUpon>puror.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\Supplier.aspx.cs">
       <DependentUpon>Supplier.aspx</DependentUpon>

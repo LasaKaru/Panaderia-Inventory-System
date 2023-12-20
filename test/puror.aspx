@@ -1,10 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addtogridto.aspx.cs" Inherits="Panaderia.test.addtogridto" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="puror.aspx.cs" Inherits="Panaderia.test.puror" %>
 
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   
 
     <style>
         .navbar-inverse.navbar-nav > li > a:focus, .navbar- inverse.navbar- nav > li > a:hover {
@@ -171,7 +172,11 @@
         col-sm-2 col-form-label{
 
         }
-        </style>
+        .auto-style330 {
+            width: 1011px;
+            margin-left: 35px;
+        }
+    </style>
 
 
     <style>
@@ -187,7 +192,7 @@
         
 }
     </style>
-<style>
+ <style>
         /* Styles for the modal popup */
         .modal {
             display:;
@@ -262,48 +267,26 @@
         .auto-style333 {
             height: 28px;
         }
+        .auto-style334 {
+            width: 1123px;
+        }
         .auto-style335 {
-            width: 1103px;
+            width: 56px;
+        }
+        .auto-style336 {
+            width: 100px;
+        }
+        .auto-style337 {
+            width: 154px;
         }
         .auto-style338 {
-            height: 28px;
-            width: 44px;
+            width: 119px;
         }
-        .auto-style344 {
-            width: 96px;
+        .auto-style339 {
+            width: 101px;
         }
-        .auto-style345 {
-            width: 27px;
-        }
-        .auto-style356 {
-            width: 97px;
-        }
-        .auto-style357 {
-            width: 81px;
-        }
-        .auto-style359 {
-            width: 73px;
-        }
-        .auto-style363 {
-            width: 86px;
-        }
-        .auto-style366 {
-            width: 91px;
-        }
-        .auto-style368 {
-            width: 95px;
-        }
-        .auto-style369 {
-            width: 76px;
-        }
-        .auto-style370 {
-            width: 72px;
-        }
-        .auto-style371 {
-            width: 1100px;
-        }
-        .auto-style372 {
-            width: 100px;
+        .auto-style340 {
+            width: 137px;
         }
     </style> 
 
@@ -487,11 +470,13 @@
                             <li><a href="#">Journal</a></li>
                             <div id="sub-categories">
                                 <ul>
-                                    <li><a href="../Accounts/Journal_Purchase.aspx">Purchase</a></li>
+                                    <li><a href="../Accounts/Journal_Purchase.aspx">Purchase</a>
+                                    </li>
                                     <li>
                                         <a href="../Accounts/Journal_Purchase_Return.aspx">Purchase Return</a>
                                     </li>
-                                    <li><a href="../Accounts/Journal_Sales.aspx">Sales</a></li>
+                                    <li><a href="../Accounts/Journal_Sales.aspx">Sales</a>
+                                    </li>
                                     <li>
                                         <a href="../Accounts/Journal_Sales_Return.aspx">Sales Return</a>
                                     </li>
@@ -542,31 +527,29 @@
 <br />
 
 <br />
-      <form id="form2" runat="server" >       
-       <div class="auto-style32">
-           <div class="table-row">
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
-            <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="company" runat="server" CssClass="input-field" ReadOnly="True">1000</asp:TextBox></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
 
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Branch</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Branch" runat="server" CssClass="input-field" ReadOnly="True">0001</asp:TextBox></div>
+    <form id="form2" runat="server">
+        <div class="auto-style32">
+            <div class="table-row">
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="company" runat="server" CssClass="input-field" ReadOnly="True">1000</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Branch</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Branch" runat="server" CssClass="input-field" ReadOnly="True">0001</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Type</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="TxnType" runat="server" CssClass="input-field" ReadOnly="True">PORD</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Number</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Number" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">User</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CSSclass="input-field" ></asp:TextBox></div>
 
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Type</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="TxnType" runat="server" CssClass="input-field" ReadOnly="True">PORD</asp:TextBox></div>
-
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Number</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Number" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
-
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">User</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CssClass="input-field"></asp:TextBox></div>
-</div>
+            </div>
         </div>
     <br />
+<!--Ganeesha Put Your Code Here-->
 
-           
-    <div class="row">
+           <div class="row">
             <div class="col-md-10 alignSuccessMessage">
             <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
                 <asp:Label ID="lblShowMessage" runat="server" Visible="false"></asp:Label>
@@ -577,7 +560,7 @@
     <div class="container mt-5">
 
         <div class="bordere">
-           
+
 
         <div class="row ">
             <div class="col-md-8 ">
@@ -623,7 +606,7 @@
                 <div class="form-group row">
                     <label for="txtunitsize" class="col-sm-4 col-form-label">Amount</label>
                     <div class="col-sm-8">
-                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtamount" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -647,92 +630,61 @@
                 </div>      
                 <br />
 
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Add Row to GridView</title>
 
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Row to GridView</title>   
-
-    <div>
-
-         <div class="form-group row">
-                    <div id="Panel1" style="background-color: #ffa19926; height: 358px; width: 1103px;">
+                <div class="form-group row">
+                    <div id="Panel1" style="background-color: #ffa19926; height: auto; width: 1103px;">
                         <div class="col-sm-4">
-                            
-                            </div>
+                        </div>
 
-                         <table id="GridView1" class="auto-style335">
-                <thead>
-                <tr>
+                        <table id="GridView1" class="auto-style334">
+                            <thead>
+                                <tr>
 
-                    <td class="auto-style338">
-                        <button type="button" id="btnclick" class="btn btn-secondary"   style="border-color: #333333; background-color: #8689cf4d; width: 40px; font-size: 9px;">...</button>
-                                    <div id="myModal2" class="modal">
-                                        <div class="modal-content2">
-                                            <div class="modal-content-container2" style="overflow: auto">
-                                                <!-- Modal header with a close button -->
-                                                <div class="modal-header2">
-                                                    <h2>Item Master List</h2>
-                                                    <button id="closeModal2">Clear Selection</button>
-                                                </div>
-                                                <!-- GridView -->
-                                                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="True"></asp:GridView>
-
-                                                <!-- Placeholder for the GridView -->
-                                                <div id="gridViewPlaceholder2"></div>
+                            <td class="auto-style335">
+                                <button type="button" id="btnclick" class="btn btn-secondary" style="border-color: #333333; background-color: #8689cf4d; width: 12px; font-size: 9px;">...</button>
+                                <div id="myModal2" class="modal">
+                                    <div class="modal-content2">
+                                        <div class="modal-content-container2" style="overflow: auto">
+                                            <!-- Modal header with a close button -->
+                                            <div class="modal-header2">
+                                                <h2>Item Master List</h2>
+                                                <button id="closeModal2">Clear Selection</button>
                                             </div>
+                                            <!-- GridView -->
+                                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="True"></asp:GridView>
+
+                                            <!-- Placeholder for the GridView -->
+                                            <div id="gridViewPlaceholder2"></div>
                                         </div>
                                     </div>
-        
-       
-         </td>
+                                </div>
+                            </td>
 
-                    <th class="auto-style345">Line</th>
+                    <th class="auto-style335">Line</th>
                     <th class="auto-style368"> </th>
-                    <th class="auto-style359">Item code</th>
-                    <th class="auto-style370">Description</th>
-                    <th class="auto-style363">Price</th>
+                    <th class="auto-style336">Item code</th>
+                    <th class="auto-style337">Description</th>
+                    <th class="auto-style338">Price</th>
                     <th class="auto-style369">PSize</th>
                     <th class="auto-style357">Packs</th>
-                    <th class="auto-style356">Nos</th>
-                    <th class="auto-style366">Discount</th>
+                    <th class="auto-style339">Nos</th>
+                    <th class="auto-style340">Discount</th>
                     <th class="auto-style344">Amount</th>
                     
                 </tr>
                </thead>
                </div>
-            <br />           
+            <br />         
            <tbody>
            </tbody>
            </table>
-
-
-
-        
-<table id="yourGridViewTable" class="auto-style371">
+            
+            <table id="yourGridViewTable" class="auto-style371">
     <tr>
-        <!-- Your input fields here  
-         <td class="auto-style333">
-                        <button type="button" id="btnclick" class="btn btn-secondary"   style="border-color: #333333; background-color: #8689cf4d; width: 62px; font-size: 9px;">...</button>
-                                    <div id="myModal2" class="modal">
-                                        <div class="modal-content2">
-                                            <div class="modal-content-container2" style="overflow: auto">
-                                                <!-- Modal header with a close button 
-                                                <div class="modal-header2">
-                                                    <h2>Item Master List</h2>
-                                                    <button id="closeModal2">Clear Selection</button>
-                                                </div>
-                                                <!-- GridView 
-                                                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="True"></asp:GridView>
-
-                                                <!-- Placeholder for the GridView 
-                                                <div id="gridViewPlaceholder2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
        
-         </td>-->
         <td class="auto-style333">
             <asp:TextBox ID="txtitem_nu" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
         </td>
@@ -750,7 +702,7 @@
         </td>
 
         <td class="auto-style333">
-            <asp:TextBox ID="txtPrice" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
+            <asp:TextBox ID="txtPrice" runat="server" CssClass="auto-style331" style="width: 100px" onkeyup="calculateAmount()"></asp:TextBox>
         </td>
 
         <td class="auto-style333">
@@ -762,7 +714,7 @@
         </td>
 
         <td class="auto-style333">
-            <asp:TextBox ID="txtNos" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
+            <asp:TextBox ID="txtNos" runat="server" CssClass="auto-style331" style="width: 100px" onkeyup="calculateAmount()"></asp:TextBox>
         </td>
 
         <td class="auto-style333">
@@ -770,74 +722,283 @@
         </td>
 
         <td class="auto-style333">
-            <asp:TextBox ID="txtAmount" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
+            <asp:TextBox ID="txtAmount1" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
         </td>
         <!-- ... (repeat for other input fields) -->
       <td class="auto-style333">
     <button type="button" id="Button2" style="width: 46px" onclick="addRowToGridView()">+</button>
 </td>
-
-
     </tr>
-
-</table> 
-                        </div>
-        
- </div>    
     
-    <div style="visibility: visible; overflow: auto; cursor: auto; display: table-column; clip: rect(auto, auto, auto, auto)">
-            <asp:GridView ID="yourGridView" runat="server" BorderColor="#333333" BorderStyle="Solid" BorderWidth="3px" ForeColor="Black" ShowHeaderWhenEmpty="True" OnSelectedIndexChanged="yourGridView_SelectedIndexChanged" AutoGenerateDeleteButton="True" >
+</table> 
+        </div>
+                <div style="visibility: visible; overflow: auto; cursor: auto; display: table-column; clip: rect(auto, auto, auto, auto)">
+            <asp:GridView ID="yourGridView" runat="server" BorderColor="#333333" BorderStyle="Solid" BorderWidth="3px" ForeColor="Black" ShowHeaderWhenEmpty="True" OnSelectedIndexChanged="yourGridView_SelectedIndexChanged" AutoGenerateDeleteButton="True" AutoGenerateColumns="False" OnRowDataBound="yourGridView_RowDataBound" >
                 <Columns>
                     <asp:BoundField HeaderText="item num1" DataField="txtitem_nu1" Visible="true" />
                     <asp:BoundField HeaderText="item num" DataField="txtitem_nu" Visible="true" />
                     <asp:BoundField HeaderText="Box2" DataField="TextBox2" Visible="true" />
                     <asp:BoundField HeaderText="code" DataField="txtcode" Visible="true"/>
                     <asp:BoundField HeaderText="Description" DataField="txtDescription" Visible="true" />
-                    <asp:BoundField HeaderText="Price" DataField="txtPrice" Visible="true" />
+                    <asp:BoundField HeaderText="Price" DataField="txtPrice1" Visible="true" />
                     <asp:BoundField HeaderText="PSize" DataField="txtPSize" Visible="true" />
                     <asp:BoundField HeaderText="Pascks" DataField="txtPascks" Visible="true" />
-                    <asp:BoundField HeaderText="Nos" DataField="txtNos" Visible="true" />
+                    <asp:BoundField HeaderText="Nos" DataField="txtNos1" Visible="true" />
                     <asp:BoundField HeaderText="Discount" DataField="txtDis" Visible="true"/>
-                    <asp:BoundField HeaderText="Amount" DataField="txtAmount" Visible="true"/>
+                    <asp:BoundField HeaderText="Amount" DataField="txtAmount2" Visible="true"/>
+                    
 
                 </Columns>
+                
+
+                <FooterStyle CssClass="footer" />
                 <RowStyle BorderStyle="Solid" HorizontalAlign="Center" />
                 <SelectedRowStyle BorderStyle="Dotted" />
+                <FooterStyle CssClass="footer" />
+                <FooterStyle ID="lblTotalAmount" runat="server" Text="Total:" />
+                <FooterStyle ID="Label1" runat="server" Text='<%# CalculateTotalAmount() %>' />
+                
             </asp:GridView>
     </div>
 
     <br />
     <br />
 
-    <div class="row">
-        <div class="col-md-6">
 
-            <!--<button id="btnSave" text="Save" cssclass="btn btn-primary" style="border-style: inset; " onclick="saveDataToServer()" class="auto-style372">Save</button>-->
-           <!-- &nbsp;
-
-
-        <Button ID="SaveAndPrintButton" Text="Save and Print" CssClass="btn btn-primary" OnClick="SaveAndPrintButton_Click" style="border-style: inset; width: 100px" />
-        <br/>
+                <asp:Panel ID="Panel2" runat="server" CssClass="form-group row">
+                    <asp:Label ID="lblName" runat="server" Text="Name:" CssClass="col-sm-2 col-form-label" style="left: 0px; top: 0px; width: 28px; height: 20px"/>
+                    <div class="col-sm-10">
+                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" Width="116px"/>
+                    </div>
+                </asp:Panel>
 
 
 
-            <div class="form-group row">
-                <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>
-                <div class="col-sm-50">
-                    &nbsp; <input type="text" id="txttotal" class="auto-style326" style="width: 116px"></div>
-            </div>-->
+                <asp:Label ID="lblTotal" runat="server" CssClass="col-sm-10 col-form-label" Text="Total:" BackColor="#FFFFFF" style="left: 0px; top: 0px; width: 28px; height: 20px"></asp:Label>
+                    &nbsp;
+                    <div class="col-sm-50">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:TextBox ID="txtTotal" runat="server" CssClass="auto-style326" Width="116px"></asp:TextBox>
+                    </div>
+               
 
 
-
-        </div>
-    </div>
-</div>
-            </div>
-            </div>
-        </div>
-          </form>
     
+           <div class="row">
 
+                    <div class="col-md-10">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" Width="100px" />
+                        &nbsp;&nbsp;
+                <asp:Button ID="btnBrowse" runat="server" Text="Print" CssClass="btn btn-secondary" OnClick="btnBrowse_Click" Width="100px" />
+                        &nbsp;&nbsp;
+                <asp:Button ID="btnExit" runat="server" Text="Exit" CssClass="btn btn-danger" OnClick="btnExit_Click" Width="100px" />
+                    </div>
+        </div>        
+    <br />
+
+ <%--       <div class="row">
+            <div class="col-md-10 alignSuccessMessage">
+            <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
+                <asp:Label ID="lblShowMessage" runat="server" Visible="false"></asp:Label>
+            </div>
+                </div>
+        </div>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ 
+
+                <script>
+
+                    function calculateAmount() {
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var rows = gridView.getElementsByTagName('tr');
+                        var totalAmount = 0;
+
+                        for (var i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+                            var txtAmount1 = rows[i].querySelector('[id$="txtAmount1"]');
+
+                            // Assuming you want to sum the values of txtAmount1 fields
+                            totalAmount += parseFloat(txtAmount1.value) || 0;
+                        }
+
+                        // Update the total sum in the txtName TextBox
+                        document.getElementById('<%= txtTotal.ClientID %>').value = totalAmount;
+                    }
+
+                    function addRowToGridView() {
+                        // Your existing logic to add a row (assuming you have a function named addRow)
+                        addRow();
+
+                        // Call the function to update the total amount
+                        updateTotalAmount();
+                    }
+
+                    function addRow() {
+                        // Your existing logic to add a new row to the GridView.
+                        // This is a placeholder, replace it with your actual logic.
+                        // For example, if you are using JavaScript to add a row dynamically:
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var newRow = gridView.insertRow(gridView.rows.length);
+
+                        // Add cells and input elements as needed
+                        // ...
+
+                        // After adding the row, call calculateAmount to update the total amount
+                        calculateAmount();
+                    }
+
+                    function updateTotalAmount() {
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var rows = gridView.getElementsByTagName('tr');
+                        var totalAmount = 0;
+
+                        for (var i = 1; i < rows.length; i++) {
+                            var txtAmount1 = rows[i].querySelector('[id$="txtAmount1"]');
+                            totalAmount += parseFloat(txtAmount1.value) || 0;
+                        }
+
+                        // Update the txtName TextBox value
+                        document.getElementById('<%= txtName.ClientID %>').value = totalAmount;
+                    }
+                </script>
+
+
+
+                <!--<script type="text/javascript">
+
+                    function calculateAmount() {
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var rows = gridView.getElementsByTagName('tr');
+                        var totalAmount = 0;
+
+                        for (var i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+                            var txtAmount1 = rows[i].querySelector('[id$="txtAmount1"]');
+                            var hiddenAmount = rows[i].querySelector('[id$="hiddenAmount"]');
+
+                            // Assuming you want to sum the values of txtAmount1 fields
+                            totalAmount += parseFloat(txtAmount1.value) || 0;
+
+                            // Update the hidden field value
+                            hiddenAmount.value = parseFloat(txtAmount1.value) || 0;
+                        }
+
+                        // Update the total sum in the txtName TextBox
+                        document.getElementById('<%= txtName.ClientID %>').value = totalAmount;
+                    }
+
+                    function updateTotalAmount() {
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var rows = gridView.getElementsByTagName('tr');
+                        var totalAmount = 0;
+
+                        for (var i = 1; i < rows.length; i++) {
+                            var hiddenAmount = rows[i].querySelector('[id$="hiddenAmount"]');
+                            totalAmount += parseFloat(hiddenAmount.value) || 0;
+                        }
+
+                        // Update the txtName TextBox value
+                        document.getElementById('<%= txtName.ClientID %>').value = totalAmount;
+                    }
+
+                    function addRowToGridView() {
+                        // Your existing logic to add a row (assuming you have a function named addRow)
+                        addRow();
+
+                        // Call the function to update the total amount
+                        updateTotalAmount();
+                    }
+
+                    function addRow() {
+                        // Your existing logic to add a new row to the GridView.
+                        // This is a placeholder, replace it with your actual logic.
+                        // For example, if you are using JavaScript to add a row dynamically:
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var newRow = gridView.insertRow(gridView.rows.length);
+
+                        // Add cells and input elements as needed
+                        // ...
+
+                        // After adding the row, call calculateAmount to update the total amount
+                        calculateAmount();
+                    }
+
+                </script>
+
+
+
+
+
+
+
+                <script>
+                    function calculateAmount() {
+                        // Your existing calculation logic here
+
+
+                        // Update the hidden field value for each row
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var rows = gridView.getElementsByTagName('tr');
+                        var totalAmount = 0;
+
+                        for (var i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+                            var txtAmount1 = rows[i].querySelector('[id$="txtAmount1"]');
+                            var hiddenAmount = rows[i].querySelector('[id$="hiddenAmount"]');
+
+                            // Assuming you want to sum the values of txtAmount1 fields
+                            totalAmount += parseFloat(txtAmount1.value) || 0;
+
+                            // Update the hidden field value
+                            hiddenAmount.value = parseFloat(txtAmount1.value) || 0;
+                        }
+
+                        // Update the total sum in the txtName TextBox
+                        updateTotalAmount();
+                    }
+
+                    function updateTotalAmount() {
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var rows = gridView.getElementsByTagName('tr');
+                        var totalAmount = 0;
+
+                        for (var i = 1; i < rows.length; i++) {
+                            var hiddenAmount = rows[i].querySelector('[id$="hiddenAmount"]');
+                            totalAmount += parseFloat(hiddenAmount.value) || 0;
+                        }
+
+                        // Update the txtName TextBox value
+                        document.getElementById('<%= txtName.ClientID %>').value = totalAmount;
+                    }
+
+                    function addRowToGridView() {
+                        // Your existing logic to add a row
+                        addRow();
+                        // Call the function to update the total amount
+                        updateTotalAmount();
+                    }
+
+                    function addRow() {
+                        // Your existing logic to add a new row to the GridView.
+                        // This is a placeholder, replace it with your actual logic.
+                        // For example, if you are using JavaScript to add a row dynamically:
+                        var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+                        var newRow = gridView.insertRow(gridView.rows.length);
+
+                        // Add cells and input elements as needed
+                        // ...
+
+                        // After adding the row, call calculateAmount to update the total amount
+                        calculateAmount();
+                    }
+                </script> -->
+
+
+
+   
+      
     <script>
         function addRowToGridView() {
             // Get reference to the table
@@ -847,7 +1008,7 @@
             var newRow = table.insertRow(table.rows.length);
 
             // Array to store input field IDs
-            var inputIds = ["txtitem_nu", "TextBox2", "txtcode", "txtDescription", "txtPrice", "txtPSize", "txtPascks", "txtNos", "txtDis", "txtAmount"];
+            var inputIds = ["txtitem_nu", "TextBox2", "txtcode", "txtDescription", "txtPrice", "txtPSize", "txtPascks", "txtNos", "txtDis", "txtAmount1"];
 
             // Loop through input fields and add cells to the new row
             for (var i = 0; i < inputIds.length; i++) {
@@ -917,97 +1078,97 @@
             xhr.send();
         }
     </script>
+        
+         <script>
+             // JavaScript code to display data in the modal
+             var btnsup = document.getElementById('btnsup');
+             var modal = document.getElementById('myModal');
+             var closeModalButton = document.getElementById('closeModal');
+             var dataBody = document.getElementById('<%= GridView1.ClientID %>');
+             var selectedRow = null;
 
-    <script>
-        // JavaScript code to display data in the modal
-        var btnsup = document.getElementById('btnsup');
-        var modal = document.getElementById('myModal');
-        var closeModalButton = document.getElementById('closeModal');
-        var dataBody = document.getElementById('<%= GridView3.ClientID %>');
-        var selectedRow = null;
+             // Input fields          
 
-        // Input fields          
+             var txtsupplierInput = document.getElementById('txtsupplier');
+             var txtsupidInput = document.getElementById('txtsupid');
+             var txtsupInput = document.getElementById('txtsup');
+             //var txtnetamountInput = document.getElementById('txtnetamount');
+             //var txtcommentsInput = document.getElementById('txtcomments');
 
-        var txtsupplierInput = document.getElementById('txtsupplier');
-        var txtsupidInput = document.getElementById('txtsupid');
-        var txtsupInput = document.getElementById('txtsup');
-        //var txtnetamountInput = document.getElementById('txtnetamount');
-        //var txtcommentsInput = document.getElementById('txtcomments');
+             // Function to handle row selection and highlight
+             function selectRow(row, rowData) {
+                 debugger;
+                 if (selectedRow) {
+                     selectedRow.classList.remove('selected-row');
+                 }
+                 row.classList.add('selected-row');
+                 selectedRow = row;
 
-        // Function to handle row selection and highlight
-        function selectRow(row, rowData) {
-            debugger;
-            if (selectedRow) {
-                selectedRow.classList.remove('selected-row');
-            }
-            row.classList.add('selected-row');
-            selectedRow = row;
+                 //closeModelButton.click();
+                 // Populate the input fields with the selected row's data
+                 var cells = row.cells;
+                 txtsupplierInput.value = cells[0].textContent;
+                 txtsupidInput.value = cells[1].textContent;
+                 txtsupInput.value = cells[2].textContent;
+                 //txtnetamountInput.value = cells[3].textContent;
+                 //txtcommentsInput.value = cells[4].textContent;
 
-            //closeModelButton.click();
-            // Populate the input fields with the selected row's data
-            var cells = row.cells;
-            txtsupplierInput.value = cells[0].textContent;
-            txtsupidInput.value = cells[1].textContent;
-            txtsupInput.value = cells[2].textContent;
-            //txtnetamountInput.value = cells[3].textContent;
-            //txtcommentsInput.value = cells[4].textContent;
+             }
 
-        }
+             btnsup.addEventListener('click', function () {
+                 // Display the modal when the button is clicked
+                 modal.style.display = 'block';
 
-        btnsup.addEventListener('click', function () {
-            // Display the modal when the button is clicked
-            modal.style.display = 'block';
+                 // Load data when the modal is opened
+                 loadModalData();
+             });
 
-            // Load data when the modal is opened
-            loadModalData();
-        });
+             closeModalButton.addEventListener('click', function () {
+                 // Close the modal when the "Close" button is clicked
+                 //dataBody.innerHTML = ''; // Clear the table content
+                 modal.style.display = 'none';
+             });
 
-        closeModalButton.addEventListener('click', function () {
-            // Close the modal when the "Close" button is clicked
-            //dataBody.innerHTML = ''; // Clear the table content
-            modal.style.display = 'none';
-        });
+             window.addEventListener('click', function (event) {
+                 if (event.target == modal) {
+                     // Close the modal if the user clicks outside the modal content
+                     //dataBody.innerHTML = '';
+                     modal.style.display = 'none';
+                 }
+             });
 
-        window.addEventListener('click', function (event) {
-            if (event.target == modal) {
-                // Close the modal if the user clicks outside the modal content
-                //dataBody.innerHTML = '';
-                modal.style.display = 'none';
-            }
-        });
+             dataBody.addEventListener('click', function (event) {
+                 var target = event.target;
+                 if (target.tagName === 'TD') {
+                     var row = target.parentElement;
+                     selectRow(row);
+                 }
+             });
 
-        dataBody.addEventListener('click', function (event) {
-            var target = event.target;
-            if (target.tagName === 'TD') {
-                var row = target.parentElement;
-                selectRow(row);
-            }
-        });
+             function loadModalData() {
+                 // Add code here to load data into the modal (e.g., from the GridView)
+                 // Make an AJAX request to fetch data and populate the modal
+                 var xmlhttp = new XMLHttpRequest();
+                 xmlhttp.onreadystatechange = function () {
+                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                         // Parse the response and populate the modal
+                         var data = JSON.parse(xmlhttp.responseText);
+                         // Implement code to populate the modal with data
+                     }
+                 };
 
-        function loadModalData() {
-            // Add code here to load data into the modal (e.g., from the GridView)
-            // Make an AJAX request to fetch data and populate the modal
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    // Parse the response and populate the modal
-                    var data = JSON.parse(xmlhttp.responseText);
-                    // Implement code to populate the modal with data
-                }
-            };
+                 // Replace 'GetDataUrl' with the URL to fetch data from the server
+                 xmlhttp.open('GET', 'GetDataUrl', true);
+                 xmlhttp.send();
+             }
 
-            // Replace 'GetDataUrl' with the URL to fetch data from the server
-            xmlhttp.open('GET', 'GetDataUrl', true);
-            xmlhttp.send();
-        }
+             $(document).ready(function () {
+                 $("#closeModal").click(function () {
+                     $("#myModal").modal("hide");
+                 });
+             });
 
-        $(document).ready(function () {
-            $("#closeModal").click(function () {
-                $("#myModal").modal("hide");
-            });
-        });
-
-    </script>
+         </script>
 
        <!--modal2-->
 
@@ -1028,7 +1189,7 @@
             var txtPascksInput = document.getElementById('txtPascks');
             var txtNosInput = document.getElementById('txtNos');
             var txtDisInput = document.getElementById('txtDis');
-            var txtAmountInput = document.getElementById('txtAmount');
+            var txtAmount1Input = document.getElementById('txtAmount1');
 
 
 
@@ -1053,7 +1214,7 @@
                 txtPascksInput.value = cells[5].textContent;
                 txtNosInput.value = cells[6].textContent;
                 txtDisInput.value = cells[7].textContent;
-                txtAmountInput.value = cells[8].textContent;
+                txtAmount1Input.value = cells[8].textContent;
 
             }
 
@@ -1113,6 +1274,95 @@
         </script>       
 
 
-                
+        <script>
+            // Function to format a number to have two digits (e.g., 1 => "01")
+            function formatNumber(number) {
+                return number < 10 ? '0' + number : number;
+            }
+
+            // Function to get the current local date and time with AM/PM
+            function getCurrentDateTime() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = formatNumber(now.getMonth() + 1); // Months are 0-based
+                const day = formatNumber(now.getDate());
+                const hours = formatNumber(now.getHours());
+                const ampm = hours >= 12 ? 'PM' : 'AM'; // Determine AM or PM
+                const twelveHour = hours > 12 ? hours - 12 : hours; // Convert to 12-hour format
+                const minutes = formatNumber(now.getMinutes());
+                const seconds = formatNumber(now.getSeconds());
+
+                // Format the date and time as YYYY-MM-DD hh:mm:ss AM/PM
+                return `${year}-${month}-${day} ${twelveHour}:${minutes}:${seconds} ${ampm}`;
+            }
+
+            // Function to set the date input field with the current date and time
+            function setDateTimeField() {
+                const dateTime = getCurrentDateTime();
+                const dateField = document.getElementById('txtDate');
+                dateField.value = dateTime;
+            }
+
+            // Call the function to set the date input field when the page loads
+            window.onload = setDateTimeField;
+        </script>
+
+
+    <script>
+        function updatecate1Text() {
+            var dropdown = document.getElementById("ddlcate1");
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+            document.getElementById("txtcate1").value = selectedText;
+        }
+
+        function updateUserStatusText() {
+            var dropdown = document.getElementById("ddlUserStatus");
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+            document.getElementById("txtUserStatus").value = selectedText;
+        }
+
+        function updatetypeText() {
+            var dropdown = document.getElementById("ddltype");
+            var selectedText = dropdown.options[dropdown.selectedIndex].text;
+            document.getElementById("txttype").value = selectedText;
+        }
+    </script>
+
+    <script>
+        // Function to get the current date and time in a formatted string
+        function getCurrentDateTime() {
+            var currentDate = new Date();
+            var dateOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            var timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+            var formattedDate = currentDate.toLocaleDateString(undefined, dateOptions);
+            var formattedTime = currentDate.toLocaleTimeString(undefined, timeOptions);
+
+            return formattedDate + ' ' + formattedTime;
+        }
+
+        // Set the value of the "Country" input field to the current date and time
+        document.getElementById('Country').value = getCurrentDateTime();
+    </script>     
+              <script>
+                  function calculateAmount() {
+                      var txtPriceValue = parseFloat($('#<%=txtPrice.ClientID%>').val()) || 0;
+            var txtNosValue = parseFloat($('#<%=txtNos.ClientID%>').val()) || 0;
+
+        var result = txtPriceValue * txtNosValue;
+
+        $('#<%=txtAmount1.ClientID%>').val(result.toFixed(2)); // Assuming you want to display the result with two decimal places
+                  }
+              </script>                                           
+                    <br />
+                <hr class="auto-style330" style="border-style: solid; background-color: #000000";width: 1125px; />
+         </form>
+        <footer>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &copy;  Panaderia Inventory
+                        Management system Powered By Cargills IT
+            </p>
+        </footer>     
 </body>
 </html>

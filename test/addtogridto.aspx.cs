@@ -192,14 +192,13 @@ namespace Panaderia.test
             public decimal Amount { get; set; }
         }
 
-        protected void SaveAndPrintButton_Click(object sender, EventArgs e)
+        /*protected void SaveAndPrintButton_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            SqlConnection connection = new SqlConnection(connectionString);
-
+            
             List<WaybillEntry> waybillEntries = new List<WaybillEntry>();
 
-            foreach (GridViewRow row in GridView1.Rows)
+            foreach (GridViewRow row in yourGridView.Rows)
             {
                 WaybillEntry entry = new WaybillEntry();
                 entry.LineNumber = Convert.ToInt32(row.Cells[0].Text);
@@ -217,14 +216,178 @@ namespace Panaderia.test
 
             try
             {
-                connection.Open();
-
-                // Save data to database
-                foreach (WaybillEntry entry in waybillEntries)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string sql = "INSERT INTO WaybillEntries (LineNumber, ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount, PrintDate) VALUES (@LineNumber, @ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount, GETUTCDATE())";
-                    SqlCommand command = new SqlCommand(sql, connection);
+                    connection.Open();
 
+                    // Save data to database using parameterized queries
+                    foreach (WaybillEntry entry in waybillEntries)
+                    {
+                        string sql = "INSERT INTO WaybillEntries (LineNumber, ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount, PrintDate) VALUES (@LineNumber, @ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount, GETUTCDATE())";
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@LineNumber", entry.LineNumber);
+                            command.Parameters.AddWithValue("@ItemCode", entry.ItemCode);
+                            command.Parameters.AddWithValue("@Description", entry.Description);
+                            command.Parameters.AddWithValue("@Price", entry.Price);
+                            command.Parameters.AddWithValue("@PSize", entry.PSize);
+                            command.Parameters.AddWithValue("@Packs", entry.Packs);
+                            command.Parameters.AddWithValue("@Nos", entry.Nos);
+                            command.Parameters.AddWithValue("@Discount", entry.Discount);
+                            command.Parameters.AddWithValue("@Amount", entry.Amount);
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Perform bulk insert into the database
+                   // BulkInsertWaybillEntries(connection, waybillEntries);
+
+                    // Print the waybill
+                    PrintWaybill(waybillEntries);
+
+                    // Clear GridView and data object
+                    yourGridView.DataSource = null;
+                    yourGridView.DataBind();
+                    waybillEntries.Clear();
+
+                    // Optionally delete data from database
+                    string deleteSql = "DELETE FROM WaybillEntries WHERE PrintDate = GETUTCDATE()";
+                    using (SqlCommand deleteCommand = new SqlCommand(deleteSql, connection))
+                    {
+                        deleteCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+                // Handle exception
+                // Log the exception (consider using a logging framework like log4net or Serilog)
+                // You can log to a file, database, or any other suitable destination
+                LogException(ex);
+
+                // Optionally display a user-friendly error message
+                ShowErrorMessage("An unexpected error occurred. Please try again later.");
+
+                // You may also redirect the user to an error page
+                // Response.Redirect("ErrorPage.aspx");
+
+                // Handle the exception-specifically if needed
+                if (ex is SqlException)
+                {
+                    // Handle SQL-specific exception
+                    ShowErrorMessage("Database error. Please contact support.");
+                }
+                else if (ex is InvalidOperationException)
+                {
+                    // Handle InvalidOperationException
+                    ShowErrorMessage("Invalid operation. Please try again.");
+                }
+                // Add more specific exception handling as required
+                else
+                {
+                    // Handle other exceptions
+                    ShowErrorMessage("An unexpected error occurred. Please try again later.");
+                }
+            }
+
+            
+        }*/
+
+        private void LogException(Exception ex)
+        {
+            // Implement your logging logic here
+            // For example, using log4net, Serilog, or any other logging framework
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+
+        }
+
+        private void BulkInsertWaybillEntries(SqlConnection connection, List<WaybillEntry> entries)
+        {
+            // Implement bulk insert logic here
+            // You can use DataTable, Table-Valued Parameters, or other methods based on your preference
+            // Example using Table-Valued Parameters: https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/table-valued-parameters
+        }
+
+        private void PrintWaybill(List<WaybillEntry> entries)
+        {
+            // Implement your waybill printing logic here
+            // Use entries to generate the waybill
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
+        protected void SaveAndPrintButton_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+
+            List<WaybillEntry> waybillEntries = new List<WaybillEntry>();
+
+            foreach (GridViewRow row in yourGridView.Rows)
+            {
+                WaybillEntry entry = new WaybillEntry();
+                entry.LineNumber = Convert.ToInt32(row.Cells[0].Text);
+                entry.ItemCode = row.Cells[1].Text;
+                entry.Description = row.Cells[2].Text;
+                entry.Price = Convert.ToDecimal(row.Cells[3].Text);
+                entry.PSize = row.Cells[4].Text;
+                entry.Packs = Convert.ToInt32(row.Cells[5].Text);
+                entry.Nos = Convert.ToInt32(row.Cells[6].Text);
+                entry.Discount = Convert.ToDecimal(row.Cells[7].Text);
+                entry.Amount = Convert.ToDecimal(row.Cells[8].Text);
+
+                waybillEntries.Add(entry);
+            }
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Perform bulk insert into the database
+                    BulkInsertWaybillEntries1(connection, waybillEntries);
+
+                    // Print the waybill
+                    PrintWaybill(waybillEntries);
+
+                    // Clear GridView and data object
+                    yourGridView.DataSource = null;
+                    yourGridView.DataBind();
+                    waybillEntries.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException(ex);
+                ShowErrorMessage("An unexpected error occurred. Please try again later.");
+            }
+        }
+
+
+        public void BulkInsertWaybillEntries1(SqlConnection connection, List<WaybillEntry> entries)
+        {
+            foreach (WaybillEntry entry in entries)
+            {
+                string insertSql = "INSERT INTO WaybillEntries (LineNumber, ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount, PrintDate) " +
+                                   "VALUES (@LineNumber, @ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount, GETUTCDATE())";
+
+                using (SqlCommand command = new SqlCommand(insertSql, connection))
+                {
                     command.Parameters.AddWithValue("@LineNumber", entry.LineNumber);
                     command.Parameters.AddWithValue("@ItemCode", entry.ItemCode);
                     command.Parameters.AddWithValue("@Description", entry.Description);
@@ -237,36 +400,159 @@ namespace Panaderia.test
 
                     command.ExecuteNonQuery();
                 }
-
-                // Print the waybill
-                // Implement your printing logic here using the waybillEntries list
-
-                // Clear GridView and data object
-                GridView1.DataSource = null; // Correctly clears GridView rows
-                GridView1.DataBind(); // Rebinds the grid view
-                waybillEntries.Clear();
-
-                // Optionally delete data from database
-                string deleteSql = "DELETE FROM WaybillEntries WHERE PrintDate = GETUTCDATE()";
-                SqlCommand deleteCommand = new SqlCommand(deleteSql, connection);
-                deleteCommand.ExecuteNonQuery();
             }
+        }
+
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+
+            List<WaybillEntry> waybillEntries = new List<WaybillEntry>();
+
+            foreach (GridViewRow row in yourGridView.Rows)
+            {
+                WaybillEntry entry = new WaybillEntry();
+                entry.LineNumber = Convert.ToInt32(row.Cells[0].Text);
+                entry.ItemCode = row.Cells[1].Text;
+                entry.Description = row.Cells[2].Text;
+                entry.Price = Convert.ToDecimal(row.Cells[3].Text);
+                entry.PSize = row.Cells[4].Text;
+                entry.Packs = Convert.ToInt32(row.Cells[5].Text);
+                entry.Nos = Convert.ToInt32(row.Cells[6].Text);
+                entry.Discount = Convert.ToDecimal(row.Cells[7].Text);
+                entry.Amount = Convert.ToDecimal(row.Cells[8].Text);
+
+                waybillEntries.Add(entry);
+            }
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Save data to database using parameterized queries
+                    foreach (WaybillEntry entry in waybillEntries)
+                    {
+                        string sql = "INSERT INTO WaybillEntries (LineNumber, ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount, PrintDate) VALUES (@LineNumber, @ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount, GETUTCDATE())";
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@LineNumber", entry.LineNumber);
+                            command.Parameters.AddWithValue("@ItemCode", entry.ItemCode);
+                            command.Parameters.AddWithValue("@Description", entry.Description);
+                            command.Parameters.AddWithValue("@Price", entry.Price);
+                            command.Parameters.AddWithValue("@PSize", entry.PSize);
+                            command.Parameters.AddWithValue("@Packs", entry.Packs);
+                            command.Parameters.AddWithValue("@Nos", entry.Nos);
+                            command.Parameters.AddWithValue("@Discount", entry.Discount);
+                            command.Parameters.AddWithValue("@Amount", entry.Amount);
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Perform bulk insert into the database
+                   // BulkInsertWaybillEntries(connection, waybillEntries);
+
+                    // Print the waybill
+                    PrintWaybill(waybillEntries);
+
+                    // Clear GridView and data object
+                    yourGridView.DataSource = null;
+                    yourGridView.DataBind();
+                    waybillEntries.Clear();
+
+                    // Optionally delete data from database
+                    string deleteSql = "DELETE FROM WaybillEntries WHERE PrintDate = GETUTCDATE()";
+                    using (SqlCommand deleteCommand = new SqlCommand(deleteSql, connection))
+                    {
+                        deleteCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+
+
             catch (Exception ex)
             {
                 // Handle exception
             }
-            finally
-            {
-                connection.Close();
-            }
+
         }
-    
 
-        
-
-
-    protected void btnSave_Click(object sender, EventArgs e)
+        protected void btnSaveAndPrintButton(object sender, EventArgs e)
         {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+
+            List<WaybillEntry> waybillEntries = new List<WaybillEntry>();
+
+            foreach (GridViewRow row in yourGridView.Rows)
+            {
+                WaybillEntry entry = new WaybillEntry();
+                entry.LineNumber = Convert.ToInt32(row.Cells[0].Text);
+                entry.ItemCode = row.Cells[1].Text;
+                entry.Description = row.Cells[2].Text;
+                entry.Price = Convert.ToDecimal(row.Cells[3].Text);
+                entry.PSize = row.Cells[4].Text;
+                entry.Packs = Convert.ToInt32(row.Cells[5].Text);
+                entry.Nos = Convert.ToInt32(row.Cells[6].Text);
+                entry.Discount = Convert.ToDecimal(row.Cells[7].Text);
+                entry.Amount = Convert.ToDecimal(row.Cells[8].Text);
+
+                waybillEntries.Add(entry);
+            }
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Save data to database using parameterized queries
+                    foreach (WaybillEntry entry in waybillEntries)
+                    {
+                        string sql = "INSERT INTO WaybillEntries (LineNumber, ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount, PrintDate) VALUES (@LineNumber, @ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount, GETUTCDATE())";
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@LineNumber", entry.LineNumber);
+                            command.Parameters.AddWithValue("@ItemCode", entry.ItemCode);
+                            command.Parameters.AddWithValue("@Description", entry.Description);
+                            command.Parameters.AddWithValue("@Price", entry.Price);
+                            command.Parameters.AddWithValue("@PSize", entry.PSize);
+                            command.Parameters.AddWithValue("@Packs", entry.Packs);
+                            command.Parameters.AddWithValue("@Nos", entry.Nos);
+                            command.Parameters.AddWithValue("@Discount", entry.Discount);
+                            command.Parameters.AddWithValue("@Amount", entry.Amount);
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Perform bulk insert into the database
+                    //BulkInsertWaybillEntries(connection, waybillEntries);
+
+                    // Print the waybill
+                    PrintWaybill(waybillEntries);
+
+                    // Clear GridView and data object
+                    yourGridView.DataSource = null;
+                    yourGridView.DataBind();
+                    waybillEntries.Clear();
+
+                    // Optionally delete data from database
+                    string deleteSql = "DELETE FROM WaybillEntries WHERE PrintDate = GETUTCDATE()";
+                    using (SqlCommand deleteCommand = new SqlCommand(deleteSql, connection))
+                    {
+                        deleteCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+                // Handle exception
+            }
 
         }
 
@@ -287,6 +573,77 @@ namespace Panaderia.test
 
         protected void yourGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+
+            List<WaybillEntry> waybillEntries = new List<WaybillEntry>();
+
+            foreach (GridViewRow row in yourGridView.Rows)
+            {
+                WaybillEntry entry = new WaybillEntry();
+                entry.LineNumber = Convert.ToInt32(row.Cells[0].Text);
+                entry.ItemCode = row.Cells[1].Text;
+                entry.Description = row.Cells[2].Text;
+                entry.Price = Convert.ToDecimal(row.Cells[3].Text);
+                entry.PSize = row.Cells[4].Text;
+                entry.Packs = Convert.ToInt32(row.Cells[5].Text);
+                entry.Nos = Convert.ToInt32(row.Cells[6].Text);
+                entry.Discount = Convert.ToDecimal(row.Cells[7].Text);
+                entry.Amount = Convert.ToDecimal(row.Cells[8].Text);
+
+                waybillEntries.Add(entry);
+            }
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Save data to database using parameterized queries
+                    foreach (WaybillEntry entry in waybillEntries)
+                    {
+                        string sql = "INSERT INTO WaybillEntries (LineNumber, ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount, PrintDate) VALUES (@LineNumber, @ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount, GETUTCDATE())";
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@LineNumber", entry.LineNumber);
+                            command.Parameters.AddWithValue("@ItemCode", entry.ItemCode);
+                            command.Parameters.AddWithValue("@Description", entry.Description);
+                            command.Parameters.AddWithValue("@Price", entry.Price);
+                            command.Parameters.AddWithValue("@PSize", entry.PSize);
+                            command.Parameters.AddWithValue("@Packs", entry.Packs);
+                            command.Parameters.AddWithValue("@Nos", entry.Nos);
+                            command.Parameters.AddWithValue("@Discount", entry.Discount);
+                            command.Parameters.AddWithValue("@Amount", entry.Amount);
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Perform bulk insert into the database
+                   // BulkInsertWaybillEntries(connection, waybillEntries);
+
+                    // Print the waybill
+                    PrintWaybill(waybillEntries);
+
+                    // Clear GridView and data object
+                    yourGridView.DataSource = null;
+                    yourGridView.DataBind();
+                    waybillEntries.Clear();
+
+                    // Optionally delete data from database
+                    string deleteSql = "DELETE FROM WaybillEntries WHERE PrintDate = GETUTCDATE()";
+                    using (SqlCommand deleteCommand = new SqlCommand(deleteSql, connection))
+                    {
+                        deleteCommand.ExecuteNonQuery();
+                    }
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+                // Handle exception
+            }
 
         }
     }

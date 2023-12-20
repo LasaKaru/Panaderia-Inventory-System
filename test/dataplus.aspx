@@ -130,6 +130,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Row to GridView</title>
+
+
+    
+    <script type="text/javascript">
+        function calculateTotal() {
+            var gridView = document.getElementById('<%= yourGridView.ClientID %>');
+            var rows = gridView.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            var totalAmount = 0;
+
+            for (var i = 0; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName('td');
+                var amountCell = cells[cells.length - 1]; // Assuming the "Amount" field is the last column
+
+                // Extract the value from the "Amount" cell and add it to the total
+                var amountValue = parseFloat(amountCell.getElementsByTagName('input')[0].value);
+                if (!isNaN(amountValue)) {
+                    totalAmount += amountValue;
+                }
+            }
+
+            // Update the value of the txttotal input field
+            document.getElementById('txttotal').value = totalAmount.toFixed(2); // Assuming you want to display the total with 2 decimal places
+        }
+
+        function addRowToGridView() {
+            // Your existing code to add a new row goes here
+
+            // Call the calculateTotal function after adding a new row
+            calculateTotal();
+        }
+
+        // Event handler for the "Amount" input fields
+        document.addEventListener('input', function (event) {
+            if (event.target.id.startsWith('yourGridView_') && event.target.id.endsWith('_txtAmount')) {
+                calculateTotal();
+            }
+        });
+    </script>
+
+
+
+
+
+
+
+
     <script>
         function addRowToGridView() {
             // Get reference to the table
@@ -209,6 +255,8 @@
             xhr.send();
         }
     </script>
+
+
 </head>
 <body>
     <div>

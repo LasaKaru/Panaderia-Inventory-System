@@ -66,13 +66,10 @@ namespace Panaderia.test
             { "Txn_Number", "Transaction Number" },
             {"Txn_Date", "Transaction Date" },
             { "Item_No", "Item Number" },
+            { "Txn_Price", " Transaction Price" },
+            { "Txn_Qty_In", " Transaction Qty IN" },
             {"Batch_No", "Batch Number" },
            
-
-
-
-
-
 
           // Add more mappings as needed for other columns
         };
@@ -212,6 +209,8 @@ namespace Panaderia.test
 
                             Cell headerCell = new Cell().Add(new Paragraph(columnDisplayName));
                             headerCell.SetFontSize(12); // Set the font size for headers
+                            headerCell.SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 1f)); // Set a light gray border color
+                            headerCell.SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 1f)); // Set a light gray right border
                             table.AddHeaderCell(headerCell);
                         }
 
@@ -223,6 +222,8 @@ namespace Panaderia.test
                                 {
                                     // Create a cell with the specified font
                                     Cell cell = new Cell().Add(new Paragraph(item.ToString()).SetFont(font).SetFontSize(tableDataFontSize));
+                                    cell.SetBorderBottom(new SolidBorder(new DeviceRgb(200, 200, 200), 0.5f)); // Set a slightly lighter gray border color for data cells
+                                    cell.SetBorderRight(new SolidBorder(new DeviceRgb(200, 200, 200), 0.5f)); // Set a slightly lighter gray right border
                                     table.AddCell(cell);
                                 }
                             }
@@ -230,8 +231,14 @@ namespace Panaderia.test
 
                         document.Add(table);
 
+                        Console.WriteLine();
+                        Console.WriteLine();
+
+                        // Calculate total value for the "Transaction Price" column
+                        decimal totalTransactionPrice = CalculateTotal(dataTable, "Txn_Price");
+
                         // Add total value with double underline
-                        Paragraph totalValue = new Paragraph("Total Value: [Your Total Value]")
+                        Paragraph totalValue = new Paragraph($"Total Value: {totalTransactionPrice}")
                             .SetTextAlignment(TextAlignment.RIGHT)
                             .SetFontSize(13)
                             .SetBorderBottom(new SolidBorder(ColorConstants.BLACK) );
@@ -246,18 +253,25 @@ namespace Panaderia.test
         }
 
 
+        //method to calculate the total:
+        private decimal CalculateTotal(DataTable dataTable, string columnName)
+        {
+            decimal total = 0;
 
+            if (dataTable != null && dataTable.Rows.Count > 0 && dataTable.Columns.Contains(columnName))
+            {
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    var value = row[columnName];
+                    if (value != null && decimal.TryParse(value.ToString(), out decimal price))
+                    {
+                        total += price;
+                    }
+                }
+            }
 
-
-
-
-
-
-
-
-
-
-
+            return total;
+        }
 
 
 

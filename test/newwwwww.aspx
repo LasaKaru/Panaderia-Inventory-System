@@ -1,12 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addtogridto.aspx.cs" Inherits="Panaderia.test.addtogridto" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="newwwwww.aspx.cs" Inherits="Panaderia.test.newwwwww" %>
 
 
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
 
-    <style>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+
+     <style>
         .navbar-inverse.navbar-nav > li > a:focus, .navbar- inverse.navbar- nav > li > a:hover {
             color: #090a22;
             background-color: transparent;
@@ -109,11 +111,38 @@
         }
     </style> 
 
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 56px;
+        }
+        .auto-style4 {
+            width: 46px;
+            height: 26px;
+        }
+        .auto-style5 {
+            width: 48px;
+        }
+        .auto-style6 {
+            width: 57px;
+        }
+        .auto-style7 {
+            width: 47px;
+        }
+        .auto-style9 {
+            width: 32px;
+            height: 26px;
+        }
+        .auto-style10 {
+            width: 76px;
+        }
+    </style>
+
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title> Purchase Order</title>
+    
 
-    <!-- Bootstrap CSS -->
+     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <!-- jQuery -->
@@ -187,7 +216,7 @@
         
 }
     </style>
-<style>
+ <style>
         /* Styles for the modal popup */
         .modal {
             display:;
@@ -256,62 +285,47 @@
         .selected-row2 {
             background-color: yellow;
         }
-        .auto-style331 {
-            width: 59px;
+        .auto-style336 {
+            width: 58px;
         }
-        .auto-style333 {
-            height: 28px;
+        .auto-style337 {
+            width: 38px;
         }
-        .auto-style335 {
-            width: 1103px;
+        .auto-style339 {
+            width: 74px;
         }
-        .auto-style338 {
-            height: 28px;
-            width: 44px;
+        .auto-style340 {
+            height: 26px;
+        }
+        .auto-style342 {
+            width: 58px;
+            height: 26px;
+        }
+        .auto-style343 {
+            width: 74px;
+            height: 26px;
         }
         .auto-style344 {
-            width: 96px;
+            width: 48px;
+            height: 26px;
         }
         .auto-style345 {
-            width: 27px;
+            width: 57px;
+            height: 26px;
         }
-        .auto-style356 {
-            width: 97px;
+        .auto-style346 {
+            width: 47px;
+            height: 26px;
         }
-        .auto-style357 {
-            width: 81px;
-        }
-        .auto-style359 {
-            width: 73px;
-        }
-        .auto-style363 {
-            width: 86px;
-        }
-        .auto-style366 {
-            width: 91px;
-        }
-        .auto-style368 {
-            width: 95px;
-        }
-        .auto-style369 {
+        .auto-style347 {
             width: 76px;
+            height: 26px;
         }
-        .auto-style370 {
-            width: 72px;
-        }
-        .auto-style371 {
-            width: 1100px;
-        }
-        .auto-style372 {
-            width: 100px;
-        }
-    </style> 
-
+        </style> 
 </head>
 <body>
-    
-       
-        <div class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -487,11 +501,13 @@
                             <li><a href="#">Journal</a></li>
                             <div id="sub-categories">
                                 <ul>
-                                    <li><a href="../Accounts/Journal_Purchase.aspx">Purchase</a></li>
+                                    <li><a href="../Accounts/Journal_Purchase.aspx">Purchase</a>
+                                    </li>
                                     <li>
                                         <a href="../Accounts/Journal_Purchase_Return.aspx">Purchase Return</a>
                                     </li>
-                                    <li><a href="../Accounts/Journal_Sales.aspx">Sales</a></li>
+                                    <li><a href="../Accounts/Journal_Sales.aspx">Sales</a>
+                                    </li>
                                     <li>
                                         <a href="../Accounts/Journal_Sales_Return.aspx">Sales Return</a>
                                     </li>
@@ -542,42 +558,37 @@
 <br />
 
 <br />
-      <form id="form2" runat="server" >       
-       <div class="auto-style32">
-           <div class="table-row">
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
-            <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="company" runat="server" CssClass="input-field" ReadOnly="True">1000</asp:TextBox></div>
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
 
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Branch</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Branch" runat="server" CssClass="input-field" ReadOnly="True">0001</asp:TextBox></div>
+    <form id="form1" runat="server">
+         <div class="auto-style32">
+            <div class="table-row">
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Company</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="company" runat="server" CssClass="input-field" ReadOnly="True">1000</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Date</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="date" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Branch</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Branch" runat="server" CssClass="input-field" ReadOnly="True">0001</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Type</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="TxnType" runat="server" CssClass="input-field" ReadOnly="True">PORD</asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Number</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Number" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
+                <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">User</div>
+                <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CSSclass="input-field" ></asp:TextBox></div>
 
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Txn Type</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="TxnType" runat="server" CssClass="input-field" ReadOnly="True">PORD</asp:TextBox></div>
-
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">Number</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="Number" runat="server" CssClass="input-field" ReadOnly="True"></asp:TextBox></div>
-
-    <div class="table-cell header" style="background-color: #eb1f10; width: 150px; font-weight: bold;">User</div>
-    <div class="table-cell" style="background-color: #eb1f10; width: 300px;"><asp:TextBox ID="user" runat="server" CssClass="input-field"></asp:TextBox></div>
-</div>
+            </div>
         </div>
     <br />
-
-           
-    <div class="row">
+        <div class="row">
             <div class="col-md-10 alignSuccessMessage">
             <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
                 <asp:Label ID="lblShowMessage" runat="server" Visible="false"></asp:Label>
             </div>
                 </div>
         </div>
-
-    <div class="container mt-5">
+         <div class="container mt-5">
 
         <div class="bordere">
-           
+
 
         <div class="row ">
             <div class="col-md-8 ">
@@ -597,7 +608,7 @@
                                 <button id="closeModal">Clear Selection</button>
                             </div>
                             <!-- GridView -->
-                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="True"></asp:GridView>
+                            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="True"></asp:GridView>
 
                             <!-- Placeholder for the GridView -->
                             <div id="gridViewPlaceholder"></div>
@@ -623,7 +634,7 @@
                 <div class="form-group row">
                     <label for="txtunitsize" class="col-sm-4 col-form-label">Amount</label>
                     <div class="col-sm-8">
-                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtamount" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -647,367 +658,254 @@
                 </div>      
                 <br />
 
+        <div>
+        </div>
 
+        <div id="Panel1" style="background-color: #ffa19926; height: auto; width: 1103px;">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Row to GridView</title>   
+         <div style="visibility: visible; overflow: auto; cursor: auto; display: table-column; clip: rect(auto, auto, auto, auto)">
 
-    <div>
+                </asp:Panel>
+         </div>
+        <table style="width:100%;">
+            <tr>
 
-         <div class="form-group row">
-                    <div id="Panel1" style="background-color: #ffa19926; height: 358px; width: 1103px;">
-                        <div class="col-sm-4">
-                            
-                            </div>
-
-                         <table id="GridView1" class="auto-style335">
-                <thead>
-                <tr>
-
-                    <td class="auto-style338">
-                        <button type="button" id="btnclick" class="btn btn-secondary"   style="border-color: #333333; background-color: #8689cf4d; width: 40px; font-size: 9px;">...</button>
-                                    <div id="myModal2" class="modal">
-                                        <div class="modal-content2">
-                                            <div class="modal-content-container2" style="overflow: auto">
-                                                <!-- Modal header with a close button -->
-                                                <div class="modal-header2">
-                                                    <h2>Item Master List</h2>
-                                                    <button id="closeModal2">Clear Selection</button>
-                                                </div>
-                                                <!-- GridView -->
-                                                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="True"></asp:GridView>
-
-                                                <!-- Placeholder for the GridView -->
-                                                <div id="gridViewPlaceholder2"></div>
+                <td class="auto-style340" colspan="2">
+                     <button type="button" id="btnclick" class="btn btn-secondary" style="border-color: #333333; background-color: #8689cf4d; width: 12px; font-size: 9px;">...</button>
+                                <div id="myModal2" class="modal">
+                                    <div class="modal-content2">
+                                        <div class="modal-content-container2" style="overflow: auto">
+                                            <!-- Modal header with a close button -->
+                                            <div class="modal-header2">
+                                                <h2>Item Master List</h2>
+                                                <button id="closeModal2">Clear Selection</button>
                                             </div>
+                                            <!-- GridView -->
+                                            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="True"></asp:GridView>
+
+                                            <!-- Placeholder for the GridView -->
+                                            <div id="gridViewPlaceholder2"></div>
                                         </div>
                                     </div>
+                                </div>
+                    <strong>&nbsp;&nbsp;Line</strong></td>
+
+                <th class="auto-style342"> </th>
+                <td class="auto-style343"><strong>Item Code</strong></td>
+                <td class="auto-style9"><strong>&nbsp; Descrition</strong></td>
+                <td class="auto-style4"><strong>Price</strong></td>
+                <td class="auto-style344"><strong>PSize</strong></td>
+                <td class="auto-style345"><strong>Packs</strong></td>
+                <td class="auto-style346"><strong>NOS</strong></td>
+                <td class="auto-style347"><strong>Discount</strong></td>                
+                <td class="auto-style347"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <asp:TextBox ID="TextBox1" runat="server" Width="95px"></asp:TextBox>
+                </td>
+                <td class="auto-style336">
+                    <asp:TextBox ID="TextBox3" runat="server" Width="59px"></asp:TextBox>
+                </td>
+                <td class="auto-style339">
+                    <asp:TextBox ID="TextBox2" runat="server" Width="75px" style="text-align: center"></asp:TextBox>
+                </td>
+                <td class="auto-style5">
+                    <asp:TextBox ID="TextBox4" runat="server" style="text-align: center"></asp:TextBox>
+                </td>
+                <td class="auto-style6">
+                    <asp:TextBox ID="TextBox5" runat="server" Width="66px"></asp:TextBox>
+                </td>
+                <td class="auto-style7">
+                    <asp:TextBox ID="TextBox6" runat="server" Width="57px"></asp:TextBox>
+                </td>
+                <td class="auto-style10">
+                    <asp:TextBox ID="TextBox7" runat="server" Width="77px"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox8" runat="server" Width="63px"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox9" runat="server" Width="77px"></asp:TextBox>
+                </td>
+               
+                <td>
+                    <asp:Button ID="Button2" runat="server" Text="+" Width="78px" OnClick="Button2_Click" />
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style337">&nbsp;</td>
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style336">&nbsp;</td>
+                <td class="auto-style339">&nbsp;</td>
+                <td class="auto-style5">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>                
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" ShowFooter="True" Height="139px" Width="823px" OnRowDeleting="GridView1_RowDeleting" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" HorizontalAlign="Justify" AutoGenerateDeleteButton="True">
+            <Columns>
+                <asp:BoundField DataField="Line" HeaderText="Line">
+                <ItemStyle HorizontalAlign="Right" />
+                </asp:BoundField>
+                <asp:BoundField DataField="item_code" HeaderText="Item_code">
+                <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Description" HeaderText="Description">
+                <ItemStyle HorizontalAlign="Left" />
+                </asp:BoundField>
+                <asp:BoundField DataField="price" HeaderText="Price">
+                <ItemStyle HorizontalAlign="Right" />
+                </asp:BoundField>
+                <asp:BoundField DataField="psize" HeaderText="Psize">
+                <ItemStyle HorizontalAlign="Right" />
+                </asp:BoundField>
+                <asp:BoundField DataField="packs" HeaderText="packs">
+                <ItemStyle HorizontalAlign="Right" />
+                </asp:BoundField>
+                <asp:BoundField DataField="nos" HeaderText="nos">
+                <ItemStyle HorizontalAlign="Right" />
+                </asp:BoundField>
+                <asp:BoundField DataField="discount" HeaderText="Discount">
+                <ItemStyle HorizontalAlign="Right" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Amount" HeaderText="Amount" />
+            </Columns>
+            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Right" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" HorizontalAlign="Right"/>
+            <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Right" />
+            <RowStyle BackColor="White" ForeColor="#330099" HorizontalAlign="Right" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" HorizontalAlign="Right" />
+            <SortedAscendingCellStyle BackColor="#FEFCEB" />
+            <SortedAscendingHeaderStyle BackColor="#AF0101" />
+            <SortedDescendingCellStyle BackColor="#F6F0C0" />
+            <SortedDescendingHeaderStyle BackColor="#7E0000" />
+        </asp:GridView>
         
-       
-         </td>
+        </asp:Panel>
 
-                    <th class="auto-style345">Line</th>
-                    <th class="auto-style368"> </th>
-                    <th class="auto-style359">Item code</th>
-                    <th class="auto-style370">Description</th>
-                    <th class="auto-style363">Price</th>
-                    <th class="auto-style369">PSize</th>
-                    <th class="auto-style357">Packs</th>
-                    <th class="auto-style356">Nos</th>
-                    <th class="auto-style366">Discount</th>
-                    <th class="auto-style344">Amount</th>
-                    
-                </tr>
-               </thead>
-               </div>
-            <br />           
-           <tbody>
-           </tbody>
-           </table>
-
-
-
-        
-<table id="yourGridViewTable" class="auto-style371">
-    <tr>
-        <!-- Your input fields here  
-         <td class="auto-style333">
-                        <button type="button" id="btnclick" class="btn btn-secondary"   style="border-color: #333333; background-color: #8689cf4d; width: 62px; font-size: 9px;">...</button>
-                                    <div id="myModal2" class="modal">
-                                        <div class="modal-content2">
-                                            <div class="modal-content-container2" style="overflow: auto">
-                                                <!-- Modal header with a close button 
-                                                <div class="modal-header2">
-                                                    <h2>Item Master List</h2>
-                                                    <button id="closeModal2">Clear Selection</button>
-                                                </div>
-                                                <!-- GridView 
-                                                <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="True"></asp:GridView>
-
-                                                <!-- Placeholder for the GridView 
-                                                <div id="gridViewPlaceholder2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-       
-         </td>-->
-        <td class="auto-style333">
-            <asp:TextBox ID="txtitem_nu" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="TextBox2" runat="server" CssClass="auto-style331" style="width: 100px">1</asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="txtcode" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="txtDescription" runat="server" CssClass="auto-style331" style="width: 154px"></asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="txtPrice" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="txtPSize" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="txtPascks" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="txtNos" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="txtDis" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
-        </td>
-
-        <td class="auto-style333">
-            <asp:TextBox ID="txtAmount" runat="server" CssClass="auto-style331" style="width: 100px"></asp:TextBox>
-        </td>
-        <!-- ... (repeat for other input fields) -->
-      <td class="auto-style333">
-    <button type="button" id="Button2" style="width: 46px" onclick="addRowToGridView()">+</button>
-</td>
-
-
-    </tr>
-
-</table> 
-                        </div>
-        
- </div>    
-    
-    <div style="visibility: visible; overflow: auto; cursor: auto; display: table-column; clip: rect(auto, auto, auto, auto)">
-            <asp:GridView ID="yourGridView" runat="server" BorderColor="#333333" BorderStyle="Solid" BorderWidth="3px" ForeColor="Black" ShowHeaderWhenEmpty="True" OnSelectedIndexChanged="yourGridView_SelectedIndexChanged" AutoGenerateDeleteButton="True" >
-                <Columns>
-                    <asp:BoundField HeaderText="item num1" DataField="txtitem_nu1" Visible="true" />
-                    <asp:BoundField HeaderText="item num" DataField="txtitem_nu" Visible="true" />
-                    <asp:BoundField HeaderText="Box2" DataField="TextBox2" Visible="true" />
-                    <asp:BoundField HeaderText="code" DataField="txtcode" Visible="true"/>
-                    <asp:BoundField HeaderText="Description" DataField="txtDescription" Visible="true" />
-                    <asp:BoundField HeaderText="Price" DataField="txtPrice" Visible="true" />
-                    <asp:BoundField HeaderText="PSize" DataField="txtPSize" Visible="true" />
-                    <asp:BoundField HeaderText="Pascks" DataField="txtPascks" Visible="true" />
-                    <asp:BoundField HeaderText="Nos" DataField="txtNos" Visible="true" />
-                    <asp:BoundField HeaderText="Discount" DataField="txtDis" Visible="true"/>
-                    <asp:BoundField HeaderText="Amount" DataField="txtAmount" Visible="true"/>
-
-                </Columns>
-                <RowStyle BorderStyle="Solid" HorizontalAlign="Center" />
-                <SelectedRowStyle BorderStyle="Dotted" />
-            </asp:GridView>
-    </div>
-
-    <br />
-    <br />
-
-    <div class="row">
-        <div class="col-md-6">
-
-            <!--<button id="btnSave" text="Save" cssclass="btn btn-primary" style="border-style: inset; " onclick="saveDataToServer()" class="auto-style372">Save</button>-->
-           <!-- &nbsp;
-
-
-        <Button ID="SaveAndPrintButton" Text="Save and Print" CssClass="btn btn-primary" OnClick="SaveAndPrintButton_Click" style="border-style: inset; width: 100px" />
-        <br/>
-
-
-
-            <div class="form-group row">
-                <label for="txttotal" class="col-sm-6 col-form-label" style="border-width: thin; background-color: #FFFFFF": width:14px></label>
-                <div class="col-sm-50">
-                    &nbsp; <input type="text" id="txttotal" class="auto-style326" style="width: 116px"></div>
-            </div>-->
-
-
-
-        </div>
-    </div>
-</div>
             </div>
-            </div>
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <div class="row">
+
+                    <div class="col-md-10">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" Width="100px" />
+                        &nbsp;&nbsp;
+                <asp:Button ID="btnPrint" runat="server" Text="Print" CssClass="btn btn-secondary" OnClick="btnPrint_Click" Width="100px" />
+                        &nbsp;&nbsp;
+                <asp:Button ID="btnExit" runat="server" Text="Exit" CssClass="btn btn-danger" OnClick="btnExit_Click" Width="100px" />
+                    </div>
         </div>
-          </form>
-    
 
-    <script>
-        function addRowToGridView() {
-            // Get reference to the table
-            var table = document.getElementById("yourGridViewTable");
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-            // Create a new row
-            var newRow = table.insertRow(table.rows.length);
 
-            // Array to store input field IDs
-            var inputIds = ["txtitem_nu", "TextBox2", "txtcode", "txtDescription", "txtPrice", "txtPSize", "txtPascks", "txtNos", "txtDis", "txtAmount"];
+                 <script>
+                     // JavaScript code to display data in the modal
+                     var btnsup = document.getElementById('btnsup');
+                     var modal = document.getElementById('myModal');
+                     var closeModalButton = document.getElementById('closeModal');
+                     var dataBody = document.getElementById('<%= GridView2.ClientID %>');
+                     var selectedRow = null;
 
-            // Loop through input fields and add cells to the new row
-            for (var i = 0; i < inputIds.length; i++) {
-                var cell = newRow.insertCell(i);
-                var inputValue = document.getElementById(inputIds[i]).value;
-                cell.innerHTML = inputValue;
-            }
-        }
+                     // Input fields          
 
-        function saveDataToServer() {
-            // Get reference to the table
-            var table = document.getElementById("yourGridViewTable");
+                     var txtsupplierInput = document.getElementById('txtsupplier');
+                     var txtsupidInput = document.getElementById('txtsupid');
+                     var txtsupInput = document.getElementById('txtsup');
+                     //var txtnetamountInput = document.getElementById('txtnetamount');
+                     //var txtcommentsInput = document.getElementById('txtcomments');
 
-            // Array to store data from the table
-            var tableData = [];
+                     // Function to handle row selection and highlight
+                     function selectRow(row, rowData) {
+                         debugger;
+                         if (selectedRow) {
+                             selectedRow.classList.remove('selected-row');
+                         }
+                         row.classList.add('selected-row');
+                         selectedRow = row;
 
-            // Loop through rows in the table
-            for (var i = 1; i < table.rows.length; i++) {
-                var rowData = [];
-                // Loop through cells in the row
-                for (var j = 0; j < table.rows[i].cells.length; j++) {
-                    rowData.push(table.rows[i].cells[j].innerHTML);
-                }
-                tableData.push(rowData);
-            }
+                         //closeModelButton.click();
+                         // Populate the input fields with the selected row's data
+                         var cells = row.cells;
+                         txtsupplierInput.value = cells[0].textContent;
+                         txtsupidInput.value = cells[1].textContent;
+                         txtsupInput.value = cells[2].textContent;
+                         //txtnetamountInput.value = cells[3].textContent;
+                         //txtcommentsInput.value = cells[4].textContent;
 
-            // Use AJAX to send data to the server
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "Pur_Purchase_Order.aspx/SaveData", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
+                     }
 
-            // Convert the array to JSON
-            var jsonData = JSON.stringify({ tableData: tableData });
+                     btnsup.addEventListener('click', function () {
+                         // Display the modal when the button is clicked
+                         modal.style.display = 'block';
 
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Handle the response from the server if needed
-                    console.log('Data saved to server:', xhr.responseText);
+                         // Load data when the modal is opened
+                         loadModalData();
+                     });
 
-                    // Refresh the GridView after saving data
-                    //refreshGridView();
-                }
-            };
+                     closeModalButton.addEventListener('click', function () {
+                         // Close the modal when the "Close" button is clicked
+                         //dataBody.innerHTML = ''; // Clear the table content
+                         modal.style.display = 'none';
+                     });
 
-            xhr.send(jsonData);
-        }
+                     window.addEventListener('click', function (event) {
+                         if (event.target == modal) {
+                             // Close the modal if the user clicks outside the modal content
+                             //dataBody.innerHTML = '';
+                             modal.style.display = 'none';
+                         }
+                     });
 
-        function refreshGridView() {
-            // Use AJAX to refresh the GridView
-            var gridView = $("[id$='yourGridView']");
-            gridView.empty();
+                     dataBody.addEventListener('click', function (event) {
+                         var target = event.target;
+                         if (target.tagName === 'TD') {
+                             var row = target.parentElement;
+                             selectRow(row);
+                         }
+                     });
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "Pur_Purchase_Order.aspx/GetData", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
+                     function loadModalData() {
+                         // Add code here to load data into the modal (e.g., from the GridView)
+                         // Make an AJAX request to fetch data and populate the modal
+                         var xmlhttp = new XMLHttpRequest();
+                         xmlhttp.onreadystatechange = function () {
+                             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                 // Parse the response and populate the modal
+                                 var data = JSON.parse(xmlhttp.responseText);
+                                 // Implement code to populate the modal with data
+                             }
+                         };
 
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Parse the JSON response
-                    var data = JSON.parse(xhr.responseText);
+                         // Replace 'GetDataUrl' with the URL to fetch data from the server
+                         xmlhttp.open('GET', 'GetDataUrl', true);
+                         xmlhttp.send();
+                     }
 
-                    // Bind the data to the GridView
-                    gridView.append(data.d);
-                }
-            };
+                     $(document).ready(function () {
+                         $("#closeModal").click(function () {
+                             $("#myModal").modal("hide");
+                         });
+                     });
 
-            xhr.send();
-        }
-    </script>
-
-    <script>
-        // JavaScript code to display data in the modal
-        var btnsup = document.getElementById('btnsup');
-        var modal = document.getElementById('myModal');
-        var closeModalButton = document.getElementById('closeModal');
-        var dataBody = document.getElementById('<%= GridView3.ClientID %>');
-        var selectedRow = null;
-
-        // Input fields          
-
-        var txtsupplierInput = document.getElementById('txtsupplier');
-        var txtsupidInput = document.getElementById('txtsupid');
-        var txtsupInput = document.getElementById('txtsup');
-        //var txtnetamountInput = document.getElementById('txtnetamount');
-        //var txtcommentsInput = document.getElementById('txtcomments');
-
-        // Function to handle row selection and highlight
-        function selectRow(row, rowData) {
-            debugger;
-            if (selectedRow) {
-                selectedRow.classList.remove('selected-row');
-            }
-            row.classList.add('selected-row');
-            selectedRow = row;
-
-            //closeModelButton.click();
-            // Populate the input fields with the selected row's data
-            var cells = row.cells;
-            txtsupplierInput.value = cells[0].textContent;
-            txtsupidInput.value = cells[1].textContent;
-            txtsupInput.value = cells[2].textContent;
-            //txtnetamountInput.value = cells[3].textContent;
-            //txtcommentsInput.value = cells[4].textContent;
-
-        }
-
-        btnsup.addEventListener('click', function () {
-            // Display the modal when the button is clicked
-            modal.style.display = 'block';
-
-            // Load data when the modal is opened
-            loadModalData();
-        });
-
-        closeModalButton.addEventListener('click', function () {
-            // Close the modal when the "Close" button is clicked
-            //dataBody.innerHTML = ''; // Clear the table content
-            modal.style.display = 'none';
-        });
-
-        window.addEventListener('click', function (event) {
-            if (event.target == modal) {
-                // Close the modal if the user clicks outside the modal content
-                //dataBody.innerHTML = '';
-                modal.style.display = 'none';
-            }
-        });
-
-        dataBody.addEventListener('click', function (event) {
-            var target = event.target;
-            if (target.tagName === 'TD') {
-                var row = target.parentElement;
-                selectRow(row);
-            }
-        });
-
-        function loadModalData() {
-            // Add code here to load data into the modal (e.g., from the GridView)
-            // Make an AJAX request to fetch data and populate the modal
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    // Parse the response and populate the modal
-                    var data = JSON.parse(xmlhttp.responseText);
-                    // Implement code to populate the modal with data
-                }
-            };
-
-            // Replace 'GetDataUrl' with the URL to fetch data from the server
-            xmlhttp.open('GET', 'GetDataUrl', true);
-            xmlhttp.send();
-        }
-
-        $(document).ready(function () {
-            $("#closeModal").click(function () {
-                $("#myModal").modal("hide");
-            });
-        });
-
-    </script>
+                 </script>
 
        <!--modal2-->
 
@@ -1016,19 +914,19 @@
             var btnclick = document.getElementById('btnclick');
             var modal2 = document.getElementById('myModal2');
             var closeModalButton2 = document.getElementById('closeModal2');
-            var dataBody = document.getElementById('<%= GridView2.ClientID %>');
+            var dataBody = document.getElementById('<%= GridView3.ClientID %>');
             var selectedRow2 = null;
 
             // Input fields   
-            var txtitem_nuInput = document.getElementById('txtitem_nu');
-            var txtcodeInput = document.getElementById('txtcode');
-            var txtDescriptionInput = document.getElementById('txtDescription');
-            var txtPriceInput = document.getElementById('txtPrice');
-            var txtPSizeInput = document.getElementById('txtPSize');
-            var txtPascksInput = document.getElementById('txtPascks');
-            var txtNosInput = document.getElementById('txtNos');
-            var txtDisInput = document.getElementById('txtDis');
-            var txtAmountInput = document.getElementById('txtAmount');
+            var txtitem_nuInput = document.getElementById('TextBox1');
+            var txtcodeInput = document.getElementById('TextBox2');
+            var txtDescriptionInput = document.getElementById('TextBox4');
+            var txtPriceInput = document.getElementById('TextBox5');
+            var txtPSizeInput = document.getElementById('TextBox6');
+            var txtPascksInput = document.getElementById('TextBox7');
+            var txtNosInput = document.getElementById('TextBox8');
+            var txtDisInput = document.getElementById('TextBox9');
+            //var txtAmount1Input = document.getElementById('txtAmount1');
 
 
 
@@ -1053,7 +951,7 @@
                 txtPascksInput.value = cells[5].textContent;
                 txtNosInput.value = cells[6].textContent;
                 txtDisInput.value = cells[7].textContent;
-                txtAmountInput.value = cells[8].textContent;
+                txtAmount1Input.value = cells[8].textContent;
 
             }
 
@@ -1112,7 +1010,6 @@
 
         </script>       
 
-
-                
+    </form>
 </body>
 </html>
