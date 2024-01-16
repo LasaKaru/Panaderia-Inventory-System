@@ -7,21 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Panaderia.Form.Inventory
+namespace Panaderia.test
 {
 
 
-    public partial class Sales_Invoice_Credit
+    public partial class finaltest
     {
 
         /// <summary>
-        /// form2 control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
         /// company control.
@@ -96,40 +96,40 @@ namespace Panaderia.Form.Inventory
         protected global::System.Web.UI.WebControls.Label lblShowMessage;
 
         /// <summary>
-        /// GridView1 control.
+        /// GridView2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
-        /// txtCustomer control.
+        /// txtsupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomer;
+        protected global::System.Web.UI.WebControls.TextBox txtsupplier;
 
         /// <summary>
-        /// txtcusID control.
+        /// txtsupid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcusID;
+        protected global::System.Web.UI.WebControls.TextBox txtsupid;
 
         /// <summary>
-        /// txtCusname control.
+        /// txtsup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCusname;
+        protected global::System.Web.UI.WebControls.TextBox txtsup;
 
         /// <summary>
         /// txtamount control.
@@ -141,49 +141,31 @@ namespace Panaderia.Form.Inventory
         protected global::System.Web.UI.WebControls.TextBox txtamount;
 
         /// <summary>
-        /// txtaReferance control.
+        /// txtreferance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtaReferance;
+        protected global::System.Web.UI.WebControls.TextBox txtreferance;
 
         /// <summary>
-        /// txtDiscount control.
+        /// txtdiscount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDiscount;
+        protected global::System.Web.UI.WebControls.TextBox txtdiscount;
 
         /// <summary>
-        /// txtComments control.
+        /// txtcomments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComments;
-
-        /// <summary>
-        /// GridView2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
-
-        /// <summary>
-        /// txtSONum control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSONum;
+        protected global::System.Web.UI.WebControls.TextBox txtcomments;
 
         /// <summary>
         /// GridView3 control.
@@ -285,13 +267,13 @@ namespace Panaderia.Form.Inventory
         protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
-        /// GridView4 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView4;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
         /// btnSave control.

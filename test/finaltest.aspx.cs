@@ -10,6 +10,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using System.IO;
+using Panaderia.DataAccessLayer;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
@@ -27,12 +28,12 @@ using iText.Kernel.Pdf.Canvas.Draw;
 
 namespace Panaderia.test
 {
-    public partial class newwwwww : System.Web.UI.Page
+    public partial class finaltest : System.Web.UI.Page
     {
+
         DataTable dt;
         Int64 totalprice;
         private object currentDate;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get the current date and time from the database or server.
@@ -214,66 +215,7 @@ namespace Panaderia.test
             txtamount.Text = grandtotal.ToString();
 
         }
-        /*private void calculateSum()
-        {
-            Int32 grandtotal = 0;
-            foreach (GridViewRow row in GridView1.Rows)
-            {
 
-                grandtotal = grandtotal + Convert.ToInt32(row.Cells[9].Text); //Where Cells is the column. Just changed the index of cells
-            }
-            GridView1.FooterRow.Cells[7].Text = "<b>Total Amount</b>";
-            GridView1.FooterRow.Cells[7].Font.Bold = true;
-            GridView1.FooterRow.Cells[8].Text = "<b> =</b>";
-            GridView1.FooterRow.Cells[8].Font.Bold = true;
-            GridView1.FooterRow.Cells[9].Text = grandtotal.ToString();
-            GridView1.FooterRow.Cells[9].Font.Bold = true;
-            // Label1.Text = "Price(in Words) " + ConvertNumbertoWords(grandtotal);
-
-            // Set the total amount in the txtamount TextBox
-            txtamount.Text = grandtotal.ToString();
-
-        }
-          public static string ConvertNumbertoWords(int number)
-          {
-              if (number == 0)
-                  return "ZERO";
-              if (number < 0)
-                  return "minus " + ConvertNumbertoWords(Math.Abs(number));
-              string words = "";
-              if ((number / 100000) > 0)
-              {
-                  words += ConvertNumbertoWords(number / 100000) + " Lacs ";
-                  number %= 100000;
-              }
-              if ((number / 1000) > 0)
-              {
-                  words += ConvertNumbertoWords(number / 1000) + " Thousand ";
-                  number %= 1000;
-              }
-              if ((number / 100) > 0)
-              {
-                  words += ConvertNumbertoWords(number / 100) + " Hundred ";
-                  number %= 100;
-              }
-              if (number > 0)
-              {
-                  if (words != "")
-                      words += "AND ";
-                  var unitsMap = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
-                  var tensMap = new[] { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
-
-                  if (number < 20)
-                      words += unitsMap[number];
-                  else
-                  {
-                      words += tensMap[number / 10];
-                      if ((number % 10) > 0)
-                          words += " " + unitsMap[number % 10];
-                  }
-              }
-              return words;
-          }*/
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -408,7 +350,7 @@ namespace Panaderia.test
                             //Paragraph billingDateParagraph = new Paragraph($"Billing Date: {billingDate:dd/MM/yyyy}")
                             //    .SetTextAlignment(TextAlignment.CENTER)
                             //    .SetFontSize(9);
-                           // document.Add(billingDateParagraph);
+                            // document.Add(billingDateParagraph);
 
 
 

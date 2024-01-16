@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using Panaderia.DataAccessLayer;
 using System.Net.Mail;
 using System.Net;
 using System.Text;
@@ -25,14 +26,13 @@ using iText.Layout.Borders;
 using iText.Kernel.Colors;
 using iText.Kernel.Pdf.Canvas.Draw;
 
+
 namespace Panaderia.test
 {
-    public partial class newwwwww : System.Web.UI.Page
+    public partial class two : System.Web.UI.Page
     {
         DataTable dt;
         Int64 totalprice;
-        private object currentDate;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get the current date and time from the database or server.
@@ -47,7 +47,9 @@ namespace Panaderia.test
             // Set the value of the TextBox control.
             user.Text = validUsername;
 
-            if (!IsPostBack)
+
+            // Load the user data from the database when the page is loaded
+            if (!IsPostBack) // Ensure that the code is executed only on the initial page load, not on postbacks
             {
                 dt = new DataTable();
                 dt.Columns.Add("Line");
@@ -62,6 +64,9 @@ namespace Panaderia.test
                 Session["data"] = dt;
                 TextBox1.Text = "1";
             }
+
+
+
             {
                 LoadUserData();
             }
@@ -69,45 +74,16 @@ namespace Panaderia.test
             {
                 LoadSupData();
             }
-
+            {
+                LoadGoodsData();
+            }
             {
                 LoadItemData();
             }
 
         }
 
-
-        private void LoadSupData()
-        {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT Sup_nu,Code,SupplierName,Telephone,ContactPerson1,ContactDetails1,Email FROM [Panaderia].[dbo].[MF_Supplier_new1]";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
-                    try
-                    {
-                        connection.Open();
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        GridView2.DataSource = reader;
-                        GridView2.DataBind();
-                    }
-                    catch (Exception ex)
-                    {
-                        // Handle any exceptions here
-                        string errorMessage = "An error occurred while fetching data. Please try again later.";
-
-                        // Display the error message to the user
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "errorAlert", $"alert('{errorMessage}');", true);
-                    }
-                }
-            }
-
-        }
-
-        private void LoadItemData()
+        /*private void LoadItemData()
         {
             string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
             string query = "SELECT item_nu,code,Description,Price,PSize,Pascks,Nos,Dis,Amount,Usize FROM [Panaderia].[dbo].[MF_item_new]";
@@ -137,148 +113,136 @@ namespace Panaderia.test
 
         }
 
+
+        private void LoadItemData()
+        {
+            //object ddlBillID = txtponum;
+            // Assuming @SelectedBillID is the parameter representing the selected BillID from Inv_Purchase_GoodsReceivenew1
+            //int selectedBillID = Convert.ToInt32(ddlBillID.SelectedValue);
+
+            // Assuming txtponum is the TextBox containing the selected BillID
+            if (int.TryParse(txtponum.Text, out int selectedBillID))
+            {
+
+                string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+                string footerQuery = "SELECT * FROM footer1 WHERE BillID = @SelectedBillID";
+
+                using (SqlConnection footerConnection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand footerCmd = new SqlCommand(footerQuery, footerConnection))
+                    {
+                        footerCmd.Parameters.AddWithValue("@SelectedBillID", selectedBillID);
+
+                        footerConnection.Open();
+                        SqlDataReader footerReader = footerCmd.ExecuteReader();
+
+                        // Assuming GridView4 is the GridView for displaying footer data
+                        GridView3.DataSource = footerReader;
+                        GridView3.DataBind();
+                    }
+                }
+            }
+        }*/
+
+
+        private void LoadItemData()
+        {
+            // Assuming txtponum is the TextBox for the selected BillID
+            int selectedBillID;
+            if (int.TryParse(txtponum.Text, out selectedBillID))
+            {
+                string footerQuery = "SELECT * FROM footer1 WHERE BillID = @SelectedBillID";
+
+                string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+                using (SqlConnection footerConnection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand footerCmd = new SqlCommand(footerQuery, footerConnection))
+                    {
+                        footerCmd.Parameters.AddWithValue("@SelectedBillID", selectedBillID);
+
+                        footerConnection.Open();
+                        SqlDataReader footerReader = footerCmd.ExecuteReader();
+
+                        // Assuming GridView4 is the GridView for displaying footer data
+                        GridView3.DataSource = footerReader;
+                        GridView3.DataBind();
+                    }
+                }
+            }
+            else
+            {
+                // Handle the case where parsing txtponum to an integer fails
+            }
+        }
+
+        private void LoadSupData()
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string query = "SELECT Sup_nu,Code,SupplierName,Telephone,ContactPerson1,ContactDetails1,Email FROM [Panaderia].[dbo].[MF_Supplier_new1]";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        GridView1.DataSource = reader;
+                        GridView1.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions here
+                        string errorMessage = "An error occurred while fetching data. Please try again later.";
+
+                        // Display the error message to the user
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "errorAlert", $"alert('{errorMessage}');", true);
+                    }
+                }
+            }
+
+        }
+
+        private void LoadGoodsData()
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            //string query = "SELECT PO_ID,Sup_nu,Code,Sup_Name,SupplierReference,Amount FROM [Panaderia].[dbo].[Inv_Purchase_Order_new]";
+            string query = " SELECT * FROM [Panaderia].[dbo].[Inv_Purchase_GoodsReceivenew1] where TxnType = 'PGRN' ";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        GridView2.DataSource = reader;
+                        GridView2.DataBind();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions here
+                        string errorMessage = "An error occurred while fetching data. Please try again later.";
+
+                        // Display the error message to the user
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "errorAlert", $"alert('{errorMessage}');", true);
+                    }
+                }
+            }
+
+        }
+
         private void LoadUserData() { }
 
 
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            dt = (DataTable)Session["data"];
-            DataRow dr = dt.NewRow();
-
-            // Set values for the new row
-            dr["Line"] = TextBox1.Text;
-            dr["item_code"] = TextBox2.Text;
-            dr["Description"] = TextBox4.Text;
-            dr["price"] = TextBox5.Text;
-            dr["psize"] = TextBox6.Text;
-            dr["packs"] = TextBox7.Text;
-            dr["nos"] = TextBox8.Text;
-
-            // Check if a discount is entered
-            if (!string.IsNullOrEmpty(TextBox9.Text))
-            {
-                int discount = Convert.ToInt32(TextBox9.Text);
-                dr["discount"] = discount.ToString(); // Set the discount value in the "discount" column
-            }
-
-            // Calculate total price
-            totalprice = Convert.ToInt64(TextBox8.Text) * Convert.ToInt64(TextBox5.Text);
-
-            // Apply the discount to totalprice if applicable
-            if (!string.IsNullOrEmpty(TextBox9.Text))
-            {
-                int discount = Convert.ToInt32(TextBox9.Text);
-                totalprice -= (totalprice * discount) / 100;
-            }
-
-            dr["Amount"] = totalprice.ToString();
-
-            // Add the row to the DataTable
-            dt.Rows.Add(dr);
-
-            // Update GridView and session
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-            Session["buyitems"] = dt;
-
-            // Reset input fields and recalculate sum
-            TextBox1.Text = (dt.Rows.Count + 1).ToString();
-            TextBox3.Text = "";
-            TextBox2.Text = "";
-            TextBox4.Text = "";
-            TextBox5.Text = "";
-            TextBox6.Text = "";
-            TextBox7.Text = "";
-            TextBox8.Text = "";
-            TextBox9.Text = ""; // Clear discount TextBox
-            calculateSum();
-        }
-
-        private void calculateSum()
-        {
-            Int32 grandtotal = 0;
-            foreach (GridViewRow row in GridView1.Rows)
-            {
-
-                grandtotal = grandtotal + Convert.ToInt32(row.Cells[9].Text); //Where Cells is the column. Just changed the index of cells
-            }
-            GridView1.FooterRow.Cells[7].Text = "<b>Total Amount</b>";
-            GridView1.FooterRow.Cells[7].Font.Bold = true;
-            GridView1.FooterRow.Cells[8].Text = "<b> =</b>";
-            GridView1.FooterRow.Cells[8].Font.Bold = true;
-            GridView1.FooterRow.Cells[9].Text = grandtotal.ToString();
-            GridView1.FooterRow.Cells[9].Font.Bold = true;
-            // Label1.Text = "Price(in Words) " + ConvertNumbertoWords(grandtotal);
-
-            // Set the total amount in the txtamount TextBox
-            txtamount.Text = grandtotal.ToString();
-
-        }
-        /*private void calculateSum()
-        {
-            Int32 grandtotal = 0;
-            foreach (GridViewRow row in GridView1.Rows)
-            {
-
-                grandtotal = grandtotal + Convert.ToInt32(row.Cells[9].Text); //Where Cells is the column. Just changed the index of cells
-            }
-            GridView1.FooterRow.Cells[7].Text = "<b>Total Amount</b>";
-            GridView1.FooterRow.Cells[7].Font.Bold = true;
-            GridView1.FooterRow.Cells[8].Text = "<b> =</b>";
-            GridView1.FooterRow.Cells[8].Font.Bold = true;
-            GridView1.FooterRow.Cells[9].Text = grandtotal.ToString();
-            GridView1.FooterRow.Cells[9].Font.Bold = true;
-            // Label1.Text = "Price(in Words) " + ConvertNumbertoWords(grandtotal);
-
-            // Set the total amount in the txtamount TextBox
-            txtamount.Text = grandtotal.ToString();
-
-        }
-          public static string ConvertNumbertoWords(int number)
-          {
-              if (number == 0)
-                  return "ZERO";
-              if (number < 0)
-                  return "minus " + ConvertNumbertoWords(Math.Abs(number));
-              string words = "";
-              if ((number / 100000) > 0)
-              {
-                  words += ConvertNumbertoWords(number / 100000) + " Lacs ";
-                  number %= 100000;
-              }
-              if ((number / 1000) > 0)
-              {
-                  words += ConvertNumbertoWords(number / 1000) + " Thousand ";
-                  number %= 1000;
-              }
-              if ((number / 100) > 0)
-              {
-                  words += ConvertNumbertoWords(number / 100) + " Hundred ";
-                  number %= 100;
-              }
-              if (number > 0)
-              {
-                  if (words != "")
-                      words += "AND ";
-                  var unitsMap = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
-                  var tensMap = new[] { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
-
-                  if (number < 20)
-                      words += unitsMap[number];
-                  else
-                  {
-                      words += tensMap[number / 10];
-                      if ((number % 10) > 0)
-                          words += " " + unitsMap[number % 10];
-                  }
-              }
-              return words;
-          }*/
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
+            
                 // Retrieve the DataTable from the session
                 DataTable dt = (DataTable)Session["data"];
 
@@ -296,69 +260,81 @@ namespace Panaderia.test
                     connection.Open();
 
                     // Insert into [dbo].[Inv_Purchase_Order_new]
-                    string insertMainQuery = @"INSERT INTO [dbo].[Inv_Purchase_Order_new]
-               ([CompanyID], [IPS_Date], [Branch], [TxnType], [Number], [User], [Code], [Sup_Name], [Amount], [SupplierReference], [Discount], [Comments],[Sup_nu])
-               VALUES
-               (@CompanyID, @IPS_Date, @Branch, @TxnType, @Number, @User, @Code, @Sup_Name, @Amount, @SupplierReference, @Discount, @Comments,@Sup_nu)";
+                    string insertMainQuery = @"INSERT INTO [dbo].[Inv_Purchase_GoodsReceivenew1]
+                      (CompanyID, Date, Branch, TxnType, Number, [User], Sup_num, code, Sup_Name, Amount, Adjustments, NetAmount, Comments
+                      , PO_nu, InvoiceNo, InvoiceAmount, InvoiceDate)
+                        OUTPUT INSERTED.BillID
+                       VALUES
+                       (@CompanyID, @Date, @Branch, @TxnType, @Number, @User, @Sup_num, @code, @Sup_Name, @Amount, @Adjustments, @NetAmount, @Comments, @PO_nu, @InvoiceNo, @InvoiceAmount, @InvoiceDate)";
+
+                    
 
                     using (SqlCommand cmdMain = new SqlCommand(insertMainQuery, connection))
                     {
                         cmdMain.Parameters.AddWithValue("@CompanyID", company.Text);
-                        cmdMain.Parameters.AddWithValue("@IPS_Date", date.Text);
+                        cmdMain.Parameters.AddWithValue("@Date", date.Text);
                         cmdMain.Parameters.AddWithValue("@Branch", Branch.Text);
                         cmdMain.Parameters.AddWithValue("@TxnType", TxnType.Text);
                         cmdMain.Parameters.AddWithValue("@Number", Number.Text);
                         cmdMain.Parameters.AddWithValue("@User", user.Text);
-                        cmdMain.Parameters.AddWithValue("@Sup_nu", txtsupplier.Text);
-                        cmdMain.Parameters.AddWithValue("@Code", txtsupid.Text);
+                        cmdMain.Parameters.AddWithValue("@Sup_num", txtsupplier.Text);
+                        cmdMain.Parameters.AddWithValue("@code", txtsupid.Text);
                         cmdMain.Parameters.AddWithValue("@Sup_Name", txtsup.Text);
                         cmdMain.Parameters.AddWithValue("@Amount", txtamount.Text);
-                        cmdMain.Parameters.AddWithValue("@SupplierReference", txtreferance.Text);
-                        cmdMain.Parameters.AddWithValue("@Discount", txtdiscount.Text);
+                        cmdMain.Parameters.AddWithValue("@Adjustments", txtadjustment.Text);
+                        cmdMain.Parameters.AddWithValue("@NetAmount", txtnetamount.Text);
                         cmdMain.Parameters.AddWithValue("@Comments", txtcomments.Text);
+                        cmdMain.Parameters.AddWithValue("@PO_nu", txtponum.Text);
+                        cmdMain.Parameters.AddWithValue("@InvoiceNo", txtInvoiceNo.Text);
+                        cmdMain.Parameters.AddWithValue("@InvoiceAmount", txtInvoiceAmount.Text);
+                        cmdMain.Parameters.AddWithValue("@InvoiceDate", txtInvoiceDate.Text);
 
-                        cmdMain.ExecuteNonQuery();
-                    }
+                        decimal billID = Convert.ToDecimal(cmdMain.ExecuteScalar());
 
-                    // Insert into purchase_order_footer
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        string insertDetailQuery = "INSERT INTO purchase_order_footer (ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount, GrandTotal) " +
-                                     "VALUES (@ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount, @GrandTotal)";
+                        //cmdMain.ExecuteNonQuery();
 
-                        using (SqlCommand command = new SqlCommand(insertDetailQuery, connection))
+
+                        // Insert into purchase_order_footer
+                        for (int i = 0; i < dt.Rows.Count; i++)
                         {
-                            command.Parameters.AddWithValue("@ItemCode", row["item_code"]);
-                            command.Parameters.AddWithValue("@Description", row["Description"]);
-                            command.Parameters.AddWithValue("@Price", Convert.ToDecimal(row["price"]));
-                            command.Parameters.AddWithValue("@PSize", Convert.ToInt32(row["psize"]));
-                            command.Parameters.AddWithValue("@Packs", Convert.ToInt32(row["packs"]));
-                            command.Parameters.AddWithValue("@Nos", Convert.ToInt32(row["nos"]));
-                            command.Parameters.AddWithValue("@Discount", Convert.ToDecimal(row["discount"]));
-                            command.Parameters.AddWithValue("@Amount", Convert.ToDecimal(row["Amount"]));
-                            command.Parameters.AddWithValue("@GrandTotal", grandTotal);
+                            DataRow row = dt.Rows[i];
 
-                            command.ExecuteNonQuery();
+                            string insertDetailQuery = "INSERT INTO [dbo].[footer1] (BillID, ItemCode, Description, Price, PSize, Packs, Nos, Discount, Amount) " +
+                                                       "VALUES (@BillID, @ItemCode, @Description, @Price, @PSize, @Packs, @Nos, @Discount, @Amount)";
+
+                            using (SqlCommand command = new SqlCommand(insertDetailQuery, connection))
+                            {
+                                command.Parameters.AddWithValue("@BillID", billID);
+                                command.Parameters.AddWithValue("@ItemCode", row["item_code"]);
+                                command.Parameters.AddWithValue("@Description", row["Description"]);
+                                command.Parameters.AddWithValue("@Price", Convert.ToDecimal(row["price"]));
+                                command.Parameters.AddWithValue("@PSize", Convert.ToInt32(row["psize"]));
+                                command.Parameters.AddWithValue("@Packs", Convert.ToInt32(row["packs"]));
+                                command.Parameters.AddWithValue("@Nos", Convert.ToInt32(row["nos"]));
+                                command.Parameters.AddWithValue("@Discount", Convert.ToDecimal(row["discount"]));
+                                command.Parameters.AddWithValue("@Amount", Convert.ToDecimal(row["Amount"]));
+                                //command.Parameters.AddWithValue("@GrandTotal", grandTotal);
+
+                                command.ExecuteNonQuery();
+                            }
                         }
+
                     }
                 }
 
-                // Clear the DataTable and GridView after saving
                 dt.Clear();
-                GridView1.DataSource = null;
-                GridView1.DataBind();
+                GridView4.DataSource = null;
+                GridView4.DataBind();
                 Session["data"] = dt;
 
                 divMsg.Visible = true;
                 lblShowMessage.Visible = true;
                 lblShowMessage.Text = "Successfully inserted!";
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions (display error message, log, etc.)
-                Response.Write($"Error: {ex.Message}");
-            }
+            
+            
         }
+
+
 
 
 
@@ -396,7 +372,7 @@ namespace Panaderia.test
                                 .SetFontSize(13);
                             document.Add(title);
 
-                            Paragraph title1 = new Paragraph("Purchase Order Report\n \n ")
+                            Paragraph title1 = new Paragraph("Purchase Order Report Note\n \n ")
                             .SetTextAlignment(TextAlignment.CENTER)
                             .SetFontSize(9);
                             document.Add(title1);
@@ -408,7 +384,7 @@ namespace Panaderia.test
                             //Paragraph billingDateParagraph = new Paragraph($"Billing Date: {billingDate:dd/MM/yyyy}")
                             //    .SetTextAlignment(TextAlignment.CENTER)
                             //    .SetFontSize(9);
-                           // document.Add(billingDateParagraph);
+                            // document.Add(billingDateParagraph);
 
 
 
@@ -524,7 +500,7 @@ namespace Panaderia.test
                 Response.ContentType = "application/pdf";
 
                 // Set the content disposition and file name
-                Response.AddHeader("Content-Disposition", "attachment; filename=Invoice.pdf");
+                Response.AddHeader("Content-Disposition", "attachment; filename=Purchase Goods Reveive.pdf");
 
                 // Write the PDF to the response stream
                 Response.BinaryWrite(stream.ToArray());
@@ -535,21 +511,132 @@ namespace Panaderia.test
 
         }
 
-        private void SetBorderBottom(SolidBorder solidBorder)
-        {
-            throw new NotImplementedException();
-        }
+    
 
         protected void btnExit_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Dashboard.aspx");
+
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void company_TextChanged(object sender, EventArgs e)
         {
 
         }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            dt = (DataTable)Session["data"];
+            DataRow dr = dt.NewRow();
 
+            // Set values for the new row
+            dr["Line"] = TextBox1.Text;
+            dr["item_code"] = TextBox2.Text;
+            dr["Description"] = TextBox4.Text;
+            dr["price"] = TextBox5.Text;
+            dr["psize"] = TextBox6.Text;
+            dr["packs"] = TextBox7.Text;
+            dr["nos"] = TextBox8.Text;
+
+            // Check if a discount is entered
+            if (!string.IsNullOrEmpty(TextBox9.Text))
+            {
+                decimal discount = Convert.ToDecimal(TextBox9.Text);
+                dr["discount"] = discount.ToString(); // Set the discount value in the "discount" column
+            }
+
+            // Calculate total price
+            decimal totalprice = Convert.ToDecimal(TextBox8.Text) * Convert.ToDecimal(TextBox5.Text);
+
+            // Apply the discount to totalprice if applicable
+            if (!string.IsNullOrEmpty(TextBox9.Text))
+            {
+                decimal discount = Convert.ToDecimal(TextBox9.Text);
+                totalprice -= (totalprice * discount) / 100;
+            }
+
+            dr["Amount"] = totalprice.ToString();
+
+            // Add the row to the DataTable
+            dt.Rows.Add(dr);
+
+            // Update GridView and session
+            GridView4.DataSource = dt;
+            GridView4.DataBind();
+            Session["buyitems"] = dt;
+
+            // Reset input fields and recalculate sum
+            TextBox1.Text = (dt.Rows.Count + 1).ToString();
+            TextBox3.Text = "";
+            TextBox2.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+            TextBox6.Text = "";
+            TextBox7.Text = "";
+            TextBox8.Text = "";
+            TextBox9.Text = ""; // Clear discount TextBox
+            calculateSum();
+        }
+        private void calculateSum()
+        {
+            decimal grandtotal = 0;
+            foreach (GridViewRow row in GridView4.Rows)
+            {
+
+                 grandtotal = grandtotal + Convert.ToDecimal(row.Cells[9].Text); //Where Cells is the column. Just changed the index of cells
+            }
+            GridView4.FooterRow.Cells[7].Text = "<b>Total Amount</b>";
+            GridView4.FooterRow.Cells[7].Font.Bold = true;
+            GridView4.FooterRow.Cells[8].Text = "<b> =</b>";
+            GridView4.FooterRow.Cells[8].Font.Bold = true;
+            GridView4.FooterRow.Cells[9].Text = grandtotal.ToString();
+            GridView4.FooterRow.Cells[9].Font.Bold = true;
+            // Label1.Text = "Price(in Words) " + ConvertNumbertoWords(grandtotal);
+
+            // Set the total amount in the txtamount TextBox
+            txtamount.Text = grandtotal.ToString();
+
+        }
+
+        /*public static string ConvertNumbertoWords(int number)
+          {
+              if (number == 0)
+                  return "ZERO";
+              if (number < 0)
+                  return "minus " + ConvertNumbertoWords(Math.Abs(number));
+              string words = "";
+              if ((number / 100000) > 0)
+              {
+                  words += ConvertNumbertoWords(number / 100000) + " Lacs ";
+                  number %= 100000;
+              }
+              if ((number / 1000) > 0)
+              {
+                  words += ConvertNumbertoWords(number / 1000) + " Thousand ";
+                  number %= 1000;
+              }
+              if ((number / 100) > 0)
+              {
+                  words += ConvertNumbertoWords(number / 100) + " Hundred ";
+                  number %= 100;
+              }
+              if (number > 0)
+              {
+                  if (words != "")
+                      words += "AND ";
+                  var unitsMap = new[] { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
+                  var tensMap = new[] { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+
+                  if (number < 20)
+                      words += unitsMap[number];
+                  else
+                  {
+                      words += tensMap[number / 10];
+                      if ((number % 10) > 0)
+                          words += " " + unitsMap[number % 10];
+                  }
+              }
+              return words;
+          }*/
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             // Get the index of the row being deleted
@@ -565,11 +652,17 @@ namespace Panaderia.test
             Session["buyitems"] = dt;
 
             // Bind the DataTable to the GridView
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            GridView4.DataSource = dt;
+            GridView4.DataBind();
 
             // Recalculate the total sum
             calculateSum();
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

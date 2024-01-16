@@ -574,7 +574,7 @@
 
                         &nbsp;&nbsp;
 
-    <asp:Button ID="btnprint" runat="server" Text="Print" CssClass="btn btn-secondary" Style="border-style: inset; width: 100px" OnClick="btnBrowse_Click" />
+    <asp:Button ID="btnPrint" runat="server" Text="Print" CssClass="btn btn-secondary" Style="border-style: inset; width: 100px" OnClick="btnPrint_Click" />
 
                         &nbsp;&nbsp;
 

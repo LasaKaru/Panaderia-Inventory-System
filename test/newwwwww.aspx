@@ -578,7 +578,7 @@
             </div>
         </div>
     <br />
-        <div class="row">
+         <div class="row">
             <div class="col-md-10 alignSuccessMessage">
             <div id="divMsg" visible="false" runat="server" class="alert alert-success fade-in">
                 <asp:Label ID="lblShowMessage" runat="server" Visible="false"></asp:Label>
@@ -646,7 +646,7 @@
                 <div class="form-group row">
                     <label for="txtdiscount" class="col-sm-4 col-form-label">Discount</label>
                     <div class="col-sm-8">
-                        <asp:TextBox ID="txtdiscount" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="txtdiscount" runat="server" CssClass="form-control">0</asp:TextBox>
                     </div>
                 </div>
 

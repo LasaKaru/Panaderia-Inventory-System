@@ -7,6 +7,24 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 using Panaderia.DataAccessLayer;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using System.IO;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using ClosedXML.Excel;
+using iText.Kernel.Events;
+using iText.IO.Image;
+using iText.Layout.Properties;
+using Table = iText.Layout.Element.Table;
+using iText.Kernel.Geom;
+using iText.Kernel.Font;
+using iText.IO.Font;
+using iText.Layout.Borders;
+using iText.Kernel.Colors;
+using iText.Kernel.Pdf.Canvas.Draw;
 
 namespace Panaderia.Form.Day_Books
 {
@@ -198,12 +216,244 @@ namespace Panaderia.Form.Day_Books
 
         }
 
-        protected void btnBrowse_Click(object sender, EventArgs e)
+
+        /*
+        protected void btnPrint_Click(object sender, EventArgs e)
         {
+            // Retrieve the DataTable from the session
+            DataTable dt = (DataTable)Session["data"];
+
+            // Create a MemoryStream to store the PDF
+            using (MemoryStream stream = new MemoryStream())
+            {
+                // Create a PdfWriter
+                using (PdfWriter writer = new PdfWriter(stream))
+                {
+                    // Create a PdfDocument
+                    using (PdfDocument pdf = new PdfDocument(writer))
+                    {
+                        // Create a Document
+                        using (Document document = new Document(pdf))
+                        {
+                            // Set the page orientation to landscape
+                            PageSize pageSize = PageSize.A4; // Landscape orientation
+                            pdf.SetDefaultPageSize(pageSize);
+
+                            // Add the image to the first page
+                            iText.Layout.Element.Image image = new iText.Layout.Element.Image(ImageDataFactory.Create("https://github.com/LasaKaru/Utility-Inquiry-System/blob/main/cargills-removebg-preview.png?raw=true"));
+                            image.SetWidth(50); // Set the image width to 100 pixels
+                            image.SetMarginLeft(1); // Set the left margin to 10 pixels
+                            image.SetMarginBottom(1); // Set the bottom margin to 10 pixels
+                            document.Add(image);
+
+                            // Add the title
+                            Paragraph title = new Paragraph("Panaderia Inventory System")
+                                .SetTextAlignment(TextAlignment.CENTER)
+                                .SetFontSize(13);
+                            document.Add(title);
+
+                            Paragraph title1 = new Paragraph("Purchase Order Report\n \n ")
+                            .SetTextAlignment(TextAlignment.CENTER)
+                            .SetFontSize(9);
+                            document.Add(title1);
+
+                            // Get the current date for billing
+                            DateTime billingDate = DateTime.Now;
+
+                            // Add the billing date
+                            //Paragraph billingDateParagraph = new Paragraph($"Billing Date: {billingDate:dd/MM/yyyy}")
+                            //    .SetTextAlignment(TextAlignment.CENTER)
+                            //    .SetFontSize(9);
+                            // document.Add(billingDateParagraph);
 
 
+
+                            // Add company information
+                            Paragraph companyInfo = new Paragraph("Company Name: Panaderia Bakery and Foods Products\nAddress: Colombo 01\nTelephone: 011-2221222\nFax: 0113363363 \n \n ")
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(9);
+                            document.Add(companyInfo);
+
+                            // Get the supplier information from TextBox controls
+                            //string supplierName = txtsupplier.Text;
+                            //string supplierId = txtsupid.Text;
+                            //string supplier = txtsup.Text;
+
+                            // Get the current date, time, and user who logged in
+                            DateTime currentDate = DateTime.Now;
+                            string currentUser = HttpContext.Current.User.Identity.Name;
+
+                            // Add purchase order information
+                            Paragraph poInfo = new Paragraph($"Bill Date: {currentDate:dd/MM/yyyy HH:mm:ss}\nUser: {currentUser}\nSupplier ID: \nSupplier Name: \n \n")
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                .SetFontSize(9);
+                            document.Add(poInfo);
+
+                            // Create a table with specific columns
+                            Table table = new Table(new float[] { 70f, 120f, 55f, 45f, 45f, 45f, 60f, 70f }) // Manually set widths
+                            .SetBorder(Border.NO_BORDER) // Remove default table border
+                            .SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 1f)) // Set a light gray border color
+                            .SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 1f)); // Set a light gray right border
+
+                            // Add headers to the table
+                            table.AddHeaderCell(new Cell().Add("Item Code").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                            table.AddHeaderCell(new Cell().Add("Description").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                            table.AddHeaderCell(new Cell().Add("Price").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                            table.AddHeaderCell(new Cell().Add("Psize").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                            table.AddHeaderCell(new Cell().Add("Packs").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                            table.AddHeaderCell(new Cell().Add("Nos").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                            table.AddHeaderCell(new Cell().Add("Discount %").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                            table.AddHeaderCell(new Cell().Add("Amount").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+
+
+                            // Add rows to the table
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                // Add cells with solid black border
+                                table.AddCell(new Cell().Add(row["item_code"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                table.AddCell(new Cell().Add(row["Description"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                table.AddCell(new Cell().Add(Convert.ToDecimal(row["price"]).ToString("F2")).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                table.AddCell(new Cell().Add(row["psize"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                table.AddCell(new Cell().Add(row["packs"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                table.AddCell(new Cell().Add(row["nos"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                table.AddCell(new Cell().Add(row["discount"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                table.AddCell(new Cell().Add(Convert.ToDecimal(row["Amount"]).ToString("F2")).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                            }
+
+                            // Add a footer row with cells spanning the entire width of the table
+                            //Cell footerCell = new Cell(1, 8);
+                            //footerCell.Add("\n \n \n \n Let's Reduce, Reuse, And Recycle. "); // Add an empty string or any content you want for the footer
+                            //table.AddCell(footerCell);
+
+
+                            // Add space between grand total and GridView
+                            document.Add(new Paragraph().SetMargins(0, 0, 0, 50)); // Adjust the bottom margin as needed
+
+
+                            // Add the table to the document
+                            document.Add(table);
+
+                            // Add a line break
+                            document.Add(new Paragraph());
+
+                            // Calculate and add the grand total to the PDF
+                            decimal grandTotal = 0;
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                grandTotal += Convert.ToDecimal(row["Amount"]);
+
+                            }
+
+
+                            //document.Add(new Paragraph($"Total Amount: {grandTotal}"));
+                            // Add the grand total with adjusted left margin, bold, and left alignment
+                            Paragraph grandTotalParagraph = new Paragraph($"\n \n Total Amount: {grandTotal:F2}")
+                                .SetTextAlignment(TextAlignment.LEFT)
+                                //.SetBold()
+                                //.SetMarginLeft(200f) // Adjust the margin as needed
+                                .SetUnderline()
+                                //.SetUnderlineThickness(1.5f) // Adjust the thickness as needed
+                                .SetMarginLeft(380f) // Adjust the margin as needed
+                                .SetBorderBottom(new SolidBorder(ColorConstants.BLACK));
+                            document.Add(grandTotalParagraph);
+
+                            // Add space between grand total and GridView
+                            document.Add(new Paragraph().SetMargins(0, 0, 0, 3800)); // Adjust the bottom margin as needed
+
+
+
+                            // Add the footer line
+                            LineSeparator lineSeparator = new LineSeparator(new SolidLine(1f))
+                                .SetMarginTop(10) // Adjust the top margin as needed
+                                .SetMarginBottom(20); // Adjust the bottom margin as needed
+                            document.Add(lineSeparator);
+
+                            // Add space between footer line and GridView
+                            document.Add(new Paragraph().SetMargins(0, 0, 0, 20)); // Adjust the bottom margin as needed
+
+                        }
+
+                    }
+                }
+
+                // Set the response content type
+                Response.ContentType = "application/pdf";
+
+                // Set the content disposition and file name
+                Response.AddHeader("Content-Disposition", "attachment; filename=Invoice.pdf");
+
+                // Write the PDF to the response stream
+                Response.BinaryWrite(stream.ToArray());
+
+                // End the response
+                Response.End();
+            }
 
         }
+
+        */
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                // Directly execute a query to get the data you need
+                string query = "SELECT * FROM [dbo].[day_books]";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        using (MemoryStream stream = new MemoryStream())
+                        {
+                            using (PdfWriter writer = new PdfWriter(stream))
+                            {
+                                using (PdfDocument pdf = new PdfDocument(writer))
+                                {
+                                    using (Document document = new Document(pdf))
+                                    {
+                                        // ... (existing code for headers, images, and other static content)
+
+                                        Table table = new Table(new float[] { 70f, 120f, 55f, 45f, 45f, 45f, 60f, 70f })
+                                            .SetBorder(Border.NO_BORDER)
+                                            .SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 1f))
+                                            .SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 1f));
+
+                                        table.AddHeaderCell(new Cell().Add("Item Code").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                                        table.AddHeaderCell(new Cell().Add("Description").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                                        table.AddHeaderCell(new Cell().Add("Price").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                                        table.AddHeaderCell(new Cell().Add("Psize").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                                        table.AddHeaderCell(new Cell().Add("Packs").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                                        table.AddHeaderCell(new Cell().Add("Nos").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                                        table.AddHeaderCell(new Cell().Add("Discount %").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+                                        table.AddHeaderCell(new Cell().Add("Amount").SetBorderBottom(new SolidBorder(ColorConstants.BLACK)));
+
+                                        while (reader.Read())
+                                        {
+                                            table.AddCell(new Cell().Add(reader["item_code"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                            table.AddCell(new Cell().Add(reader["Description"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                            table.AddCell(new Cell().Add(Convert.ToDecimal(reader["price"]).ToString("F2")).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                            table.AddCell(new Cell().Add(reader["psize"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                            table.AddCell(new Cell().Add(reader["packs"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                            table.AddCell(new Cell().Add(reader["nos"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                            table.AddCell(new Cell().Add(reader["discount"].ToString()).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                            table.AddCell(new Cell().Add(Convert.ToDecimal(reader["Amount"]).ToString("F2")).SetBorderBottom(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)).SetBorderRight(new SolidBorder(new DeviceRgb(150, 150, 150), 0.5f)));
+                                        }
+
+                                        document.Add(table);
+                                        // ... (existing code for the footer, grand total, and other static content)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
 
 
 

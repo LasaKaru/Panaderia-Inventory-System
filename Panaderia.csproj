@@ -625,6 +625,7 @@
     <Content Include="test\addtogridto.aspx" />
     <Content Include="test\customercopy.aspx" />
     <Content Include="test\dataplus.aspx" />
+    <Content Include="test\finaltest.aspx" />
     <Content Include="test\inv_pur_purchase_order.aspx" />
     <Content Include="test\last.aspx" />
     <Content Include="test\newwwwww.aspx" />
@@ -632,6 +633,7 @@
     <Content Include="test\printreport.aspx" />
     <Content Include="test\puror.aspx" />
     <Content Include="test\Supplier.aspx" />
+    <Content Include="test\two.aspx" />
     <Content Include="test\userprofileupdate.aspx" />
     <Content Include="UserControls\Navigation.ascx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -1253,6 +1255,13 @@
     <Compile Include="test\dataplus.aspx.designer.cs">
       <DependentUpon>dataplus.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\finaltest.aspx.cs">
+      <DependentUpon>finaltest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\finaltest.aspx.designer.cs">
+      <DependentUpon>finaltest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\inv_pur_purchase_order.aspx.cs">
       <DependentUpon>inv_pur_purchase_order.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1301,6 +1310,13 @@
     </Compile>
     <Compile Include="test\Supplier.aspx.designer.cs">
       <DependentUpon>Supplier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\two.aspx.cs">
+      <DependentUpon>two.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\two.aspx.designer.cs">
+      <DependentUpon>two.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\userprofileupdate.aspx.cs">
       <DependentUpon>userprofileupdate.aspx</DependentUpon>

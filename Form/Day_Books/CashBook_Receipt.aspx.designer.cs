@@ -222,13 +222,13 @@ namespace Panaderia.Form.Day_Books
         protected global::System.Web.UI.WebControls.Button btnSave;
 
         /// <summary>
-        /// btnprint control.
+        /// btnPrint control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnprint;
+        protected global::System.Web.UI.WebControls.Button btnPrint;
 
         /// <summary>
         /// btnExit control.
