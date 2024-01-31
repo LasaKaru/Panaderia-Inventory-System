@@ -103,7 +103,7 @@ namespace Panaderia.Form.Master_File
         private string GetNextSerialNumberForUser(int userId)
         {
             // Implement your database query logic here to fetch the next serial number for the given user from the database.
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -135,7 +135,7 @@ namespace Panaderia.Form.Master_File
 
         protected void LoadData()
         {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
             string query = "SELECT Code, SupplierName, AddressLine1,AddressLine2,AddressLine3,Country,Telephone FROM [Panaderia].[dbo].[MF_Supplier_new1]";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -164,7 +164,7 @@ namespace Panaderia.Form.Master_File
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {

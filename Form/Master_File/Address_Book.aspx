@@ -328,6 +328,8 @@
     <label for="txtCode" class="col-sm-3 col-form-label">Code</label>
     <div class="col-sm-5">
         <asp:TextBox type="text" runat="server" id="txtCode" class="form-control" />
+        <asp:RequiredFieldValidator ID="rfvCode" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtcode" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
     
@@ -338,6 +340,8 @@
     <label for="txtShortName" class="col-sm-3 col-form-label">Short Name</label>
     <div class="col-sm-9">
         <asp:TextBox type="text" runat="server" id="txtShortName" class="form-control"/>
+        <asp:RequiredFieldValidator ID="rfvName" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtShortName" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
 
@@ -346,6 +350,8 @@
     <label for="txtFullName" class="col-sm-3 col-form-label">Full Name</label>
     <div class="col-sm-9">
         <asp:textbox type="text" runat="server" id="txtFullName" class="form-control"/>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtFullName" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
 
@@ -354,6 +360,8 @@
     <label for="txtAddress1" class="col-sm-3 col-form-label">Address Line 1 </label>
     <div class="col-sm-9">
         <asp:textbox type="text" runat="server" id="txtAddress1" class="form-control"/>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtAddress1" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
 
@@ -362,6 +370,8 @@
     <label for="txtAddress2" class="col-sm-3 col-form-label">Address Line 2</label>
     <div class="col-sm-9">
         <asp:textbox type="text" runat="server" id="txtAddress2" class="form-control"/>
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtAddress2" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
 
@@ -370,6 +380,8 @@
     <label for="txtcity" class="col-sm-3 col-form-label">City / Region</label>
     <div class="col-sm-5">
         <asp:textbox type="text" runat="server" id="txtcity" class="form-control"/>
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtcity" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
 
@@ -377,6 +389,7 @@
     <label for="txtCountry" class="col-sm-3 col-form-label">Country</label>
     <div class="col-sm-5">
         <asp:textbox type="text" runat="server" id="txtCountry" class="form-control"/>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtCountry" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
     </div>
 </div>
 
@@ -385,6 +398,7 @@
     <label for="txtTelephone" class="col-sm-3 col-form-label">Telephone</label>
     <div class="col-sm-5">
         <asp:textbox type="text" runat="server" id="txtTelephone" class="form-control"/>
+        <asp:RegularExpressionValidator ID="revTelephone" runat="server" ControlToValidate="txtTelephone" ValidationExpression="^\d{10}$" ErrorMessage="Please enter a 10-digit telephone number." Display="Dynamic" ForeColor="Red" ValidationGroup="valGrpCreate" />
     </div>
 </div>
 
@@ -392,6 +406,7 @@
     <label for="txtFax" class="col-sm-3 col-form-label">Fax</label>
     <div class="col-sm-5">
         <asp:textbox type="text" runat="server" id="txtFax" class="form-control"/>
+        <asp:RequiredFieldValidator ID="rfvfax" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtFax" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
     </div>
 </div>
 
@@ -399,6 +414,7 @@
     <label for="txtMobile" class="col-sm-3 col-form-label">Mobile</label>
     <div class="col-sm-5">
         <asp:textbox type="text" runat="server" id="txtMobile" class="form-control"/>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtMobile" ValidationExpression="^\d{10}$" ErrorMessage="Please enter a 10-digit telephone number." Display="Dynamic" ForeColor="Red" ValidationGroup="valGrpCreate" />
     </div>
 </div>
 
@@ -406,6 +422,7 @@
     <label for="txtEmail" class="col-sm-3 col-form-label">Email</label>
     <div class="col-sm-9">
         <asp:textbox type="text" runat="server" id="txtEmail" class="form-control"/>
+         <asp:RequiredFieldValidator ID="rfvemail" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtEmail" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
     </div>
 </div>
 
@@ -413,6 +430,7 @@
     <label for="txtContact" class="col-sm-3 col-form-label">Contact Person</label>
     <div class="col-sm-9">
         <asp:textbox type="text" runat="server" id="txtContact" class="form-control"/>
+        <asp:RequiredFieldValidator ID="rfvcontactper" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtContact" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
     </div>
 </div>
 
@@ -420,6 +438,7 @@
     <label for="txtDetails" class="col-sm-3 col-form-label">Contact Details</label>
     <div class="col-sm-5">
         <asp:textbox type="text" runat="server" id="txtDetails" class="form-control"/>
+        <asp:RequiredFieldValidator ID="rfvcondetails" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtDetails" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
     </div>
 </div>
 
@@ -427,6 +446,7 @@
     <label for="txtNotes" class="col-sm-3 col-form-label">Notes</label>
     <div class="col-sm-9">
     <asp:TextBox runat="server" ID="txtNotes" CssClass="form-control"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtNotes" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 </div>
 
 </div>   
@@ -454,7 +474,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:HiddenField ID="hdnDataSaved" runat="server" />
-               <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" style="width: 100px;" OnClientClick="saveOrUpdate()" OnClick="btnSave_Click" />
+                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" Style="width: 100px" ValidationGroup="valGrpCreate" OnClick="btnSave_Click" />
 
                 <button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;" onclick="saveOrUpdate()">Browse</button>
 

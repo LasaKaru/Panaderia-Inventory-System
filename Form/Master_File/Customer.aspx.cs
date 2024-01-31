@@ -104,7 +104,7 @@ namespace Panaderia.Form.Master_File
         private string GetNextSerialNumberForUser(int userId)
         {
             // Implement your database query logic here to fetch the next serial number for the given user from the database.
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -134,10 +134,10 @@ namespace Panaderia.Form.Master_File
 
         }
 
-        protected void LoadData()
+        private void LoadData()
         {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
-            string query = "SELECT Code, Telephone, Mobile,AddressLine1,AddressLine2,AddressLine3,Country,Email,CreditLimit,ActiveStatus FROM [Panaderia].[dbo].[MF_Customer_new]";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string query = "SELECT Code, Telephone, Mobile,AddressLine1,AddressLine2,AddressLine3,Country,Email,CreditLimit,ActiveStatus FROM [Panaderia].[dbo].[MF_Customers]";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -162,6 +162,7 @@ namespace Panaderia.Form.Master_File
                 }
             }
         }
+
 
         /*protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -263,18 +264,18 @@ namespace Panaderia.Form.Master_File
 
             }
 
-        }*/       
+        }*/
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
                 // Check if the record with the specified SerialNumber already exists
-                string checkIfExistsQuery = "SELECT COUNT(*) FROM [dbo].[MF_Customer_new] WHERE [Code] = @Code";
+                string checkIfExistsQuery = "SELECT COUNT(*) FROM [dbo].[MF_Customers] WHERE [Code] = @Code";
 
                 using (SqlCommand checkCmd = new SqlCommand(checkIfExistsQuery, con))
                 {
@@ -299,7 +300,7 @@ namespace Panaderia.Form.Master_File
         private void InsertRecord(SqlConnection con)
         {
             string insertQuery = @"
-        INSERT INTO [dbo].[MF_Customer_new]
+        INSERT INTO [dbo].[MF_Customers]
                ([SerialNumber],[Date],[User],[Code],[CustomerName],[AddressLine1],[AddressLine2],[AddressLine3],[Country]
                ,[Telephone],[Fax],[Mobile],[Email],[ContactPerson],[ContactDetails],[Notes],[CreditLimit],[CreditPeriod],[CustomerType],[CustomerVatNo],[ActiveStatus])
 
@@ -325,7 +326,7 @@ namespace Panaderia.Form.Master_File
         private void UpdateRecord(SqlConnection con)
         {
             string updateQuery = @"
-        UPDATE [dbo].[MF_Customer_new]
+        UPDATE [dbo].[MF_Customers]
                        SET [Date] = @Date,
                            [User] = @User,
                            [Code] = @Code,
@@ -378,8 +379,7 @@ namespace Panaderia.Form.Master_File
             cmd.Parameters.AddWithValue("@Mobile", txtmobile.Text);
             cmd.Parameters.AddWithValue("@Email", txtemail.Text);
             cmd.Parameters.AddWithValue("@ContactPerson", txtcontactp1.Text);
-            cmd.Parameters.AddWithValue("@ContactDetails", txtcontactdetail.Text);
-            cmd.Parameters.AddWithValue("@Notes", txtNote.Text);
+            cmd.Parameters.AddWithValue("@ContactDetails", txtcontactdetail.Text);            
             cmd.Parameters.AddWithValue("@CreditLimit", txtcreditlimit.Text);
             cmd.Parameters.AddWithValue("@CreditPeriod", txtcreditperiod.Text);
             cmd.Parameters.AddWithValue("@CustomerType", dd1custype.SelectedItem.Text.ToString());

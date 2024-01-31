@@ -96,6 +96,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
+        /// rfvName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvName;
+
+        /// <summary>
         /// txtAddress1 control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace Panaderia.Form.Master_File
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAddress1;
+
+        /// <summary>
+        /// rfvadd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvadd1;
 
         /// <summary>
         /// txtAddress2 control.
@@ -114,6 +132,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtAddress2;
 
         /// <summary>
+        /// rfvadd2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvadd2;
+
+        /// <summary>
         /// txtAddress3 control.
         /// </summary>
         /// <remarks>
@@ -123,6 +150,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtAddress3;
 
         /// <summary>
+        /// rfvadd3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvadd3;
+
+        /// <summary>
         /// txtcountry control.
         /// </summary>
         /// <remarks>
@@ -130,6 +166,15 @@ namespace Panaderia.Form.Master_File
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcountry;
+
+        /// <summary>
+        /// rfvcountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcountry;
 
         /// <summary>
         /// txtTele control.
@@ -159,6 +204,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtfax;
 
         /// <summary>
+        /// rfvfax control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvfax;
+
+        /// <summary>
         /// txtmobile control.
         /// </summary>
         /// <remarks>
@@ -186,6 +240,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtemail;
 
         /// <summary>
+        /// rfvemail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvemail;
+
+        /// <summary>
         /// txtcontactp1 control.
         /// </summary>
         /// <remarks>
@@ -193,6 +256,15 @@ namespace Panaderia.Form.Master_File
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcontactp1;
+
+        /// <summary>
+        /// rfvcontactper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcontactper;
 
         /// <summary>
         /// txtcontactdetail control.
@@ -204,13 +276,13 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtcontactdetail;
 
         /// <summary>
-        /// txtNote control.
+        /// rfvcondetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNote;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcondetails;
 
         /// <summary>
         /// txtcreditlimit control.
@@ -222,6 +294,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtcreditlimit;
 
         /// <summary>
+        /// rfvcredit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcredit;
+
+        /// <summary>
         /// txtcreditperiod control.
         /// </summary>
         /// <remarks>
@@ -231,6 +312,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtcreditperiod;
 
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// txtCusType control.
         /// </summary>
         /// <remarks>
@@ -238,6 +328,15 @@ namespace Panaderia.Form.Master_File
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCusType;
+
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
         /// dd1custype control.
@@ -258,6 +357,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtVatNo;
 
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+
+        /// <summary>
         /// txtUserStatus control.
         /// </summary>
         /// <remarks>
@@ -265,6 +373,15 @@ namespace Panaderia.Form.Master_File
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUserStatus;
+
+        /// <summary>
+        /// RequiredFieldValidator4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
         /// ddlActiveStatus control.

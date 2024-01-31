@@ -78,6 +78,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtUserID;
 
         /// <summary>
+        /// rfvcondetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvcondetails;
+
+        /// <summary>
         /// txtUserName control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace Panaderia.Form.Master_File
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUserName;
+
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// ddlDefaultStore control.
@@ -114,6 +132,15 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.TextBox txtUserPassword;
 
         /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+        /// <summary>
         /// ddlUserStatus control.
         /// </summary>
         /// <remarks>
@@ -123,13 +150,13 @@ namespace Panaderia.Form.Master_File
         protected global::System.Web.UI.WebControls.DropDownList ddlUserStatus;
 
         /// <summary>
-        /// Button1 control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnSave;
 
         /// <summary>
         /// GridView1 control.

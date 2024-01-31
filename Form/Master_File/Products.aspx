@@ -315,6 +315,8 @@
                     <div class="col-sm-8">
 
                     <asp:TextBox ID="txtCode" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvCode" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtcode" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
 
                     </div>                    
 
@@ -329,6 +331,8 @@
                     <div class="col-sm-2">
 
                         <asp:TextBox ID="txtType" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtType" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 
                     </div>
 
@@ -358,6 +362,7 @@
 
                         <asp:TextBox ID="txtdescription" runat="server" CssClass="form-control"></asp:TextBox>
 
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtdescription" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
                     </div>
 
                 </div>
@@ -371,6 +376,8 @@
                     <div class="col-sm-8">
 
                         <asp:TextBox ID="txtUnitSize" runat="server" CssClass="form-control"></asp:TextBox>
+
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtUnitSize" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 
                     </div>
 
@@ -388,6 +395,8 @@
 
                         <asp:TextBox ID="txtUnitInCase" runat="server" CssClass="form-control"></asp:TextBox>
 
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtUnitInCase" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
                     </div>
 
                 </div>
@@ -401,6 +410,8 @@
                     <div class="col-sm-2">
 
                         <asp:TextBox ID="txtUOM" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtUOM" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 
                     </div>                  
 
@@ -432,6 +443,8 @@
 
                         <asp:TextBox ID="txtCate1" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
 
+                          <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtCate1" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
                     </div>
 
                     <div class="col-sm-6">                      
@@ -459,6 +472,8 @@
                     <div class="col-sm-2">
 
                         <asp:TextBox ID="txtCate2" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtCate2" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 
                     </div>
 
@@ -492,6 +507,8 @@
 
                         <asp:TextBox ID="txtCate3" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
 
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtCate3" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
                     </div>
 
                      <div class="col-sm-6">                      
@@ -521,6 +538,8 @@
                     <div class="col-sm-2">
 
                         <asp:TextBox ID="txtCate4" runat="server" CssClass="auto-style326" ReadOnly="true"></asp:TextBox>
+
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtCate4" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 
                     </div>
 
@@ -552,6 +571,8 @@
 
                         <asp:TextBox ID="txtSTDCostPrice" runat="server" CssClass="form-control"></asp:TextBox>
 
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtSTDCostPrice" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
                     </div>
 
                 </div>
@@ -568,6 +589,8 @@
 
                         <asp:TextBox ID="txtSTDSellingPrice" runat="server" CssClass="form-control"></asp:TextBox>
 
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtSTDSellingPrice" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
                     </div>
 
                 </div>     
@@ -581,6 +604,8 @@
                     <div class="col-sm-8">
 
                         <asp:TextBox ID="txtMaximumMarkup" runat="server" CssClass="form-control"></asp:TextBox>
+
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtMaximumMarkup" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 
                     </div>
 
@@ -597,6 +622,8 @@
                     <div class="col-sm-8">
 
                         <asp:TextBox ID="txtNBT" runat="server" CssClass="form-control" OnTextChanged="txtNBT_TextChanged"></asp:TextBox>
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtNBT" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 
                     </div>
 
@@ -615,6 +642,8 @@
                     <div class="col-sm-8">
 
                         <asp:TextBox ID="txtVAT" runat="server" CssClass="form-control"></asp:TextBox>
+
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtVAT" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
 
                     </div>
 
@@ -703,7 +732,7 @@
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <asp:Button ID="btn_save" runat="server" CssClass="btn btn-primary"   Text="Save"  OnClick="btn_save_Click" Style="border-style: inset; width: 100px"/>
+                <asp:Button ID="btn_save" runat="server" CssClass="btn btn-primary"   Text="Save" ValidationGroup="valGrpCreate"  OnClick="btn_save_Click" Style="border-style: inset; width: 100px"/>
 
           &nbsp;<button type="button" id="browseButton" class="btn btn-secondary" style="width: 100px;">Browse</button>
 

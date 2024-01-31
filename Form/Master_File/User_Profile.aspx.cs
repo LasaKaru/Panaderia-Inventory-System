@@ -63,7 +63,7 @@ namespace Panaderia.Form.Master_File
 
         protected void LoadData()
         {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
             string query = "  SELECT UserID, UserName, DefaultStore, UserGroup, UserPassword, UserStatus FROM [Panaderia].[dbo].[MF_User_Profile_NEW]";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -93,7 +93,7 @@ namespace Panaderia.Form.Master_File
         private string GetNextSerialNumberForUser(int userId)
         {
             // Implement your database query logic here to fetch the next serial number for the given user from the database.
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -215,7 +215,7 @@ namespace Panaderia.Form.Master_File
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -323,7 +323,7 @@ namespace Panaderia.Form.Master_File
 
         private void BrowseUserData()
         {
-            string connectionString = "Data Source=CCPHIT-LASANLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
+            string connectionString = "Data Source=CCPHIT-GUNATLAP\\SQLEXPRESS;Initial Catalog=Panaderia;Integrated Security=True";
             string query = "SELECT * FROM MF_User"; // Modify the query to select the columns you need
             //string query = "SELECT SerialNumber, Date, User, UserID, UserName, DefaultStore, UserGroup, UserPassword, UserStatus FROM MF_Users";
 

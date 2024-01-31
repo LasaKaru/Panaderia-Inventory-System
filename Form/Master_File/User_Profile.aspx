@@ -341,6 +341,8 @@
     <label for="txtUserID" class="col-sm-3 col-form-label">User ID</label>
     <div class="col-sm-9">
         <asp:TextBox id="txtUserID" runat="server" class="form-control"></asp:TextBox>
+         <asp:RequiredFieldValidator ID="rfvcondetails" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtUserID" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
 
@@ -348,6 +350,8 @@
     <label for="txtUserName" class="col-sm-3 col-form-label">User Name</label>
     <div class="col-sm-9">
         <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtUserName" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
 
@@ -386,6 +390,8 @@
     <label for="txtUserPassword" class="col-sm-3 col-form-label">User Password</label>
     <div class="col-sm-9">
         <asp:TextBox type="text" id="txtUserPassword" runat="server" class="form-control"/>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required." ForeColor="Red" ControlToValidate="txtUserPassword" Display="Dynamic" ValidationGroup="valGrpCreate"></asp:RequiredFieldValidator>
+
     </div>
 </div>
 
@@ -413,7 +419,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-                <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn btn-primary" Style="width: 100px" ValidationGroup="valGrpCreate" OnClick="btnSave_Click" />
+                 <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" Style="width: 100px" ValidationGroup="valGrpCreate" OnClick="btnSave_Click" />
                 <!-- Save button 
                 <button type="button" id="BtnSave" class="btn btn-primary" style="width: 100px;">Save</:button>
                 -->
